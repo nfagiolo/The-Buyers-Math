@@ -1,60 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-V4GTQSCFW6');
-</script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Basement Finishing Calculator</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
-        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
-    </style>
-</head>
-<body>
-    <h1>Basement Finishing Cost Estimator</h1>
-    <div class="card">
-        <label>Basement Size (Square Feet)</label>
-        <input type="number" id="bsqft" value="1000">
-
-        <label>Finish Quality</label>
-        <select id="bqual">
-            <option value="40">Basic ($40/sq ft)</option>
-            <option value="65" selected>Standard / Mid-Range ($65/sq ft)</option>
-            <option value="110">High-End with Wet Bar ($110/sq ft)</option>
-        </select>
-
-        <label>Add Full Bathroom?</label>
-        <select id="bbath">
-            <option value="0">No</option>
-            <option value="9500">Yes (+$9,500)</option>
-        </select>
-
-        <button onclick="calcBase()">Calculate Total</button>
-        <div class="result" id="baseTotal">$0</div>
-        <p style="font-size:0.85rem; color:#64748b; text-align:center;">Includes standard 15% moisture management allocation.</p>
-    </div>
-
-    <script>
-        function calcBase() {
-            const sqft = parseFloat(document.getElementById('bsqft').value) || 0;
-            const qual = parseFloat(document.getElementById('bqual').value);
-            const bath = parseFloat(document.getElementById('bbath').value);
-            const total = (sqft * qual) + bath;
-            document.getElementById('baseTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
-        }
-        calcBase();
-    </script>
-</body>
-</html>
+<div style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+<h3>Understanding Your Basement Remodel Estimate</h3>
+<p>Transforming an unfinished basement into a livable space is one of the most cost-effective ways to add square footage to your home. However, basement finishing costs can vary wildly depending on your goals. This calculator provides a foundational estimate based on typical construction rates, helping you budget for your upcoming renovation.</p>
+<h4>Key Variables in This Calculator</h4>
+<ul>
+<li><strong>Square Footage:</strong> The overall size of the space dictates the amount of framing, drywall, flooring, and paint required. Larger open concepts cost less per square foot than basements subdivided into multiple small rooms.</li>
+<li><strong>Finish Level:</strong> A basic finish (drywall, carpet, standard lighting) is highly affordable. Premium upgrades like custom wet bars, home theaters, soundproofing, and luxury vinyl plank (LVP) flooring will significantly increase the budget.</li>
+<li><strong>Adding a Bathroom:</strong> Installing a new bathroom requires breaking into the concrete slab to tie into existing plumbing lines, making it one of the largest single expenses in a basement remodel.</li>
+</ul>
+<h4>Additional Factors Influencing Final Costs</h4>
+<ul>
+<li><strong>Waterproofing and Moisture Control:</strong> You cannot finish a damp basement. Installing French drains, sump pumps, and vapor barriers must be done prior to framing.</li>
+<li><strong>Egress Windows:</strong> If you plan to add a legal bedroom, building codes require an egress window for emergency exit. This involves excavating the exterior foundation and cutting through the concrete wall.</li>
+<li><strong>HVAC and Electrical:</strong> Tying the new space into your existing heating and cooling system, upgrading your electrical panel to handle the new load, and adding sub-panels can add thousands to the final bill.</li>
+</ul>
+<h4>Frequently Asked Questions</h4>
+<ul>
+<li><strong>Does finishing a basement add value?</strong> Yes, finished basements typically yield a 70% to 75% return on investment (ROI) upon resale, making them one of the best home improvement projects for ROI.</li>
+<li><strong>Do I need a permit to finish my basement?</strong> Absolutely. Unpermitted basement work can lead to fines, forced tear-outs, and major complications when trying to sell your home.</li>
+</ul>
+</div>
