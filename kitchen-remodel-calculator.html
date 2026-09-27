@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Kitchen Remodel Cost Calculator & Guide</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        button:hover { background: #0369a1; }
+        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
+        article h2 { color: #0f172a; margin-top: 2rem; }
+        .lead-widget { padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; border: 2px dashed #cbd5e1; margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <h1>Kitchen Remodel Cost Estimator</h1>
+    <p>Estimate your kitchen renovation budget based on size and finish quality.</p>
+    
+    <div class="card">
+        <label>Kitchen Size (Square Feet)</label>
+        <input type="number" id="kSqft" value="200">
+
+        <label>Renovation Scope & Finish Quality</label>
+        <select id="kScope">
+            <option value="150">Cosmetic Refresh / Mid-Range ($150/sq ft)</option>
+            <option value="300" selected>Full Pull-and-Replace / High-End ($300/sq ft)</option>
+            <option value="550">Luxury Gut / Custom Layout ($550+/sq ft)</option>
+        </select>
+
+        <button onclick="calcKitchen()">Estimate Cost</button>
+        <div class="result" id="kTotal">$0</div>
+    </div>
+
+    <div class="lead-widget">
+        <h3 style="margin-top: 0; color: #0f172a;">Find Top-Rated Remodelers</h3>
+        <p style="color: #475569;">Enter your zip code to get matched with licensed local contractors for your kitchen project.</p>
+        <!-- PASTE YOUR ELOCAL WIDGET CODE HERE -->
+    </div>
+
+    <article>
+        <h2>The 2026 Guide to Kitchen Remodeling Budgets</h2>
+        <p>A kitchen remodel is one of the most complex, expensive, and rewarding home improvement projects you can take on. In 2026, costs heavily depend on whether you are simply replacing finishes or changing the fundamental layout of the room.</p>
+        
+        <h3>Cosmetic Refresh vs. Gut Renovation</h3>
+        <p>If your current layout works well, a "pull-and-replace" project is your best bet. By keeping plumbing and gas lines exactly where they are, you can upgrade to premium quartz countertops, new semi-custom cabinetry, and high-end appliances for around <strong>$30,000 to $50,000</strong>. However, if you are knocking down walls, moving the sink to an island, or rerouting electrical lines, your project enters the "gut renovation" territory, quickly escalating to <strong>$85,000 to $150,000+</strong>.</p>
+        
+        <h3>Where Does the Money Go?</h3>
+        <ul>
+            <li><strong>Cabinetry:</strong> Typically the largest expense, accounting for 30% to 40% of the budget. Custom inset cabinets drive costs significantly higher than modular, builder-grade units.</li>
+            <li><strong>Labor & Permits:</strong> Expect labor to consume 20% to 30% of your total budget.</li>
+            <li><strong>Countertops:</strong> Quartz and quartzite remain the dominant choices in 2026, offering superior durability over marble, typically ranging from $70 to $200 per square foot installed.</li>
+        </ul>
+    </article>
+
+    <script>
+        function calcKitchen() {
+            const sqft = parseFloat(document.getElementById('kSqft').value) || 0;
+            const scope = parseFloat(document.getElementById('kScope').value);
+            const total = sqft * scope;
+            document.getElementById('kTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
+        }
+        calcKitchen();
+    </script>
+</body>
+</html>
