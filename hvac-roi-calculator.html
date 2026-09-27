@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Pump vs. Gas Furnace Calculator</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; }
+        .box { padding: 1rem; border-radius: 8px; background: #f1f5f9; font-size: 1.25rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Heat Pump vs. Gas Furnace Cost</h1>
+    <div class="card">
+        <label>Electricity Rate ($/kWh)</label>
+        <input type="number" id="kwh" value="0.22" step="0.01">
 
+        <label>Natural Gas Rate ($/Therm)</label>
+        <input type="number" id="therm" value="1.50" step="0.10">
+
+        <label>Annual Heating Load (MMBtu)</label>
+        <input type="number" id="load" value="60">
+
+        <button onclick="calcHVAC()">Compare Annual Costs</button>
+
+        <div class="grid">
+            <div class="box">Gas Furnace (96% AFUE)<br><span id="gasCost" style="color:#ef4444">$0</span></div>
+            <div class="box">Heat Pump (COP 3.0)<br><span id="hpCost" style="color:#15803d">$0</span></div>
+        </div>
+    </div>
+
+    <script>
+        function calcHVAC() {
+            const kwh = parseFloat(document.getElementById('kwh').value);
+            const therm = parseFloat(document.getElementById('therm').value);
+            const load = parseFloat(document.getElementById('load').value); // MMBtu
+            
+            // Gas: 1 Therm = 0.1 MMBtu
+            const gasTotal = (load / 0.1 / 0.96) * therm;
+            // HP: 1 MMBtu = 293 kWh
+            const hpTotal = ((load * 293) / 3.0) * kwh;
+
+            document.getElementById('gasCost').innerText = "$" + gasTotal.toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('hpCost').innerText = "$" + hpTotal.toLocaleString(undefined, {maximumFractionDigits: 0});
+        }
+        calcHVAC();
+    </script>
+</body>
+</html>
