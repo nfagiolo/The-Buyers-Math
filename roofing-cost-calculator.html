@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Roof Replacement Cost Calculator</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Roof Replacement Cost Estimator</h1>
+    <p>Calculate your 2026 roofing costs based on a national average of $4.00 to $12.00 per square foot.</p>
+    
+    <div class="card">
+        <label>Home Square Footage (Approx. Roof Size)</label>
+        <input type="number" id="sqft" value="2000">
+
+        <label>Roofing Material</label>
+        <select id="material">
+            <option value="4.50">3-Tab Asphalt Shingles ($4.50/sq ft)</option>
+            <option value="8.00" selected>Architectural Asphalt ($8.00/sq ft)</option>
+            <option value="14.00">Standing Seam Metal ($14.00/sq ft)</option>
+            <option value="20.00">Premium Slate/Tile ($20.00/sq ft)</option>
+        </select>
+
+        <label>Roof Pitch / Complexity</label>
+        <select id="pitch">
+            <option value="1.0">Standard / Walkable (No extra cost)</option>
+            <option value="1.2">Steep / Complex (+20% Labor)</option>
+        </select>
+
+        <button onclick="calcRoof()">Estimate Project Cost</button>
+        <div class="result" id="roofTotal">$0</div>
+    </div>
+
+    <script>
+        function calcRoof() {
+            const sqft = parseFloat(document.getElementById('sqft').value) || 0;
+            const matRate = parseFloat(document.getElementById('material').value);
+            const pitch = parseFloat(document.getElementById('pitch').value);
+            const total = sqft * matRate * pitch;
+            document.getElementById('roofTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
+        }
+        calcRoof();
+    </script>
+</body>
+</html>
