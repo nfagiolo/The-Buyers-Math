@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-V4GTQSCFW6');
-</script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+      gtag('config', 'G-V4GTQSCFW6');
+    </script>
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 Driveway Paving Cost Estimator & Guide</title>
+    <meta name="description" content="Calculate estimated driveway paving costs for asphalt, concrete, gravel, and pavers based on square footage and options.">
     <style>
         body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
         .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
@@ -26,82 +27,77 @@
     </style>
 </head>
 <body>
-    <h1>Driveway Paving Cost Estimator</h1>
-    <p>Compare costs for asphalt, concrete, and pavers based on 2026 square footage rates.</p>
-    
-    <div class="card">
-        <label>Driveway Size (Square Feet)</label>
-        <input type="number" id="dSqft" value="600">
-        <p style="font-size: 0.85rem; color: #64748b; margin-top: -1rem; margin-bottom: 1rem;">(A standard 2-car driveway is about 400-600 sq ft)</p>
+    <header>
+        <h1>Driveway Paving Cost Estimator</h1>
+        <p>Compare costs for asphalt, concrete, and pavers based on 2026 square footage rates.</p>
+    </header>
+    <main>
+        <div class="card">
+            <label for="dSqft">Driveway Size (Square Feet)</label>
+            <input type="number" id="dSqft" value="600">
+            <p style="font-size: 0.85rem; color: #64748b; margin-top: -1rem; margin-bottom: 1rem;">(A standard 2-car driveway is about 400-600 sq ft)</p>
 
-        <label>Material Choice</label>
-        <select id="dMat">
-            <option value="2">Gravel ($2/sq ft)</option>
-            <option value="8" selected>Asphalt ($8/sq ft)</option>
-            <option value="11">Standard Concrete ($11/sq ft)</option>
-            <option value="16">Stamped Concrete ($16/sq ft)</option>
-            <option value="20">Brick/Stone Pavers ($20/sq ft)</option>
-        </select>
+            <label for="dMat">Material Choice</label>
+            <select id="dMat">
+                <option value="2">Gravel ($2/sq ft)</option>
+                <option value="8" selected>Asphalt ($8/sq ft)</option>
+                <option value="11">Standard Concrete ($11/sq ft)</option>
+                <option value="16">Stamped Concrete ($16/sq ft)</option>
+                <option value="20">Brick/Stone Pavers ($20/sq ft)</option>
+            </select>
 
-        <label>Existing Driveway Removal?</label>
-        <select id="dDemo">
-            <option value="0">No (New installation or overlay)</option>
-            <option value="2">Yes, rip out old driveway (+$2/sq ft)</option>
-        </select>
+            <label for="dDemo">Existing Driveway Removal?</label>
+            <select id="dDemo">
+                <option value="0">No (New installation or overlay)</option>
+                <option value="2">Yes, rip out old driveway (+$2/sq ft)</option>
+            </select>
 
-        <button onclick="calcDriveway()">Estimate Cost</button>
-        <div class="result" id="dTotal">$0</div>
-    </div>
+            <button onclick="calcDriveway()">Calculate Paving Cost</button>
 
-    <div class="lead-widget">
-        <h3 style="margin-top: 0; color: #0f172a;">Get Local Paving Estimates</h3>
-        <p style="color: #475569;">Enter your zip code to request free quotes from local paving contractors.</p>
-        <!-- PASTE YOUR ELOCAL WIDGET CODE HERE -->
-    </div>
+            <div id="dResult" class="result" style="display:none;"></div>
+        </div>
 
-<div style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-<h3>Understanding Your Driveway Paving Estimate</h3>
-<p>A new driveway greatly enhances your home's curb appeal and functionality. Whether you are replacing a crumbling surface or paving a dirt road for the first time, this calculator helps you estimate the expected costs based on current material and labor rates.</p>
-<h4>Key Variables in This Calculator</h4>
-<ul>
-<li><strong>Square Footage:</strong> The dimensions of your driveway (length x width) are the primary cost drivers. Circular driveways or wide parking pads require more materials and labor.</li>
-<li><strong>Material Choice:</strong> Asphalt is the most common and cost-effective paved surface. Concrete is more expensive but lasts longer and requires less maintenance. Gravel is the cheapest option but requires regular grading and top-offs, while interlocking pavers offer premium aesthetics at the highest price point.</li>
-<li><strong>Thickness:</strong> Standard residential driveways are typically paved 2 to 3 inches thick for asphalt or 4 inches for concrete. If you park heavy equipment or RVs, you will need a thicker pour and a reinforced base.</li>
-</ul>
-<h4>Additional Factors Influencing Final Costs</h4>
-<ul>
-<li><strong>Excavation and Grading:</strong> If your yard requires heavy excavation, leveling, or the removal of large trees and roots to create a flat subgrade, earthmoving costs will drastically increase your quote.</li>
-<li><strong>Sub-Base Preparation:</strong> A paved surface is only as strong as what lies beneath it. Installing a proper aggregate base layer is crucial to prevent sinking, cracking, and frost heaves.</li>
-<li><strong>Drainage Solutions:</strong> Proper water runoff management is essential. Adding French drains, catch basins, or re-grading the slope away from your foundation adds to the project cost but protects your property.</li>
-</ul>
-<h4>Frequently Asked Questions</h4>
-<ul>
-<li><strong>Should I repair, resurface, or replace my driveway?</strong> Minor cracks can be patched and sealed. If the foundation is solid but the top layer is deteriorating, an asphalt overlay (resurfacing) is a cost-effective choice. Deep structural cracks or alligator cracking indicate sub-base failure, requiring a full replacement.</li>
-<li><strong>How long does a new driveway need to cure?</strong> Asphalt can usually be driven on within 3 to 5 days, though it takes months to fully harden. Concrete typically requires a full 7 days of curing before it can support vehicular weight.</li>
-</ul>
-</div>
+        <article>
+            <h2>Driveway Material Comparison (2026 Cost Breakdown)</h2>
+            <p>Choosing the right driveway material balances upfront budget, climate durability, and long-term maintenance. Here is how popular materials compare for a standard 600 sq. ft. driveway:</p>
+            <ul>
+                <li><strong>Gravel ($1,200 - $1,800):</strong> The lowest initial cost, perfect for long rural driveways. Requires regular replenishment and snow removal can be challenging.</li>
+                <li><strong>Asphalt ($4,800 - $6,500):</strong> Excellent for cold climates with freeze-thaw cycles. Requires resealing every 3-5 years and typically lasts 20-25 years.</li>
+                <li><strong>Concrete ($6,600 - $9,600):</strong> Highly durable and low maintenance with a 30-40 year lifespan. Prone to cracking in extreme cold if installed without proper expansion joints.</li>
+                <li><strong>Stamped Concrete & Pavers ($9,600 - $15,000+):</strong> Offers high curb appeal and luxury finish. Individual pavers are easy to repair, but labor costs are significant.</li>
+            </ul>
 
-    <article>
-        <h2>The 2026 Guide to Driveway Materials and Costs</h2>
-        <p>Upgrading your driveway improves curb appeal and provides a solid return on investment. In 2026, homeowners typically spend between <strong>$4,500 and $12,000</strong> to pave a standard two-car driveway, heavily dependent on the chosen material and local labor rates.</p>
-        
-        <h3>Asphalt vs. Concrete</h3>
-        <p><strong>Asphalt</strong> is the most common driveway surface in colder climates because it flexes with freeze-thaw cycles without cracking severely, and melts snow faster due to its dark color. At an average of $8 per square foot, it is more affordable upfront but requires sealcoating every 3 to 5 years.</p>
-        <p><strong>Concrete</strong> is favored in warmer climates. It costs more initially—around $11 per square foot—but boasts a longer lifespan of up to 40 years with minimal maintenance. It can also be stamped and stained to mimic the look of premium stone or brick.</p>
-        
-        <h3>The Hidden Cost: Base Preparation</h3>
-        <p>A driveway is only as good as the ground beneath it. If your existing base is damaged or if you are paving over raw dirt, contractors must excavate and compact 4 to 8 inches of gravel sub-base. This critical step adds $1 to $2 per square foot to the total project cost. If an old driveway needs to be demolished and hauled away, expect an additional $1 to $3 per square foot.</p>
-    </article>
+            <h2>Key Cost Factors Beyond Materials</h2>
+            <p>When obtaining contractor quotes, ensure they account for these hidden installation variables:</p>
+            <ul>
+                <li><strong>Sub-base Preparation:</strong> A stable 4 to 8-inch crushed stone sub-base is required. Poor excavation leads to sagging and premature cracking.</li>
+                <li><strong>Drainage Requirements:</strong> Water pooling on or beside a driveway causes structural erosion. You may need a trench drain or specific grading.</li>
+                <li><strong>Permits & Codes:</strong> Most municipalities require permits for driveway aprons connecting to public roads.</li>
+            </ul>
+        </article>
+    </main>
 
     <script>
         function calcDriveway() {
             const sqft = parseFloat(document.getElementById('dSqft').value) || 0;
-            const mat = parseFloat(document.getElementById('dMat').value);
-            const demo = parseFloat(document.getElementById('dDemo').value);
-            const total = sqft * (mat + demo);
-            document.getElementById('dTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
+            const matCost = parseFloat(document.getElementById('dMat').value);
+            const demoCost = parseFloat(document.getElementById('dDemo').value);
+
+            if (sqft <= 0) {
+                alert("Please enter a valid square footage.");
+                return;
+            }
+
+            const totalPerSqft = matCost + demoCost;
+            const total = sqft * totalPerSqft;
+
+            const resDiv = document.getElementById('dResult');
+            resDiv.style.display = 'block';
+            resDiv.innerHTML = `Estimated Total: $${total.toLocaleString()}`;
         }
-        calcDriveway();
     </script>
+    <footer>
+        <p>&copy; The Buyer's Math. All rights reserved.</p>
+    </footer>
 </body>
 </html>
