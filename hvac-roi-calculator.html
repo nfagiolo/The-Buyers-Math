@@ -23,7 +23,98 @@
         .box { padding: 1rem; border-radius: 8px; background: #f1f5f9; font-size: 1.25rem; font-weight: bold; }
     </style>
 </head>
+<body><!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-V4GTQSCFW6');
+    </script>
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Pump vs. Gas Furnace ROI Calculator</title>
+    <meta name="description" content="Calculate annual heating costs and compare ROI between a modern heat pump and a high-efficiency gas furnace based on electric and gas rates.">
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; }
+        .box { padding: 1rem; border-radius: 8px; background: #f1f5f9; font-size: 1.25rem; font-weight: bold; }
+    </style>
+</head>
 <body>
+    <header>
+        <h1>Heat Pump vs. Gas Furnace Cost & ROI</h1>
+    </header>
+    <main>
+        <div class="card">
+            <label for="kwh">Electricity Rate ($/kWh)</label>
+            <input type="number" id="kwh" value="0.22" step="0.01">
+
+            <label for="therm">Natural Gas Rate ($/Therm)</label>
+            <input type="number" id="therm" value="1.50" step="0.10">
+
+            <label for="load">Annual Heating Load (MMBtu)</label>
+            <input type="number" id="load" value="60">
+
+            <button onclick="calcHVAC()">Compare Annual Costs</button>
+
+            <div class="grid">
+                <div class="box">Gas Furnace (96% AFUE)<br><span id="gasCost" style="color:#ef4444">$0</span></div>
+                <div class="box">Heat Pump (COP 3.0)<br><span id="hpCost" style="color:#15803d">$0</span></div>
+            </div>
+        </div>
+
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+            <h2>Understanding Your HVAC Return on Investment</h2>
+            <p>Upgrading your home's heating, ventilation, and air conditioning (HVAC) system is a major capital expense, but highly efficient modern units can drastically reduce your monthly energy bills. This calculator estimates annual operational heating costs comparing a standard high-efficiency gas furnace against a modern electric heat pump.</p>
+            <h3>Key Variables in This Calculator</h3>
+            <ul>
+                <li><strong>Electricity vs. Gas Rates:</strong> Energy prices vary significantly by region. In areas with low electric rates or high gas prices, heat pumps offer substantial savings. Conversely, cheap natural gas makes a high-efficiency furnace very competitive.</li>
+                <li><strong>Annual Heating Load (MMBtu):</strong> Measured in Million British Thermal Units, this represents how much heat energy your home requires per winter. Cold northern climates might use 80+ MMBtu, whereas mild southern climates may need less than 30 MMBtu.</li>
+                <li><strong>Efficiency Ratings (AFUE vs. COP):</strong> Modern furnaces are rated by AFUE (Annual Fuel Utilization Efficiency); 96% means 96% of gas becomes heat. Heat pumps are rated by COP (Coefficient of Performance); a COP of 3.0 means the unit produces 3 units of heat energy for every 1 unit of electricity consumed.</li>
+            </ul>
+            <h3>Additional Factors Influencing HVAC ROI</h3>
+            <ul>
+                <li><strong>Federal Incentives & Rebates:</strong> Under programs like the Inflation Reduction Act (IRA), homeowners can qualify for up to $2,000 in federal tax credits for eligible heat pumps, significantly reducing initial upfront equipment cost.</li>
+                <li><strong>Cooling Included:</strong> Remember that heat pumps provide both heating AND air conditioning. If your existing central AC unit is also due for replacement, installing a heat pump solves both needs at once.</li>
+            </ul>
+            <h3>Frequently Asked Questions</h3>
+            <ul>
+                <li><strong>Do heat pumps work in freezing weather?</strong> Yes, modern cold-climate heat pumps can maintain high efficiency even when outdoor temperatures drop below zero degrees Fahrenheit.</li>
+            </ul>
+        </article>
+    </main>
+    <script>
+        function calcHVAC() {
+            const kwh = parseFloat(document.getElementById('kwh').value) || 0;
+            const therm = parseFloat(document.getElementById('therm').value) || 0;
+            const load = parseFloat(document.getElementById('load').value) || 0;
+
+            // 1 MMBtu = 10 Therms of Natural Gas
+            // Gas cost = (Load / 0.96 efficiency) * 10 therms * therm_price
+            const gasTotal = (load / 0.96) * 10 * therm;
+
+            // 1 MMBtu = 293.071 kWh
+            // Heat Pump cost = (Load / 3.0 COP) * 293.071 kWh * kwh_price
+            const hpTotal = (load / 3.0) * 293.071 * kwh;
+
+            document.getElementById('gasCost').innerText = `$${Math.round(gasTotal).toLocaleString()}/yr`;
+            document.getElementById('hpCost').innerText = `$${Math.round(hpTotal).toLocaleString()}/yr`;
+        }
+    </script>
+    <footer>
+        <p>&copy; The Buyer's Math. All rights reserved.</p>
+    </footer>
+</body>
+</html>
     <h1>Heat Pump vs. Gas Furnace Cost</h1>
     <div class="card">
         <label>Electricity Rate ($/kWh)</label>
