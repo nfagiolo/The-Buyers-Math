@@ -10,54 +10,77 @@
 
   gtag('config', 'G-V4GTQSCFW6');
 </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Solar Payback Calculator</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
-        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
-        .alert { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
-    </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 Solar Payback Calculator</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
+    .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
+    button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+    .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
+    .alert { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-    <h1>Solar Panel Payback Timeline</h1>
-    
-    <div class="alert">
-        <strong>2026 Policy Update:</strong> The 30% Federal Solar Tax Credit for cash/loan purchases expired on Dec 31, 2025. This calculator reflects unsubsidized 2026 gross system costs.
-    </div>
+  <h1>Solar Panel Payback Timeline</h1>
 
-    <div class="card">
-        <label>Average Monthly Electric Bill ($)</label>
-        <input type="number" id="bill" value="200">
+  <div class="alert">
+    <strong>2026 Policy Update:</strong> The 30% Federal Solar Tax Credit for cash/loan purchases expired on Dec 31, 2025. This calculator reflects unsubsidized 2026 gross system costs.
+  </div>
 
-        <label>System Gross Cost ($) - Industry average is $25k to $35k</label>
-        <input type="number" id="cost" value="30000">
+  <div class="card">
+    <label>Average Monthly Electric Bill ($)</label>
+    <input type="number" id="bill" value="200">
 
-        <button onclick="calcSolar()">Calculate Payback Period</button>
-        <div class="result" id="solarTotal">0 Years</div>
-    </div>
+    <label>System Gross Cost ($) - Industry average is $25k to $35k</label>
+    <input type="number" id="cost" value="30000">
 
-    <script>
-        function calcSolar() {
-            const bill = parseFloat(document.getElementById('bill').value) || 0;
-            const cost = parseFloat(document.getElementById('cost').value) || 0;
-            
-            const annualSavings = bill * 12;
-            const years = cost / annualSavings;
-            
-            document.getElementById('solarTotal').innerText = "Payback Period: " + years.toFixed(1) + " Years";
-        }
-        calcSolar();
-    </script>
+    <button onclick="calcSolar()">Calculate Payback Period</button>
+    <div class="result" id="solarTotal">0 Years</div>
+  </div>
+
+  <script>
+    function calcSolar() {
+      const bill = parseFloat(document.getElementById('bill').value) || 0;
+      const cost = parseFloat(document.getElementById('cost').value) || 0;
+
+      const annualSavings = bill * 12;
+      const years = cost / annualSavings;
+
+      document.getElementById('solarTotal').innerText = "Payback Period: " + years.toFixed(1) + " Years";
+    }
+    calcSolar();
+  </script>
 <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-        <h3 style="margin-top: 0; color: #0f172a;">Instant Emergency Backup Power</h3>
-        <p style="color: #475569;">Don't want to wait for a full solar install? Secure your home with a portable power station and solar generator kit today.</p>
-        <a href="https://www.amazon.com/s?k=portable+power+station+solar+generator&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Solar Generators on Amazon</a>
-        <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
-    </div>
+  <h3 style="margin-top: 0; color: #0f172a;">Instant Emergency Backup Power</h3>
+  <p style="color: #475569;">Don't want to wait for a full solar install? Secure your home with a portable power station and solar generator kit today.</p>
+  <a href="https://www.amazon.com/s?k=portable+power+station+solar+generator&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Solar Generators on Amazon</a>
+  <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+</div>
+<div style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+<h3>Understanding Your Solar Payback Period</h3>
+<p>Switching to solar energy is a major upfront investment, but it eventually pays for itself by eliminating or drastically reducing your monthly electric bill. This calculator estimates your "break-even point"—the moment your accumulated energy savings surpass your initial installation costs.</p>
+<h4>Key Variables in This Calculator</h4>
+<ul>
+<li><strong>System Size (kW):</strong> The total capacity of your solar array dictates both the cost of the system and how much power it can generate. Larger homes with higher energy demands require larger, more expensive systems.</li>
+<li><strong>Average Monthly Electric Bill:</strong> Your current electricity costs determine how much money you save each month. Homeowners with exceptionally high utility bills will see a faster return on investment because their monthly savings are much larger.</li>
+<li><strong>Cost Per Watt:</strong> This is the standard metric for pricing solar installations, which includes the panels, inverters, wiring, and labor.</li>
+<li><strong>Federal Incentives:</strong> Tax credits, such as the Federal Solar Investment Tax Credit (ITC), allow you to deduct a significant percentage of your installation costs from your federal taxes, heavily accelerating your break-even timeline.</li>
+</ul>
+<h4>Additional Factors Influencing Final Costs</h4>
+<ul>
+<li><strong>Sun Exposure and Shading:</strong> Trees, nearby buildings, or a heavily shaded roof will reduce your system's efficiency, meaning you generate less power and extend the time it takes to break even.</li>
+<li><strong>Roof Orientation:</strong> Solar panels perform best on south-facing roofs with a 30-to-45-degree angle. Suboptimal roof directions may require more panels to achieve the same energy offset.</li>
+<li><strong>Net Metering Policies:</strong> Depending on your local utility company, you may receive credits for excess energy your panels send back to the grid. Favorable net metering policies dramatically speed up your payback period.</li>
+</ul>
+<h4>Frequently Asked Questions</h4>
+<ul>
+<li><strong>What is a good solar payback period?</strong> In the United States, a typical solar payback period ranges from 6 to 10 years. If your estimate falls within this window, solar is generally considered an excellent financial investment.</li>
+<li><strong>Do solar panels work in the winter?</strong> Yes. Solar panels rely on sunlight, not heat. In fact, cold temperatures actually improve the electrical conductivity of the panels, making them highly efficient on crisp, clear winter days.</li>
+<li><strong>Do I need a battery backup?</strong> A battery is not required to see a return on investment, especially if you have good net metering. However, adding a battery provides backup power during grid outages, though it will increase your initial cost and extend your payback period.</li>
+</ul>
+</div>
 </body>
 </html>
