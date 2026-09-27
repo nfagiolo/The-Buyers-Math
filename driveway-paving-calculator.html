@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Driveway Paving Cost Estimator & Guide</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        button:hover { background: #0369a1; }
+        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
+        article h2 { color: #0f172a; margin-top: 2rem; }
+        .lead-widget { padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; border: 2px dashed #cbd5e1; margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <h1>Driveway Paving Cost Estimator</h1>
+    <p>Compare costs for asphalt, concrete, and pavers based on 2026 square footage rates.</p>
+    
+    <div class="card">
+        <label>Driveway Size (Square Feet)</label>
+        <input type="number" id="dSqft" value="600">
+        <p style="font-size: 0.85rem; color: #64748b; margin-top: -1rem; margin-bottom: 1rem;">(A standard 2-car driveway is about 400-600 sq ft)</p>
+
+        <label>Material Choice</label>
+        <select id="dMat">
+            <option value="2">Gravel ($2/sq ft)</option>
+            <option value="8" selected>Asphalt ($8/sq ft)</option>
+            <option value="11">Standard Concrete ($11/sq ft)</option>
+            <option value="16">Stamped Concrete ($16/sq ft)</option>
+            <option value="20">Brick/Stone Pavers ($20/sq ft)</option>
+        </select>
+
+        <label>Existing Driveway Removal?</label>
+        <select id="dDemo">
+            <option value="0">No (New installation or overlay)</option>
+            <option value="2">Yes, rip out old driveway (+$2/sq ft)</option>
+        </select>
+
+        <button onclick="calcDriveway()">Estimate Cost</button>
+        <div class="result" id="dTotal">$0</div>
+    </div>
+
+    <div class="lead-widget">
+        <h3 style="margin-top: 0; color: #0f172a;">Get Local Paving Estimates</h3>
+        <p style="color: #475569;">Enter your zip code to request free quotes from local paving contractors.</p>
+        <!-- PASTE YOUR ELOCAL WIDGET CODE HERE -->
+    </div>
+
+    <article>
+        <h2>The 2026 Guide to Driveway Materials and Costs</h2>
+        <p>Upgrading your driveway improves curb appeal and provides a solid return on investment. In 2026, homeowners typically spend between <strong>$4,500 and $12,000</strong> to pave a standard two-car driveway, heavily dependent on the chosen material and local labor rates.</p>
+        
+        <h3>Asphalt vs. Concrete</h3>
+        <p><strong>Asphalt</strong> is the most common driveway surface in colder climates because it flexes with freeze-thaw cycles without cracking severely, and melts snow faster due to its dark color. At an average of $8 per square foot, it is more affordable upfront but requires sealcoating every 3 to 5 years.</p>
+        <p><strong>Concrete</strong> is favored in warmer climates. It costs more initially—around $11 per square foot—but boasts a longer lifespan of up to 40 years with minimal maintenance. It can also be stamped and stained to mimic the look of premium stone or brick.</p>
+        
+        <h3>The Hidden Cost: Base Preparation</h3>
+        <p>A driveway is only as good as the ground beneath it. If your existing base is damaged or if you are paving over raw dirt, contractors must excavate and compact 4 to 8 inches of gravel sub-base. This critical step adds $1 to $2 per square foot to the total project cost. If an old driveway needs to be demolished and hauled away, expect an additional $1 to $3 per square foot.</p>
+    </article>
+
+    <script>
+        function calcDriveway() {
+            const sqft = parseFloat(document.getElementById('dSqft').value) || 0;
+            const mat = parseFloat(document.getElementById('dMat').value);
+            const demo = parseFloat(document.getElementById('dDemo').value);
+            const total = sqft * (mat + demo);
+            document.getElementById('dTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
+        }
+        calcDriveway();
+    </script>
+</body>
+</html>
