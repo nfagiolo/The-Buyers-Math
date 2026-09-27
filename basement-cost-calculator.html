@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Basement Finishing Calculator</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Basement Finishing Cost Estimator</h1>
+    <div class="card">
+        <label>Basement Size (Square Feet)</label>
+        <input type="number" id="bsqft" value="1000">
 
+        <label>Finish Quality</label>
+        <select id="bqual">
+            <option value="40">Basic ($40/sq ft)</option>
+            <option value="65" selected>Standard / Mid-Range ($65/sq ft)</option>
+            <option value="110">High-End with Wet Bar ($110/sq ft)</option>
+        </select>
+
+        <label>Add Full Bathroom?</label>
+        <select id="bbath">
+            <option value="0">No</option>
+            <option value="9500">Yes (+$9,500)</option>
+        </select>
+
+        <button onclick="calcBase()">Calculate Total</button>
+        <div class="result" id="baseTotal">$0</div>
+        <p style="font-size:0.85rem; color:#64748b; text-align:center;">Includes standard 15% moisture management allocation.</p>
+    </div>
+
+    <script>
+        function calcBase() {
+            const sqft = parseFloat(document.getElementById('bsqft').value) || 0;
+            const qual = parseFloat(document.getElementById('bqual').value);
+            const bath = parseFloat(document.getElementById('bbath').value);
+            const total = (sqft * qual) + bath;
+            document.getElementById('baseTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
+        }
+        calcBase();
+    </script>
+</body>
+</html>
