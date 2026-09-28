@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heat Pump vs. Tankless Water Heater ROI Calculator</title>
+  <meta name="description" content="Calculate your annual hot water costs and discover the exact ROI and payback period of upgrading to a Heat Pump Water Heater or Gas Tankless system.">
+
+  <!-- Canonical URL & Social Sharing Tags -->
+  <link rel="canonical" href="https://poolpumpwattage.com/water-heater-calculator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Water Heater Energy Cost & ROI Calculator">
+  <meta property="og:description" content="Compare the annual running costs of standard electric, gas tankless, and ultra-efficient heat pump water heaters.">
+  <meta property="og:url" content="https://poolpumpwattage.com/water-heater-calculator.html">
+
+  <!-- Google AdSense Auto Ads Script (Standard) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Google AdSense AMP Auto Ads Script -->
+  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+  <!-- Structured Data (JSON-LD) for Search Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Water Heater ROI & Cost Calculator",
+        "url": "https://poolpumpwattage.com/water-heater-calculator.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does a Heat Pump Water Heater work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Instead of generating heat directly with electrical resistance coils, a heat pump water heater pulls ambient heat from the surrounding air and transfers it into the water tank. This makes them up to 400% more efficient than standard electric water heaters."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do Heat Pump Water Heaters cool the room they are in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Because they extract heat and humidity from the surrounding air, they will exhaust cool, dry air. They act as a mild dehumidifier and air conditioner, making them perfect for warm garages or damp basements."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --accent: #16a34a;
+      --accent-dark: #15803d;
+      --warning-bg: #fffbeb;
+      --highlight-bg: #f0fdf4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 0 1rem;
+    }
+
+    header, main, footer { max-width: 860px; margin: 0 auto; }
+
+    header { padding: 2.5rem 0 1.5rem; text-align: center; }
+    h1 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; color: var(--primary-dark); margin: 2.25rem 0 0.75rem; border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; }
+    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.25rem 0 0.5rem; }
+    p { margin-bottom: 1rem; }
+
+    /* Nav Bar */
+    .site-nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      border-radius: 0 0 8px 8px;
+    }
+    .site-nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 0.75rem;
+      display: inline-block;
+    }
+    .site-nav a:hover { text-decoration: underline; }
+
+    /* Calculator Cards */
+    .calculator-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+
+    .inputs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 600px) { .inputs-grid { grid-template-columns: 1fr; } }
+
+    .input-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .input-field label { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
+    .input-field input, .input-field select {
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background: #ffffff;
+      color: var(--text-main);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      background: #f1f5f9;
+      padding: 1.25rem;
+      border-radius: 8px;
+    }
+    .stat-box { display: flex; flex-direction: column; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.025em; }
+    .stat-value { font-size: 1.35rem; font-weight: 700; color: var(--text-main); }
+    .stat-value.highlight { color: var(--accent); }
+
+    /* Pro / Contractor Lead Banner */
+    .lead-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+    .lead-box h3 { color: #ffffff; margin-top: 0; margin-bottom: 0.35rem; }
+    .lead-box p { color: #cbd5e1; font-size: 0.92rem; margin-bottom: 1rem; }
+    .lead-form { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .lead-input { padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid #475569; font-size: 0.95rem; flex: 1; min-width: 140px; }
+    .lead-btn { background: var(--accent); color: #ffffff; border: none; padding: 0.6rem 1.25rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    .lead-btn:hover { background: var(--accent-dark); }
+
+    /* Product Grid & Affiliate Cards */
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+    .product-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--primary); margin-bottom: 0.35rem; }
+    .product-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .product-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+    .product-btn { display: block; text-align: center; background: var(--primary); color: #ffffff; padding: 0.55rem 0.85rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .product-btn:hover { background: var(--primary-dark); }
+
+    /* Callouts */
+    .callout-box { background: var(--warning-bg); border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 4px; margin: 1.25rem 0; font-size: 0.92rem; }
+    .callout-title { font-weight: 700; color: #b45309; margin-bottom: 0.25rem; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: 3rem; font-size: 0.85rem; color: var(--text-muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--primary); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- AMP Auto Ads Tag -->
+  <amp-auto-ads type="adsense" data-ad-client="ca-pub-1199906473460957"></amp-auto-ads>
+
+  <nav class="site-nav">
+    <a href="index.html">Pool Pump Calculator</a>
+    <a href="mini-split-calculator.html">Mini-Split Calculator</a>
+    <a href="generator-calculator.html">Generator Sizing</a>
+    <a href="water-heater-calculator.html">Water Heater ROI</a>
+  </nav>
+
+  <header>
+    <h1>Heat Pump vs. Tankless Water Heater ROI Calculator</h1>
+    <p>Calculate your annual hot water utility costs and discover the payback period of upgrading to a high-efficiency system.</p>
+  </header>
+
+  <main>
+    <!-- Interactive Calculator -->
+    <div class="calculator-card">
+      <div class="inputs-grid">
+        <div class="input-field">
+          <label for="householdSize">Household Size (People):</label>
+          <select id="householdSize">
+            <option value="1">1 Person (~20 Gal/Day)</option>
+            <option value="2">2 People (~40 Gal/Day)</option>
+            <option value="3">3 People (~60 Gal/Day)</option>
+            <option value="4" selected>4 People (~80 Gal/Day)</option>
+            <option value="5">5 People (~100 Gal/Day)</option>
+            <option value="6">6+ People (~120 Gal/Day)</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="currentType">Your Current Water Heater:</label>
+          <select id="currentType">
+            <option value="electric" selected>Standard Electric Tank</option>
+            <option value="gas">Standard Natural Gas Tank</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="elecRate">Electricity Rate ($/kWh):</label>
+          <input type="number" id="elecRate" value="0.22" step="0.01">
+        </div>
+        <div class="input-field">
+          <label for="gasRate">Natural Gas Rate ($/Therm):</label>
+          <input type="number" id="gasRate" value="1.50" step="0.10">
+        </div>
+      </div>
+
+      <h4 style="margin-bottom: 0.75rem; color: var(--text-main); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Estimated Annual Operating Cost</h4>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-label" id="currentCostLabel">Current (Electric Tank)</span>
+          <span class="stat-value" style="color: #ef4444;" id="costStandard">$0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Gas Tankless</span>
+          <span class="stat-value" id="costTankless">$0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Heat Pump (HPWH)</span>
+          <span class="stat-value highlight" id="costHPWH">$0</span>
+        </div>
+        <div class="stat-box" style="border-left: 2px solid var(--border); padding-left: 1rem;">
+          <span class="stat-label">HPWH Annual Savings</span>
+          <span class="stat-value highlight" id="annualSavings">$0/yr</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Federal Tax Credit Banner -->
+    <div class="callout-box" style="background: var(--highlight-bg); border-left-color: var(--accent);">
+      <div class="callout-title" style="color: var(--accent-dark);">💰 Claim Up To $2,000 in Federal Tax Credits</div>
+      <p style="margin-bottom: 0.5rem;">Under the Inflation Reduction Act, homeowners who upgrade to an ENERGY STAR certified Heat Pump Water Heater can claim a federal tax credit for <strong>30% of the project cost (up to $2,000)</strong>. Many state utility companies also offer instant $300-$500 point-of-sale rebates on these units.</p>
+    </div>
+
+    <!-- Local Contractor Installation Lead Generation -->
+    <div class="lead-box">
+      <h3>Plumbing & Electrical Installation Help</h3>
+      <p>Converting from gas to a heat pump, or upgrading to a tankless system, requires specialized plumbing modifications and dedicated electrical circuits. Connect with licensed local plumbers to get your installation quoted.</p>
+      <form class="lead-form" onsubmit="handleContractorSearch(event)">
+        <input type="text" class="lead-input" id="zipInput" placeholder="Enter ZIP Code (e.g. 21114)" pattern="[0-9]{5}" required>
+        <button type="submit" class="lead-btn">Find Local Plumbers</button>
+      </form>
+    </div>
+
+    <!-- Equipment Recommendations -->
+    <section>
+      <h2>Top-Rated High Efficiency Water Heaters</h2>
+      <div class="product-grid">
+        <!-- Heat Pump Pick -->
+        <div class="product-card">
+          <div>
+            <div class="product-tag">Highest Efficiency</div>
+            <div class="product-title">Rheem ProTerra Hybrid Heat Pump</div>
+            <div class="product-desc">The industry standard for HPWHs. Operates at up to 4.0 UEF (400% efficiency), featuring built-in leak detection and smartphone scheduling.</div>
+          </div>
+          <a href="#" target="_blank" rel="noopener sponsored" class="product-btn">View on Amazon</a>
+        </div>
+
+        <!-- Tankless Gas Pick -->
+        <div class="product-card">
+          <div>
+            <div class="product-tag">Endless Hot Water</div>
+            <div class="product-title">Rinnai High-Efficiency Tankless</div>
+            <div class="product-desc">If you already have gas lines installed, condensing tankless heaters provide infinite hot water on demand while saving significant space.</div>
+          </div>
+          <a href="#" target="_blank" rel="noopener sponsored" class="product-btn">View on Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Content -->
+    <section>
+      <h2>How Heat Pump Water Heaters Achieve 400% Efficiency</h2>
+      <div class="callout-box">
+        <div class="callout-title">Moving Heat vs. Making Heat</div>
+        <p style="margin-bottom: 0;">Standard electric water heaters run an electrical current through a resistance coil to generate heat. For every 1 unit of electricity you put in, you get exactly 1 unit of heat out (100% efficiency). Heat Pump Water Heaters work like a refrigerator in reverse. They use electricity to run a compressor that <strong>pulls ambient heat out of the surrounding air</strong> and dumps it into the water tank. Because they are <em>moving</em> heat rather than creating it, they can move 3 to 4 units of heat for every 1 unit of electricity consumed (300% to 400% efficiency).</p>
+      </div>
+
+      <h3>Things to Consider Before Upgrading to a HPWH</h3>
+      <ul>
+        <li><strong>Free Air Conditioning:</strong> As they pull heat from the air, they blow out cool, dehumidified air. This makes them fantastic for warm garages, but potentially problematic if placed inside a small closet inside the heated envelope of a cold-weather home.</li>
+        <li><strong>Space & Airflow Requirements:</strong> HPWHs typically require about 1,000 cubic feet of surrounding air space (roughly a 10x10 room) to draw enough heat. If installed in a closet, they require louvered doors.</li>
+        <li><strong>Condensate Drain:</strong> Because they dehumidify the air, they produce water condensation that must be routed to a floor drain or pumped outside.</li>
+      </ul>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question">What is the "Payback Period" or ROI?</div>
+        <p>The payback period is how long it takes for the monthly electricity savings to cover the higher initial purchase price of the unit. With current tax credits and utility rebates, a Heat Pump Water Heater often pays for itself in just 1.5 to 3 years compared to replacing it with a standard electric tank.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is it cheaper to run a Gas Tankless or a Heat Pump Water Heater?</div>
+        <p>In almost all regions of the United States, a Heat Pump Water Heater is cheaper to operate annually than a natural gas tankless heater. However, gas tankless heaters have the distinct advantage of never running out of hot water, regardless of how many showers are running sequentially.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Legal & Compliance Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Pool Pump</a>
+      <a href="mini-split-calculator.html">Mini-Split</a>
+      <a href="generator-calculator.html">Generator</a>
+      <a href="#privacy" onclick="alert('Privacy Policy: poolpumpwattage.com does not collect or sell personal information.')">Privacy Policy</a>
+      <a href="#terms" onclick="alert('Disclaimer: Energy calculations are estimates based on standard U.S. DOE consumption averages. Actual consumption varies by ground water temperature, unit efficiency, and usage habits.')">Terms & Disclaimer</a>
+    </div>
+    <p>&copy; 2026 poolpumpwattage.com. All rights reserved. Calculations are provided for planning purposes only.</p>
+  </footer>
+
+  <script>
+    const householdSelect = document.getElementById('householdSize');
+    const currentTypeSelect = document.getElementById('currentType');
+    const elecRateInput = document.getElementById('elecRate');
+    const gasRateInput = document.getElementById('gasRate');
+
+    const costStandardEl = document.getElementById('costStandard');
+    const costTanklessEl = document.getElementById('costTankless');
+    const costHPWHEl = document.getElementById('costHPWH');
+    const annualSavingsEl = document.getElementById('annualSavings');
+    const currentCostLabel = document.getElementById('currentCostLabel');
+
+    function calculateROI() {
+      const people = parseInt(householdSelect.value, 10);
+      const currentType = currentTypeSelect.value;
+      const elecRate = parseFloat(elecRateInput.value) || 0.22;
+      const gasRate = parseFloat(gasRateInput.value) || 1.50;
+
+      // Assumptions
+      // Gal/day = people * 20
+      const gallonsPerDay = people * 20;
+      
+      // Energy to heat 1 gallon of water by ~60 degrees F is roughly 0.146 kWh (or ~500 BTU)
+      const kwhPerGallon = 0.146;
+      const thermsPerGallon = 0.005; // ~500 BTU / 100,000 BTU per Therm
+
+      // Efficiencies (Energy Factor / UEF)
+      const effStandardElectric = 0.90;
+      const effStandardGas = 0.62;
+      const effTanklessGas = 0.92;
+      const effHPWH = 3.50; // COP 3.5
+
+      // Annual Energy Needs
+      const baseKwhYearly = gallonsPerDay * kwhPerGallon * 365;
+      const baseThermsYearly = gallonsPerDay * thermsPerGallon * 365;
+
+      // Annual Costs
+      const costStdElec = (baseKwhYearly / effStandardElectric) * elecRate;
+      const costStdGas = (baseThermsYearly / effStandardGas) * gasRate;
+      const costTankless = (baseThermsYearly / effTanklessGas) * gasRate;
+      const costHPWH = (baseKwhYearly / effHPWH) * elecRate;
+
+      // Display Values
+      let currentCost = 0;
+      if (currentType === 'electric') {
+        currentCostLabel.textContent = "Current (Electric Tank)";
+        currentCost = costStdElec;
+        costStandardEl.textContent = "$" + Math.round(costStdElec).toLocaleString();
+      } else {
+        currentCostLabel.textContent = "Current (Gas Tank)";
+        currentCost = costStdGas;
+        costStandardEl.textContent = "$" + Math.round(costStdGas).toLocaleString();
+      }
+
+      costTanklessEl.textContent = "$" + Math.round(costTankless).toLocaleString();
+      costHPWHEl.textContent = "$" + Math.round(costHPWH).toLocaleString();
+
+      const hpwhSavings = Math.max(0, currentCost - costHPWH);
+      annualSavingsEl.textContent = "$" + Math.round(hpwhSavings).toLocaleString() + "/yr";
+    }
+
+    // Attach listeners
+    [householdSelect, currentTypeSelect, elecRateInput, gasRateInput].forEach(el => {
+      el.addEventListener('input', calculateROI);
+      el.addEventListener('change', calculateROI);
+    });
+
+    // Handle Plumber Search
+    function handleContractorSearch(e) {
+      e.preventDefault();
+      const zip = document.getElementById('zipInput').value.trim();
+      if (zip.length === 5) {
+        window.open(`https://www.google.com/search?q=water+heater+installation+plumber+near+${zip}`, '_blank');
+      }
+    }
+
+    // Initialize
+    calculateROI();
+  </script>
+</body>
+</html>
