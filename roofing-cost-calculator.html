@@ -1,86 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-V4GTQSCFW6');
-</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 Roof Replacement Cost Calculator</title>
-  <style>
-    body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
-    .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-    select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
-    button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
-    .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
-  </style>
+    <!-- Google tag (gtag.js) -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4GTQSCFW6');
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roof Replacement Cost Estimator</title>
+    <meta name="description" content="Calculate your 2026 roofing costs based on square footage, pitch, and material choices like asphalt or metal.">
+    
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
+        button:hover { background: #0369a1; }
+        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; margin-top: 1rem; border: 1px solid #e2e8f0; }
+    </style>
 </head>
 <body>
-  <h1>Roof Replacement Cost Estimator</h1>
-  <p>Calculate your 2026 roofing costs based on a national average of $4.00 to $12.00 per square foot.</p>
+    <header>
+        <h1>Roof Replacement Cost Estimator</h1>
+    </header>
 
-  <div class="card">
-    <label>Home Square Footage (Approx. Roof Size)</label>
-    <input type="number" id="sqft" value="2000">
+    <main>
+        <!-- Calculator Tool -->
+        <div class="card">
+            <label for="roofSqft">Roof Size (Square Feet) <br><small style="color:#64748b; font-weight:normal;">(Usually footprint of house + 30% for pitch/overhang)</small></label>
+            <input type="number" id="roofSqft" value="2000">
+            
+            <label for="roofMaterial">Roofing Material (Installed Cost)</label>
+            <select id="roofMaterial">
+                <option value="4.50" selected>Architectural Asphalt Shingles ($4.50/sq ft)</option>
+                <option value="9.00">Standing Seam Metal ($9.00/sq ft)</option>
+                <option value="12.00">Cedar Shakes ($12.00/sq ft)</option>
+                <option value="18.00">Slate / Clay Tile ($18.00/sq ft)</option>
+            </select>
 
-    <label>Roofing Material</label>
-    <select id="material">
-      <option value="4.50">3-Tab Asphalt Shingles ($4.50/sq ft)</option>
-      <option value="8.00" selected>Architectural Asphalt ($8.00/sq ft)</option>
-      <option value="14.00">Standing Seam Metal ($14.00/sq ft)</option>
-      <option value="20.00">Premium Slate/Tile ($20.00/sq ft)</option>
-    </select>
+            <label for="roofPitch">Roof Complexity / Pitch</label>
+            <select id="roofPitch">
+                <option value="1.0">Standard / Walkable (No extra charge)</option>
+                <option value="1.15">Steep / Complex (Add 15% labor)</option>
+                <option value="1.30">Very Steep / Multiple Valleys (Add 30% labor)</option>
+            </select>
+            
+            <button onclick="calcRoof()">Estimate Roof Cost</button>
+            
+            <div class="result-box">
+                Estimated Cost: <br><span id="roofTotal" style="color:#0284c7; font-size: 2rem;">$9,000</span>
+            </div>
+        </div>
 
-    <label>Roof Pitch / Complexity</label>
-    <select id="pitch">
-      <option value="1.0">Standard / Walkable (No extra cost)</option>
-      <option value="1.2">Steep / Complex (+20% Labor)</option>
-    </select>
+        <!-- SEO Article Content -->
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+            <h2>Understanding Your Roof Replacement Quote</h2>
+            <p>Replacing a roof is one of the most critical maintenance tasks for any homeowner. The cost varies widely based on geographic location, the materials chosen, and the specific geometry of your home.</p>
+            
+            <h3>What is a "Roofing Square"?</h3>
+            <p>Contractors often price jobs by the "square." In roofing terminology, one square equals 100 square feet. If your roof is 2,000 square feet, your contractor will order materials and quote labor for 20 squares.</p>
 
-    <button onclick="calcRoof()">Estimate Project Cost</button>
-    <div class="result" id="roofTotal">$0</div>
-  </div>
+            <h3>Key Factors Impacting Price</h3>
+            <ul>
+                <li><strong>Material Lifespan:</strong> Asphalt shingles are the most affordable upfront but typically last 15-25 years. Metal roofing costs nearly double, but can last 50+ years and lower your homeowner's insurance premiums.</li>
+                <li><strong>Tear-Off Costs:</strong> If your current roof has two or more layers of old shingles, building codes require them to be stripped to the deck, increasing labor and dumpster disposal fees.</li>
+                <li><strong>Deck Repair:</strong> If your contractor finds rotted plywood decking (sheathing) under the old shingles, replacing those boards will be an additional cost added to your final bill.</li>
+            </ul>
+        </article>
 
-  <script>
-    function calcRoof() {
-      const sqft = parseFloat(document.getElementById('sqft').value) || 0;
-      const matRate = parseFloat(document.getElementById('material').value);
-      const pitch = parseFloat(document.getElementById('pitch').value);
-      const total = sqft * matRate * pitch;
-      document.getElementById('roofTotal').innerText = "Estimated Cost: $" + total.toLocaleString(undefined, {maximumFractionDigits: 0});
-    }
-    calcRoof();
-  </script>
+        <!-- Affiliate Monetization Section -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-top: 0; color: #0f172a;">Post-Roofing Cleanup Essential</h3>
+            <p style="color: #475569;">Protect your driveway and car tires from stray roofing nails with a heavy-duty magnetic sweeper.</p>
+            <a href="https://www.amazon.com/s?k=magnetic+nail+sweeper+with+wheels&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Magnetic Sweepers on Amazon</a>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+        </div>
+    </main>
 
-<div style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-<h3>Understanding Your Roofing Estimate</h3>
-<p>When planning a roof replacement, several variables impact your final out-of-pocket expense. This calculator uses baseline industry averages to provide a realistic starting budget, but your exact quote will depend on the specifics of your home and chosen materials.</p>
-<h4>Key Variables in This Calculator</h4>
-<ul>
-<li><strong>Square Footage (Roof Size):</strong> Roofing materials and labor are calculated by the "square," which equals 100 square feet of roof area. Larger footprints naturally require more materials and extended labor hours.</li>
-<li><strong>Material Type:</strong> Standard 3-tab asphalt shingles are the most budget-friendly option. Upgrading to architectural shingles, standing seam metal, or slate significantly increases the upfront material cost but drastically extends the lifespan of the roof.</li>
-<li><strong>Roof Pitch (Steepness):</strong> A steeper roof is more difficult to walk on. High-pitch roofs require specialized safety harnesses, scaffolding, and slower, more meticulous labor, which drives up the installation price.</li>
-<li><strong>Tear-Off and Disposal:</strong> Removing the existing roof involves intensive manual labor and heavy disposal fees for the old materials.</li>
-</ul>
-<h4>Additional Factors Influencing Final Costs</h4>
-<ul>
-<li><strong>Decking Repairs:</strong> The plywood decking beneath your shingles must be structurally sound. If your contractor discovers water damage or wood rot during the tear-off, replacing those sheets will add unexpected material and labor costs.</li>
-<li><strong>Ventilation and Underlayment:</strong> Upgrading to high-quality synthetic underlayment, ice-and-water shields, and ridge vents will add to the initial quote but protect your investment against moisture damage and voided warranties.</li>
-<li><strong>Local Labor Rates:</strong> Contractor fees fluctuate based on your region's cost of living, seasonality, and local demand following severe weather events.</li>
-</ul>
-<h4>Frequently Asked Questions</h4>
-<ul>
-<li><strong>What is a roofing square?</strong> A roofing square is a standard construction measurement representing a 10x10 foot area, or 100 square feet of roof surface.</li>
-<li><strong>Can I install new shingles over my old roof?</strong> While "roofing over" (a layover) saves money on tear-off labor and dumpster fees, it adds extreme weight to your home's structural framing and traps heat, which often voids the new shingles' manufacturer warranty.</li>
-<li><strong>How long does a new roof last?</strong> Standard asphalt shingles generally last 15 to 25 years. Architectural asphalt can last up to 30 years, while metal and slate roofs can easily exceed 50 years with proper maintenance.</li>
-</ul>
-</div>
+    <script>
+        function calcRoof() {
+            const sqft = parseFloat(document.getElementById('roofSqft').value) || 0;
+            const matPrice = parseFloat(document.getElementById('roofMaterial').value) || 0;
+            const pitchMultiplier = parseFloat(document.getElementById('roofPitch').value) || 1;
+            
+            const totalCost = (sqft * matPrice) * pitchMultiplier;
+            
+            document.getElementById('roofTotal').innerText = `$${totalCost.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+        }
+        
+        calcRoof();
+    </script>
+
+    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
+        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    </footer>
 </body>
 </html>
