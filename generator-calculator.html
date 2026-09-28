@@ -1,473 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Backup Generator Sizing Calculator | Find Your Wattage</title>
-  <meta name="description" content="Calculate the exact running watts and starting surge watts you need to power your home appliances during an outage and find the right size generator.">
-
-  <!-- Canonical URL & Social Sharing Tags -->
-  <link rel="canonical" href="https://poolpumpwattage.com/generator-calculator.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Home Backup Generator Sizing Calculator">
-  <meta property="og:description" content="Stop guessing. Calculate the exact generator size you need for your refrigerator, AC, and well pump during a power outage.">
-  <meta property="og:url" content="https://poolpumpwattage.com/generator-calculator.html">
-
-  <!-- Google AdSense Auto Ads Script (Standard) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-
-  <!-- Google AdSense AMP Auto Ads Script -->
-  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-
-  <!-- Structured Data (JSON-LD) for Search Rich Snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": "Home Generator Sizing Calculator",
-        "url": "https://poolpumpwattage.com/generator-calculator.html",
-        "applicationCategory": "UtilityApplication",
-        "operatingSystem": "All",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the difference between running watts and starting watts?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Running watts (continuous watts) are what an appliance needs to stay on. Starting watts (surge watts) are the extra burst of power required for a split second to start electric motors, like those in refrigerators, well pumps, or air conditioners."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I run my whole house on a portable generator?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "It depends on the size. A large 9,000 to 12,000-watt portable generator can run most of a home if connected via a manual transfer switch, but it typically cannot run a central air conditioner or electric furnace simultaneously with other heavy loads."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <style>
-    :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --accent: #16a34a;
-      --accent-dark: #15803d;
-      --warning-bg: #fffbeb;
-      --highlight-bg: #f0fdf4;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.65;
-      padding: 0 1rem;
-    }
-
-    header, main, footer { max-width: 860px; margin: 0 auto; }
-
-    header { padding: 2.5rem 0 1.5rem; text-align: center; }
-    h1 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
-    h2 { font-size: 1.4rem; color: var(--primary-dark); margin: 2.25rem 0 0.75rem; border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; }
-    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.25rem 0 0.5rem; }
-    p { margin-bottom: 1rem; }
-
-    /* Nav Bar */
-    .site-nav {
-      background: var(--card-bg);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      border-radius: 0 0 8px 8px;
-    }
-    .site-nav a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 1rem;
-      display: inline-block;
-    }
-    .site-nav a:hover { text-decoration: underline; }
-
-    /* Calculator Cards */
-    .calculator-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 1.75rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      border: 1px solid var(--border);
-      margin-bottom: 1.75rem;
-    }
-
-    .appliance-category { margin-bottom: 1.5rem; }
-    .appliance-category h4 { color: var(--primary); margin-bottom: 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
+    <!-- Google tag (gtag.js) -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4GTQSCFW6');
+    </script>
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
     
-    .appliance-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      background: #f8fafc;
-      padding: 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.15s;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    .checkbox-label:hover { background: #f1f5f9; }
-    .checkbox-label input { margin-right: 0.75rem; width: 1.1rem; height: 1.1rem; accent-color: var(--primary); }
-    .wattage-hint { display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: 400; margin-left: 1.85rem; }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1rem;
-      background: #f1f5f9;
-      padding: 1.25rem;
-      border-radius: 8px;
-      margin-top: 1.5rem;
-    }
-    .stat-box { display: flex; flex-direction: column; }
-    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.025em; }
-    .stat-value { font-size: 1.35rem; font-weight: 700; color: var(--text-main); }
-    .stat-value.highlight { color: var(--accent); }
-
-    /* Pro / Contractor Lead Banner */
-    .lead-box {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f8fafc;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      margin: 2rem 0;
-    }
-    .lead-box h3 { color: #ffffff; margin-top: 0; margin-bottom: 0.35rem; }
-    .lead-box p { color: #cbd5e1; font-size: 0.92rem; margin-bottom: 1rem; }
-    .lead-form { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .lead-input { padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid #475569; font-size: 0.95rem; flex: 1; min-width: 140px; }
-    .lead-btn { background: var(--accent); color: #ffffff; border: none; padding: 0.6rem 1.25rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
-    .lead-btn:hover { background: var(--accent-dark); }
-
-    /* Product Grid & Affiliate Cards */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
-    .product-card {
-      background: var(--card-bg);
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .product-card.active { border-color: var(--primary); background: #f0f9ff; }
-    .product-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--primary); margin-bottom: 0.35rem; }
-    .product-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .product-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
-    .product-btn { display: block; text-align: center; background: var(--primary); color: #ffffff; padding: 0.55rem 0.85rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
-    .product-btn:hover { background: var(--primary-dark); }
-
-    /* Callouts */
-    .callout-box { background: var(--warning-bg); border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 4px; margin: 1.25rem 0; font-size: 0.92rem; }
-    .callout-title { font-weight: 700; color: #b45309; margin-bottom: 0.25rem; }
-
-    /* Footer */
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: 3rem; font-size: 0.85rem; color: var(--text-muted); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1rem; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; }
-    .footer-links a:hover { color: var(--primary); text-decoration: underline; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup Generator Sizing Calculator</title>
+    <meta name="description" content="Calculate the running wattage and starting surge needed to power your home appliances during an outage.">
+    
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .checkbox-group label { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; }
+        input[type="checkbox"] { width: 20px; height: 20px; margin: 0; }
+        button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: none; background: #0284c7; color: white; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
+        button:hover { background: #0369a1; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; }
+        .box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.1rem; font-weight: bold; border: 1px solid #e2e8f0; }
+    </style>
 </head>
 <body>
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1>Backup Generator Sizing Guide</h1>
+    </header>
 
-  <!-- AMP Auto Ads Tag -->
-  <amp-auto-ads type="adsense" data-ad-client="ca-pub-1199906473460957"></amp-auto-ads>
-
-  <nav class="site-nav">
-    <a href="index.html">Pool Pump Calculator</a>
-    <a href="mini-split-calculator.html">Mini-Split AC Calculator</a>
-    <a href="generator-calculator.html">Backup Generator Sizing</a>
-  </nav>
-
-  <header>
-    <h1>Home Backup Generator Sizing Calculator</h1>
-    <p>Select the appliances you need to run during a power outage to calculate your exact running wattage and starting surge requirements.</p>
-  </header>
-
-  <main>
-    <!-- Interactive Generator Calculator -->
-    <div class="calculator-card">
-      <form id="applianceForm">
-        
-        <div class="appliance-category">
-          <h4>Kitchen & Essentials</h4>
-          <div class="appliance-grid">
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="700" data-surge="2200"> Refrigerator / Freezer</div>
-              <span class="wattage-hint">700W Running | 2200W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="1000" data-surge="1000"> Microwave</div>
-              <span class="wattage-hint">1000W Running | 0W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="1200" data-surge="1200"> Coffee Maker</div>
-              <span class="wattage-hint">1200W Running | 0W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="1500" data-surge="1500"> Electric Skillet / Hot Plate</div>
-              <span class="wattage-hint">1500W Running | 0W Surge</span>
-            </label>
-          </div>
+    <main>
+        <div class="card">
+            <h3>Select Appliances to Power Simultaneously:</h3>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="fridge" value="700" data-surge="1500" checked> Refrigerator / Freezer</label>
+                <label><input type="checkbox" id="sump" value="800" data-surge="1300"> Sump Pump</label>
+                <label><input type="checkbox" id="well" value="1000" data-surge="2000"> Well Pump</label>
+                <label><input type="checkbox" id="windowAc" value="1200" data-surge="2400"> Window AC Unit</label>
+                <label><input type="checkbox" id="lights" value="400" data-surge="0" checked> Lights, TV, & Device Chargers</label>
+            </div>
+            
+            <button onclick="calcGenerator()">Calculate Required Wattage</button>
+            
+            <div class="grid">
+                <div class="box">Running Watts<br><span id="runWatts" style="color:#0284c7; font-size: 1.75rem;">1,100 W</span></div>
+                <div class="box">Minimum Surge (Starting)<br><span id="surgeWatts" style="color:#eab308; font-size: 1.75rem;">2,600 W</span></div>
+            </div>
         </div>
 
-        <div class="appliance-category">
-          <h4>Water & Critical Systems</h4>
-          <div class="appliance-grid">
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="1000" data-surge="3000"> Well Pump (1/2 HP)</div>
-              <span class="wattage-hint">1000W Running | 3000W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="800" data-surge="1300"> Sump Pump (1/3 HP)</div>
-              <span class="wattage-hint">800W Running | 1300W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="4000" data-surge="4000"> Electric Water Heater</div>
-              <span class="wattage-hint">4000W Running | 0W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="500" data-surge="500"> Gas Furnace Fan (Blower)</div>
-              <span class="wattage-hint">500W Running | 1500W Surge</span>
-            </label>
-          </div>
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+            <h2>Running Watts vs. Starting Watts</h2>
+            <p>Generators are rated by two numbers. <strong>Running watts</strong> are the continuous power needed to keep your appliances running. <strong>Starting watts (surge)</strong> are the extra burst of power required for a few seconds to start electric motors, like those in refrigerators and well pumps.</p>
+            <p>Your generator must be large enough to handle the total running watts of all connected items, plus the highest starting surge of the largest single motor you plan to run.</p>
+        </article>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-top: 0; color: #0f172a;">Connect Safely During Outages</h3>
+            <p style="color: #475569;">Never plug a generator directly into a wall outlet. Ensure you have the proper heavy-duty extension cords to safely route power to your essential appliances.</p>
+            <a href="https://www.amazon.com/s?k=heavy+duty+generator+extension+cord&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Generator Cords on Amazon</a>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
         </div>
+    </main>
 
-        <div class="appliance-category">
-          <h4>Comfort & Electronics</h4>
-          <div class="appliance-grid">
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="1200" data-surge="3600"> Window AC (10,000 BTU)</div>
-              <span class="wattage-hint">1200W Running | 3600W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="3500" data-surge="10500"> Central AC (3 Ton)</div>
-              <span class="wattage-hint">3500W Running | 10500W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="150" data-surge="150"> 10x LED Lights</div>
-              <span class="wattage-hint">150W Running | 0W Surge</span>
-            </label>
-            <label class="checkbox-label">
-              <div><input type="checkbox" class="appliance-cb" data-run="200" data-surge="200"> TV & Internet Router</div>
-              <span class="wattage-hint">200W Running | 0W Surge</span>
-            </label>
-          </div>
-        </div>
-      </form>
-
-      <div class="stats-grid">
-        <div class="stat-box">
-          <span class="stat-label">Total Running Watts</span>
-          <span class="stat-value" id="runningVal">0 W</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">Highest Starting Surge</span>
-          <span class="stat-value" id="surgeVal">0 W</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">Min. Generator Required</span>
-          <span class="stat-value highlight" id="totalVal">0 W</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Local Contractor Installation Lead Generation -->
-    <div class="lead-box">
-      <h3>Need a Transfer Switch Installed?</h3>
-      <p>Plugging a generator directly into your breaker panel ("backfeeding") is illegal and deadly to linemen. Connect with licensed electricians to install a safe, code-compliant manual transfer switch or interlock kit.</p>
-      <form class="lead-form" onsubmit="handleContractorSearch(event)">
-        <input type="text" class="lead-input" id="zipInput" placeholder="Enter ZIP Code (e.g. 21114)" pattern="[0-9]{5}" required>
-        <button type="submit" class="lead-btn">Find Local Electricians</button>
-      </form>
-    </div>
-
-    <!-- Dynamic Equipment Recommendations -->
-    <section>
-      <h2>Recommended Generators Based on Your Load</h2>
-      <p>Standard sizing dictates your generator must be able to handle the <strong>Total Running Watts</strong> plus the <strong>Highest Single Surge Wattage</strong> of your appliances.</p>
-      
-      <div class="product-grid">
-        <!-- Small Inverter / Solar -->
-        <div class="product-card" id="card-small">
-          <div>
-            <div class="product-tag">Essentials Only (0 - 3,000W)</div>
-            <div class="product-title">Portable Power Station / Inverter</div>
-            <div class="product-desc">Quiet, safe for indoors, and perfect for keeping the fridge cold, phones charged, and internet running.</div>
-          </div>
-          <a href="#" target="_blank" rel="noopener sponsored" class="product-btn">Shop EcoFlow Solar Generators</a>
-        </div>
-
-        <!-- Medium Portable -->
-        <div class="product-card" id="card-medium">
-          <div>
-            <div class="product-tag">Standard Backup (3,000W - 8,000W)</div>
-            <div class="product-title">Portable Gas/Dual-Fuel Generator</div>
-            <div class="product-desc">The sweet spot for home backup. Powers the well pump, fridge, microwave, and a window AC unit without breaking the bank.</div>
-          </div>
-          <a href="#" target="_blank" rel="noopener sponsored" class="product-btn">Shop Portable Generators on Amazon</a>
-        </div>
-
-        <!-- Large / Standby -->
-        <div class="product-card" id="card-large">
-          <div>
-            <div class="product-tag">Whole Home (8,000W+)</div>
-            <div class="product-title">Heavy Duty / Standby Generator</div>
-            <div class="product-desc">Required if you intend to run Central AC, electric water heaters, or massive electric well pumps simultaneously.</div>
-          </div>
-          <a href="#" target="_blank" rel="noopener sponsored" class="product-btn">Shop Large Generators on Amazon</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Educational Content for SEO & AdSense -->
-    <section>
-      <h2>Understanding Running Watts vs. Starting Watts</h2>
-      <div class="callout-box">
-        <div class="callout-title">The "Surge" Motor Factor</div>
-        <p style="margin-bottom: 0;">Any appliance with an electric motor (refrigerators, well pumps, AC compressors, furnace blowers) requires a massive burst of power for a split second to overcome inertia when turning on. This is called the <strong>Starting Wattage</strong> or <strong>Surge Wattage</strong>. A refrigerator that runs continuously at 700 watts may need up to 2,200 watts just to click on.</p>
-      </div>
-
-      <h3>How the Math Works</h3>
-      <p>You do not need to add the surge wattage of <em>every</em> appliance together, because you will not start them all at the exact same millisecond. To properly size a generator:</p>
-      <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
-        <li>Add up the <strong>Running Watts</strong> of every appliance you want to run at the same time.</li>
-        <li>Find the appliance with the <strong>Highest Starting Wattage</strong>.</li>
-        <li>Add that single highest surge number to your running watts total.</li>
-      </ol>
-    </section>
-
-    <!-- Frequently Asked Questions -->
-    <section>
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <div class="faq-question">Can I use a portable generator to power my whole house?</div>
-        <p>Yes, but you must have a licensed electrician install a manual transfer switch or an interlock kit. This legally and safely connects the generator to your breaker panel while automatically disconnecting your house from the grid so you don't electrocute utility workers.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Are solar generators (power stations) good for home backup?</div>
-        <p>Solar generators (like EcoFlow or Bluetti) are excellent for short-term outages. They are silent, emit no carbon monoxide (meaning they can sit inside your living room), and require no maintenance. However, unless you have thousands of watts of solar panels to recharge them, their batteries will deplete rapidly if running heavy loads like AC or well pumps.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Legal & Compliance Footer -->
-  <footer>
-    <div class="footer-links">
-      <a href="index.html">Pool Pump Calculator</a>
-      <a href="mini-split-calculator.html">Mini-Split Calculator</a>
-      <a href="#privacy" onclick="alert('Privacy Policy: poolpumpwattage.com does not collect or sell personal information. Third-party vendors use cookies to serve ads.')">Privacy Policy</a>
-      <a href="#terms" onclick="alert('Disclaimer: Generator sizing calculations are estimates based on average appliance draws. Always check the data plate on your specific appliances.')">Terms & Disclaimer</a>
-    </div>
-    <p>&copy; 2026 poolpumpwattage.com. All rights reserved. As an affiliate associate, we earn from qualifying purchases. Calculations are provided for planning purposes only.</p>
-  </footer>
-
-  <script>
-    const checkboxes = document.querySelectorAll('.appliance-cb');
-    const runningVal = document.getElementById('runningVal');
-    const surgeVal = document.getElementById('surgeVal');
-    const totalVal = document.getElementById('totalVal');
-
-    const cardSmall = document.getElementById('card-small');
-    const cardMedium = document.getElementById('card-medium');
-    const cardLarge = document.getElementById('card-large');
-
-    function calculateLoad() {
-      let totalRunning = 0;
-      let maxSurge = 0;
-
-      checkboxes.forEach(cb => {
-        if (cb.checked) {
-          const run = parseInt(cb.getAttribute('data-run'), 10) || 0;
-          const surgeTotal = parseInt(cb.getAttribute('data-surge'), 10) || 0;
-          
-          totalRunning += run;
-          
-          // Surge is the extra power ABOVE running power
-          const extraSurge = surgeTotal > run ? surgeTotal - run : 0;
-          if (extraSurge > maxSurge) {
-            maxSurge = extraSurge;
-          }
+    <script>
+        function calcGenerator() {
+            let runningTotal = 0;
+            let highestSurge = 0;
+            
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach((cb) => {
+                runningTotal += parseInt(cb.value);
+                const surge = parseInt(cb.getAttribute('data-surge'));
+                if (surge > highestSurge) highestSurge = surge;
+            });
+            
+            const totalSurgeNeeded = runningTotal + highestSurge;
+            
+            document.getElementById('runWatts').innerText = `${runningTotal.toLocaleString()} W`;
+            document.getElementById('surgeWatts').innerText = `${totalSurgeNeeded.toLocaleString()} W`;
         }
-      });
-
-      const requiredGenSize = totalRunning + maxSurge;
-
-      runningVal.textContent = totalRunning.toLocaleString() + " W";
-      surgeVal.textContent = maxSurge.toLocaleString() + " W";
-      totalVal.textContent = requiredGenSize.toLocaleString() + " W";
-
-      // Reset Active Cards
-      cardSmall.classList.remove('active');
-      cardMedium.classList.remove('active');
-      cardLarge.classList.remove('active');
-
-      // Highlight Recommended Tier
-      if (requiredGenSize > 0) {
-        if (requiredGenSize <= 3000) {
-          cardSmall.classList.add('active');
-        } else if (requiredGenSize <= 8000) {
-          cardMedium.classList.add('active');
-        } else {
-          cardLarge.classList.add('active');
-        }
-      }
-    }
-
-    // Attach listeners
-    checkboxes.forEach(cb => {
-      cb.addEventListener('change', calculateLoad);
-    });
-
-    // Handle Local Contractor Search Lead Gen
-    function handleContractorSearch(e) {
-      e.preventDefault();
-      const zip = document.getElementById('zipInput').value.trim();
-      if (zip.length === 5) {
-        window.open(`https://www.google.com/search?q=electrician+generator+transfer+switch+installation+near+${zip}`, '_blank');
-      }
-    }
-
-    // Initialize
-    calculateLoad();
-  </script>
+        calcGenerator();
+    </script>
 </body>
 </html>
