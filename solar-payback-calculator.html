@@ -9,89 +9,123 @@
         gtag('js', new Date());
         gtag('config', 'G-V4GTQSCFW6');
     </script>
-    
-    <!-- Google AdSense -->
     <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Panel Payback & ROI Calculator</title>
-    <meta name="description" content="Calculate your break-even point and long-term utility savings from installing residential solar panels based on local electricity rates.">
+    <title>Pro Solar Panel Payback Timeline Calculator</title>
+    <meta name="description" content="Calculate your break-even point, required kW system size, and 30% Federal Tax Credit for residential solar panels.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; margin-top: 1.5rem; }
-        .box { padding: 1rem; border-radius: 8px; background: #f1f5f9; font-size: 1.25rem; font-weight: bold; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
+        
+        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .receipt h3 { color: #38bdf8; border-color: #334155; }
+        
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        .val-display { color: #0284c7; float: right; font-weight: bold; }
+        
+        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
+        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
+        
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
+        .tax-credit { background: #16a34a; color: white; padding: 0.75rem; border-radius: 6px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.1rem; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Solar Panel Payback Timeline</h1>
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Solar Panel Payback Calculator</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">Size your system and calculate your break-even point.</p>
     </header>
 
-    <main>
-        <!-- Calculator Tool -->
+    <main class="split-layout">
         <div class="card">
-            <label for="systemCost">Total System Cost (Before Incentives)</label>
-            <input type="number" id="systemCost" value="25000">
+            <h3>Your Energy Usage</h3>
+            <label>Average Monthly Electric Bill <span class="val-display" id="billVal">$150</span></label>
+            <input type="range" id="bill" min="50" max="600" step="10" value="150">
+            <small style="color: #64748b; display:block; margin-bottom: 1rem;">(We use this to estimate how many panels you need)</small>
             
-            <label for="monthlyBill">Average Monthly Electric Bill ($)</label>
-            <input type="number" id="monthlyBill" value="150">
-            
-            <label for="taxCredit">Federal Tax Credit (%)</label>
-            <input type="number" id="taxCredit" value="30">
-            
-            <button onclick="calcSolar()">Calculate Payback Period</button>
-            
-            <div class="grid">
-                <div class="box">Net Cost (After Credit)<br><span id="netCost" style="color:#0284c7">$0</span></div>
-                <div class="box">Estimated Payback<br><span id="paybackYears" style="color:#15803d">0 Years</span></div>
-            </div>
+            <h3 style="margin-top: 2rem;">Location & Setup</h3>
+            <label>Sun Exposure (Location)</label>
+            <select id="sun">
+                <option value="1.1">Low (Cloudy climates, lots of trees)</option>
+                <option value="1.0" selected>Average (Mix of sun and clouds)</option>
+                <option value="0.8">High (Desert Southwest, Florida)</option>
+            </select>
         </div>
 
-        <!-- SEO Article Content -->
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Is Residential Solar Worth the Investment in 2026?</h2>
-            <p>Installing solar panels is a powerful way to reduce your carbon footprint and lock in your energy costs. However, the initial capital required can be substantial. This calculator helps you determine how long it will take for your utility savings to pay off your initial investment.</p>
+        <div class="card receipt">
+            <h3>Solar Estimate</h3>
             
-            <h3>Understanding the Solar Tax Credit</h3>
-            <p>The federal residential solar energy credit is a crucial part of the payback equation. Currently, the Residential Clean Energy Credit allows you to claim 30% of the installation costs on your federal income taxes. This applies to the panels, labor, and even integrated battery storage systems.</p>
-        </article>
+            <div class="result-row">
+                <span>Required System Size:</span>
+                <span id="kwSize" style="color: #38bdf8; font-weight:bold;">0 kW</span>
+            </div>
 
-        <!-- Affiliate Monetization Section -->
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Secure Your Backup Power Now</h3>
-            <p style="color: #475569;">While planning your permanent rooftop solar, keep your essentials running during outages with a portable solar generator.</p>
-            <a href="https://www.amazon.com/s?k=portable+solar+generator&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Portable Solar Generators</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div class="result-row">
+                <span>Gross Installed Cost:</span>
+                <span id="grossCost">$0</span>
+            </div>
+            
+            <div id="taxCredit" class="tax-credit">
+                - $0 (30% Federal ITC)
+            </div>
+
+            <div class="total-row">
+                <span>Net Cost:</span>
+                <span id="netCost">$0</span>
+            </div>
+            
+            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 0.9rem; color: #94a3b8;">Break-Even Timeline</span><br>
+                <span id="payback" style="font-size: 1.8rem; font-weight: bold; color: #22c55e;">0 Years</span>
+            </div>
         </div>
     </main>
 
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Solar Power Without the Roof Install</h3>
+        <p style="color: #475569;">Not ready for a full rooftop array? A portable power station with solar panels provides emergency home backup power and runs tools completely off-grid.</p>
+        <a href="https://www.amazon.com/s?k=portable+power+station+solar+generator&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Portable Solar Generators</a>
+    </div>
+
     <script>
-        function calcSolar() {
-            const systemCost = parseFloat(document.getElementById('systemCost').value) || 0;
-            const monthlyBill = parseFloat(document.getElementById('monthlyBill').value) || 0;
-            const taxCreditPercent = parseFloat(document.getElementById('taxCredit').value) || 0;
+        function updateSolar() {
+            const bill = parseInt(document.getElementById('bill').value);
+            const sunMult = parseFloat(document.getElementById('sun').value);
             
-            const taxCreditAmount = systemCost * (taxCreditPercent / 100);
-            const netCost = systemCost - taxCreditAmount;
+            document.getElementById('billVal').innerText = '$' + bill;
+
+            // Math: Estimate required kW size (Bill / $0.15 avg kWh rate / 130 kwh per kw of solar) * Sun Multiplier
+            let kwSize = ((bill / 0.15) / 130) * sunMult;
+            kwSize = Math.max(3, Math.round(kwSize * 10) / 10); // Minimum 3kW system
             
-            const annualSavings = monthlyBill * 12;
-            const paybackYears = (netCost / annualSavings).toFixed(1);
+            // Assume $3.00 per watt installed
+            const grossCost = kwSize * 1000 * 3.00;
+            const taxCredit = grossCost * 0.30; // 30% Federal ITC
+            const netCost = grossCost - taxCredit;
             
-            document.getElementById('netCost').innerText = `$${Math.round(netCost).toLocaleString()}`;
-            document.getElementById('paybackYears').innerText = isFinite(paybackYears) ? `${paybackYears} Years` : 'N/A';
+            // Annual savings (assumes system wipes out the bill entirely)
+            const annualSavings = bill * 12;
+            const paybackYears = netCost / annualSavings;
+
+            document.getElementById('kwSize').innerText = kwSize.toFixed(1) + ' kW';
+            document.getElementById('grossCost').innerText = '$' + Math.round(grossCost).toLocaleString();
+            document.getElementById('taxCredit').innerText = '- $' + Math.round(taxCredit).toLocaleString() + ' (30% Fed ITC)';
+            document.getElementById('netCost').innerText = '$' + Math.round(netCost).toLocaleString();
+            document.getElementById('payback').innerText = paybackYears.toFixed(1) + ' Years';
         }
 
-        // Initialize calculation on page load
-        calcSolar();
-    </script>
+        document.getElementById('bill').addEventListener('input', updateSolar);
+        document.getElementById('sun').addEventListener('change', updateSolar);
 
-    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
-        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
-    </footer>
+        updateSolar();
+    </script>
 </body>
 </html>
