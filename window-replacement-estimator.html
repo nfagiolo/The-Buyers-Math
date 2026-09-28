@@ -2,126 +2,104 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-V4GTQSCFW6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4GTQSCFW6');
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
+    <!-- Google AdSense -->
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 Window Replacement Cost Estimator & Guide</title>
+    <title>Window Replacement Estimator</title>
+    <meta name="description" content="Estimate the cost of replacing your home's windows based on quantity, frame material, and style.">
+    
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
         button:hover { background: #0369a1; }
-        .result { font-size: 1.5rem; font-weight: bold; color: #15803d; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
-        article h2 { color: #0f172a; margin-top: 2rem; }
-        .lead-widget { padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; border: 2px dashed #cbd5e1; margin-bottom: 2rem; }
+        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; margin-top: 1rem; border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Window Replacement Cost Estimator</h1>
-        <p>Calculate your total project cost based on 2026 pricing data.</p>
+        <h1>Window Replacement Estimator</h1>
     </header>
+
     <main>
-        <!-- Google AdSense Ad Unit -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-1199906473460957"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
-        <!-- Amazon Affiliate Banner -->
-        <div class="amazon-affiliate-banner" data-store-id="nfagiolo-20">
-            <a href="https://www.amazon.com/?tag=nfagiolo-20" target="_blank" rel="nofollow noopener">Shop Amazon</a>
-        </div>
-
+        <!-- Calculator Tool -->
         <div class="card">
-            <label>Number of Windows</label>
-            <input type="number" id="winCount" value="10">
-
-            <label>Frame Material</label>
-            <select id="winMat">
-                <option value="550">Vinyl ($550/window installed)</option>
-                <option value="900">Fiberglass ($900/window installed)</option>
-                <option value="1200">Wood ($1,200/window installed)</option>
+            <label for="windowCount">Number of Windows to Replace</label>
+            <input type="number" id="windowCount" value="10">
+            
+            <label for="frameMaterial">Frame Material & Quality</label>
+            <select id="frameMaterial">
+                <option value="600" selected>Standard Vinyl ($600 per window)</option>
+                <option value="900">Fiberglass / Composite ($900 per window)</option>
+                <option value="1200">Premium Wood / Aluminum Clad ($1,200 per window)</option>
             </select>
 
-            <label>Glass Package Upgrade</label>
-            <select id="winGlass">
-                <option value="0">Standard Double-Pane (No extra cost)</option>
-                <option value="150">Triple-Pane / Low-E (+ $150/window)</option>
+            <label for="windowStyle">Window Style Premium</label>
+            <select id="windowStyle">
+                <option value="0">Standard Double/Single Hung (+$0)</option>
+                <option value="150">Casement / Awning Windows (+$150 per window)</option>
+                <option value="400">Bay / Bow / Custom Picture (+$400 per window)</option>
             </select>
-
-            <button onclick="calcWindows()">Estimate Cost</button>
-            <div class="result" id="winTotal">$0</div>
+            
+            <button onclick="calcWindows()">Estimate Replacement Cost</button>
+            
+            <div class="result-box">
+                Estimated Total: <br><span id="windowTotal" style="color:#0284c7; font-size: 2rem;">$6,000</span>
+            </div>
         </div>
 
-        <div class="lead-widget">
-            <h3 style="margin-top: 0; color: #0f172a;">Compare Local Window Installers</h3>
-            <p style="color: #475569;">Enter your zip code to get free, no-obligation quotes from top-rated window professionals in your area.</p>
-            <!-- PASTE YOUR ELOCAL WIDGET CODE HERE -->
-        </div>
-
-        <div style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h3>Understanding Your Window Replacement Estimate</h3>
-            <p>Replacing drafty, outdated windows improves your home's energy efficiency, security, and curb appeal. Because every house is different, window replacement costs scale based on material quality, glass technology, and installation complexity.</p>
-            <h4>Key Variables in This Calculator</h4>
+        <!-- SEO Article Content -->
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+            <h2>Planning Your Window Replacement Project</h2>
+            <p>Upgrading your windows improves energy efficiency, reduces noise, and boosts curb appeal. However, prices can fluctuate drastically depending on the materials and installation methods.</p>
+            
+            <h3>Retrofit vs. Full-Frame Installation</h3>
             <ul>
-                <li><strong>Frame Material:</strong> Vinyl frames are the most popular and cost-effective option. Fiberglass offers superior strength and thermal performance at a higher price. Authentic wood frames are the most expensive, requiring ongoing maintenance.</li>
-                <li><strong>Window Style:</strong> Standard double-hung or slider windows are mass-produced and affordable. Specialty shapes, large picture windows, bay or bow windows, and casements require more complex manufacturing and labor.</li>
-                <li><strong>Glass Packages:</strong> Upgrading from standard double-pane glass to triple-pane, adding Low-E (low emissivity) coatings, or using argon/krypton gas fills will raise the upfront cost but drastically lower heating and cooling bills.</li>
+                <li><strong>Retrofit (Insert) Windows:</strong> The most common and affordable method. The contractor leaves your existing window frame and exterior trim intact, inserting the new window into the old opening. This is calculated in our standard pricing above.</li>
+                <li><strong>Full-Frame Replacement:</strong> Requires stripping the window down to the house framing (studs). This is necessary if there is rot or if you are changing the size of the window. Expect to add $150 to $300 per window for the extra labor and exterior trim work.</li>
             </ul>
-            <h4>Additional Factors Influencing Final Costs</h4>
-            <ul>
-                <li><strong>Installation Method:</strong> "Pocket" or insert replacements fit into the existing window frame, saving time and money. "Full-frame" replacements involve removing the entire frame down to the rough opening, requiring new exterior trim and interior casing.</li>
-                <li><strong>Structural Decay:</strong> When the old windows are removed, installers may uncover hidden wood rot or water damage in the framing, which must be repaired before the new window goes in.</li>
-                <li><strong>Historic Districts:</strong> Homes located in historic preservation districts often have strict mandates requiring custom wooden windows to match the original architecture, which can double or triple the project cost.</li>
-            </ul>
-            <h4>Frequently Asked Questions</h4>
-            <ul>
-                <li><strong>Do new windows pay for themselves in energy savings?</strong> While new windows will lower your heating and cooling bills, the energy savings alone typically take decades to offset the initial purchase price. The main benefits are comfort, aesthetics, noise reduction, and home value.</li>
-                <li><strong>Should I replace all my windows at once?</strong> Replacing them all at once ensures visual consistency and often secures a volume discount from contractors. However, breaking the project into phases (e.g., replacing one floor at a time) can make financing easier.</li>
-            </ul>
-        </div>
 
-        <article>
-            <h2>The 2026 Guide to Window Replacement Costs</h2>
-            <p>Replacing the windows in your home is one of the highest-ROI projects you can undertake, both for energy efficiency and resale value. In 2026, the national average cost to replace a standard window ranges from $450 to $1,400 installed.</p>
-
-            <h3>Vinyl vs. Wood vs. Fiberglass</h3>
-            <p><strong>Vinyl</strong> remains the most popular and budget-friendly choice. They require practically zero maintenance and offer excellent insulation, typically costing between $400 and $800 installed.</p>
-
-            <h3>Do You Need Triple-Pane Glass?</h3>
-            <p>Double-pane glass filled with argon gas is the standard baseline today. Upgrading to triple-pane glass adds about 15% to 20% to the cost of the window. If you live in an extreme climate with harsh winters, or near a noisy street, triple-pane is well worth the investment.</p>
+            <h3>Energy Efficiency Upgrades</h3>
+            <p>When selecting your windows, look for the Energy Star label. Upgrading from double-pane to triple-pane glass, or adding Argon gas fills and Low-E (low-emissivity) coatings will increase the upfront cost but maximize your savings on heating and cooling bills over time.</p>
         </article>
+
+        <!-- Affiliate Monetization Section -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-top: 0; color: #0f172a;">Find Hidden Energy Leaks</h3>
+            <p style="color: #475569;">Not sure which windows to replace first? Use a thermal leak detector to pinpoint your home's worst drafts.</p>
+            <a href="https://www.amazon.com/s?k=thermal+leak+detector&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Thermal Detectors on Amazon</a>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+        </div>
     </main>
 
     <script>
         function calcWindows() {
-            const count = parseFloat(document.getElementById('winCount').value) || 0;
-            const mat = parseFloat(document.getElementById('winMat').value);
-            const glass = parseFloat(document.getElementById('winGlass').value);
-
-            if (count <= 0) {
-                alert("Please enter a valid number of windows.");
-                return;
-            }
-
-            const total = count * (mat + glass);
-            document.getElementById('winTotal').innerText = "$" + total.toLocaleString();
+            const count = parseInt(document.getElementById('windowCount').value) || 0;
+            const materialPrice = parseFloat(document.getElementById('frameMaterial').value) || 0;
+            const stylePremium = parseFloat(document.getElementById('windowStyle').value) || 0;
+            
+            const costPerWindow = materialPrice + stylePremium;
+            const totalCost = count * costPerWindow;
+            
+            document.getElementById('windowTotal').innerText = `$${totalCost.toLocaleString()}`;
         }
+        
+        calcWindows();
     </script>
+
+    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
+        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    </footer>
 </body>
 </html>
