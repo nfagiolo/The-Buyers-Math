@@ -16,7 +16,7 @@ Monetization Requirements:
 2. Below the paragraph, insert this exact Google AdSense responsive ad unit block:
 <div style="margin-top: 20px; text-align: center;">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1199906473460957" data-ad-slot="YOUR_AD_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1199906473460957" data-ad-slot="5190114395" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 Do not include any markdown formatting like ```html. Output raw HTML only.
