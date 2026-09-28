@@ -13,68 +13,168 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Heater Replacement Cost</title>
-    <meta name="description" content="Compare prices for replacing a standard tank water heater versus upgrading to a tankless system.">
+    <title>Pro Water Heater Replacement Cost Estimator</title>
+    <meta name="description" content="Calculate water heater replacement costs based on household size, fuel type, and system efficiency.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
-        button:hover { background: #0369a1; }
-        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; border: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
+        
+        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .receipt h3 { color: #38bdf8; border-color: #334155; }
+        
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        .val-display { color: #0284c7; float: right; font-weight: bold; }
+        
+        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
+        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
+        
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
+        .tax-credit { background: #16a34a; color: white; padding: 0.75rem; border-radius: 6px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.1rem; display: none; }
     </style>
 </head>
 <body>
     <header style="text-align: center; margin-bottom: 2rem;">
-        <h1>Water Heater Replacement Estimator</h1>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Water Heater Cost & Sizing Guide</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">Find the right capacity for your home and estimate real-world installation costs.</p>
     </header>
 
-    <main>
+    <main class="split-layout">
+        <!-- Interactive Inputs -->
         <div class="card">
-            <label for="heaterType">System Type</label>
-            <select id="heaterType">
-                <option value="1500" selected>Standard Storage Tank (40-50 Gallon)</option>
-                <option value="2500">Power Vent Storage Tank</option>
-                <option value="3500">Tankless (On-Demand) Water Heater</option>
-                <option value="4000">Heat Pump (Hybrid) Water Heater</option>
+            <h3>Your Household Needs</h3>
+            
+            <label>People in Household <span class="val-display" id="peopleVal">4 People</span></label>
+            <input type="range" id="people" min="1" max="7" step="1" value="4">
+            <small style="color: #64748b; display:block; margin-bottom: 1rem;">(Determines required tank size or Tankless GPM)</small>
+            
+            <h3>System Upgrade Options</h3>
+            <label>System Type & Fuel</label>
+            <select id="systemType">
+                <option value="electric_tank">Standard Electric Tank (Lowest Upfront)</option>
+                <option value="gas_tank" selected>Standard Gas Tank (Faster Recovery)</option>
+                <option value="heat_pump">Heat Pump / Hybrid (Most Energy Efficient)</option>
+                <option value="gas_tankless">Gas Tankless (Endless Hot Water)</option>
             </select>
-            
-            <label for="fuelType">Fuel Source</label>
-            <select id="fuelType">
-                <option value="0" selected>Electric (No extra venting needed)</option>
-                <option value="300">Natural Gas / Propane (Includes basic venting/gas line work)</option>
+
+            <label>Installation Complexity</label>
+            <select id="installType">
+                <option value="swap" selected>Direct Swap (Like-for-Like System)</option>
+                <option value="retrofit">Retrofit (New Venting, Gas Lines, or Electric Req.)</option>
+                <option value="relocate">Relocate Unit (Moving to a different wall/room)</option>
             </select>
-            
-            <button onclick="calcWaterHeater()">Estimate Installed Cost</button>
-            
-            <div class="result-box">
-                Estimated Plumber Installation:<br><span id="heaterTotal" style="color:#0284c7; font-size: 2rem;">$1,500</span>
-            </div>
         </div>
 
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Tank vs. Tankless Water Heaters</h2>
-            <p>The average traditional tank water heater lasts 8 to 12 years before the internal tank begins to rust and leak. Replacing like-for-like is the cheapest immediate option.</p>
-            <p>Upgrading to a <strong>tankless system</strong> provides endless hot water and saves space, but the installation cost is significantly higher. Plumbers often have to upgrade gas lines to accommodate the high BTU demand of a tankless unit, and specialized venting must be installed through the wall or roof.</p>
-        </article>
+        <!-- Live Sticky Receipt -->
+        <div class="card receipt">
+            <h3>Project Estimate</h3>
+            
+            <div class="result-row">
+                <span>Recommended Size:</span>
+                <span id="recSize" style="color: #38bdf8; font-weight:bold;">50 Gallon</span>
+            </div>
 
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Catch Leaks Before They Flood</h3>
-            <p style="color: #475569;">Water heaters inevitably fail. Place a smart water leak detector in the drain pan to get instant alerts on your phone the moment moisture is detected, saving you thousands in drywall repair.</p>
-            <a href="https://www.amazon.com/s?k=smart+water+leak+detector+wifi&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart Leak Detectors</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div class="result-row">
+                <span>Est. Unit Price:</span>
+                <span id="unitPrice">$0</span>
+            </div>
+            
+            <div class="result-row">
+                <span>Est. Plumber Labor:</span>
+                <span id="laborPrice">$0</span>
+            </div>
+
+            <div class="total-row">
+                <span>Total Installed Cost:</span>
+                <span id="totalCost">$0</span>
+            </div>
+            
+            <div id="taxCredit" class="tax-credit">
+                Qualifies for up to $2,000 Federal Tax Credit!
+            </div>
+            
+            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 0.9rem; color: #94a3b8;">Estimated Annual Energy Savings</span><br>
+                <span id="energySavings" style="font-size: 1.5rem; font-weight: bold; color: #22c55e;">$0 / year</span>
+            </div>
         </div>
     </main>
 
+    <!-- Affiliate Monetization Section -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Catch Leaks Before They Flood</h3>
+        <p style="color: #475569;">Water heaters inevitably fail. Place a smart water leak detector in the drain pan to get instant alerts on your phone the moment moisture is detected, saving you thousands in drywall repair.</p>
+        <a href="https://www.amazon.com/s?k=smart+water+leak+detector+wifi&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart Leak Detectors</a>
+    </div>
+
     <script>
-        function calcWaterHeater() {
-            const baseCost = parseInt(document.getElementById('heaterType').value) || 0;
-            const fuelCost = parseInt(document.getElementById('fuelType').value) || 0;
-            const total = baseCost + fuelCost;
-            document.getElementById('heaterTotal').innerText = `$${total.toLocaleString()}`;
+        function updateWaterHeater() {
+            const people = parseInt(document.getElementById('people').value);
+            const system = document.getElementById('systemType').value;
+            const install = document.getElementById('installType').value;
+            
+            // Update UI Labels
+            document.getElementById('peopleVal').innerText = people + (people === 7 ? '+ People' : ' People');
+
+            let unitCost = 0;
+            let laborCost = 0;
+            let sizeText = "";
+            let savings = 0;
+            let showTax = false;
+
+            // 1. Determine Capacity & Unit Cost
+            if(system.includes('tankless')) {
+                // Tankless logic
+                sizeText = people <= 2 ? "6-7 GPM (Gallons Per Minute)" : people <= 4 ? "8-9 GPM" : "10-11 GPM";
+                unitCost = people <= 2 ? 1100 : people <= 4 ? 1400 : 1800;
+                savings = 120; // Avg savings over standard tank
+            } else {
+                // Tank logic
+                sizeText = people <= 2 ? "40 Gallon" : people <= 4 ? "50 Gallon" : "65-80 Gallon";
+                
+                if(system === 'electric_tank') {
+                    unitCost = people <= 2 ? 550 : people <= 4 ? 650 : 1100;
+                    savings = 0; // Baseline
+                } else if(system === 'gas_tank') {
+                    unitCost = people <= 2 ? 650 : people <= 4 ? 750 : 1300;
+                    savings = 40; 
+                } else if(system === 'heat_pump') {
+                    unitCost = people <= 2 ? 1600 : people <= 4 ? 1900 : 2500;
+                    savings = 350; // Massive savings
+                    showTax = true; // Qualifies for IRA credit
+                }
+            }
+
+            // 2. Determine Labor Cost based on complexity
+            if(install === 'swap') {
+                laborCost = system === 'gas_tankless' ? 1200 : 700; // Tankless still requires more labor to swap
+            } else if (install === 'retrofit') {
+                laborCost = system === 'gas_tankless' ? 2200 : system === 'heat_pump' ? 1200 : 900;
+            } else if (install === 'relocate') {
+                laborCost = system === 'gas_tankless' ? 2800 : 1800;
+            }
+
+            const total = unitCost + laborCost;
+
+            // 3. Update DOM
+            document.getElementById('recSize').innerText = sizeText;
+            document.getElementById('unitPrice').innerText = '$' + unitCost.toLocaleString();
+            document.getElementById('laborPrice').innerText = '$' + laborCost.toLocaleString();
+            document.getElementById('totalCost').innerText = '$' + total.toLocaleString();
+            document.getElementById('energySavings').innerText = '$' + savings + ' / year';
+            document.getElementById('taxCredit').style.display = showTax ? 'block' : 'none';
         }
-        calcWaterHeater();
+
+        document.getElementById('people').addEventListener('input', updateWaterHeater);
+        document.getElementById('systemType').addEventListener('change', updateWaterHeater);
+        document.getElementById('installType').addEventListener('change', updateWaterHeater);
+
+        updateWaterHeater();
     </script>
 </body>
 </html>
