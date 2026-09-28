@@ -2,7 +2,7 @@ name: Daily Gemini Content Generator
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 12 * * *' # Runs at 12:00
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install Dependencies
-        run: pip install google-generativeai
+        run: pip install google-genai
 
       - name: Run Content Script
         env:
