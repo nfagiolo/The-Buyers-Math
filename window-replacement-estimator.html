@@ -9,97 +9,131 @@
         gtag('js', new Date());
         gtag('config', 'G-V4GTQSCFW6');
     </script>
-    
-    <!-- Google AdSense -->
     <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Window Replacement Estimator</title>
-    <meta name="description" content="Estimate the cost of replacing your home's windows based on quantity, frame material, and style.">
+    <title>Pro Window Replacement Cost Estimator</title>
+    <meta name="description" content="Estimate window replacement costs including frame materials, window styles, and full-frame vs insert labor.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
-        button:hover { background: #0369a1; }
-        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; margin-top: 1rem; border: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
+        
+        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .receipt h3 { color: #38bdf8; border-color: #334155; }
+        
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        .val-display { color: #0284c7; float: right; font-weight: bold; }
+        
+        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
+        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
+        
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Window Replacement Estimator</h1>
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Window Replacement Estimator</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">Price your upgrades based on frame quality, style, and installation type.</p>
     </header>
 
-    <main>
-        <!-- Calculator Tool -->
+    <main class="split-layout">
+        <!-- Interactive Inputs -->
         <div class="card">
-            <label for="windowCount">Number of Windows to Replace</label>
-            <input type="number" id="windowCount" value="10">
+            <h3>Project Scope</h3>
             
-            <label for="frameMaterial">Frame Material & Quality</label>
-            <select id="frameMaterial">
-                <option value="600" selected>Standard Vinyl ($600 per window)</option>
-                <option value="900">Fiberglass / Composite ($900 per window)</option>
-                <option value="1200">Premium Wood / Aluminum Clad ($1,200 per window)</option>
+            <label>Number of Windows to Replace <span class="val-display" id="countVal">10 Windows</span></label>
+            <input type="range" id="count" min="1" max="40" step="1" value="10">
+            
+            <h3>Materials & Labor</h3>
+            <label>Frame Material</label>
+            <select id="material">
+                <option value="400" selected>Standard Vinyl ($400 base per window)</option>
+                <option value="700">Fiberglass / Composite ($700 base per window)</option>
+                <option value="1000">Premium Wood / Aluminum Clad ($1,000 base per window)</option>
             </select>
 
-            <label for="windowStyle">Window Style Premium</label>
-            <select id="windowStyle">
-                <option value="0">Standard Double/Single Hung (+$0)</option>
-                <option value="150">Casement / Awning Windows (+$150 per window)</option>
-                <option value="400">Bay / Bow / Custom Picture (+$400 per window)</option>
+            <label>Window Style Premium (Average over project)</label>
+            <select id="style">
+                <option value="0" selected>Standard Double/Single Hung (+$0)</option>
+                <option value="150">Mix of Casement / Awning Windows (+$150 avg/window)</option>
+                <option value="300">Large Custom / Bay / Bow (+$300 avg/window)</option>
             </select>
-            
-            <button onclick="calcWindows()">Estimate Replacement Cost</button>
-            
-            <div class="result-box">
-                Estimated Total: <br><span id="windowTotal" style="color:#0284c7; font-size: 2rem;">$6,000</span>
-            </div>
+
+            <label>Installation Type</label>
+            <select id="install">
+                <option value="200" selected>Retrofit / Pocket Insert ($200 labor/window)</option>
+                <option value="400">Full-Frame Replacement to Studs ($400 labor/window)</option>
+            </select>
         </div>
 
-        <!-- SEO Article Content -->
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Planning Your Window Replacement Project</h2>
-            <p>Upgrading your windows improves energy efficiency, reduces noise, and boosts curb appeal. However, prices can fluctuate drastically depending on the materials and installation methods.</p>
+        <!-- Live Sticky Receipt -->
+        <div class="card receipt">
+            <h3>Project Estimate</h3>
+
+            <div class="result-row">
+                <span>Materials & Hardware:</span>
+                <span id="matCost">$0</span>
+            </div>
             
-            <h3>Retrofit vs. Full-Frame Installation</h3>
-            <ul>
-                <li><strong>Retrofit (Insert) Windows:</strong> The most common and affordable method. The contractor leaves your existing window frame and exterior trim intact, inserting the new window into the old opening. This is calculated in our standard pricing above.</li>
-                <li><strong>Full-Frame Replacement:</strong> Requires stripping the window down to the house framing (studs). This is necessary if there is rot or if you are changing the size of the window. Expect to add $150 to $300 per window for the extra labor and exterior trim work.</li>
-            </ul>
+            <div class="result-row">
+                <span>Contractor Labor:</span>
+                <span id="laborCost">$0</span>
+            </div>
 
-            <h3>Energy Efficiency Upgrades</h3>
-            <p>When selecting your windows, look for the Energy Star label. Upgrading from double-pane to triple-pane glass, or adding Argon gas fills and Low-E (low-emissivity) coatings will increase the upfront cost but maximize your savings on heating and cooling bills over time.</p>
-        </article>
-
-        <!-- Affiliate Monetization Section -->
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Find Hidden Energy Leaks</h3>
-            <p style="color: #475569;">Not sure which windows to replace first? Use a thermal leak detector to pinpoint your home's worst drafts.</p>
-            <a href="https://www.amazon.com/s?k=thermal+leak+detector&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Thermal Detectors on Amazon</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div class="total-row">
+                <span>Total Estimated Cost:</span>
+                <span id="totalCost">$0</span>
+            </div>
+            
+            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 0.9rem; color: #94a3b8;">Average Cost Per Window</span><br>
+                <span id="perWindow" style="font-size: 1.5rem; font-weight: bold; color: #38bdf8;">$0</span>
+            </div>
         </div>
     </main>
 
-    <script>
-        function calcWindows() {
-            const count = parseInt(document.getElementById('windowCount').value) || 0;
-            const materialPrice = parseFloat(document.getElementById('frameMaterial').value) || 0;
-            const stylePremium = parseFloat(document.getElementById('windowStyle').value) || 0;
-            
-            const costPerWindow = materialPrice + stylePremium;
-            const totalCost = count * costPerWindow;
-            
-            document.getElementById('windowTotal').innerText = `$${totalCost.toLocaleString()}`;
-        }
-        
-        calcWindows();
-    </script>
+    <!-- Affiliate Monetization Section -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Find Hidden Energy Leaks</h3>
+        <p style="color: #475569;">Not sure which windows to replace first? Use a thermal leak detector to pinpoint your home's worst drafts and prioritize the replacements.</p>
+        <a href="https://www.amazon.com/s?k=thermal+leak+detector&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Thermal Detectors on Amazon</a>
+    </div>
 
-    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
-        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
-    </footer>
+    <script>
+        function updateWindows() {
+            const count = parseInt(document.getElementById('count').value);
+            const matPrice = parseInt(document.getElementById('material').value);
+            const stylePrice = parseInt(document.getElementById('style').value);
+            const laborPrice = parseInt(document.getElementById('install').value);
+            
+            document.getElementById('countVal').innerText = count + (count === 1 ? ' Window' : ' Windows');
+
+            // Math
+            const matTotal = count * (matPrice + stylePrice);
+            const laborTotal = count * laborPrice;
+            const total = matTotal + laborTotal;
+            const avgPer = Math.round(total / count);
+
+            // Update DOM
+            document.getElementById('matCost').innerText = '$' + matTotal.toLocaleString();
+            document.getElementById('laborCost').innerText = '$' + laborTotal.toLocaleString();
+            document.getElementById('totalCost').innerText = '$' + total.toLocaleString();
+            document.getElementById('perWindow').innerText = '$' + avgPer.toLocaleString();
+        }
+
+        document.getElementById('count').addEventListener('input', updateWindows);
+        document.getElementById('material').addEventListener('change', updateWindows);
+        document.getElementById('style').addEventListener('change', updateWindows);
+        document.getElementById('install').addEventListener('change', updateWindows);
+
+        updateWindows();
+    </script>
 </body>
 </html>
