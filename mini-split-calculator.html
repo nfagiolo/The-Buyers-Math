@@ -13,71 +13,154 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-Split AC Cost Estimator</title>
-    <meta name="description" content="Estimate the installation cost of a ductless mini-split system based on the number of indoor zones.">
+    <title>Pro Ductless Mini-Split Cost & Sizing Estimator</title>
+    <meta name="description" content="Calculate required BTUs and estimated installation costs for a ductless mini-split AC system.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
-        button:hover { background: #0369a1; }
-        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; border: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
+        
+        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .receipt h3 { color: #38bdf8; border-color: #334155; }
+        
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        .val-display { color: #0284c7; float: right; font-weight: bold; }
+        
+        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
+        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
+        
+        .checkbox-item { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 1rem; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0; cursor: pointer; }
+        .checkbox-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: #0284c7; }
+        
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
+        .tax-credit { background: #16a34a; color: white; padding: 0.75rem; border-radius: 6px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.1rem; display: none; }
     </style>
 </head>
 <body>
     <header style="text-align: center; margin-bottom: 2rem;">
-        <h1>Ductless Mini-Split Cost Estimator</h1>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Mini-Split Cost & Sizing Estimator</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">Determine required BTUs and budget for multi-zone ductless installations.</p>
     </header>
 
-    <main>
+    <main class="split-layout">
+        <!-- Interactive Inputs -->
         <div class="card">
-            <label for="zones">Number of Indoor Zones (Heads)</label>
+            <h3>System Sizing</h3>
+            
+            <label>Total Space to Cool/Heat (Sq Ft) <span class="val-display" id="sqftVal">1,000 Sq Ft</span></label>
+            <input type="range" id="sqft" min="200" max="3000" step="100" value="1000">
+            
+            <label>Number of Indoor Zones (Heads)</label>
             <select id="zones">
-                <option value="1">1 Zone (Single Room / Garage)</option>
+                <option value="1">1 Zone (Single Room / Garage / Add-on)</option>
                 <option value="2">2 Zones</option>
                 <option value="3" selected>3 Zones</option>
                 <option value="4">4 Zones</option>
                 <option value="5">5 Zones</option>
             </select>
-            
-            <label for="quality">Equipment Tier</label>
-            <select id="quality">
-                <option value="3500">Standard Efficiency ($3,500 per zone)</option>
-                <option value="5000" selected>High Efficiency / Cold Climate ($5,000 per zone)</option>
+
+            <h3 style="margin-top: 2rem;">Hardware Quality</h3>
+            <label>Equipment Tier</label>
+            <select id="efficiency">
+                <option value="standard">Standard (18 SEER / Basic Heating)</option>
+                <option value="premium" selected>Hyper-Heat (22+ SEER / Works in extreme cold)</option>
             </select>
-            
-            <button onclick="calcMiniSplit()">Estimate Installation Cost</button>
-            
-            <div class="result-box">
-                Estimated Total: <br><span id="splitTotal" style="color:#0284c7; font-size: 2rem;">$15,000</span>
-            </div>
+
+            <label class="checkbox-item">
+                <input type="checkbox" id="panelUpgrade">
+                <div>
+                    <strong>Electrical Panel Upgrade Required?</strong><br>
+                    <span style="font-size: 0.9rem; color: #64748b; font-weight: normal;">(Check if your home still has a 100 Amp panel or lacks available breakers)</span>
+                </div>
+            </label>
         </div>
 
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Why Choose a Ductless Mini-Split?</h2>
-            <p>Ductless mini-splits are incredibly efficient heating and cooling systems. They require no ductwork, making them perfect for older homes, new additions, or specific rooms that are always too hot or too cold.</p>
+        <!-- Live Sticky Receipt -->
+        <div class="card receipt">
+            <h3>Installation Estimate</h3>
             
-            <h3>Understanding Installation Costs</h3>
-            <p>The total cost is largely driven by the number of indoor units (heads) you need connected to the outdoor condenser. High-efficiency "hyper-heat" models designed for cold climates cost more upfront but qualify for significant federal tax credits and state rebates.</p>
-        </article>
+            <div class="result-row">
+                <span>Required Capacity:</span>
+                <span id="btuReq" style="color: #38bdf8; font-weight:bold;">0 BTU</span>
+            </div>
 
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Make Your Mini-Split Smart</h3>
-            <p style="color: #475569;">Upgrade your ductless AC with a smart controller. Adjust temperatures from your phone and set schedules to maximize your energy savings.</p>
-            <a href="https://www.amazon.com/s?k=smart+ac+controller+mini+split&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart AC Controllers</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div class="result-row">
+                <span>Equip. & Labor (Zones):</span>
+                <span id="hvacCost">$0</span>
+            </div>
+            
+            <div class="result-row" id="elecRow" style="display: none;">
+                <span>Electrical Upgrades:</span>
+                <span id="elecCost">$2,500</span>
+            </div>
+
+            <div class="total-row">
+                <span>Total Installed Cost:</span>
+                <span id="totalCost">$0</span>
+            </div>
+            
+            <div id="taxCredit" class="tax-credit">
+                Premium systems may qualify for up to $2,000 Federal Tax Credit (25C).
+            </div>
         </div>
     </main>
 
+    <!-- Affiliate Monetization Section -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Make Your Mini-Split Smart</h3>
+        <p style="color: #475569;">Upgrade your ductless AC with a smart controller. Adjust temperatures from your phone and set automated schedules to maximize your energy savings.</p>
+        <a href="https://www.amazon.com/s?k=smart+ac+controller+mini+split&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart AC Controllers</a>
+    </div>
+
     <script>
-        function calcMiniSplit() {
-            const zones = parseInt(document.getElementById('zones').value) || 0;
-            const costPerZone = parseInt(document.getElementById('quality').value) || 0;
-            const total = zones * costPerZone;
-            document.getElementById('splitTotal').innerText = `$${total.toLocaleString()}`;
+        function updateMiniSplit() {
+            const sqft = parseInt(document.getElementById('sqft').value);
+            const zones = parseInt(document.getElementById('zones').value);
+            const efficiency = document.getElementById('efficiency').value;
+            const needsPanel = document.getElementById('panelUpgrade').checked;
+            
+            // Update UI Labels
+            document.getElementById('sqftVal').innerText = sqft.toLocaleString() + ' Sq Ft';
+
+            // Math: BTUs (Rule of thumb: 20 BTUs per sqft)
+            const btus = Math.ceil((sqft * 20) / 1000) * 1000;
+            let btuText = btus.toLocaleString() + " BTU";
+            if (btus >= 12000) {
+                btuText += ` (${(btus / 12000).toFixed(1)} Tons)`;
+            }
+
+            // Math: Cost
+            // Base cost per zone (Head + Condenser allocation + Labor)
+            let costPerZone = efficiency === 'premium' ? 4800 : 3600;
+            
+            // Discount slightly for 3+ zones (economies of scale on condenser)
+            if (zones >= 3) costPerZone = costPerZone * 0.9;
+            
+            let hvacTotal = Math.round(zones * costPerZone);
+            let elecTotal = needsPanel ? 2500 : 0;
+            let finalTotal = hvacTotal + elecTotal;
+
+            // 3. Update DOM
+            document.getElementById('btuReq').innerText = btuText;
+            document.getElementById('hvacCost').innerText = '$' + hvacTotal.toLocaleString();
+            
+            document.getElementById('elecRow').style.display = needsPanel ? 'flex' : 'none';
+            document.getElementById('totalCost').innerText = '$' + finalTotal.toLocaleString();
+            
+            document.getElementById('taxCredit').style.display = efficiency === 'premium' ? 'block' : 'none';
         }
-        calcMiniSplit();
+
+        document.getElementById('sqft').addEventListener('input', updateMiniSplit);
+        document.getElementById('zones').addEventListener('change', updateMiniSplit);
+        document.getElementById('efficiency').addEventListener('change', updateMiniSplit);
+        document.getElementById('panelUpgrade').addEventListener('change', updateMiniSplit);
+
+        updateMiniSplit();
     </script>
 </body>
 </html>
