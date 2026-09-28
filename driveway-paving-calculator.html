@@ -2,48 +2,44 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-V4GTQSCFW6');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4GTQSCFW6');
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
+    <!-- Google AdSense -->
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 Driveway Paving Cost Estimator & Guide</title>
-    <meta name="description" content="Calculate estimated driveway paving costs for asphalt, concrete, gravel, and pavers based on square footage and options.">
+    <meta name="description" content="Compare costs for asphalt, concrete, and pavers based on 2026 square footage rates.">
+    
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-        select, input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
         button:hover { background: #0369a1; }
-        .result { font-size: 1.5rem; font-weight: bold; color: #0891b2; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; }
-        article h2 { color: #0f172a; margin-top: 2rem; }
-        .lead-widget { padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; border: 2px dashed #cbd5e1; margin-bottom: 2rem; }
+        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; margin-top: 1rem; border: 1px solid #e2e8f0; }
     </style>
 </head>
 <body>
     <header>
         <h1>Driveway Paving Cost Estimator</h1>
-        <p>Compare costs for asphalt, concrete, and pavers based on 2026 square footage rates.</p>
     </header>
+
     <main>
-        <!-- Amazon Affiliate Banner -->
-        <div class="amazon-affiliate-banner" data-store-id="nfagiolo-20" style="text-align: center; margin-bottom: 1.5rem;">
-            <a href="https://amzn.to/3z" target="_blank" rel="nofollow noopener">MasonryDefender Penetrating Concrete Sealer</a>
-        </div>
-
+        <!-- Calculator Tool -->
         <div class="card">
-            <label for="dSqft">Driveway Size (Square Feet)</label>
-            <input type="number" id="dSqft" value="600">
-            <p style="font-size: 0.85rem; color: #64748b; margin-top: -1rem; margin-bottom: 1rem;">(A standard 2-car driveway is about 400-600 sq ft)</p>
-
-            <label for="dMat">Material Choice</label>
-            <select id="dMat">
+            <label for="drivewaySqft">Driveway Size (Square Feet) <br><small style="color:#64748b; font-weight:normal;">(A standard 2-car driveway is about 400-600 sq ft)</small></label>
+            <input type="number" id="drivewaySqft" value="600">
+            
+            <label for="materialChoice">Material Choice</label>
+            <select id="materialChoice">
                 <option value="2">Gravel ($2/sq ft)</option>
                 <option value="8" selected>Asphalt ($8/sq ft)</option>
                 <option value="11">Standard Concrete ($11/sq ft)</option>
@@ -51,18 +47,21 @@
                 <option value="20">Brick/Stone Pavers ($20/sq ft)</option>
             </select>
 
-            <label for="dDemo">Existing Driveway Removal?</label>
-            <select id="dDemo">
+            <label for="removal">Existing Driveway Removal?</label>
+            <select id="removal">
                 <option value="0">No (New installation or overlay)</option>
                 <option value="2">Yes, rip out old driveway (+$2/sq ft)</option>
             </select>
-
+            
             <button onclick="calcDriveway()">Calculate Paving Cost</button>
-
-            <div id="dResult" class="result" style="display:none;"></div>
+            
+            <div class="result-box">
+                Estimated Cost: <br><span id="drivewayTotal" style="color:#0284c7; font-size: 2rem;">$4,800</span>
+            </div>
         </div>
 
-        <article>
+        <!-- SEO Article Content -->
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
             <h2>Driveway Material Comparison (2026 Cost Breakdown)</h2>
             <p>Choosing the right driveway material balances upfront budget, climate durability, and long-term maintenance. Here is how popular materials compare for a standard 600 sq. ft. driveway:</p>
             <ul>
@@ -72,7 +71,7 @@
                 <li><strong>Stamped Concrete & Pavers ($9,600 - $15,000+):</strong> Offers high curb appeal and luxury finish. Individual pavers are easy to repair, but labor costs are significant.</li>
             </ul>
 
-            <h2>Key Cost Factors Beyond Materials</h2>
+            <h3>Key Cost Factors Beyond Materials</h3>
             <p>When obtaining contractor quotes, ensure they account for these hidden installation variables:</p>
             <ul>
                 <li><strong>Sub-base Preparation:</strong> A stable 4 to 8-inch crushed stone sub-base is required. Poor excavation leads to sagging and premature cracking.</li>
@@ -80,26 +79,32 @@
                 <li><strong>Permits & Codes:</strong> Most municipalities require permits for driveway aprons connecting to public roads.</li>
             </ul>
         </article>
+
+        <!-- Affiliate Monetization Section -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-top: 0; color: #0f172a;">Keep Your Driveway Pristine</h3>
+            <p style="color: #475569;">Protect your new asphalt or concrete investment with regular cleaning using a high-powered electric pressure washer.</p>
+            <a href="https://www.amazon.com/s?k=electric+pressure+washer+driveway&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Pressure Washers on Amazon</a>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+        </div>
     </main>
 
     <script>
         function calcDriveway() {
-            const sqft = parseFloat(document.getElementById('dSqft').value) || 0;
-            const matCost = parseFloat(document.getElementById('dMat').value);
-            const demoCost = parseFloat(document.getElementById('dDemo').value);
-
-            if (sqft <= 0) {
-                alert("Please enter a valid square footage.");
-                return;
-            }
-
-            const totalPerSqft = matCost + demoCost;
-            const total = sqft * totalPerSqft;
-
-            const resultDiv = document.getElementById('dResult');
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = `Estimated Total Cost: $${total.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            const sqft = parseFloat(document.getElementById('drivewaySqft').value) || 0;
+            const matPrice = parseFloat(document.getElementById('materialChoice').value) || 0;
+            const removePrice = parseFloat(document.getElementById('removal').value) || 0;
+            
+            const totalCost = sqft * (matPrice + removePrice);
+            
+            document.getElementById('drivewayTotal').innerText = `$${totalCost.toLocaleString()}`;
         }
+        
+        calcDriveway();
     </script>
+
+    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
+        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    </footer>
 </body>
 </html>
