@@ -13,77 +13,151 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backup Generator Sizing Calculator</title>
-    <meta name="description" content="Calculate the running wattage and starting surge needed to power your home appliances during an outage.">
+    <title>Pro Backup Generator Sizing Calculator</title>
+    <meta name="description" content="Calculate the exact running wattage, starting surge, and safety margin needed to power your home during an outage.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
-        .checkbox-group label { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; cursor: pointer; }
-        input[type="checkbox"] { width: 20px; height: 20px; margin: 0; }
-        button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: none; background: #0284c7; color: white; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
-        button:hover { background: #0369a1; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; }
-        .box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.1rem; font-weight: bold; border: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
+        
+        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .receipt h3 { color: #38bdf8; border-color: #334155; }
+        
+        .checkbox-group { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+        .checkbox-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0; cursor: pointer; transition: 0.2s; }
+        .checkbox-item:hover { border-color: #94a3b8; }
+        .checkbox-item label { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-weight: 500; width: 100%; }
+        .checkbox-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: #0284c7; }
+        .item-watts { color: #64748b; font-size: 0.9rem; }
+        
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
+        .safety-note { font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem; }
     </style>
 </head>
 <body>
     <header style="text-align: center; margin-bottom: 2rem;">
-        <h1>Backup Generator Sizing Guide</h1>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Backup Generator Sizing Guide</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">Select your essential appliances to calculate your exact power requirements.</p>
     </header>
 
-    <main>
+    <main class="split-layout">
+        <!-- Interactive Inputs -->
         <div class="card">
-            <h3>Select Appliances to Power Simultaneously:</h3>
+            <h3>Kitchen & Cooling</h3>
             <div class="checkbox-group">
-                <label><input type="checkbox" id="fridge" value="700" data-surge="1500" checked> Refrigerator / Freezer</label>
-                <label><input type="checkbox" id="sump" value="800" data-surge="1300"> Sump Pump</label>
-                <label><input type="checkbox" id="well" value="1000" data-surge="2000"> Well Pump</label>
-                <label><input type="checkbox" id="windowAc" value="1200" data-surge="2400"> Window AC Unit</label>
-                <label><input type="checkbox" id="lights" value="400" data-surge="0" checked> Lights, TV, & Device Chargers</label>
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="700" data-surge="1500" checked> Refrigerator / Freezer</label>
+                    <span class="item-watts">700W / 2200W Surge</span>
+                </div>
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="1200" data-surge="2400"> Window AC Unit (10k BTU)</label>
+                    <span class="item-watts">1200W / 3600W Surge</span>
+                </div>
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="1500" data-surge="0"> Microwave (Intermittent)</label>
+                    <span class="item-watts">1500W</span>
+                </div>
             </div>
-            
-            <button onclick="calcGenerator()">Calculate Required Wattage</button>
-            
-            <div class="grid">
-                <div class="box">Running Watts<br><span id="runWatts" style="color:#0284c7; font-size: 1.75rem;">1,100 W</span></div>
-                <div class="box">Minimum Surge (Starting)<br><span id="surgeWatts" style="color:#eab308; font-size: 1.75rem;">2,600 W</span></div>
+
+            <h3>Home Essentials</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="800" data-surge="1300" checked> Sump Pump (1/3 HP)</label>
+                    <span class="item-watts">800W / 2100W Surge</span>
+                </div>
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="1000" data-surge="2000"> Well Pump (1/2 HP)</label>
+                    <span class="item-watts">1000W / 3000W Surge</span>
+                </div>
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="500" data-surge="500"> Gas Furnace Blower Fan</label>
+                    <span class="item-watts">500W / 1000W Surge</span>
+                </div>
+                <div class="checkbox-item">
+                    <label><input type="checkbox" class="gen-item" data-run="400" data-surge="0" checked> Lights, TV, Router & Phones</label>
+                    <span class="item-watts">400W</span>
+                </div>
             </div>
         </div>
 
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Running Watts vs. Starting Watts</h2>
-            <p>Generators are rated by two numbers. <strong>Running watts</strong> are the continuous power needed to keep your appliances running. <strong>Starting watts (surge)</strong> are the extra burst of power required for a few seconds to start electric motors, like those in refrigerators and well pumps.</p>
-            <p>Your generator must be large enough to handle the total running watts of all connected items, plus the highest starting surge of the largest single motor you plan to run.</p>
-        </article>
+        <!-- Live Sticky Receipt -->
+        <div class="card receipt">
+            <h3>Power Requirements</h3>
+            <div class="result-row">
+                <span>Total Running Watts:</span>
+                <span id="runWatts">0 W</span>
+            </div>
+            <div class="result-row">
+                <span>Max Starting Surge:</span>
+                <span id="surgeWatts">0 W</span>
+            </div>
+            <div class="safety-note">Highest single motor surge added to running total.</div>
+            
+            <div class="total-row">
+                <span>Minimum Size:</span>
+                <span id="minSize">0 W</span>
+            </div>
+            
+            <div class="total-row" style="border: none; padding-top: 0; color: #38bdf8;">
+                <span>Recommended Size:</span>
+                <span id="recSize">0 W</span>
+            </div>
+            <div class="safety-note">Includes a 20% safety buffer so you don't run the generator at 100% capacity.</div>
 
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Connect Safely During Outages</h3>
-            <p style="color: #475569;">Never plug a generator directly into a wall outlet. Ensure you have the proper heavy-duty extension cords to safely route power to your essential appliances.</p>
-            <a href="https://www.amazon.com/s?k=heavy+duty+generator+extension+cord&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Generator Cords on Amazon</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div style="margin-top: 2rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 0.9rem; color: #94a3b8;">Estimated Generator Cost</span><br>
+                <span id="estPrice" style="font-size: 1.5rem; font-weight: bold; color: #22c55e;">$0</span>
+            </div>
         </div>
     </main>
 
+    <!-- Affiliate Monetization Section -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Connect Safely During Outages</h3>
+        <p style="color: #475569;">Never plug a generator directly into a wall outlet without a transfer switch. Ensure you have proper heavy-duty extension cords to route power safely.</p>
+        <a href="https://www.amazon.com/s?k=heavy+duty+generator+extension+cord&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Generator Cords on Amazon</a>
+    </div>
+
     <script>
-        function calcGenerator() {
+        function calculateGenerator() {
             let runningTotal = 0;
             let highestSurge = 0;
             
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            checkboxes.forEach((cb) => {
-                runningTotal += parseInt(cb.value);
-                const surge = parseInt(cb.getAttribute('data-surge'));
-                if (surge > highestSurge) highestSurge = surge;
+            // Calculate totals
+            document.querySelectorAll('.gen-item').forEach(item => {
+                if(item.checked) {
+                    runningTotal += parseInt(item.getAttribute('data-run'));
+                    let surge = parseInt(item.getAttribute('data-surge'));
+                    if(surge > highestSurge) highestSurge = surge;
+                }
             });
             
-            const totalSurgeNeeded = runningTotal + highestSurge;
+            const totalRequired = runningTotal + highestSurge;
+            const recommended = Math.ceil((totalRequired * 1.2) / 100) * 100; // 20% safety margin, rounded to 100
             
-            document.getElementById('runWatts').innerText = `${runningTotal.toLocaleString()} W`;
-            document.getElementById('surgeWatts').innerText = `${totalSurgeNeeded.toLocaleString()} W`;
+            // Estimate price based on $1.20 per watt for inverters / $0.80 for standard
+            const estCost = Math.round(recommended * 0.90); 
+
+            // Update UI
+            document.getElementById('runWatts').innerText = runningTotal.toLocaleString() + ' W';
+            document.getElementById('surgeWatts').innerText = highestSurge.toLocaleString() + ' W';
+            document.getElementById('minSize').innerText = totalRequired.toLocaleString() + ' W';
+            document.getElementById('recSize').innerText = recommended.toLocaleString() + ' W';
+            document.getElementById('estPrice').innerText = '$' + estCost.toLocaleString();
         }
-        calcGenerator();
+
+        // Add event listeners to all checkboxes for real-time updates
+        document.querySelectorAll('.gen-item').forEach(item => {
+            item.addEventListener('change', calculateGenerator);
+        });
+
+        // Run once on load
+        calculateGenerator();
     </script>
 </body>
 </html>
