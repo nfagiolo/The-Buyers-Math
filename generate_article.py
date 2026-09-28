@@ -90,7 +90,8 @@ with open(filename, "w", encoding="utf-8") as f:
     f.write(template)
 
 # Inject the link into the homepage
-link_html = f'<li><span style="color:#94a3b8; font-size:0.9em; margin-right:10px;">{date_str}</span> <a href="{filename}" style="color:#0284c7; font-weight:500; text-decoration:none;">{topic}</a></li>\n                <!-- ARTICLES_LIST_MARKER -->'
+# Inject the link into the homepage
+link_html = f'<li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">{date_str}</span> <a href="{filename}" style="color:#0f172a; font-weight:600; text-decoration:none;">{topic}</a></li>\n                <!-- ARTICLES_LIST_MARKER -->'
 
 with open("index.html", "r", encoding="utf-8") as f:
     index_html = f.read()
