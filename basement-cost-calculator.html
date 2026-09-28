@@ -1,54 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4GTQSCFW6');
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basement Cost Calculator | Estimate Your Basement Remodel Costs</title>
-    <meta name="description" content="Estimate your basement remodeling and finishing costs based on square footage, finish level, bathroom additions, and egress windows.">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID" crossorigin="anonymous"></script>
+    <title>Basement Finishing Cost Estimator</title>
+    <meta name="description" content="Estimate the total project cost of finishing your basement based on square footage, finish quality, and added amenities like a bathroom.">
+    
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
+        button:hover { background: #0369a1; }
+        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; margin-top: 1rem; border: 1px solid #e2e8f0; }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Basement Cost Calculator</h1>
+        <h1>Basement Finishing Cost Estimator</h1>
     </header>
-    <main>
-        <!-- Google Adsense Ad Unit -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
 
-        <!-- Amazon Affiliate Banner -->
-        <div class="amazon-affiliate-banner" data-store-id="nfagiolo-20">
-            <a href="https://amzn.to/3z" target="_blank" rel="nofollow noopener">AEOCKY 5500 Sq.Ft Energy Star Dehumidifier</a>
+    <main>
+        <!-- Calculator Tool -->
+        <div class="card">
+            <label for="basementSqft">Basement Size (Square Feet)</label>
+            <input type="number" id="basementSqft" value="800">
+            
+            <label for="basementQuality">Finish Level</label>
+            <select id="basementQuality">
+                <option value="40">Basic (Drywall, Carpet, Standard Lighting - $40/sq ft)</option>
+                <option value="75" selected>Standard (LVP Flooring, Trim, Recessed Lights - $75/sq ft)</option>
+                <option value="120">Premium (Custom Built-ins, Soundproofing, High-End Trim - $120/sq ft)</option>
+            </select>
+
+            <label for="addBathroom">Add a Full Bathroom?</label>
+            <select id="addBathroom">
+                <option value="0">No Bathroom ($0)</option>
+                <option value="15000">Yes, Add Full Bathroom ($15,000 avg)</option>
+            </select>
+            
+            <button onclick="calcBasement()">Estimate Cost</button>
+            
+            <div class="result-box">
+                Estimated Cost: <br><span id="basementTotal" style="color:#0284c7; font-size: 2rem;">$75,000</span>
+            </div>
         </div>
 
-        <div style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Understanding Your Basement Remodel Estimate</h2>
-            <p>Transforming an unfinished basement into a livable space is one of the most cost-effective ways to add square footage to your home. However, basement finishing costs can vary wildly depending on your goals, space condition, and choices.</p>
-            <h3>Key Variables In This Calculator</h3>
+        <!-- SEO Article Content -->
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+            <h2>Planning Your Basement Remodel</h2>
+            <p>Finishing a basement is one of the most cost-effective ways to add livable square footage to your home. Because the foundation, roof, and exterior walls are already in place, the cost per square foot is generally much lower than an outward home addition.</p>
+            
+            <h3>Understanding the Costs</h3>
             <ul>
-                <li><strong>Square Footage:</strong> The overall size of the space dictates the amount of framing, drywall, flooring, and paint required. Larger open concepts cost less per square foot than basements subdivided into multiple rooms.</li>
-                <li><strong>Finish Level:</strong> A basic finish (drywall, carpet, standard lighting) is highly affordable. Premium upgrades like custom wet bars, home theaters, soundproofing, and luxury vinyl plank (LVP) significantly increase material costs.</li>
-                <li><strong>Adding a Bathroom:</strong> Installing a new bathroom requires breaking into the concrete slab to tie into existing plumbing lines, making it one of the largest single expenses in a basement remodel.</li>
+                <li><strong>The Basics:</strong> Framing, running electrical wiring, insulating the walls, and hanging drywall are the core components of turning an unfinished space into a habitable room.</li>
+                <li><strong>Adding Plumbing:</strong> If your basement isn't already roughed-in for plumbing, trenching the concrete floor to add a bathroom, wet bar, or kitchenette will significantly increase your baseline costs.</li>
+                <li><strong>Egress Requirements:</strong> Building codes require emergency egress windows for basement bedrooms. If your basement doesn't currently have one, cutting the foundation and installing a window well will add $3,000 to $5,000 to your budget.</li>
             </ul>
-            <h3>Additional Factors Influencing Final Costs</h3>
-            <ul>
-                <li><strong>Waterproofing and Moisture Control:</strong> You cannot finish a damp basement. Installing French drains, sump pumps, and vapor barriers must be done prior to framing.</li>
-                <li><strong>Egress Windows:</strong> If you plan to add a legal bedroom, building codes require an egress window for emergency exit. This involves excavating the exterior foundation and cutting through the foundation wall.</li>
-                <li><strong>HVAC and Electrical:</strong> Tying the new space into your existing heating and cooling system, upgrading your electrical panel to handle the new load, and adding sub-panels can add thousands.</li>
-            </ul>
-            <h3>Frequently Asked Questions</h3>
-            <ul>
-                <li><strong>Does finishing a basement add value?</strong> Yes, finished basements typically yield a 70% to 75% return on investment (ROI) upon resale, making them one of the best home improvement projects for value creation.</li>
-                <li><strong>Do I need a permit to finish my basement?</strong> Absolutely. Unpermitted basement work can lead to fines, forced tear-outs, and major complications when trying to sell your home.</li>
-            </ul>
+        </article>
+
+        <!-- Affiliate Monetization Section -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-top: 0; color: #0f172a;">Protect Your Basement Investment</h3>
+            <p style="color: #475569;">Keep your newly finished basement free of mold and moisture with a high-capacity smart dehumidifier.</p>
+            <a href="https://www.amazon.com/s?k=basement+dehumidifier+with+pump&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Basement Dehumidifiers</a>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
         </div>
     </main>
+
+    <script>
+        function calcBasement() {
+            const sqft = parseFloat(document.getElementById('basementSqft').value) || 0;
+            const ppsf = parseFloat(document.getElementById('basementQuality').value) || 0;
+            const bathroomCost = parseFloat(document.getElementById('addBathroom').value) || 0;
+            
+            const totalCost = (sqft * ppsf) + bathroomCost;
+            
+            document.getElementById('basementTotal').innerText = `$${totalCost.toLocaleString()}`;
+        }
+        
+        // Initialize calculation on page load
+        calcBasement();
+    </script>
+
+    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
+        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    </footer>
 </body>
 </html>
