@@ -12,7 +12,7 @@ Write a short, engaging 150-word daily tip focusing on the math and ROI behind o
 Format the output strictly as an HTML <div> with a bold <h3> header and standard paragraph text. 
 
 Monetization Requirements:
-1. Seamlessly integrate a relevant product recommendation contextually within the text using an Amazon Associates affiliate link structure: <a href="https://amazon.com/dp/ASIN_HERE/?tag=YOUR_AMAZON_TAG-20" target="_blank" rel="nofollow">Product Name</a>. Pick a real, relevant product type for the topic.
+1. Seamlessly integrate a relevant product recommendation contextually within the text using an Amazon Associates affiliate link structure: <a href="https://amazon.com/dp/ASIN_HERE/?tag=nfagiolo-20" target="_blank" rel="nofollow">Product Name</a>. Pick a real, relevant product type for the topic.
 2. Below the paragraph, insert this exact Google AdSense responsive ad unit block:
 <div style="margin-top: 20px; text-align: center;">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
