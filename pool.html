@@ -9,82 +9,139 @@
         gtag('js', new Date());
         gtag('config', 'G-V4GTQSCFW6');
     </script>
-    
-    <!-- Google AdSense -->
     <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pool Pump Energy Cost Calculator</title>
-    <meta name="description" content="Calculate the monthly and annual electricity cost of running your single or variable speed pool pump.">
+    <title>Pro Pool Pump Energy Calculator</title>
+    <meta name="description" content="Calculate your exact pool pump electricity costs and see your ROI for upgrading to a variable speed pump.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
-        button:hover { background: #0369a1; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; margin-top: 1rem; }
-        .box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.25rem; font-weight: bold; border: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6;}
+        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0284c7; color: #f8fafc; }
+        
+        h3 { color: #0f172a; margin-top: 0; }
+        .receipt h3 { color: #fff; }
+        
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        .val-display { color: #0284c7; float: right; font-weight: bold; }
+        
+        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
+        input[type="number"] { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; }
+        
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; text-align: center; }
+        .comp-box { background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); }
+        
+        .roi-banner { background: #16a34a; color: white; padding: 1rem; border-radius: 8px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.2rem; }
     </style>
 </head>
 <body>
     <header style="text-align: center; margin-bottom: 2rem;">
-        <h1>Pool Pump Energy Cost Calculator</h1>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Pool Pump Energy & ROI Calculator</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">See how much your current pump costs, and exactly how fast an upgrade pays for itself.</p>
     </header>
 
-    <main>
+    <main class="split-layout">
+        <!-- Sliders -->
         <div class="card">
-            <label for="pumpWatts">Pump Power (Watts)</label>
-            <input type="number" id="pumpWatts" value="1500">
+            <h3>Your Current Setup</h3>
             
-            <label for="hoursPerDay">Hours Run Per Day</label>
-            <input type="number" id="hoursPerDay" value="8">
-
-            <label for="kwhRate">Electricity Rate ($ per kWh)</label>
+            <label>Pump Power (Watts) <span class="val-display" id="wattVal">1500 W</span></label>
+            <input type="range" id="pumpWatts" min="500" max="3000" step="50" value="1500">
+            <small style="color: #64748b;">(A standard 1.5 HP single-speed pump uses ~1,500W)</small>
+            
+            <label>Hours Run Per Day <span class="val-display" id="hourVal">8 Hours</span></label>
+            <input type="range" id="hoursPerDay" min="1" max="24" step="1" value="8">
+            
+            <label>Electricity Rate ($ per kWh)</label>
             <input type="number" id="kwhRate" value="0.15" step="0.01">
-            
-            <button onclick="calcPoolPump()">Calculate Energy Cost</button>
-            
-            <div class="grid">
-                <div class="box">Monthly Cost<br><span id="monthlyCost" style="color:#0284c7; font-size: 1.75rem;">$54.00</span></div>
-                <div class="box">Annual Cost<br><span id="annualCost" style="color:#15803d; font-size: 1.75rem;">$648.00</span></div>
-            </div>
+            <small style="color: #64748b;">(Check your local utility bill for the exact rate)</small>
         </div>
 
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>How Much Does It Cost to Run a Pool Pump?</h2>
-            <p>Your pool pump is likely the second largest consumer of electricity in your home, right behind your HVAC system. A standard single-speed pump running 8 to 12 hours a day can easily add $50 to $100 to your monthly utility bill.</p>
+        <!-- Live Comparison Receipt -->
+        <div class="card receipt">
+            <h3>Annual Energy Cost</h3>
             
-            <h3>Single-Speed vs. Variable-Speed Pumps</h3>
-            <p>If you are still using a single-speed pump, upgrading to a variable-speed (VS) pump is one of the highest ROI home improvements you can make. VS pumps run at lower speeds for circulation and filtering, consuming up to 80% less electricity. Most homeowners recoup the cost of a variable-speed pump in energy savings within the first two years.</p>
-        </article>
+            <div class="comparison-grid">
+                <div class="comp-box">
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Single Speed (Current)</div>
+                    <div id="costOld" style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$657</div>
+                </div>
+                <div class="comp-box" style="background: #0ea5e9; border-color: #38bdf8;">
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Variable Speed (Upgrade)</div>
+                    <div id="costNew" style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$131</div>
+                </div>
+            </div>
 
-        <!-- Affiliate Monetization Section -->
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Stop Scrubbing, Start Swimming</h3>
-            <p style="color: #475569;">Ditch the manual vacuum. A robotic pool cleaner operates independently of your pool's pump system, saving energy and keeping your water crystal clear.</p>
-            <a href="https://www.amazon.com/s?k=robotic+pool+cleaner&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Robotic Pool Cleaners</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <span style="opacity: 0.9; font-size: 1.1rem;">Annual Savings:</span><br>
+                <span id="savings" style="font-size: 2.5rem; font-weight: bold; color: #fbbf24;">$526 / year</span>
+            </div>
+
+            <div class="roi-banner">
+                New Pump Pays For Itself In:<br>
+                <span id="roiTime" style="font-size: 1.8rem;">2.2 Years</span>
+            </div>
+            <p style="font-size: 0.8rem; text-align: center; opacity: 0.8; margin-top: 0.5rem;">*Assumes an installed variable speed upgrade cost of $1,200 and an 80% energy reduction.</p>
         </div>
     </main>
 
+    <!-- Affiliate Monetization Section -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Stop Scrubbing, Start Swimming</h3>
+        <p style="color: #475569;">Ditch the manual vacuum. A robotic pool cleaner operates independently of your pool's pump system, saving energy and keeping your water crystal clear.</p>
+        <a href="https://www.amazon.com/s?k=robotic+pool+cleaner&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Robotic Pool Cleaners</a>
+    </div>
+
     <script>
-        function calcPoolPump() {
-            const watts = parseFloat(document.getElementById('pumpWatts').value) || 0;
-            const hours = parseFloat(document.getElementById('hoursPerDay').value) || 0;
+        function updatePool() {
+            // Get values
+            const watts = parseInt(document.getElementById('pumpWatts').value);
+            const hours = parseInt(document.getElementById('hoursPerDay').value);
             const rate = parseFloat(document.getElementById('kwhRate').value) || 0;
             
+            // Update labels
+            document.getElementById('wattVal').innerText = watts.toLocaleString() + ' W';
+            document.getElementById('hourVal').innerText = hours + ' Hours';
+            
+            // Math: Current Single Speed
             const dailyKwh = (watts * hours) / 1000;
-            const dailyCost = dailyKwh * rate;
+            const annualOld = (dailyKwh * rate) * 365;
             
-            const monthly = dailyCost * 30;
-            const annual = dailyCost * 365;
+            // Math: Variable Speed (approx 80% more efficient)
+            const annualNew = annualOld * 0.20;
             
-            document.getElementById('monthlyCost').innerText = `$${monthly.toFixed(2)}`;
-            document.getElementById('annualCost').innerText = `$${annual.toFixed(2)}`;
+            const savings = annualOld - annualNew;
+            
+            // Math: ROI (Assumes $1,200 installed cost for new pump)
+            let roiYears = 0;
+            if(savings > 0) {
+                roiYears = 1200 / savings;
+            }
+
+            // UI Updates
+            document.getElementById('costOld').innerText = '$' + Math.round(annualOld).toLocaleString();
+            document.getElementById('costNew').innerText = '$' + Math.round(annualNew).toLocaleString();
+            document.getElementById('savings').innerText = '$' + Math.round(savings).toLocaleString() + ' / year';
+            
+            if(roiYears > 0 && roiYears < 15) {
+                document.getElementById('roiTime').innerText = roiYears.toFixed(1) + ' Years';
+            } else {
+                document.getElementById('roiTime').innerText = '15+ Years';
+            }
         }
-        calcPoolPump();
+
+        // Add Event Listeners for real-time calculation
+        document.getElementById('pumpWatts').addEventListener('input', updatePool);
+        document.getElementById('hoursPerDay').addEventListener('input', updatePool);
+        document.getElementById('kwhRate').addEventListener('input', updatePool);
+
+        // Run on load
+        updatePool();
     </script>
 </body>
 </html>
