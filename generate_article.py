@@ -35,7 +35,7 @@ Do NOT include ```html markdown blocks, head, or body tags, just the raw inner H
 
 # Call the model using the new syntax
 response = client.models.generate_content(
-    model='gemini-2.5-flash',
+    model='gemini-3.8-flash',
     contents=prompt
 )
 html_content = response.text.replace("```html", "").replace("```", "").strip()
