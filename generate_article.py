@@ -1,11 +1,10 @@
 import os
 import datetime
-import google.generativeai as genai
 import re
+from google import genai
 
-# Configure Gemini API
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Configure Gemini API using the new SDK
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 # A rotating list of highly-searchable long-tail topics related to your tools
 topics = [
@@ -34,7 +33,11 @@ Keep it factual, professional, and around 800 words.
 Do NOT include ```html markdown blocks, head, or body tags, just the raw inner HTML content.
 """
 
-response = model.generate_content(prompt)
+# Call the model using the new syntax
+response = client.models.generate_content(
+    model='gemini-2.5-flash',
+    contents=prompt
+)
 html_content = response.text.replace("```html", "").replace("```", "").strip()
 
 # Generate the file name and URL path
