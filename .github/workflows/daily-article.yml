@@ -1,0 +1,39 @@
+name: Generate Daily Blog Article
+
+on:
+  schedule:
+    # Runs at 12:00 UTC (8:00 AM EDT) every day
+    - cron: '0 12 * * *'
+  workflow_dispatch: # Allows you to manually trigger it with a button click
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install google-generativeai
+
+    - name: Run Article Generator
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: python generate_article.py
+
+    - name: Commit and Push Changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Automated daily article generation"
+        branch: main
