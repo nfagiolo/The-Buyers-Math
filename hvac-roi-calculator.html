@@ -13,96 +13,133 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heat Pump vs. Gas Furnace ROI Calculator</title>
-    <meta name="description" content="Calculate annual heating costs and compare ROI between a modern heat pump and a high-efficiency gas furnace based on electric and gas rates.">
+    <title>Pro HVAC Replacement & Heat Pump ROI Calculator</title>
+    <meta name="description" content="Compare the upfront costs and long-term energy savings of standard Gas Furnaces versus High-Efficiency Heat Pumps.">
     
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        input, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; }
-        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center; }
-        .box { padding: 1rem; border-radius: 8px; background: #f1f5f9; font-size: 1.25rem; font-weight: bold; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
+        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
+        
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
+        
+        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .receipt h3 { color: #38bdf8; border-color: #334155; }
+        
+        label { font-weight: bold; display: block; margin-top: 1.5rem; }
+        .val-display { color: #0284c7; float: right; font-weight: bold; }
+        
+        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
+        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
+        
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
+        .tax-credit { background: #16a34a; color: white; padding: 0.75rem; border-radius: 6px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.1rem; display: none; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Heat Pump vs. Gas Furnace Cost & ROI</h1>
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">HVAC & Heat Pump ROI Estimator</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">See how fast an energy-efficient upgrade pays for itself.</p>
     </header>
 
-    <main>
-        <!-- Calculator Tool -->
+    <main class="split-layout">
         <div class="card">
-            <label for="kwh">Electricity Rate ($/kWh)</label>
-            <input type="number" id="kwh" value="0.22" step="0.01">
-            <label for="therm">Natural Gas Rate ($/Therm)</label>
-            <input type="number" id="therm" value="1.50" step="0.10">
-            <label for="load">Annual Heating Load (MMBtu)</label>
-            <input type="number" id="load" value="60">
-            <button onclick="calcHVAC()">Compare Annual Costs</button>
-            <div class="grid">
-                <div class="box">Gas Furnace (96% AFUE)<br><span id="gasCost" style="color:#ef4444">$0</span></div>
-                <div class="box">Heat Pump (COP 3.0)<br><span id="hpCost" style="color:#15803d">$0</span></div>
-            </div>
+            <h3>Home & Energy Profile</h3>
+            <label>Home Size (Sq Ft) <span class="val-display" id="sqftVal">2,000 Sq Ft</span></label>
+            <input type="range" id="sqft" min="800" max="4000" step="100" value="2000">
+            
+            <label>Average Monthly Winter Heating Bill <span class="val-display" id="billVal">$150</span></label>
+            <input type="range" id="bill" min="50" max="500" step="10" value="150">
+            
+            <h3 style="margin-top: 2rem;">Upgrade Selection</h3>
+            <label>New System Type</label>
+            <select id="system">
+                <option value="gas" selected>Standard Gas Furnace & AC (Lower Upfront Cost)</option>
+                <option value="heatpump">High-Efficiency Heat Pump (Highest Savings)</option>
+            </select>
         </div>
 
-        <!-- SEO Article Content -->
-        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
-            <h2>Understanding Your HVAC Return on Investment</h2>
-            <p>Upgrading your home's heating, ventilation, and air conditioning (HVAC) system is a major capital expense, but highly efficient modern units can drastically reduce your monthly energy bills. This calculator estimates annual operational heating costs comparing a standard high-efficiency gas furnace against a modern electric heat pump.</p>
+        <div class="card receipt">
+            <h3>Project Estimate</h3>
             
-            <h3>Key Variables in This Calculator</h3>
-            <ul>
-                <li><strong>Electricity vs. Gas Rates:</strong> Energy prices vary significantly by region. In areas with low electric rates or high gas prices, heat pumps offer substantial savings. Conversely, cheap natural gas makes a high-efficiency furnace very competitive.</li>
-                <li><strong>Annual Heating Load (MMBtu):</strong> Measured in Million British Thermal Units, this represents how much heat energy your home requires per winter. Cold northern climates might use 80+ MMBtu, whereas mild southern climates may need less than 30 MMBtu.</li>
-                <li><strong>Efficiency Ratings (AFUE vs. COP):</strong> Modern furnaces are rated by AFUE (Annual Fuel Utilization Efficiency); 96% means 96% of gas becomes heat. Heat pumps are rated by COP (Coefficient of Performance); a COP of 3.0 means the unit produces 3 units of heat energy for every 1 unit of electricity consumed.</li>
-            </ul>
+            <div class="result-row">
+                <span>System & Labor Cost:</span>
+                <span id="sysCost">$0</span>
+            </div>
             
-            <h3>Additional Factors Influencing HVAC ROI</h3>
-            <ul>
-                <li><strong>Federal Incentives & Rebates:</strong> Under programs like the Inflation Reduction Act (IRA), homeowners can qualify for up to $2,000 in federal tax credits for eligible heat pumps, significantly reducing initial upfront equipment cost.</li>
-                <li><strong>Cooling Included:</strong> Remember that heat pumps provide both heating AND air conditioning. If your existing central AC unit is also due for replacement, installing a heat pump solves both needs at once.</li>
-            </ul>
-            
-            <h3>Frequently Asked Questions</h3>
-            <ul>
-                <li><strong>Do heat pumps work in freezing weather?</strong> Yes, modern cold-climate heat pumps can maintain high efficiency even when outdoor temperatures drop below zero degrees Fahrenheit.</li>
-            </ul>
-        </article>
+            <div id="taxCredit" class="tax-credit">
+                Qualifies for $2,000 Federal Tax Credit
+            </div>
 
-        <!-- Affiliate Monetization Section -->
-        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
-            <h3 style="margin-top: 0; color: #0f172a;">Optimize Your HVAC Savings</h3>
-            <p style="color: #475569;">Pair your high-efficiency system with a smart thermostat to save an additional 10-15% on heating and cooling costs.</p>
-            <a href="https://www.amazon.com/s?k=smart+thermostat&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart Thermostats on Amazon</a>
-            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
+            <div class="total-row">
+                <span>Net Upfront Cost:</span>
+                <span id="netCost">$0</span>
+            </div>
+            
+            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 0.9rem; color: #94a3b8;">Est. Annual Energy Savings</span><br>
+                <span id="savings" style="font-size: 1.8rem; font-weight: bold; color: #22c55e;">$0</span>
+                <div id="roiText" style="margin-top: 0.5rem; font-size: 0.9rem; color: #38bdf8;"></div>
+            </div>
         </div>
     </main>
 
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Maximize Your Efficiency</h3>
+        <p style="color: #475569;">A new HVAC system works best with a smart thermostat. Ecobee and Nest models learn your schedule to eliminate wasted energy while you are asleep or away.</p>
+        <a href="https://www.amazon.com/s?k=smart+thermostat+ecobee+nest&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart Thermostats on Amazon</a>
+    </div>
+
     <script>
-        function calcHVAC() {
-            const kwh = parseFloat(document.getElementById('kwh').value) || 0;
-            const therm = parseFloat(document.getElementById('therm').value) || 0;
-            const load = parseFloat(document.getElementById('load').value) || 0;
+        function updateHVAC() {
+            const sqft = parseInt(document.getElementById('sqft').value);
+            const bill = parseInt(document.getElementById('bill').value);
+            const system = document.getElementById('system').value;
             
-            // 1 MMBtu = 10 Therms of Natural Gas
-            // Gas cost = (Load / 0.96 efficiency) * 10 therms * therm_price
-            const gasTotal = (load / 0.96) * 10 * therm;
+            document.getElementById('sqftVal').innerText = sqft.toLocaleString() + ' Sq Ft';
+            document.getElementById('billVal').innerText = '$' + bill;
+
+            // System cost scaling with sqft (roughly $3.50 sq/ft for gas, $5.00 for heat pump)
+            const gasCost = sqft * 3.50;
+            const hpCost = sqft * 5.00;
             
-            // 1 MMBtu = 293.071 kWh
-            // Heat Pump cost = (Load / 3.0 COP) * 293.071 kWh * kwh_price
-            const hpTotal = (load / 3.0) * 293.071 * kwh;
+            let totalCost = system === 'gas' ? gasCost : hpCost;
+            let taxCredit = system === 'heatpump' ? 2000 : 0;
+            let netCost = totalCost - taxCredit;
             
-            document.getElementById('gasCost').innerText = `$${Math.round(gasTotal).toLocaleString()}/yr`;
-            document.getElementById('hpCost').innerText = `$${Math.round(hpTotal).toLocaleString()}/yr`;
+            // Estimated savings based on current bill (Winter only roughly 5 months)
+            const annualHeating = bill * 5;
+            let savings = 0;
+            if (system === 'heatpump') {
+                savings = annualHeating * 0.40; // Heat pumps can save up to 40% over older gas
+            } else {
+                savings = annualHeating * 0.15; // New gas vs old gas
+            }
+
+            document.getElementById('sysCost').innerText = '$' + totalCost.toLocaleString();
+            document.getElementById('taxCredit').style.display = taxCredit > 0 ? 'block' : 'none';
+            document.getElementById('netCost').innerText = '$' + netCost.toLocaleString();
+            document.getElementById('savings').innerText = '$' + Math.round(savings).toLocaleString() + ' / yr';
+            
+            if (savings > 0) {
+                // Cost difference premium vs standard
+                let premium = netCost - gasCost;
+                if(premium <= 0) {
+                    document.getElementById('roiText').innerText = 'Immediate Payback via Tax Credit!';
+                } else {
+                    let years = premium / savings;
+                    document.getElementById('roiText').innerText = `System upgrade pays for itself in ${years.toFixed(1)} years`;
+                }
+            }
         }
 
-        // Initialize calculation on page load
-        calcHVAC();
-    </script>
+        document.getElementById('sqft').addEventListener('input', updateHVAC);
+        document.getElementById('bill').addEventListener('input', updateHVAC);
+        document.getElementById('system').addEventListener('change', updateHVAC);
 
-    <footer style="margin-top: 40px; text-align: center; color: #64748b;">
-        <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
-    </footer>
+        updateHVAC();
+    </script>
 </body>
 </html>
