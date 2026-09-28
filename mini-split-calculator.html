@@ -1,468 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini-Split & HVAC BTU Sizing Calculator | Find the Right AC Size</title>
-  <meta name="description" content="Calculate the exact BTUs and AC tonnage you need for your room or garage to avoid short-cycling and maximize energy efficiency.">
-
-  <!-- Canonical URL & Social Sharing Tags -->
-  <link rel="canonical" href="https://poolpumpwattage.com/mini-split-calculator.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Mini-Split & HVAC BTU Sizing Calculator">
-  <meta property="og:description" content="Stop guessing. Calculate the exact AC size (BTUs) you need based on room size, insulation, and climate zone.">
-  <meta property="og:url" content="https://poolpumpwattage.com/mini-split-calculator.html">
-
-  <!-- Google AdSense Auto Ads Script (Standard) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-
-  <!-- Google AdSense AMP Auto Ads Script -->
-  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-
-  <!-- Structured Data (JSON-LD) for Search Rich Snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": "HVAC & Mini-Split BTU Calculator",
-        "url": "https://poolpumpwattage.com/mini-split-calculator.html",
-        "applicationCategory": "UtilityApplication",
-        "operatingSystem": "All",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What happens if my mini-split or AC is too big for the room?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Oversizing an AC unit causes 'short-cycling.' The system cools the room too quickly and shuts off before it has a chance to pull humidity out of the air, leaving the room feeling cold but clammy. It also causes excess wear on the compressor."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many BTUs are in a ton of air conditioning?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "There are 12,000 BTUs in one ton of HVAC cooling capacity. A 1-ton mini-split provides 12,000 BTUs, a 1.5-ton provides 18,000 BTUs, and a 2-ton provides 24,000 BTUs."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <style>
-    :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --accent: #16a34a;
-      --accent-dark: #15803d;
-      --warning-bg: #fffbeb;
-      --highlight-bg: #f0fdf4;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.65;
-      padding: 0 1rem;
-    }
-
-    header, main, footer { max-width: 860px; margin: 0 auto; }
-
-    header { padding: 2.5rem 0 1.5rem; text-align: center; }
-    h1 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
-    h2 { font-size: 1.4rem; color: var(--primary-dark); margin: 2.25rem 0 0.75rem; border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; }
-    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.25rem 0 0.5rem; }
-    p { margin-bottom: 1rem; }
-
-    /* Nav Bar */
-    .site-nav {
-      background: var(--card-bg);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      border-radius: 0 0 8px 8px;
-    }
-    .site-nav a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 1rem;
-    }
-    .site-nav a:hover { text-decoration: underline; }
-
-    /* Calculator Cards */
-    .calculator-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 1.75rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      border: 1px solid var(--border);
-      margin-bottom: 1.75rem;
-    }
-
-    .inputs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    @media (max-width: 600px) { .inputs-grid { grid-template-columns: 1fr; } }
-
-    .input-field { display: flex; flex-direction: column; gap: 0.35rem; }
-    .input-field label { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
-    .input-field input, .input-field select {
-      padding: 0.55rem 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.95rem;
-      background: #ffffff;
-      color: var(--text-main);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 1rem;
-      background: #f1f5f9;
-      padding: 1.25rem;
-      border-radius: 8px;
-    }
-    .stat-box { display: flex; flex-direction: column; }
-    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.025em; }
-    .stat-value { font-size: 1.35rem; font-weight: 700; color: var(--text-main); }
-    .stat-value.highlight { color: var(--accent); }
-
-    /* Pro / Contractor Lead Banner */
-    .lead-box {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f8fafc;
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      margin: 2rem 0;
-    }
-    .lead-box h3 { color: #ffffff; margin-top: 0; margin-bottom: 0.35rem; }
-    .lead-box p { color: #cbd5e1; font-size: 0.92rem; margin-bottom: 1rem; }
-    .lead-form { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .lead-input { padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid #475569; font-size: 0.95rem; flex: 1; min-width: 140px; }
-    .lead-btn { background: var(--accent); color: #ffffff; border: none; padding: 0.6rem 1.25rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
-    .lead-btn:hover { background: var(--accent-dark); }
-
-    /* Product Grid & Affiliate Cards */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
-    .product-card {
-      background: var(--card-bg);
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .product-card.active { border-color: var(--primary); background: #f0f9ff; }
-    .product-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--primary); margin-bottom: 0.35rem; }
-    .product-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .product-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
-    .product-btn { display: block; text-align: center; background: var(--primary); color: #ffffff; padding: 0.55rem 0.85rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
-    .product-btn:hover { background: var(--primary-dark); }
-
-    /* Callouts */
-    .callout-box { background: var(--warning-bg); border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 4px; margin: 1.25rem 0; font-size: 0.92rem; }
-    .callout-title { font-weight: 700; color: #b45309; margin-bottom: 0.25rem; }
-
-    /* Footer */
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: 3rem; font-size: 0.85rem; color: var(--text-muted); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 1rem; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; }
-    .footer-links a:hover { color: var(--primary); text-decoration: underline; }
-  </style>
+    <!-- Google tag (gtag.js) -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V4GTQSCFW6');
+    </script>
+    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Split AC Cost Estimator</title>
+    <meta name="description" content="Estimate the installation cost of a ductless mini-split system based on the number of indoor zones.">
+    
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        input, select, button { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 1rem; }
+        button { background: #0284c7; color: white; font-weight: bold; cursor: pointer; border: none; font-size: 1.1rem; transition: background 0.2s; }
+        button:hover { background: #0369a1; }
+        .result-box { padding: 1.5rem; border-radius: 8px; background: #f1f5f9; font-size: 1.5rem; font-weight: bold; text-align: center; color: #0f172a; border: 1px solid #e2e8f0; }
+    </style>
 </head>
 <body>
+    <header style="text-align: center; margin-bottom: 2rem;">
+        <h1>Ductless Mini-Split Cost Estimator</h1>
+    </header>
 
-  <!-- AMP Auto Ads Tag -->
-  <amp-auto-ads type="adsense" data-ad-client="ca-pub-1199906473460957"></amp-auto-ads>
-
-  <nav class="site-nav">
-    <a href="index.html">Pool Pump Calculator</a>
-    <a href="mini-split-calculator.html">Mini-Split AC Calculator</a>
-  </nav>
-
-  <header>
-    <h1>DIY Mini-Split & HVAC BTU Calculator</h1>
-    <p>Calculate the exact cooling capacity (BTUs) required for your room, garage, or workshop to prevent short-cycling and ensure maximum efficiency.</p>
-  </header>
-
-  <main>
-    <!-- Interactive BTU Calculator -->
-    <div class="calculator-card">
-      <div class="inputs-grid">
-        <div class="input-field">
-          <label for="roomLength">Room Length (Feet):</label>
-          <input type="number" id="roomLength" value="20" min="5" max="100">
-        </div>
-        <div class="input-field">
-          <label for="roomWidth">Room Width (Feet):</label>
-          <input type="number" id="roomWidth" value="20" min="5" max="100">
-        </div>
-        <div class="input-field">
-          <label for="ceilingHeight">Ceiling Height (Feet):</label>
-          <input type="number" id="ceilingHeight" value="8" min="7" max="20">
-        </div>
-        <div class="input-field">
-          <label for="insulation">Insulation Quality:</label>
-          <select id="insulation">
-            <option value="poor">Poor (Uninsulated Garage, Old Windows)</option>
-            <option value="average" selected>Average (Standard Home)</option>
-            <option value="good">Excellent (New Build, Spray Foam)</option>
-          </select>
-        </div>
-        <div class="input-field">
-          <label for="climate">Climate Zone:</label>
-          <select id="climate">
-            <option value="hot">Southern / Hot Climate (FL, TX, AZ)</option>
-            <option value="average" selected>Central / Moderate Climate</option>
-            <option value="cold">Northern / Cooler Climate</option>
-          </select>
-        </div>
-        <div class="input-field">
-          <label for="roomType">Room Type / Heat Loads:</label>
-          <select id="roomType">
-            <option value="standard" selected>Standard Bedroom / Living Room</option>
-            <option value="kitchen">Kitchen (Adding +4,000 BTU for appliances)</option>
-            <option value="sunroom">Sunroom (Heavy sun exposure)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-box">
-          <span class="stat-label">Total Area</span>
-          <span class="stat-value" id="sqftVal">400 Sq Ft</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">Est. Cooling Load</span>
-          <span class="stat-value" id="btuVal">10,000 BTU</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">Recommended System Size</span>
-          <span class="stat-value highlight" id="recSizeVal">12,000 BTU (1 Ton)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Local Contractor Installation Lead Generation -->
-    <div class="lead-box">
-      <h3>Not comfortable wiring a 230V disconnect box?</h3>
-      <p>While DIY systems feature pre-charged lines, the electrical whip and breaker installation must be up to code. Get free installation quotes from licensed HVAC pros in your neighborhood.</p>
-      <form class="lead-form" onsubmit="handleContractorSearch(event)">
-        <input type="text" class="lead-input" id="zipInput" placeholder="Enter ZIP Code (e.g. 21114)" pattern="[0-9]{5}" required>
-        <button type="submit" class="lead-btn">Find Local HVAC Pros</button>
-      </form>
-    </div>
-
-    <!-- Dynamic Equipment Recommendations -->
-    <section>
-      <h2>Recommended DIY Systems Based on Your Calculation</h2>
-      <p>The systems below feature pre-charged refrigerant line sets that do not require a vacuum pump or specialized HVAC gauges to install.</p>
-      
-      <div class="product-grid">
-        <!-- 9K / 12K Option -->
-        <div class="product-card" id="card-12k">
-          <div>
-            <div class="product-tag">Small Rooms & Offices</div>
-            <div class="product-title">MrCool DIY 12,000 BTU (1 Ton)</div>
-            <div class="product-desc">Perfect for standard bedrooms, home offices, and small insulated sheds up to 500 sq ft. Runs on standard 115V power.</div>
-          </div>
-          <a href="https://amzn.to/3VdFzPj" target="_blank" rel="noopener sponsored" class="product-btn">View on Amazon</a>
+    <main>
+        <div class="card">
+            <label for="zones">Number of Indoor Zones (Heads)</label>
+            <select id="zones">
+                <option value="1">1 Zone (Single Room / Garage)</option>
+                <option value="2">2 Zones</option>
+                <option value="3" selected>3 Zones</option>
+                <option value="4">4 Zones</option>
+                <option value="5">5 Zones</option>
+            </select>
+            
+            <label for="quality">Equipment Tier</label>
+            <select id="quality">
+                <option value="3500">Standard Efficiency ($3,500 per zone)</option>
+                <option value="5000" selected>High Efficiency / Cold Climate ($5,000 per zone)</option>
+            </select>
+            
+            <button onclick="calcMiniSplit()">Estimate Installation Cost</button>
+            
+            <div class="result-box">
+                Estimated Total: <br><span id="splitTotal" style="color:#0284c7; font-size: 2rem;">$15,000</span>
+            </div>
         </div>
 
-        <!-- 18K / 24K Option -->
-        <div class="product-card" id="card-24k">
-          <div>
-            <div class="product-tag">Garages & Living Rooms</div>
-            <div class="product-title">MrCool DIY 24,000 BTU (2 Ton)</div>
-            <div class="product-desc">Ideal for open-concept living rooms, master suites, and 2-car uninsulated garages. Requires a 230V breaker.</div>
-          </div>
-          <a href="https://amzn.to/3VdFzPj" target="_blank" rel="noopener sponsored" class="product-btn">View on Amazon</a>
+        <article style="max-width: 800px; margin: 40px auto; font-family: sans-serif; line-height: 1.6;">
+            <h2>Why Choose a Ductless Mini-Split?</h2>
+            <p>Ductless mini-splits are incredibly efficient heating and cooling systems. They require no ductwork, making them perfect for older homes, new additions, or specific rooms that are always too hot or too cold.</p>
+            
+            <h3>Understanding Installation Costs</h3>
+            <p>The total cost is largely driven by the number of indoor units (heads) you need connected to the outdoor condenser. High-efficiency "hyper-heat" models designed for cold climates cost more upfront but qualify for significant federal tax credits and state rebates.</p>
+        </article>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-top: 0; color: #0f172a;">Make Your Mini-Split Smart</h3>
+            <p style="color: #475569;">Upgrade your ductless AC with a smart controller. Adjust temperatures from your phone and set schedules to maximize your energy savings.</p>
+            <a href="https://www.amazon.com/s?k=smart+ac+controller+mini+split&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart AC Controllers</a>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 1rem; margin-bottom: 0;">As an Amazon Associate, we earn from qualifying purchases.</p>
         </div>
+    </main>
 
-        <!-- 36K Option -->
-        <div class="product-card" id="card-36k">
-          <div>
-            <div class="product-tag">Large Open Spaces</div>
-            <div class="product-title">MrCool DIY 36,000 BTU (3 Ton)</div>
-            <div class="product-desc">Designed for basements, large shops, 3-car garages, and massive open living spaces. Requires a 230V breaker.</div>
-          </div>
-          <a href="https://amzn.to/3VdFzPj" target="_blank" rel="noopener sponsored" class="product-btn">View on Amazon</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Educational Content for SEO & AdSense -->
-    <section>
-      <h2>Why You Shouldn't "Oversize" Your AC</h2>
-      <div class="callout-box">
-        <div class="callout-title">Bigger is Not Always Better in HVAC</div>
-        <p style="margin-bottom: 0;">Many homeowners assume buying the largest BTU air conditioner will cool the room faster and better. However, an oversized unit will <strong>short-cycle</strong>. It drops the room temperature rapidly and shuts off before it has time to pass enough air over the evaporator coils to remove humidity. The result is a room that feels "cold but clammy," alongside massive spikes in your electric bill due to constant compressor starts.</p>
-      </div>
-
-      <h3>Understanding Tons vs. BTUs</h3>
-      <p>In the HVAC industry, air conditioning capacity is measured in both BTUs (British Thermal Units) and "Tons". A ton has nothing to do with the physical weight of the machine; it originates from the amount of heat required to melt one ton of ice over 24 hours.</p>
-      <ul>
-        <li><strong>9,000 BTU</strong> = 0.75 Ton (Best for small bedrooms)</li>
-        <li><strong>12,000 BTU</strong> = 1.0 Ton (Best for standard living rooms)</li>
-        <li><strong>18,000 BTU</strong> = 1.5 Ton (Best for large master suites / small garages)</li>
-        <li><strong>24,000 BTU</strong> = 2.0 Ton (Best for 2-car garages / open basements)</li>
-        <li><strong>36,000 BTU</strong> = 3.0 Ton (Best for open concept floors / large workshops)</li>
-      </ul>
-    </section>
-
-    <!-- Frequently Asked Questions -->
-    <section>
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <div class="faq-question">Can I install a MrCool DIY system myself?</div>
-        <p>Yes. The defining feature of "DIY" branded mini-splits is their pre-charged line sets. Standard mini-splits require an EPA-certified technician to braze copper lines, pressure test with nitrogen, and pull a vacuum. DIY lines have specialized quick-connect valves that release the refrigerant when tightened. You will, however, need to drill a 3.5" hole through your wall and safely wire the electrical disconnect.</p>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Why does a kitchen require more BTUs?</div>
-        <p>Kitchens generate massive amounts of internal heat load from ovens, stovetops, dishwashers, and refrigerators exhausting heat. Standard sizing guidelines recommend adding an additional 4,000 BTUs to whatever the square-footage calculation dictates to compensate for appliance heat.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Legal & Compliance Footer -->
-  <footer>
-    <div class="footer-links">
-      <a href="index.html">Pool Pump Calculator</a>
-      <a href="#privacy" onclick="alert('Privacy Policy: poolpumpwattage.com does not collect or sell personal information. Third-party vendors use cookies to serve ads.')">Privacy Policy</a>
-      <a href="#terms" onclick="alert('Disclaimer: HVAC sizing calculations are estimates. Consult a licensed contractor for exact manual J calculations.')">Terms & Disclaimer</a>
-    </div>
-    <p>&copy; 2026 poolpumpwattage.com. All rights reserved. As an affiliate associate, we earn from qualifying purchases. Calculations are provided for planning purposes only.</p>
-  </footer>
-
-  <script>
-    const lengthInput = document.getElementById('roomLength');
-    const widthInput = document.getElementById('roomWidth');
-    const ceilingInput = document.getElementById('ceilingHeight');
-    const insulationSelect = document.getElementById('insulation');
-    const climateSelect = document.getElementById('climate');
-    const roomTypeSelect = document.getElementById('roomType');
-
-    const sqftVal = document.getElementById('sqftVal');
-    const btuVal = document.getElementById('btuVal');
-    const recSizeVal = document.getElementById('recSizeVal');
-
-    const card12k = document.getElementById('card-12k');
-    const card24k = document.getElementById('card-24k');
-    const card36k = document.getElementById('card-36k');
-
-    function calculateBTU() {
-      const length = parseFloat(lengthInput.value) || 0;
-      const width = parseFloat(widthInput.value) || 0;
-      const ceiling = parseFloat(ceilingInput.value) || 8;
-      
-      const sqft = length * width;
-      sqftVal.textContent = sqft.toLocaleString() + " Sq Ft";
-
-      // Base Calculation (Standard rule of thumb: ~25 BTU per sq ft)
-      let baseBtu = sqft * 25;
-
-      // Ceiling Height Adjustment (+5% for every foot over 8ft)
-      if (ceiling > 8) {
-        baseBtu *= 1 + ((ceiling - 8) * 0.05);
-      }
-
-      // Insulation Modifiers
-      const insulation = insulationSelect.value;
-      if (insulation === 'poor') baseBtu *= 1.25;
-      if (insulation === 'good') baseBtu *= 0.85;
-
-      // Climate Modifiers
-      const climate = climateSelect.value;
-      if (climate === 'hot') baseBtu *= 1.15;
-      if (climate === 'cold') baseBtu *= 0.90;
-
-      // Room Type Modifiers
-      const roomType = roomTypeSelect.value;
-      if (roomType === 'kitchen') baseBtu += 4000;
-      if (roomType === 'sunroom') baseBtu *= 1.30; // Extra solar heat load
-
-      const finalBtu = Math.round(baseBtu);
-      btuVal.textContent = finalBtu.toLocaleString() + " BTU";
-
-      // Determine Recommended Size (Rounding up to standard equipment tiers)
-      let recSize = "";
-      let recTons = 0;
-
-      card12k.classList.remove('active');
-      card24k.classList.remove('active');
-      card36k.classList.remove('active');
-
-      if (finalBtu <= 10000) {
-        recSize = "9,000 BTU";
-        recTons = 0.75;
-        card12k.classList.add('active');
-      } else if (finalBtu <= 14000) {
-        recSize = "12,000 BTU";
-        recTons = 1;
-        card12k.classList.add('active');
-      } else if (finalBtu <= 20000) {
-        recSize = "18,000 BTU";
-        recTons = 1.5;
-        card24k.classList.add('active');
-      } else if (finalBtu <= 28000) {
-        recSize = "24,000 BTU";
-        recTons = 2;
-        card24k.classList.add('active');
-      } else {
-        recSize = "36,000 BTU";
-        recTons = 3;
-        card36k.classList.add('active');
-      }
-
-      recSizeVal.textContent = `${recSize} (${recTons} Ton)`;
-    }
-
-    // Attach listeners
-    [lengthInput, widthInput, ceilingInput, insulationSelect, climateSelect, roomTypeSelect].forEach(el => {
-      el.addEventListener('input', calculateBTU);
-      el.addEventListener('change', calculateBTU);
-    });
-
-    // Handle Local Contractor Search Lead Gen
-    function handleContractorSearch(e) {
-      e.preventDefault();
-      const zip = document.getElementById('zipInput').value.trim();
-      if (zip.length === 5) {
-        window.open(`https://www.google.com/search?q=mini+split+hvac+installation+contractor+near+${zip}`, '_blank');
-      }
-    }
-
-    // Initialize
-    calculateBTU();
-  </script>
+    <script>
+        function calcMiniSplit() {
+            const zones = parseInt(document.getElementById('zones').value) || 0;
+            const costPerZone = parseInt(document.getElementById('quality').value) || 0;
+            const total = zones * costPerZone;
+            document.getElementById('splitTotal').innerText = `$${total.toLocaleString()}`;
+        }
+        calcMiniSplit();
+    </script>
 </body>
 </html>
