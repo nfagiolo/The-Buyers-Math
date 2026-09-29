@@ -46,4 +46,4 @@ for attempt in range(max_retries):
             model='gemini-3.8-flash',
             contents=prompt
         )
-        html_content = response.text.replace("
+        html_content = response.text.replace("```html", "").replace("```", "").strip()
