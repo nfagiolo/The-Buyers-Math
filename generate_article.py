@@ -120,15 +120,17 @@ template = f"""<!DOCTYPE html>
 with open(filename, "w", encoding="utf-8") as f:
     f.write(template)
 
-# Inject the link into the homepage
-link_html = f'<li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">{date_str}</span> <a href="{filename}" style="color:#0f172a; font-weight:600; text-decoration:none;">{topic}</a></li>\n                <!-- ARTICLES_LIST_MARKER -->'
-
+# Inject the link into the homepage safely to prevent duplicates
 with open("index.html", "r", encoding="utf-8") as f:
     index_html = f.read()
 
-index_html = index_html.replace('<!-- ARTICLES_LIST_MARKER -->', link_html)
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(index_html)
-
-print(f"Successfully generated {filename} and updated index.html")
+# Only add the link if today's date isn't already in the list
+if date_str not in index_html:
+    link_html = f'<li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">{date_str}</span> <a href="{filename}" style="color:#0f172a; font-weight:600; text-decoration:none;">{topic}</a></li>\n                <!-- ARTICLES_LIST_MARKER -->'
+    index_html = index_html.replace('<!-- ARTICLES_LIST_MARKER -->', link_html)
+    
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(index_html)
+    print(f"Successfully generated {filename} and added link to index.html")
+else:
+    print(f"Successfully updated {filename}. Link already exists on homepage, skipping injection.")
