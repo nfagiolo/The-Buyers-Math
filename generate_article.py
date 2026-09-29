@@ -8,23 +8,25 @@ from google import genai
 # Configure Gemini API using the new SDK
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# A rotating list of highly-searchable long-tail topics related to your tools
+# A rotating list pairing the article topic with a highly relevant Amazon search keyword
 topics = [
-    "Are variable speed pool pumps worth the investment in 2026?",
-    "How to safely size a backup generator for a well pump and AC",
-    "Heat Pump vs Gas Furnace: Operating costs compared",
-    "Is a tankless water heater worth the installation cost?",
-    "Understanding the 30% Federal Tax Credit for residential solar",
-    "Retrofit vs Full-Frame Window Replacement: What you need to know",
-    "Asphalt vs Concrete Driveways: Lifespan and maintenance costs",
-    "How to plan a basement finishing project with a bathroom addition",
-    "Cabinet tiers explained: RTA vs Semi-Custom vs Custom",
-    "How to calculate roofing materials by the square"
+    {"title": "Are variable speed pool pumps worth the investment in 2026?", "keyword": "robotic pool cleaner"},
+    {"title": "How to safely size a backup generator for a well pump and AC", "keyword": "heavy duty generator extension cord"},
+    {"title": "Heat Pump vs Gas Furnace: Operating costs compared", "keyword": "smart thermostat ecobee nest"},
+    {"title": "Is a tankless water heater worth the installation cost?", "keyword": "smart water leak detector wifi"},
+    {"title": "Understanding the 30% Federal Tax Credit for residential solar", "keyword": "portable power station solar generator"},
+    {"title": "Retrofit vs Full-Frame Window Replacement: What you need to know", "keyword": "thermal leak detector"},
+    {"title": "Asphalt vs Concrete Driveways: Lifespan and maintenance costs", "keyword": "electric pressure washer"},
+    {"title": "How to plan a basement finishing project with a bathroom addition", "keyword": "smart dehumidifier with pump basement"},
+    {"title": "Cabinet tiers explained: RTA vs Semi-Custom vs Custom", "keyword": "digital laser measure"},
+    {"title": "How to calculate roofing materials by the square", "keyword": "magnetic nail sweeper with wheels"}
 ]
 
 # Pick a topic based on the day of the year so it rotates sequentially
 day_of_year = datetime.datetime.now().timetuple().tm_yday
-topic = topics[day_of_year % len(topics)]
+selected_topic = topics[day_of_year % len(topics)]
+topic = selected_topic["title"]
+keyword = selected_topic["keyword"]
 
 # Generate the SEO article content
 prompt = f"""
@@ -65,8 +67,8 @@ filename = f"articles/{date_str}-{slug}.html"
 # Ensure the articles directory exists
 os.makedirs("articles", exist_ok=True)
 
-# URL Encode the topic for the Amazon search query
-amazon_query = urllib.parse.quote(topic)
+# URL Encode the KEYWORD (not the title) for Amazon using quote_plus (adds '+' for spaces)
+amazon_query = urllib.parse.quote_plus(keyword)
 
 # Build the complete HTML file
 template = f"""<!DOCTYPE html>
