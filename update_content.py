@@ -24,6 +24,36 @@ Do not include any markdown formatting like ```html. Output raw HTML only.
 response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)
 new_content = response.text
 
+
+def update_index_with_articles():
+    with open('index.html', 'r', encoding='utf-8') as f:
+        soup = BeautifulSoup(f.read(), 'html.parser')
+
+    grid = soup.find(class_='guides-grid') or soup.find(class_='calculator-grid')
+    if not grid:
+        return
+
+    existing_links = {a['href'] for a in grid.find_all('a', href=True)}
+
+    for filepath in glob.glob('articles/*.html'):
+        normalized_path = filepath.replace('\\', '/')
+        if normalized_path not in existing_links:
+            with open(filepath, 'r', encoding='utf-8') as af:
+                art_soup = BeautifulSoup(af.read(), 'html.parser')
+
+            title_el = art_soup.find('title') or art_soup.find('h1')
+            title = title_el.get_text(strip=True) if title_el else 'Untitled Article'
+
+            card = soup.new_tag('div', attrs={'class': 'card'})
+            a_tag = soup.new_tag('a', href=normalized_path)
+            a_tag.string = title
+            card.append(a_tag)
+            grid.append(card)
+
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(str(soup))
+
+update_index_with_articles()
 date_str = date.today().strftime("%B %d, %Y")
 html_injection = f"""
 <!-- GEMINI_TIP_PLACEHOLDER -->
