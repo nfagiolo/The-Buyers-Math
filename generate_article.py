@@ -8,28 +8,42 @@ from google import genai
 # Configure Gemini API using the new SDK
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# A rotating list pairing the article topic with a highly relevant Amazon search keyword
-topics = [
-    {"title": "Are variable speed pool pumps worth the investment in 2026?", "keyword": "robotic pool cleaner"},
-    {"title": "How to safely size a backup generator for a well pump and AC", "keyword": "heavy duty generator extension cord"},
-    {"title": "Heat Pump vs Gas Furnace: Operating costs compared", "keyword": "smart thermostat ecobee nest"},
-    {"title": "Is a tankless water heater worth the installation cost?", "keyword": "smart water leak detector wifi"},
-    {"title": "Understanding the 30% Federal Tax Credit for residential solar", "keyword": "portable power station solar generator"},
-    {"title": "Retrofit vs Full-Frame Window Replacement: What you need to know", "keyword": "thermal leak detector"},
-    {"title": "Asphalt vs Concrete Driveways: Lifespan and maintenance costs", "keyword": "electric pressure washer"},
-    {"title": "How to plan a basement finishing project with a bathroom addition", "keyword": "smart dehumidifier with pump basement"},
-    {"title": "Cabinet tiers explained: RTA vs Semi-Custom vs Custom", "keyword": "digital laser measure"},
-    {"title": "How to calculate roofing materials by the square", "keyword": "magnetic nail sweeper with wheels"}
-]
+# --- STEP 1: DYNAMICALLY GENERATE A UNIQUE TOPIC & KEYWORD ---
+topic_prompt = """
+You are an expert SEO strategist for a home improvement calculator website. 
+Generate a unique, highly specific, long-tail blog post title about home remodeling costs, energy efficiency, DIY projects, or contractor hiring tips. 
+Do not use generic titles. Make it specific (e.g., "Does a 200 Amp Panel Upgrade Increase Home Value?").
+Then, provide a 3-4 word Amazon search keyword for a tool or product highly relevant to the topic.
+Format your response EXACTLY like this with a pipe character separating them, and no other text:
+Topic Title | amazon search keyword
+"""
 
-# Pick a topic based on the day of the year so it rotates sequentially
-day_of_year = datetime.datetime.now().timetuple().tm_yday
-selected_topic = topics[day_of_year % len(topics)]
-topic = selected_topic["title"]
-keyword = selected_topic["keyword"]
+max_retries = 3
+topic = "Top Home Improvement ROI Projects for 2026" # Fallback topic
+keyword = "digital laser measure" # Fallback keyword
 
-# Generate the SEO article content
-prompt = f"""
+for attempt in range(max_retries):
+    try:
+        topic_response = client.models.generate_content(
+            model='gemini-3.8-flash',
+            contents=topic_prompt
+        )
+        raw_text = topic_response.text.strip()
+        if "|" in raw_text:
+            topic, keyword = raw_text.split("|", 1)
+            topic = topic.strip()
+            keyword = keyword.strip()
+        break
+    except Exception as e:
+        print(f"Topic generation attempt {attempt + 1} failed: {e}")
+        time.sleep(10)
+
+print(f"Today's Dynamic Topic: {topic}")
+print(f"Today's Amazon Keyword: {keyword}")
+
+
+# --- STEP 2: GENERATE THE ARTICLE CONTENT ---
+article_prompt = f"""
 Write an authoritative, SEO-optimized home improvement guide about: "{topic}".
 Format the output strictly in HTML. 
 Include an <h2> title, several <h3> subheadings, <p> paragraphs, and <ul> lists where appropriate.
@@ -37,21 +51,18 @@ Keep it factual, professional, and around 800 words.
 Do NOT include ```html markdown blocks, head, or body tags, just the raw inner HTML content.
 """
 
-# Retry logic for handling temporary server overloads
-max_retries = 3
 html_content = ""
 
 for attempt in range(max_retries):
     try:
-        # Call the model using the new syntax
         response = client.models.generate_content(
             model='gemini-3.8-flash',
-            contents=prompt
+            contents=article_prompt
         )
         html_content = response.text.replace("```html", "").replace("```", "").strip()
         break # Exit loop if successful
     except Exception as e:
-        print(f"Attempt {attempt + 1} failed: {e}")
+        print(f"Article generation attempt {attempt + 1} failed: {e}")
         if attempt < max_retries - 1:
             print("Google API is busy. Waiting 60 seconds before retrying...")
             time.sleep(60)
@@ -59,18 +70,15 @@ for attempt in range(max_retries):
             print("Max retries reached. Exiting script.")
             raise e
 
-# Generate the file name and URL path
+
+# --- STEP 3: BUILD AND SAVE THE HTML FILE ---
 date_str = datetime.datetime.now().strftime("%Y-%m-%d")
 slug = re.sub(r'[^a-z0-9]+', '-', topic.lower()).strip('-')
 filename = f"articles/{date_str}-{slug}.html"
 
-# Ensure the articles directory exists
 os.makedirs("articles", exist_ok=True)
-
-# URL Encode the KEYWORD (not the title) for Amazon using quote_plus (adds '+' for spaces)
 amazon_query = urllib.parse.quote_plus(keyword)
 
-# Build the complete HTML file
 template = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,7 +128,7 @@ template = f"""<!DOCTYPE html>
 with open(filename, "w", encoding="utf-8") as f:
     f.write(template)
 
-# Inject the link into the homepage safely to prevent duplicates
+# --- STEP 4: INJECT LINK INTO HOMEPAGE SAFELY ---
 with open("index.html", "r", encoding="utf-8") as f:
     index_html = f.read()
 
