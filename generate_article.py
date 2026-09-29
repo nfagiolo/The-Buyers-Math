@@ -1,6 +1,7 @@
 import os
 import datetime
 import re
+import urllib.parse
 from google import genai
 
 # Configure Gemini API using the new SDK
@@ -48,6 +49,9 @@ filename = f"articles/{date_str}-{slug}.html"
 # Ensure the articles directory exists
 os.makedirs("articles", exist_ok=True)
 
+# URL Encode the topic for the Amazon search query
+amazon_query = urllib.parse.quote(topic)
+
 # Build the complete HTML file
 template = f"""<!DOCTYPE html>
 <html lang="en">
@@ -76,9 +80,18 @@ template = f"""<!DOCTYPE html>
 </head>
 <body>
     <a href="../index.html" class="back-link">&larr; Back to Calculators</a>
+    
     <article>
         {html_content}
     </article>
+
+    <!-- Affiliate Monetization Section -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+        <h3 style="margin-top: 0; color: #0f172a; border: none;">Ready to start your project?</h3>
+        <p style="color: #475569;">Find the best tools and materials to get the job done right.</p>
+        <a href="[https://www.amazon.com/s?k=](https://www.amazon.com/s?k=){amazon_query}&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Related Tools on Amazon</a>
+    </div>
+
     <footer style="margin-top: 40px; text-align: center; color: #64748b;">
         <p>&copy; 2026 The Buyer's Math. All rights reserved.</p>
     </footer>
@@ -89,7 +102,6 @@ template = f"""<!DOCTYPE html>
 with open(filename, "w", encoding="utf-8") as f:
     f.write(template)
 
-# Inject the link into the homepage
 # Inject the link into the homepage
 link_html = f'<li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">{date_str}</span> <a href="{filename}" style="color:#0f172a; font-weight:600; text-decoration:none;">{topic}</a></li>\n                <!-- ARTICLES_LIST_MARKER -->'
 
