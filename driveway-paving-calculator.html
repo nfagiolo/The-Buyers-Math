@@ -1,193 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Driveway Paving Cost Estimator</title>
-    <meta name="description" content="Calculate your exact driveway paving costs with deep breakdowns for asphalt, concrete, and pavers.">
-    
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
-        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
-        
-        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .receipt h3 { color: #38bdf8; border-color: #334155; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
-        
-        .checkbox-item { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 1rem; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0; cursor: pointer; }
-        .checkbox-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: #0284c7; }
-        
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driveway Paving Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate driveway paving and resurfacing costs across asphalt, poured concrete, stamped concrete, and pavers based on 2026 national pricing averages.">
+  <link rel="canonical" href="https://thebuyersmath.com/driveway-paving-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Driveway Paving Calculator",
-    "url": "https://thebuyersmath.com/driveway-paving-calculator.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Estimate asphalt, concrete, and paver driveway installation and resurfacing costs."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/driveway-paving-calculator.html#app",
+        "name": "Driveway Paving Calculator",
+        "url": "https://thebuyersmath.com/driveway-paving-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate driveway installation and resurfacing costs comparing asphalt, poured concrete, and interlocking pavers."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/driveway-paving-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is asphalt or concrete cheaper for a driveway in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Asphalt is significantly cheaper upfront ($4.00–$5.50/sq ft installed) compared to standard poured concrete ($8.00–$10.00/sq ft installed), but concrete lasts 25–30 years with lower maintenance."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Driveway Paving Calculator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Driveway Paving Calculator</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Driveway Paving Cost Estimator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Compare materials, prep work, and long-term lifespan for your new driveway.</p>
-    </header>
-
-    <main class="split-layout">
-        <!-- Interactive Inputs -->
-        <div class="card">
-            <h3>Project Dimensions</h3>
-            
-            <label>Driveway Size (Square Feet) <span class="val-display" id="sqftVal">600 Sq Ft</span></label>
-            <input type="range" id="sqft" min="200" max="3000" step="50" value="600">
-            <small style="color: #64748b; display:block; margin-bottom: 1rem;">(A standard 2-car driveway is about 400-600 sq ft)</small>
-            
-            <h3>Material Selection</h3>
-            <label>Surface Material</label>
-            <select id="material">
-                <option value="2">Gravel ($2/sq ft)</option>
-                <option value="8" selected>Asphalt ($8/sq ft)</option>
-                <option value="11">Standard Concrete ($11/sq ft)</option>
-                <option value="16">Stamped Concrete ($16/sq ft)</option>
-                <option value="22">Brick/Stone Pavers ($22/sq ft)</option>
-            </select>
-
-            <label class="checkbox-item">
-                <input type="checkbox" id="removal">
-                <div>
-                    <strong>Old Driveway Tear-Out Required?</strong><br>
-                    <span style="font-size: 0.9rem; color: #64748b; font-weight: normal;">(Adds heavy machinery & disposal fees)</span>
-                </div>
-            </label>
-        </div>
-
-        <!-- Live Sticky Receipt -->
-        <div class="card receipt">
-            <h3>Project Breakdown</h3>
-            
-            <div class="result-row">
-                <span>Material & Surface Labor:</span>
-                <span id="surfaceCost">$0</span>
-            </div>
-            
-            <div class="result-row" id="prepRow" style="display: none;">
-                <span>Demolition & Disposal:</span>
-                <span id="prepCost">$0</span>
-            </div>
-
-            <div class="total-row">
-                <span>Total Estimated Cost:</span>
-                <span id="totalCost">$0</span>
-            </div>
-            
-            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 0.9rem; color: #94a3b8;">Expected Lifespan</span><br>
-                <span id="lifespan" style="font-size: 1.3rem; font-weight: bold; color: #38bdf8;">15-20 Years</span>
-            </div>
-        </div>
-    </main>
-
-    <!-- Affiliate Monetization Section -->
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Keep Your Driveway Pristine</h3>
-        <p style="color: #475569;">Protect your new asphalt or concrete investment with regular cleaning using a high-powered electric pressure washer.</p>
-        <a href="https://www.amazon.com/s?k=electric+pressure+washer+driveway&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Pressure Washers on Amazon</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Driveway Paving Calculator</h1>
+      <p>Compare paving materials, excavation costs, and square footage pricing for new installations and resurfacing.</p>
     </div>
 
-    <script>
-        function updateDriveway() {
-            const sqft = parseInt(document.getElementById('sqft').value);
-            const materialPrice = parseFloat(document.getElementById('material').value);
-            const needsRemoval = document.getElementById('removal').checked;
-            
-            // Update UI Labels
-            document.getElementById('sqftVal').innerText = sqft.toLocaleString() + ' Sq Ft';
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="drivewayArea">
+            Driveway Surface Area
+            <span class="val-badge" id="drivewayAreaVal">600 sq ft</span>
+          </label>
+          <input type="range" id="drivewayArea" min="200" max="2500" step="50" value="600">
+          <small style="color: #64748b;">Typical 2-car driveway is 400 to 650 sq ft (approx. 20x30 ft).</small>
+        </div>
 
-            // Math
-            const surfaceCost = sqft * materialPrice;
-            const prepCost = needsRemoval ? (sqft * 2.50) : 0; // $2.50/sq ft demo and haul away
-            const total = surfaceCost + prepCost;
+        <div class="form-group">
+          <label for="pavingMaterial">Paving Material Type</label>
+          <select id="pavingMaterial">
+            <option value="4.50" selected>Hot-Mix Asphalt ($4.50 / sq ft installed)</option>
+            <option value="8.50">Standard Poured Concrete ($8.50 / sq ft installed)</option>
+            <option value="14.00">Stamped / Colored Decorative Concrete ($14.00 / sq ft installed)</option>
+            <option value="19.00">Interlocking Concrete Pavers ($19.00 / sq ft installed)</option>
+          </select>
+        </div>
 
-            // Determine Lifespan
-            let lifespanText = "";
-            if(materialPrice == 2) lifespanText = "Requires yearly replenishment";
-            else if(materialPrice == 8) lifespanText = "15-20 Years (Needs sealing)";
-            else if(materialPrice == 11 || materialPrice == 16) lifespanText = "30-40 Years";
-            else lifespanText = "50+ Years (Easy spot repairs)";
+        <div class="form-group">
+          <label for="prepOption">Site Excavation &amp; Sub-Base Prep</label>
+          <select id="prepOption">
+            <option value="0.75">Overlay / Good Existing Gravel Base ($0.75 / sq ft)</option>
+            <option value="2.25" selected>Standard Dig-Out &amp; 4-Inch Crushed Stone Base ($2.25 / sq ft)</option>
+            <option value="3.50">Heavy Demolition of Old Slab &amp; Regrading ($3.50 / sq ft)</option>
+          </select>
+        </div>
 
-            // Update DOM
-            document.getElementById('surfaceCost').innerText = '$' + surfaceCost.toLocaleString();
-            document.getElementById('prepRow').style.display = needsRemoval ? 'flex' : 'none';
-            document.getElementById('prepCost').innerText = '$' + prepCost.toLocaleString();
-            document.getElementById('totalCost').innerText = '$' + total.toLocaleString();
-            document.getElementById('lifespan').innerText = lifespanText;
-        }
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Driveway Care</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Protect asphalt and concrete surfaces against freeze-thaw cracking:</p>
+          <a href="https://www.amazon.com/s?k=driveway+sealer+asphalt+concrete&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Driveway Sealers on Amazon</a>
+        </div>
+      </div>
 
-        document.getElementById('sqft').addEventListener('input', updateDriveway);
-        document.getElementById('material').addEventListener('change', updateDriveway);
-        document.getElementById('removal').addEventListener('change', updateDriveway);
+      <!-- Receipt Card with Export Buttons -->
+      <div class="card receipt">
+        <h2>Paving Cost Estimate</h2>
+        <div class="receipt-row">
+          <span>Driveway Surface Paving:</span>
+          <span id="surfaceCost">$2,700</span>
+        </div>
+        <div class="receipt-row">
+          <span>Excavation &amp; Base Prep:</span>
+          <span id="prepCost">$1,350</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total Project Estimate:</span>
+          <span id="totalCost">$4,050</span>
+        </div>
 
-        updateDriveway();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+        <div class="receipt-row" style="margin-top:1.25rem; border-top:1px solid #334155; padding-top:0.75rem;">
+          <span>Expected Service Life:</span>
+          <strong id="lifespanDisplay" style="color:#38bdf8;">18–22 Years</strong>
+        </div>
+
+        <!-- Export Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Modeled on 2026 paving contractor rates including commercial roller compaction and clean gravel sub-base installation.
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Driveway Paving Cost &amp; Material Guide (2026)</h2>
+    <p>Installing or resurfacing a driveway significantly enhances curb appeal and protects vehicles. Choosing between asphalt, poured concrete, and interlocking pavers requires evaluating regional frost depths and long-term maintenance preferences.</p>
+
+    <h3>Material Comparison Matrix</h3>
+    <ul>
+      <li><strong>Asphalt:</strong> Best upfront cost ($4–$5.50/sq ft). Flexible in freezing northern climates, but requires sealcoating every 3–4 years. Lifespan: 15–20 years.</li>
+      <li><strong>Concrete:</strong> Excellent durability ($8–$10/sq ft). Rigid, clean aesthetic, low maintenance, but susceptible to salt spalling in severe winter freeze-thaw cycles. Lifespan: 25–30 years.</li>
+      <li><strong>Interlocking Pavers:</strong> Premium aesthetic ($18–$25/sq ft). Completely resists cracking by shifting with soil movement. Damaged pavers can be replaced individually. Lifespan: 40+ years.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>How thick should a residential concrete driveway be?</summary>
+      <p>Standard residential driveways require a minimum of 4 inches of 4,000 PSI concrete over a compacted 4-inch gravel base. Heavy-duty vehicle parking areas should use 5 to 6 inches with steel rebar reinforcement.</p>
+    </details>
+    <details>
+      <summary>How long before I can park on a newly paved driveway?</summary>
+      <p>Stay off new asphalt with vehicles for at least 3 to 5 days (longer in hot summer weather). Poured concrete driveways require at least 7 full days to cure before vehicle traffic.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const drivewayArea = document.getElementById('drivewayArea');
+    const drivewayAreaVal = document.getElementById('drivewayAreaVal');
+    const pavingMaterial = document.getElementById('pavingMaterial');
+    const prepOption = document.getElementById('prepOption');
+
+    const surfaceCost = document.getElementById('surfaceCost');
+    const prepCost = document.getElementById('prepCost');
+    const totalCost = document.getElementById('totalCost');
+    const lifespanDisplay = document.getElementById('lifespanDisplay');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateDriveway() {
+      const sqft = parseFloat(drivewayArea.value);
+      drivewayAreaVal.textContent = sqft.toLocaleString() + ' sq ft';
+
+      const matRate = parseFloat(pavingMaterial.value);
+      const prepRate = parseFloat(prepOption.value);
+
+      const surface = Math.round(sqft * matRate);
+      const prep = Math.round(sqft * prepRate);
+      const grandTotal = surface + prep;
+
+      surfaceCost.textContent = '$' + surface.toLocaleString();
+      prepCost.textContent = '$' + prep.toLocaleString();
+      totalCost.textContent = '$' + grandTotal.toLocaleString();
+
+      if (matRate < 6) {
+        lifespanDisplay.textContent = '18–22 Years (Asphalt)';
+      } else if (matRate < 10) {
+        lifespanDisplay.textContent = '25–30 Years (Concrete)';
+      } else if (matRate < 16) {
+        lifespanDisplay.textContent = '25–30 Years (Stamped Concrete)';
+      } else {
+        lifespanDisplay.textContent = '40+ Years (Pavers)';
+      }
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Driveway Paving Estimate\\n" +
+        "Driveway Area: " + drivewayAreaVal.textContent + "\\n" +
+        "Surface Paving: " + surfaceCost.textContent + "\\n" +
+        "Excavation & Base Prep: " + prepCost.textContent + "\\n" +
+        "Total Estimated Cost: " + totalCost.textContent + "\\n" +
+        "Expected Lifespan: " + lifespanDisplay.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/driveway-paving-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    drivewayArea.addEventListener('input', updateDriveway);
+    pavingMaterial.addEventListener('change', updateDriveway);
+    prepOption.addEventListener('change', updateDriveway);
+
+    updateDriveway();
+  </script>
 </body>
 </html>
