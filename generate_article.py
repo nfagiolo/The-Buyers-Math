@@ -1,8 +1,8 @@
-# generate_article.py (v3: Automated Sitemap & Unified Design)
+# generate_article.py (Powered by Anthropic Claude 3.5)
 import os
 import re
 from datetime import datetime
-from google import genai
+import anthropic
 
 CALCULATORS = [
     {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "keywords": ["roof", "roofing", "shingles"]},
@@ -23,45 +23,54 @@ def slugify(text):
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
 def main():
-    api_key = os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        print("GEMINI_API_KEY not found.")
+        print("ANTHROPIC_API_KEY environment variable not found.")
         return
 
-    client = genai.Client(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key)
     date_str = datetime.now().strftime("%Y-%m-%d")
 
-    # Step 1: Generate Topic & Amazon Keyword
+    # Step 1: Generate Topic & Amazon Product Keyword
     calc_list_str = "\n".join([f"- {c['name']} ({c['url']})" for c in CALCULATORS])
     topic_prompt = f"""Generate a unique, high-intent home improvement or DIY cost analysis article title for 2026, paired with an Amazon product search keyword.
-Format strictly as: Title | Keyword
+Respond strictly in this format: Title | Keyword
 Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
 
-Site Calculators available for contextual reference:
+Site Calculators available for reference:
 {calc_list_str}
 """
-    response = client.models.generate_content(model="gemini-3.8-flash", contents=topic_prompt)
-    title_raw = response.text.strip().split("|")
+    topic_msg = client.messages.create(
+        model="claude-3-5-haiku-20241022",
+        max_tokens=150,
+        messages=[{"role": "user", "content": topic_prompt}]
+    )
+    raw_topic = topic_msg.content[0].text.strip()
+    title_raw = raw_topic.split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
     slug = slugify(title)
 
-    # Step 2: Generate Article Body with Contextual Links
-    content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
+    # Step 2: Generate 800-Word SEO Article Body
+    content_prompt = f"""Write an authoritative, highly practical 800-word homeowner's buying guide for: "{title}".
 Requirements:
-1. Provide realistic 2026 cost ranges (materials, labor, permits).
-2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> if applicable. Do NOT include <html> or <body> tags.
-3. Where naturally relevant, reference and hyperlink to 1 or 2 of these site calculators:
+1. Provide realistic 2026 cost ranges (materials, labor, permit fees).
+2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> where relevant. Do NOT wrap in <html>, <head>, or <body> tags.
+3. Naturally reference and hyperlink to 1 or 2 of these site calculators within the text:
 {calc_list_str}
-4. Provide a DIY vs. Professional breakdown.
-5. Conclude with an FAQ section (3 questions using <details> and <summary>).
+4. Include a practical DIY vs. Professional Contractor decision breakdown.
+5. Conclude with an FAQ section featuring 3 questions formatted with <details> and <summary>.
 """
-    body_resp = client.models.generate_content(model="gemini-2.5-flash", contents=content_prompt)
-    article_body = body_resp.text.strip()
+    body_msg = client.messages.create(
+        model="claude-3-5-haiku-20241022",
+        max_tokens=3000,
+        messages=[{"role": "user", "content": content_prompt}]
+    )
+    article_body = body_msg.content[0].text.strip()
     article_body = re.sub(r'^```html\s*', '', article_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
-    # Step 3: Full Page Assembly linked to styles.css
+    # Step 3: Full Page Assembly
     full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,13 +134,14 @@ Requirements:
 </body>
 </html>
 """
+    # Write article file
     os.makedirs("articles", exist_ok=True)
     article_path = f"articles/{date_str}-{slug}.html"
     with open(article_path, "w", encoding="utf-8") as f:
         f.write(full_html)
     print(f"Created: {article_path}")
 
-    # Step 4: Update index.html with Deduplication
+    # Step 4: Update index.html
     if os.path.exists("index.html"):
         with open("index.html", "r", encoding="utf-8") as f:
             idx_content = f.read()
@@ -143,10 +153,8 @@ Requirements:
             with open("index.html", "w", encoding="utf-8") as f:
                 f.write(idx_content)
             print("Updated index.html with new article.")
-        else:
-            print("Article already present in index.html; skipped duplicate injection.")
 
-    # Step 5: Automatically Update sitemap.xml with the New Article URL
+    # Step 5: Automatically Update sitemap.xml
     if os.path.exists("sitemap.xml"):
         with open("sitemap.xml", "r", encoding="utf-8") as f:
             sitemap_content = f.read()
@@ -164,8 +172,6 @@ Requirements:
             with open("sitemap.xml", "w", encoding="utf-8") as f:
                 f.write(sitemap_content)
             print("Updated sitemap.xml with new article.")
-        else:
-            print("Article already present in sitemap.xml.")
 
 if __name__ == "__main__":
     main()
