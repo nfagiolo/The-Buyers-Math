@@ -1,4 +1,4 @@
-# generate_article.py (v2 with Unified Design System & Internal Cross-Linking)
+# generate_article.py (v3: With Automated Sitemap Updates & Unified Design)
 import os
 import re
 from datetime import datetime
@@ -132,7 +132,7 @@ Requirements:
         f.write(full_html)
     print(f"Created: {article_path}")
 
-    # Step 4: Robust Update of index.html with Deduplication
+    # Step 4: Update index.html with Deduplication
     if os.path.exists("index.html"):
         with open("index.html", "r", encoding="utf-8") as f:
             idx_content = f.read()
@@ -146,6 +146,27 @@ Requirements:
             print("Updated index.html with new article.")
         else:
             print("Article already present in index.html; skipped duplicate injection.")
+
+    # Step 5: Automatically Update sitemap.xml with the New Article URL
+    if os.path.exists("sitemap.xml"):
+        with open("sitemap.xml", "r", encoding="utf-8") as f:
+            sitemap_content = f.read()
+
+        article_full_url = f"https://thebuyersmath.com/articles/{date_str}-{slug}.html"
+        if article_full_url not in sitemap_content:
+            sitemap_entry = f"""  <url>
+    <loc>{article_full_url}</loc>
+    <lastmod>{date_str}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>"""
+            sitemap_content = sitemap_content.replace("</urlset>", sitemap_entry)
+            with open("sitemap.xml", "w", encoding="utf-8") as f:
+                f.write(sitemap_content)
+            print("Updated sitemap.xml with new article.")
+        else:
+            print("Article already present in sitemap.xml.")
 
 if __name__ == "__main__":
     main()
