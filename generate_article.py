@@ -1,4 +1,4 @@
-# generate_article.py (Powered by Anthropic Claude 3.5)
+# generate_article.py (Powered by Anthropic Claude with Model Fallback)
 import os
 import re
 from datetime import datetime
@@ -22,6 +22,26 @@ def slugify(text):
     text = text.lower()
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
+def call_claude(client, prompt, max_tokens=1500):
+    candidate_models = [
+        "claude-3-5-sonnet-20241022",
+        "claude-3-haiku-20240307",
+        "claude-3-5-sonnet-latest"
+    ]
+    for model_name in candidate_models:
+        try:
+            print(f"Calling Anthropic with model: {model_name}...")
+            msg = client.messages.create(
+                model=model_name,
+                max_tokens=max_tokens,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            if msg and msg.content:
+                return msg.content[0].text.strip()
+        except Exception as e:
+            print(f"Notice: {model_name} returned: {e}. Trying fallback model...")
+    raise RuntimeError("All candidate Claude models failed.")
+
 def main():
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
@@ -40,12 +60,7 @@ Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
 Site Calculators available for reference:
 {calc_list_str}
 """
-    topic_msg = client.messages.create(
-        model="claude-3-5-haiku-20241022",
-        max_tokens=150,
-        messages=[{"role": "user", "content": topic_prompt}]
-    )
-    raw_topic = topic_msg.content[0].text.strip()
+    raw_topic = call_claude(client, topic_prompt, max_tokens=150)
     title_raw = raw_topic.split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
@@ -61,12 +76,7 @@ Requirements:
 4. Include a practical DIY vs. Professional Contractor decision breakdown.
 5. Conclude with an FAQ section featuring 3 questions formatted with <details> and <summary>.
 """
-    body_msg = client.messages.create(
-        model="claude-3-5-haiku-20241022",
-        max_tokens=3000,
-        messages=[{"role": "user", "content": content_prompt}]
-    )
-    article_body = body_msg.content[0].text.strip()
+    article_body = call_claude(client, content_prompt, max_tokens=3500)
     article_body = re.sub(r'^```html\s*', '', article_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
