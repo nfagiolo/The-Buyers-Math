@@ -1,0 +1,549 @@
+/* ==========================================================================
+   THE BUYER'S MATH - UNIFIED DESIGN SYSTEM (styles.css)
+   Modern, accessible styling for calculators, guides, and site layout.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* --- 1. Design Tokens & Variables --- */
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Primary & Slate Palette */
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50:  #f8fafc;
+
+  /* Brand Accents */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+
+  --emerald-600: #059669;
+  --emerald-500: #10b981;
+  --emerald-50:  #ecfdf5;
+
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-100: #fef3c7;
+  --amber-50:  #fffbeb;
+
+  /* UI Canvas */
+  --bg-page: var(--slate-50);
+  --bg-card: #ffffff;
+  --text-main: var(--slate-900);
+  --text-muted: var(--slate-600);
+  --border: var(--slate-200);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+/* --- 2. Base & Typography --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  color: var(--slate-900);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* --- 3. Global Header & Navigation --- */
+.site-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-logo span {
+  color: var(--primary);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.site-nav a {
+  color: var(--slate-600);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.4rem 0.2rem;
+  position: relative;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--primary);
+}
+
+/* --- 4. Breadcrumbs --- */
+.breadcrumbs {
+  max-width: 1140px;
+  margin: 1.25rem auto 0 auto;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  color: var(--slate-500);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.breadcrumbs a {
+  color: var(--slate-600);
+  font-weight: 500;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.breadcrumbs span.current {
+  color: var(--slate-900);
+  font-weight: 600;
+}
+
+/* --- 5. Hero & Header Callouts --- */
+.hero-section {
+  text-align: center;
+  padding: 3rem 1.5rem 2.5rem 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-section h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.035em;
+}
+
+.hero-section p.subtitle {
+  font-size: 1.2rem;
+  color: var(--slate-600);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--emerald-50);
+  color: var(--emerald-600);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+/* --- 6. Calculator Grid (Homepage) --- */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem 1.5rem;
+}
+
+.calc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.calc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.calc-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--slate-900);
+}
+
+.calc-card p {
+  color: var(--slate-600);
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.calc-card .cta-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* --- 7. Interactive Calculator Page Layout --- */
+.calculator-layout {
+  max-width: 1140px;
+  margin: 1.5rem auto 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.calc-intro {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.calc-intro h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+.calc-intro p {
+  color: var(--slate-600);
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 820px) {
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Sticky Receipt Panel */
+.receipt-card {
+  background: var(--slate-900);
+  color: #f8fafc;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 5.5rem;
+}
+
+.receipt-card h2 {
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--slate-700);
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--slate-400);
+}
+.receipt-row strong,
+.receipt-row span:last-child {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.total-row {
+  border-top: 2px solid var(--slate-700);
+  padding-top: 1rem;
+  margin-top: 1.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--amber-500);
+}
+
+.receipt-disclaimer {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  margin-top: 1.25rem;
+  line-height: 1.45;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.75rem;
+}
+
+/* --- 8. Styled Form Controls & Modern Sliders --- */
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 600;
+  color: var(--slate-900);
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.val-badge {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--slate-200);
+  outline: none;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid #ffffff;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  color: var(--slate-800);
+  font-weight: 500;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* --- 9. Curated Recommendation / Monetization Card --- */
+.curated-recommendation {
+  background: var(--amber-50);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.curated-recommendation p.rec-title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #92400e;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-affiliate {
+  display: inline-block;
+  background: var(--amber-600);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2);
+}
+.btn-affiliate:hover {
+  background: #b45309;
+  transform: translateY(-1px);
+}
+
+/* --- 10. SEO Content & FAQ Accordion --- */
+.seo-guide-section {
+  max-width: 1140px;
+  margin: 3.5rem auto 0 auto;
+  padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.seo-guide-section h2 {
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--slate-100);
+  padding-bottom: 0.5rem;
+}
+
+.seo-guide-section details {
+  background: var(--slate-50);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.85rem;
+  transition: background 0.15s ease;
+}
+
+.seo-guide-section details[open] {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+.seo-guide-section summary {
+  font-weight: 600;
+  color: var(--slate-900);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seo-guide-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.seo-guide-section summary::after {
+  content: "+";
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--slate-500);
+  transition: transform 0.2s ease;
+}
+
+.seo-guide-section details[open] summary::after {
+  content: "−";
+}
+
+.seo-guide-section details p {
+  margin: 0.75rem 0 0 0;
+  color: var(--slate-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- 11. Global Footer --- */
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+  margin-top: 5rem;
+  text-align: center;
+  color: var(--slate-500);
+  font-size: 0.875rem;
+}
+
+.footer-nav {
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  color: var(--slate-600);
+  font-weight: 500;
+  margin: 0 0.85rem;
+  text-decoration: none;
+}
+.footer-nav a:hover {
+  color: var(--primary);
+}
+
+.footer-disclosure {
+  max-width: 720px;
+  margin: 0 auto 1rem auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--slate-400);
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--slate-400);
+}
