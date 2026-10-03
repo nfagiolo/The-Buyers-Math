@@ -1,188 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Buyer's Math | Home Improvement Calculators</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Buyer's Math | 2026 Home Improvement Cost Calculators & ROI Tools</title>
+  <meta name="description" content="Free, data-driven calculators to estimate home improvement costs, calculate HVAC and solar payback ROI, and plan remodeling budgets using 2026 national benchmarks.">
+  <link rel="canonical" href="https://thebuyersmath.com/">
+  <link rel="stylesheet" href="/styles.css">
 
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
+  <!-- OpenGraph Social Meta Tags -->
+  <meta property="og:title" content="The Buyer's Math | Home Improvement Cost & ROI Calculators">
+  <meta property="og:description" content="Instant cost estimators, HVAC payback comparisons, and project budget models for analytical homeowners.">
+  <meta property="og:url" content="https://thebuyersmath.com/">
+  <meta property="og:type" content="website">
 
-    <!-- Google AdSense -->
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/styles.css">
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-        .calc-card {
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            padding: 24px;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .calc-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.05);
-        }
-    </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <style>
+    /* Category Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      max-width: 1140px;
+      margin: 0 auto 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      padding: 0.5rem 1.15rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .filter-btn:hover {
+      border-color: #cbd5e1;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .filter-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15);
+    }
+    .badge-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
-    <header class="site-header">
-  <div class="header-inner">
-    <a href="/" class="site-logo">The Buyer's Math</a>
-    <nav class="site-nav">
-      <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
-      <a href="#article-list">Guides</a>
-      <a href="/privacy-policy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero-section">
-  <div class="trust-pill">
-    <span>✓ Modeled on 2026 RSMeans &amp; EIA Cost Benchmarks</span>
-    <span>•</span>
-    <span>100% Free &amp; Client-Side</span>
-  </div>
-  <h1>Data-Driven Home Improvement Math</h1>
-  <p class="subtitle">
-    Instant cost estimators, HVAC payback comparisons, and project budget models for analytical homeowners.
-  </p>
-</section>
-
-    <main>
-        <!-- Automated Articles Section (MOVED TO TOP) -->
-        <div style="margin-bottom: 2.5rem; padding: 1.5rem 2rem; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px;">
-            <h2 style="color: #0369a1; font-size: 1.2rem; margin-top: 0; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">Latest Guides</h2>
-            <ul style="list-style-type: none; padding: 0; margin: 0; line-height: 1.6;" id="article-list">
-                <li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">2026-09-30</span> <a href="articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charging-circuit-diy-vs-electrician-breakdown.html" style="color:#0f172a; font-weight:600; text-decoration:none;">Cost to Install a 240V 50-Amp EV Charging Circuit: DIY vs Electrician Breakdown</a></li>
-               <li><span style="color: #64748b; font-size:0.85em; margin-right:10px;">2026-09-30</span> <a href="articles/2026-09-30-ditra-heat-cost-guide.html" style="color: #0f172a; font-weight:600; text-decoration:none;">Schluter DITRA-HEAT Installation Cost Guide</a></li>
-                <li><span style="color: #64748b; font-size:0.85em; margin-right:10px;">2026-09-30</span> <a href="articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html" style="color: #0f172a; font-weight:600; text-decoration:none;">Maximizing Your 2026 Property Value: Insulated Steel vs. Wood Garage Doors</a></li>
-                <li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">2026-10-02</span> <a href="articles/2026-10-02-top-home-improvement-roi-projects-for-2026.html" style="color:#0f172a; font-weight:600; text-decoration:none;">Top Home Improvement ROI Projects for 2026</a></li>
-                <li><span style="color:#64748b; font-size:0.85em; margin-right:10px;">2026-10-03</span> <a href="articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html" style="color:#0f172a; font-weight:600; text-decoration:none;">Top Home Improvement ROI Projects for 2026</a></li>
-                <!-- ARTICLES_LIST_MARKER -->
-            </ul>
-        </div>
-
-        <div class="calculator-grid">
-            <!-- Your Calculator Cards start here -->
-            <!-- Calculator Grid Section -->
-            <!-- Calculator Grid Section -->
-            <div class="calculator-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 20px; max-width: 1200px; margin: 0 auto 60px auto;">
-
-                <!-- Card 1: Roof -->
-                <a href="roofing-cost-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🏠</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Roof Replacement Cost Estimator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Calculate your 2026 roofing costs based on square footage, pitch, and material choices.</p>
-                </a>
-
-                <!-- Card 2: Heat Pump -->
-                <a href="hvac-roi-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">⚡</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Heat Pump vs. Gas Furnace ROI</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Compare operating costs between high-efficiency heat pumps and standard gas furnaces.</p>
-                </a>
-
-                <!-- Card 3: Basement -->
-                <a href="basement-cost-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🔨</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Basement Finishing Cost Estimator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Estimate the total project cost of finishing your basement based on finish quality and amenities.</p>
-                </a>
-
-                <!-- Card 4: Solar Panels -->
-                <a href="solar-payback-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">☀️</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Solar Panel Payback Timeline</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Calculate your break-even point and long-term utility savings from installing residential solar.</p>
-                </a>
-
-                <!-- Card 5: Kitchen -->
-                <a href="kitchen-remodel-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🍳</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Kitchen Remodel Cost Estimator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Estimate the costs for cabinets, countertops, appliances, and labor for your kitchen upgrade.</p>
-                </a>
-
-                <!-- Card 6: Driveway -->
-                <a href="driveway-paving-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🛣️</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Driveway Paving Calculator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Compare the installation costs and lifespan of asphalt, concrete, and gravel driveways.</p>
-                </a>
-
-                <!-- Card 7: Windows -->
-                <a href="window-replacement-estimator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🪟</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Window Replacement Estimator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Estimate the cost of replacing your home's windows by frame material, glass type, and size.</p>
-                </a>
-
-                <!-- Card 8: Pool Pump -->
-                <a href="pool.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🏊‍♂️</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Pool Pump Energy Calculator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Calculate the monthly and annual electricity cost of running your single or variable speed pool pump.</p>
-                </a>
-
-                <!-- Card 9: Mini-Split AC -->
-                <a href="mini-split-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">❄️</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Mini-Split AC Cost Estimator</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Estimate the cost of a ductless mini-split system based on home size and number of indoor zones.</p>
-                </a>
-
-                <!-- Card 10: Backup Generator -->
-                <a href="generator-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">🔌</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Backup Generator Sizing Guide</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Calculate the running wattage and starting surge needed to power your appliances during an outage.</p>
-                </a>
-
-                <!-- Card 11: Water Heater -->
-                <a href="water-heater-calculator.html" class="calc-card">
-                    <div style="font-size: 2.5em; margin-bottom: 15px;">♨️</div>
-                    <h2 style="color: #0369a1; font-size: 1.25em; margin: 0 0 10px 0;">Water Heater Replacement Cost</h2>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin: 0;">Compare prices for replacing a standard tank heater versus upgrading to a tankless system.</p>
-                </a>
-
+  <!-- Global Sticky Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
     </div>
-</div>
-</main>
+  </header>
 
-<!-- Global Footer with Amazon Disclosure & Legal Links -->
-<footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-        <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-        <a href="#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-        <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms & Disclaimer</a> |
-        <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="trust-pill">
+      <span>✓ Modeled on 2026 RSMeans &amp; EIA Cost Benchmarks</span>
+      <span>•</span>
+      <span>100% Free &amp; Client-Side</span>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
-        <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+    <h1>Data-Driven Home Improvement Math</h1>
+    <p class="subtitle">
+      Instant cost estimators, HVAC payback comparisons, and project budget models for analytical homeowners.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
-</footer>
+  </section>
 
+  <!-- Interactive Category Filter Bar -->
+  <div class="filter-bar" aria-label="Calculator Categories">
+    <button class="filter-btn active" data-filter="all">All Tools (11)</button>
+    <button class="filter-btn" data-filter="exterior">Roofing &amp; Exterior (4)</button>
+    <button class="filter-btn" data-filter="hvac">Heating &amp; Cooling (3)</button>
+    <button class="filter-btn" data-filter="remodel">Interior &amp; Remodel (2)</button>
+    <button class="filter-btn" data-filter="energy">Solar &amp; Power (2)</button>
+  </div>
+
+  <!-- Calculator Grid -->
+  <main class="calculator-grid" id="calculators">
+    <!-- 1. Roofing -->
+    <a href="roofing-cost-calculator.html" class="calc-card" data-category="exterior">
+      <div>
+        <span class="badge-category">Exterior</span>
+        <h3>Roof Replacement Cost Estimator</h3>
+        <p>Calculate roof replacement pricing by ground footprint, pitch complexity, materials, and tear-off layers.</p>
+      </div>
+      <span class="cta-link">Calculate Estimate &rarr;</span>
+    </a>
+
+    <!-- 2. HVAC -->
+    <a href="hvac-roi-calculator.html" class="calc-card" data-category="hvac">
+      <div>
+        <span class="badge-category">HVAC &amp; Energy</span>
+        <h3>Heat Pump vs. Gas Furnace ROI</h3>
+        <p>Compare equipment pricing, Section 25C federal tax credits, and 10-year operating costs.</p>
+      </div>
+      <span class="cta-link">Calculate Payback &rarr;</span>
+    </a>
+
+    <!-- 3. Kitchen -->
+    <a href="kitchen-remodel-calculator.html" class="calc-card" data-category="remodel">
+      <div>
+        <span class="badge-category">Interior</span>
+        <h3>Kitchen Remodel Cost Estimator</h3>
+        <p>Plan minor, midrange, and major luxury kitchen remodeling budgets by cabinets, countertops, and appliances.</p>
+      </div>
+      <span class="cta-link">Calculate Budget &rarr;</span>
+    </a>
+
+    <!-- 4. Solar -->
+    <a href="solar-payback-calculator.html" class="calc-card" data-category="energy">
+      <div>
+        <span class="badge-category">Solar &amp; Power</span>
+        <h3>Solar Panel Payback Timeline</h3>
+        <p>Model solar break-even timeline, utility inflation hedge, and net metering savings.</p>
+      </div>
+      <span class="cta-link">Calculate Timeline &rarr;</span>
+    </a>
+
+    <!-- 5. Basement -->
+    <a href="basement-cost-calculator.html" class="calc-card" data-category="remodel">
+      <div>
+        <span class="badge-category">Interior</span>
+        <h3>Basement Finishing Cost Estimator</h3>
+        <p>Price out framing, drywall, electrical, plumbing rough-in, and egress windows for finished basements.</p>
+      </div>
+      <span class="cta-link">Calculate Finishing &rarr;</span>
+    </a>
+
+    <!-- 6. Driveway -->
+    <a href="driveway-paving-calculator.html" class="calc-card" data-category="exterior">
+      <div>
+        <span class="badge-category">Exterior</span>
+        <h3>Driveway Paving Calculator</h3>
+        <p>Compare asphalt, concrete, and paver driveway installation and resurfacing costs.</p>
+      </div>
+      <span class="cta-link">Calculate Paving &rarr;</span>
+    </a>
+
+    <!-- 7. Windows -->
+    <a href="window-replacement-estimator.html" class="calc-card" data-category="exterior">
+      <div>
+        <span class="badge-category">Exterior</span>
+        <h3>Window Replacement Estimator</h3>
+        <p>Estimate double-hung, casement, and picture window replacement costs across vinyl, fiberglass, and wood.</p>
+      </div>
+      <span class="cta-link">Calculate Windows &rarr;</span>
+    </a>
+
+    <!-- 8. Pool Pump -->
+    <a href="pool.html" class="calc-card" data-category="exterior">
+      <div>
+        <span class="badge-category">Exterior</span>
+        <h3>Pool Pump Energy Calculator</h3>
+        <p>Calculate seasonal electric bill savings from switching to a variable-speed swimming pool pump.</p>
+      </div>
+      <span class="cta-link">Calculate Energy &rarr;</span>
+    </a>
+
+    <!-- 9. Mini-Split -->
+    <a href="mini-split-calculator.html" class="calc-card" data-category="hvac">
+      <div>
+        <span class="badge-category">HVAC &amp; Energy</span>
+        <h3>Mini-Split AC Cost Estimator</h3>
+        <p>Size single and multi-zone ductless heat pump systems with realistic installation costs.</p>
+      </div>
+      <span class="cta-link">Calculate Ductless &rarr;</span>
+    </a>
+
+    <!-- 10. Generator -->
+    <a href="generator-calculator.html" class="calc-card" data-category="energy">
+      <div>
+        <span class="badge-category">Solar &amp; Power</span>
+        <h3>Backup Generator Sizing Guide</h3>
+        <p>Size essential vs. whole-home standby generators, fuel consumption, and transfer switch installation.</p>
+      </div>
+      <span class="cta-link">Calculate Generator &rarr;</span>
+    </a>
+
+    <!-- 11. Water Heater -->
+    <a href="water-heater-calculator.html" class="calc-card" data-category="hvac">
+      <div>
+        <span class="badge-category">HVAC &amp; Energy</span>
+        <h3>Water Heater Replacement Cost</h3>
+        <p>Compare tankless on-demand vs. traditional storage tank water heater replacement costs.</p>
+      </div>
+      <span class="cta-link">Calculate Replacement &rarr;</span>
+    </a>
+  </main>
+
+  <!-- Latest Guides Section -->
+  <section class="container" style="max-width: 1140px; margin: 2rem auto; padding: 0 1.5rem;">
+    <h2 style="font-size: 1.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Latest Buying Guides</h2>
+    <ul id="article-list">
+      <!-- ARTICLES_LIST_MARKER -->
+    </ul>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+    </p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+  </footer>
+
+  <!-- Instant Client-Side Category Filter Script -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const calcCards = document.querySelectorAll('.calc-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.getAttribute('data-filter');
+        calcCards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
