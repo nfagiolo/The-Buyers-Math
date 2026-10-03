@@ -1,140 +1,151 @@
+# generate_article.py (v2 with Unified Design System & Internal Cross-Linking)
 import os
 import re
+from datetime import datetime
+from google import genai
 
-CALCULATORS = {
-    "roofing-cost-calculator.html": {
-        "title": "Roof Replacement Cost Estimator",
-        "desc": "Calculate roof replacement costs based on home footprint, pitch complexity, and tear-off layers."
-    },
-    "hvac-roi-calculator.html": {
-        "title": "Heat Pump vs. Gas Furnace ROI Calculator",
-        "desc": "Compare upfront installation costs, federal tax credits, and annual operating costs between heat pumps and gas furnaces."
-    },
-    "basement-cost-calculator.html": {
-        "title": "Basement Finishing Cost Estimator",
-        "desc": "Estimate total basement finishing costs including framing, drywall, electrical, and flooring."
-    },
-    "solar-payback-calculator.html": {
-        "title": "Solar Panel Payback Timeline Calculator",
-        "desc": "Calculate solar panel payback period, net metering savings, and federal 30% solar tax credit."
-    },
-    "kitchen-remodel-calculator.html": {
-        "title": "Kitchen Remodel Cost Estimator",
-        "desc": "Estimate kitchen remodeling budgets across minor, midrange, and major luxury renovations."
-    },
-    "driveway-paving-calculator.html": {
-        "title": "Driveway Paving Calculator",
-        "desc": "Estimate asphalt, concrete, and paver driveway installation and resurfacing costs."
-    },
-    "window-replacement-estimator.html": {
-        "title": "Window Replacement Estimator",
-        "desc": "Estimate vinyl, wood, and fiberglass replacement window pricing including installation."
-    },
-    "pool.html": {
-        "title": "Pool Pump Energy Calculator",
-        "desc": "Calculate electricity savings from upgrading to a variable speed swimming pool pump."
-    },
-    "mini-split-calculator.html": {
-        "title": "Ductless Mini-Split Cost Estimator",
-        "desc": "Estimate multi-zone ductless mini-split heat pump installation costs and energy efficiency."
-    },
-    "generator-calculator.html": {
-        "title": "Standby Generator Sizing & Cost Guide",
-        "desc": "Size and calculate whole-house standby generator equipment and transfer switch installation costs."
-    },
-    "water-heater-calculator.html": {
-        "title": "Water Heater Replacement Cost Estimator",
-        "desc": "Compare tankless vs. storage tank water heater replacement costs and energy efficiency."
-    }
-}
+CALCULATORS = [
+    {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "keywords": ["roof", "roofing", "shingles"]},
+    {"name": "Heat Pump vs. Gas Furnace ROI", "url": "../hvac-roi-calculator.html", "keywords": ["hvac", "heat pump", "furnace", "heating", "cooling"]},
+    {"name": "Basement Finishing Cost Estimator", "url": "../basement-cost-calculator.html", "keywords": ["basement", "remodel", "framing", "drywall"]},
+    {"name": "Solar Panel Payback Timeline", "url": "../solar-payback-calculator.html", "keywords": ["solar", "panels", "electric bill", "clean energy"]},
+    {"name": "Kitchen Remodel Cost Estimator", "url": "../kitchen-remodel-calculator.html", "keywords": ["kitchen", "cabinets", "countertops", "appliances"]},
+    {"name": "Driveway Paving Calculator", "url": "../driveway-paving-calculator.html", "keywords": ["driveway", "asphalt", "concrete", "paving"]},
+    {"name": "Window Replacement Estimator", "url": "../window-replacement-estimator.html", "keywords": ["windows", "glazing", "drafts", "replacement"]},
+    {"name": "Pool Pump Energy Calculator", "url": "../pool.html", "keywords": ["pool", "pump", "filtration", "energy"]},
+    {"name": "Mini-Split AC Cost Estimator", "url": "../mini-split-calculator.html", "keywords": ["mini-split", "ductless", "air conditioning"]},
+    {"name": "Backup Generator Sizing Guide", "url": "../generator-calculator.html", "keywords": ["generator", "backup power", "standby", "outage"]},
+    {"name": "Water Heater Replacement Cost", "url": "../water-heater-calculator.html", "keywords": ["water heater", "tankless", "plumbing"]}
+]
 
-HEADER_HTML = """  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+def slugify(text):
+    text = text.lower()
+    return re.sub(r'[\W_]+', '-', text).strip('-')
+
+def main():
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("GEMINI_API_KEY not found.")
+        return
+
+    client = genai.Client(api_key=api_key)
+    date_str = datetime.now().strftime("%Y-%m-%d")
+
+    # Step 1: Generate Topic & Amazon Keyword
+    calc_list_str = "\n".join([f"- {c['name']} ({c['url']})" for c in CALCULATORS])
+    topic_prompt = f"""Generate a unique, high-intent home improvement or DIY cost analysis article title for 2026, paired with an Amazon product search keyword.
+Format strictly as: Title | Keyword
+Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
+
+Site Calculators available for contextual reference:
+{calc_list_str}
+"""
+    response = client.models.generate_content(model="gemini-2.5-flash", contents=topic_prompt)
+    title_raw = response.text.strip().split("|")
+    title = title_raw[0].strip()
+    amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
+    slug = slugify(title)
+
+    # Step 2: Generate Article Body with Contextual Links
+    content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
+Requirements:
+1. Provide realistic 2026 cost ranges (materials, labor, permits).
+2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> if applicable. Do NOT include <html> or <body> tags.
+3. Where naturally relevant, reference and hyperlink to 1 or 2 of these site calculators:
+{calc_list_str}
+4. Provide a DIY vs. Professional breakdown.
+5. Conclude with an FAQ section (3 questions using <details> and <summary>).
+"""
+    body_resp = client.models.generate_content(model="gemini-2.5-flash", contents=content_prompt)
+    article_body = body_resp.text.strip()
+    article_body = re.sub(r'^```html\s*', '', article_body)
+    article_body = re.sub(r'\s*```$', '', article_body)
+
+    # Step 3: Full Page Assembly linked to styles.css
+    full_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} | The Buyer's Math</title>
+  <meta name="description" content="{title} - Real 2026 cost estimates, labor vs material breakdown, and buying guide.">
+  <link rel="stylesheet" href="../styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="../index.html">Calculators</a>
+        <a href="../index.html#article-list">Guides</a>
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
       </nav>
     </div>
   </header>
-"""
 
-FOOTER_HTML = """  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
-    </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
-    </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
-  </footer>
-"""
-
-def update_file(filename, meta):
-    if not os.path.exists(filename):
-        print(f"Skipping {filename} (not found)")
-        return
-
-    with open(filename, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    # Skip if already updated
-    if "The Buyer's Math is a participant in the Amazon Services LLC Associates Program" in content:
-        print(f"{filename} is already updated.")
-        return
-
-    title = meta["title"]
-    desc = meta["desc"]
-
-    # 1. Inject Schema into <head>
-    schema_snippet = f"""  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {{
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "{title}",
-    "url": "https://thebuyersmath.com/{filename}",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "{desc}"
-  }}
-  </script>
-</head>"""
-    content = content.replace("</head>", schema_snippet, 1)
-
-    # 2. Inject Header and Breadcrumb after <body>
-    breadcrumb = f"""  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">{title}</span>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> &gt;
+    <a href="../index.html#article-list">Guides</a> &gt;
+    <span class="current">{title}</span>
   </nav>
+
+  <main class="container" style="max-width: 860px; margin: 2rem auto; padding: 0 1.5rem;">
+    <article class="card" style="padding: 2.5rem;">
+      <h1 style="font-size: 2.25rem; margin-top: 0; margin-bottom: 0.5rem;">{title}</h1>
+      <div style="font-size: 0.875rem; color: #64748b; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
+        Published on {date_str} &bull; The Buyer's Math Editorial Staff &bull; 2026 Cost Data
+      </div>
+
+      {article_body}
+
+      <div class="curated-recommendation">
+        <p class="rec-title">Recommended Project Gear</p>
+        <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Compare top-rated tools and materials for this project on Amazon:</p>
+        <a href="https://www.amazon.com/s?k={slugify(amazon_kw)}&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View {amazon_kw.title()} on Amazon</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="../index.html">Calculators</a> |
+      <a href="../index.html#article-list">Guides</a> |
+      <a href="../privacy-policy.html">Privacy Policy</a> |
+      <a href="../terms.html">Terms &amp; Disclaimer</a> |
+      <a href="../contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases.
+    </p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+  </footer>
+</body>
+</html>
 """
-    body_match = re.search(r'<body[^>]*>', content, re.IGNORECASE)
-    if body_match:
-        idx = body_match.end()
-        content = content[:idx] + "\n" + HEADER_HTML + breadcrumb + content[idx:]
+    # Write article file
+    os.makedirs("articles", exist_ok=True)
+    article_path = f"articles/{date_str}-{slug}.html"
+    with open(article_path, "w", encoding="utf-8") as f:
+        f.write(full_html)
+    print(f"Created: {article_path}")
 
-    # 3. Inject Footer before </body>
-    content = content.replace("</body>", FOOTER_HTML + "\n</body>", 1)
+    # Step 4: Robust Update of index.html with Deduplication
+    if os.path.exists("index.html"):
+        with open("index.html", "r", encoding="utf-8") as f:
+            idx_content = f.read()
 
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(content)
-    print(f"Successfully updated {filename}")
-
-def main():
-    print("Updating all calculator pages...")
-    for filename, meta in CALCULATORS.items():
-        update_file(filename, meta)
-    print("Done! All calculator pages have been updated.")
+        article_rel_url = f"articles/{date_str}-{slug}.html"
+        if article_rel_url not in idx_content and slug not in idx_content:
+            new_item = f'<li><span class="article-date">{date_str}</span> <a href="{article_rel_url}">{title}</a></li>\n    <!-- ARTICLES_LIST_MARKER -->'
+            idx_content = idx_content.replace("<!-- ARTICLES_LIST_MARKER -->", new_item)
+            with open("index.html", "w", encoding="utf-8") as f:
+                f.write(idx_content)
+            print("Updated index.html with new article.")
+        else:
+            print("Article already present in index.html; skipped duplicate injection.")
 
 if __name__ == "__main__":
     main()
