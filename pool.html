@@ -1,194 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Pool Pump Energy Calculator</title>
-    <meta name="description" content="Calculate your exact pool pump electricity costs and see your ROI for upgrading to a variable speed pump.">
-    
-    <style>
-        body { font-family: -apple-system, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6;}
-        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0284c7; color: #f8fafc; }
-        
-        h3 { color: #0f172a; margin-top: 0; }
-        .receipt h3 { color: #fff; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        input[type="number"] { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; }
-        
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; text-align: center; }
-        .comp-box { background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); }
-        
-        .roi-banner { background: #16a34a; color: white; padding: 1rem; border-radius: 8px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.2rem; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backup Generator Sizing & Cost Guide (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate standby backup generator equipment, automatic transfer switch (ATS), and installation costs for essential circuits up to whole-home power.">
+  <link rel="canonical" href="https://thebuyersmath.com/generator-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Pool Pump Energy Calculator",
-    "url": "https://thebuyersmath.com/pool.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Calculate electricity savings from upgrading to a variable speed swimming pool pump."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/generator-calculator.html#app",
+        "name": "Backup Generator Sizing & Cost Guide",
+        "url": "https://thebuyersmath.com/generator-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Size and calculate standby generator equipment, electrical transfer switches, and gas hookup costs."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/generator-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a whole-house standby generator cost installed in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A complete turnkey installation for an essential-circuit standby generator (10–14 kW) averages $6,000 to $9,000, while a whole-home generator (18–26 kW) ranges from $10,500 to $16,000 including electrical permits and gas hookups."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Pool Pump Energy Calculator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Backup Generator Sizing Guide</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Pool Pump Energy & ROI Calculator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">See how much your current pump costs, and exactly how fast an upgrade pays for itself.</p>
-    </header>
-
-    <main class="split-layout">
-        <!-- Sliders -->
-        <div class="card">
-            <h3>Your Current Setup</h3>
-            
-            <label>Pump Power (Watts) <span class="val-display" id="wattVal">1500 W</span></label>
-            <input type="range" id="pumpWatts" min="500" max="3000" step="50" value="1500">
-            <small style="color: #64748b;">(A standard 1.5 HP single-speed pump uses ~1,500W)</small>
-            
-            <label>Hours Run Per Day <span class="val-display" id="hourVal">8 Hours</span></label>
-            <input type="range" id="hoursPerDay" min="1" max="24" step="1" value="8">
-            
-            <label>Electricity Rate ($ per kWh)</label>
-            <input type="number" id="kwhRate" value="0.15" step="0.01">
-            <small style="color: #64748b;">(Check your local utility bill for the exact rate)</small>
-        </div>
-
-        <!-- Live Comparison Receipt -->
-        <div class="card receipt">
-            <h3>Annual Energy Cost</h3>
-            
-            <div class="comparison-grid">
-                <div class="comp-box">
-                    <div style="font-size: 0.9rem; opacity: 0.9;">Single Speed (Current)</div>
-                    <div id="costOld" style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$657</div>
-                </div>
-                <div class="comp-box" style="background: #0ea5e9; border-color: #38bdf8;">
-                    <div style="font-size: 0.9rem; opacity: 0.9;">Variable Speed (Upgrade)</div>
-                    <div id="costNew" style="font-size: 1.8rem; font-weight: bold; margin-top: 0.5rem;">$131</div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 1.5rem;">
-                <span style="opacity: 0.9; font-size: 1.1rem;">Annual Savings:</span><br>
-                <span id="savings" style="font-size: 2.5rem; font-weight: bold; color: #fbbf24;">$526 / year</span>
-            </div>
-
-            <div class="roi-banner">
-                New Pump Pays For Itself In:<br>
-                <span id="roiTime" style="font-size: 1.8rem;">2.2 Years</span>
-            </div>
-            <p style="font-size: 0.8rem; text-align: center; opacity: 0.8; margin-top: 0.5rem;">*Assumes an installed variable speed upgrade cost of $1,200 and an 80% energy reduction.</p>
-        </div>
-    </main>
-
-    <!-- Affiliate Monetization Section -->
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Stop Scrubbing, Start Swimming</h3>
-        <p style="color: #475569;">Ditch the manual vacuum. A robotic pool cleaner operates independently of your pool's pump system, saving energy and keeping your water crystal clear.</p>
-        <a href="https://www.amazon.com/s?k=robotic+pool+cleaner&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Robotic Pool Cleaners</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Backup Generator Sizing &amp; Cost Guide</h1>
+      <p>Size equipment wattage, automatic transfer switches, and utility gas hookups for permanent home standby power.</p>
     </div>
 
-    <script>
-        function updatePool() {
-            // Get values
-            const watts = parseInt(document.getElementById('pumpWatts').value);
-            const hours = parseInt(document.getElementById('hoursPerDay').value);
-            const rate = parseFloat(document.getElementById('kwhRate').value) || 0;
-            
-            // Update labels
-            document.getElementById('wattVal').innerText = watts.toLocaleString() + ' W';
-            document.getElementById('hourVal').innerText = hours + ' Hours';
-            
-            // Math: Current Single Speed
-            const dailyKwh = (watts * hours) / 1000;
-            const annualOld = (dailyKwh * rate) * 365;
-            
-            // Math: Variable Speed (approx 80% more efficient)
-            const annualNew = annualOld * 0.20;
-            
-            const savings = annualOld - annualNew;
-            
-            // Math: ROI (Assumes $1,200 installed cost for new pump)
-            let roiYears = 0;
-            if(savings > 0) {
-                roiYears = 1200 / savings;
-            }
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="generatorSize">Backup Power Capacity &amp; Coverage</label>
+          <select id="generatorSize">
+            <option value="5200">10 kW – 12 kW: Essential Circuits (Fridge, furnace blower, sump pump, lights - $5,200)</option>
+            <option value="8400" selected>14 kW – 18 kW: Managed Whole-Home (Essentials + 3-ton Central AC - $8,400)</option>
+            <option value="12200">20 kW – 26 kW: Complete Whole-House (Full electrical load + 5-ton AC &amp; oven - $12,200)</option>
+          </select>
+        </div>
 
-            // UI Updates
-            document.getElementById('costOld').innerText = '$' + Math.round(annualOld).toLocaleString();
-            document.getElementById('costNew').innerText = '$' + Math.round(annualNew).toLocaleString();
-            document.getElementById('savings').innerText = '$' + Math.round(savings).toLocaleString() + ' / year';
-            
-            if(roiYears > 0 && roiYears < 15) {
-                document.getElementById('roiTime').innerText = roiYears.toFixed(1) + ' Years';
-            } else {
-                document.getElementById('roiTime').innerText = '15+ Years';
-            }
-        }
+        <div class="form-group">
+          <label for="transferSwitch">Automatic Transfer Switch (ATS)</label>
+          <select id="transferSwitch">
+            <option value="1100">100-Amp Subpanel Transfer Switch ($1,100 installed)</option>
+            <option value="1850" selected>200-Amp Whole-House Service-Rated ATS ($1,850 installed)</option>
+          </select>
+        </div>
 
-        // Add Event Listeners for real-time calculation
-        document.getElementById('pumpWatts').addEventListener('input', updatePool);
-        document.getElementById('hoursPerDay').addEventListener('input', updatePool);
-        document.getElementById('kwhRate').addEventListener('input', updatePool);
+        <div class="form-group">
+          <label for="fuelHookup">Fuel Source &amp; Gas Line Distance</label>
+          <select id="fuelHookup">
+            <option value="750" selected>Natural Gas (Under 20 ft from gas meter - $750)</option>
+            <option value="1350">Natural Gas (Long trenching / over 40 ft - $1,350)</option>
+            <option value="1100">Liquid Propane / LP Tank Hookup ($1,100)</option>
+          </select>
+        </div>
 
-        // Run on load
-        updatePool();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Generator Maintenance</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Keep your standby generator starting reliably in freezing temperatures with cold-weather heater kits:</p>
+          <a href="https://www.amazon.com/s?k=standby+generator+cold+weather+kit&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Generator Cold-Weather Kits on Amazon</a>
+        </div>
+      </div>
+
+      <!-- Receipt Card with Export Buttons -->
+      <div class="card receipt">
+        <h2>Turnkey Project Estimate</h2>
+        <div class="receipt-row">
+          <span>Generator Unit &amp; Concrete Pad:</span>
+          <span id="unitCost">$8,400</span>
+        </div>
+        <div class="receipt-row">
+          <span>Automatic Transfer Switch (ATS):</span>
+          <span id="atsCost">$1,850</span>
+        </div>
+        <div class="receipt-row">
+          <span>Plumber Gas Pipe &amp; Permits:</span>
+          <span id="gasCost">$750</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total Installed Estimate:</span>
+          <span id="totalCost">$11,000</span>
+        </div>
+
+        <div class="receipt-row" style="margin-top:1.25rem; border-top:1px solid #334155; padding-top:0.75rem;">
+          <span>Startup Time During Outage:</span>
+          <strong style="color:#4ade80;">10–15 Seconds (Automatic)</strong>
+        </div>
+
+        <!-- Export Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Modeled on 2026 licensed electrician and master gas fitter rates including pre-cast composite pad and municipal permit inspections.
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Standby Generator Sizing &amp; Installation Guide (2026)</h2>
+    <p>A permanently installed home standby generator monitors utility voltage 24/7. When a grid blackout occurs, an automatic transfer switch (ATS) safely isolates your home from utility lines and engages the generator within seconds.</p>
+
+    <h3>Essential Circuit vs. Whole-House Sizing</h3>
+    <ul>
+      <li><strong>Essential Circuit (10–14 kW):</strong> Powers selected critical loads via an emergency subpanel (refrigerator, furnace blower, sump pump, WiFi, and select room lighting circuits).</li>
+      <li><strong>Whole-House (18–26 kW):</strong> Powers the entire 200-amp main electrical panel without power rationing, running central air conditioners, electric ranges, and water heaters simultaneously.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>Can a standby generator run continuously for several days?</summary>
+      <p>Yes. When connected to a municipal natural gas line, a standby generator can run indefinitely during extended grid outages, requiring only periodic oil checks after 100 hours of continuous operation.</p>
+    </details>
+    <details>
+      <summary>How far must a generator sit from windows and doors?</summary>
+      <p>National Fire Protection Association (NFPA) standards typically mandate a minimum 5-foot clearance from operable windows, exterior doors, and soffit vents to prevent carbon monoxide intrusion.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const generatorSize = document.getElementById('generatorSize');
+    const transferSwitch = document.getElementById('transferSwitch');
+    const fuelHookup = document.getElementById('fuelHookup');
+
+    const unitCost = document.getElementById('unitCost');
+    const atsCost = document.getElementById('atsCost');
+    const gasCost = document.getElementById('gasCost');
+    const totalCost = document.getElementById('totalCost');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateGenerator() {
+      const unit = parseFloat(generatorSize.value);
+      const ats = parseFloat(transferSwitch.value);
+      const gas = parseFloat(fuelHookup.value);
+
+      const grandTotal = unit + ats + gas;
+
+      unitCost.textContent = '$' + unit.toLocaleString();
+      atsCost.textContent = '$' + ats.toLocaleString();
+      gasCost.textContent = '$' + gas.toLocaleString();
+      totalCost.textContent = '$' + grandTotal.toLocaleString();
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Standby Generator Estimate\\n" +
+        "Capacity: " + generatorSize.options[generatorSize.selectedIndex].text + "\\n" +
+        "Transfer Switch (ATS): " + transferSwitch.options[transferSwitch.selectedIndex].text + "\\n" +
+        "Fuel Hookup: " + fuelHookup.options[fuelHookup.selectedIndex].text + "\\n" +
+        "Total Installed Estimate: " + totalCost.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/generator-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    generatorSize.addEventListener('change', updateGenerator);
+    transferSwitch.addEventListener('change', updateGenerator);
+    fuelHookup.addEventListener('change', updateGenerator);
+
+    updateGenerator();
+  </script>
 </body>
 </html>
