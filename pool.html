@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backup Generator Sizing & Cost Guide (2026) | The Buyer's Math</title>
-  <meta name="description" content="Calculate standby backup generator equipment, automatic transfer switch (ATS), and installation costs for essential circuits up to whole-home power.">
-  <link rel="canonical" href="https://thebuyersmath.com/generator-calculator.html">
+  <title>Pool Pump Energy Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate electricity bill savings and payback timeline from upgrading a single-speed pool pump to an energy-efficient variable-speed pump.">
+  <link rel="canonical" href="https://thebuyersmath.com/pool.html">
   <link rel="stylesheet" href="/styles.css">
 
   <!-- Google tag (gtag.js) -->
@@ -23,7 +23,7 @@
   <!-- Print Stylesheet -->
   <style>
     @media print {
-      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, select {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
         display: none !important;
       }
       .split-layout { display: block !important; }
@@ -45,24 +45,24 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "@id": "https://thebuyersmath.com/generator-calculator.html#app",
-        "name": "Backup Generator Sizing & Cost Guide",
-        "url": "https://thebuyersmath.com/generator-calculator.html",
+        "@id": "https://thebuyersmath.com/pool.html#app",
+        "name": "Pool Pump Energy Calculator",
+        "url": "https://thebuyersmath.com/pool.html",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
         "browserRequirements": "Requires JavaScript",
-        "description": "Size and calculate standby generator equipment, electrical transfer switches, and gas hookup costs."
+        "description": "Calculate annual electricity savings and payback time from upgrading to an energy-efficient variable speed pool pump."
       },
       {
         "@type": "FAQPage",
-        "@id": "https://thebuyersmath.com/generator-calculator.html#faq",
+        "@id": "https://thebuyersmath.com/pool.html#faq",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "How much does a whole-house standby generator cost installed in 2026?",
+            "name": "How much electricity does a variable-speed pool pump save?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A complete turnkey installation for an essential-circuit standby generator (10–14 kW) averages $6,000 to $9,000, while a whole-home generator (18–26 kW) ranges from $10,500 to $16,000 including electrical permits and gas hookups."
+              "text": "A variable-speed pool pump uses up to 70% to 80% less electricity than a traditional single-speed pump, saving typical pool owners $450 to $850 annually depending on operating season and local electric rates."
             }
           }
         ]
@@ -91,75 +91,76 @@
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> &gt;
     <a href="/">Calculators</a> &gt;
-    <span class="current">Backup Generator Sizing Guide</span>
+    <span class="current">Pool Pump Energy Calculator</span>
   </nav>
 
   <!-- Main Calculator -->
   <main class="container">
     <div class="calc-intro">
-      <h1>Backup Generator Sizing &amp; Cost Guide</h1>
-      <p>Size equipment wattage, automatic transfer switches, and utility gas hookups for permanent home standby power.</p>
+      <h1>Pool Pump Energy Savings Calculator</h1>
+      <p>Calculate seasonal electric bill reductions and payback timeline when switching from single-speed to variable-speed pool pumps.</p>
     </div>
 
     <div class="split-layout">
       <!-- Input Controls -->
       <div class="card">
         <div class="form-group">
-          <label for="generatorSize">Backup Power Capacity &amp; Coverage</label>
-          <select id="generatorSize">
-            <option value="5200">10 kW – 12 kW: Essential Circuits (Fridge, furnace blower, sump pump, lights - $5,200)</option>
-            <option value="8400" selected>14 kW – 18 kW: Managed Whole-Home (Essentials + 3-ton Central AC - $8,400)</option>
-            <option value="12200">20 kW – 26 kW: Complete Whole-House (Full electrical load + 5-ton AC &amp; oven - $12,200)</option>
+          <label for="poolSize">
+            Swimming Pool Volume
+            <span class="val-badge" id="poolSizeVal">20,000 Gallons</span>
+          </label>
+          <input type="range" id="poolSize" min="10000" max="40000" step="1000" value="20000">
+          <small style="color: #64748b;">Typical residential inground pool is 18,000 to 24,000 gallons.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="operatingSeason">Pool Season Duration</label>
+          <select id="operatingSeason">
+            <option value="5">5 Months (Northeast / Midwest - ~150 days)</option>
+            <option value="7" selected>7 Months (Mid-Atlantic / Central - ~210 days)</option>
+            <option value="12">12 Months (Year-Round - Florida / Arizona / California)</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="transferSwitch">Automatic Transfer Switch (ATS)</label>
-          <select id="transferSwitch">
-            <option value="1100">100-Amp Subpanel Transfer Switch ($1,100 installed)</option>
-            <option value="1850" selected>200-Amp Whole-House Service-Rated ATS ($1,850 installed)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="fuelHookup">Fuel Source &amp; Gas Line Distance</label>
-          <select id="fuelHookup">
-            <option value="750" selected>Natural Gas (Under 20 ft from gas meter - $750)</option>
-            <option value="1350">Natural Gas (Long trenching / over 40 ft - $1,350)</option>
-            <option value="1100">Liquid Propane / LP Tank Hookup ($1,100)</option>
+          <label for="electricRate">Average Electric Rate ($ / kWh)</label>
+          <select id="electricRate">
+            <option value="0.12">Low ($0.12 / kWh)</option>
+            <option value="0.16" selected>National Average ($0.16 / kWh)</option>
+            <option value="0.25">High ($0.25 / kWh)</option>
           </select>
         </div>
 
         <div class="curated-recommendation">
-          <p class="rec-title">Recommended Generator Maintenance</p>
-          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Keep your standby generator starting reliably in freezing temperatures with cold-weather heater kits:</p>
-          <a href="https://www.amazon.com/s?k=standby+generator+cold+weather+kit&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Generator Cold-Weather Kits on Amazon</a>
+          <p class="rec-title">Recommended Pool Efficiency</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Upgrade your pool pad with Energy Star certified variable-speed pumps:</p>
+          <a href="https://www.amazon.com/s?k=variable+speed+pool+pump+energy+star&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Variable Speed Pool Pumps on Amazon</a>
         </div>
       </div>
 
       <!-- Receipt Card with Export Buttons -->
       <div class="card receipt">
-        <h2>Turnkey Project Estimate</h2>
+        <h2>Energy ROI Summary</h2>
         <div class="receipt-row">
-          <span>Generator Unit &amp; Concrete Pad:</span>
-          <span id="unitCost">$8,400</span>
+          <span>Old Single-Speed Annual Cost:</span>
+          <span id="oldCost">$896 / yr</span>
         </div>
         <div class="receipt-row">
-          <span>Automatic Transfer Switch (ATS):</span>
-          <span id="atsCost">$1,850</span>
-        </div>
-        <div class="receipt-row">
-          <span>Plumber Gas Pipe &amp; Permits:</span>
-          <span id="gasCost">$750</span>
+          <span>New Variable-Speed Annual Cost:</span>
+          <strong id="newCost" style="color:#38bdf8;">$224 / yr</strong>
         </div>
         <div class="receipt-row total-row">
-          <span>Total Installed Estimate:</span>
-          <span id="totalCost">$11,000</span>
+          <span>Annual Electricity Savings:</span>
+          <span id="annualSavings">$672 / yr</span>
         </div>
 
         <div class="receipt-row" style="margin-top:1.25rem; border-top:1px solid #334155; padding-top:0.75rem;">
-          <span>Startup Time During Outage:</span>
-          <strong style="color:#4ade80;">10–15 Seconds (Automatic)</strong>
+          <span>Estimated Payback Timeline:</span>
+          <strong id="paybackTime" style="color:#4ade80;">1.9 Seasons</strong>
+        </div>
+        <div class="receipt-row" style="color:#fbbf24; font-weight:700;">
+          <span>5-Year Cumulative Savings:</span>
+          <span id="fiveYearSavings">+$3,360</span>
         </div>
 
         <!-- Export Buttons -->
@@ -169,7 +170,7 @@
         </div>
 
         <p class="receipt-disclaimer">
-          * Modeled on 2026 licensed electrician and master gas fitter rates including pre-cast composite pad and municipal permit inspections.
+          * Modeled on 2026 Department of Energy (DOE) dedicated purpose pool pump (DPPP) energy conservation standards.
         </p>
       </div>
     </div>
@@ -177,23 +178,20 @@
 
   <!-- SEO Supporting Content & FAQs -->
   <section class="seo-guide-section">
-    <h2>Standby Generator Sizing &amp; Installation Guide (2026)</h2>
-    <p>A permanently installed home standby generator monitors utility voltage 24/7. When a grid blackout occurs, an automatic transfer switch (ATS) safely isolates your home from utility lines and engages the generator within seconds.</p>
+    <h2>Variable-Speed Pool Pump Energy Guide (2026)</h2>
+    <p>A traditional single-speed pool pump is often the second largest electricity consumer in a residential home, out-consumed only by central air conditioning. Department of Energy (DOE) standards mandate variable-speed technology due to pump Affinity Laws.</p>
 
-    <h3>Essential Circuit vs. Whole-House Sizing</h3>
-    <ul>
-      <li><strong>Essential Circuit (10–14 kW):</strong> Powers selected critical loads via an emergency subpanel (refrigerator, furnace blower, sump pump, WiFi, and select room lighting circuits).</li>
-      <li><strong>Whole-House (18–26 kW):</strong> Powers the entire 200-amp main electrical panel without power rationing, running central air conditioners, electric ranges, and water heaters simultaneously.</li>
-    </ul>
+    <h3>The Affinity Law Explained</h3>
+    <p>According to pump Affinity Laws, cutting a pump motor's speed (RPM) in half reduces power consumption by a factor of eight (cubed relationship). Running a pump at low speed for 12 hours circulates more water with up to 75% less electricity than running at full speed for 6 hours.</p>
 
     <h3>Frequently Asked Questions</h3>
     <details>
-      <summary>Can a standby generator run continuously for several days?</summary>
-      <p>Yes. When connected to a municipal natural gas line, a standby generator can run indefinitely during extended grid outages, requiring only periodic oil checks after 100 hours of continuous operation.</p>
+      <summary>Are single-speed pool pumps still legal to sell?</summary>
+      <p>Federal DOE regulations prohibit manufacturers from producing residential filtration pumps larger than 1.0 total horsepower that do not meet strict Energy Star weighted energy factor (WEF) standards, effectively phasing out single-speed pumps.</p>
     </details>
     <details>
-      <summary>How far must a generator sit from windows and doors?</summary>
-      <p>National Fire Protection Association (NFPA) standards typically mandate a minimum 5-foot clearance from operable windows, exterior doors, and soffit vents to prevent carbon monoxide intrusion.</p>
+      <summary>How quiet are variable-speed pumps?</summary>
+      <p>Running at low filtration speeds (1,200 to 1,800 RPM), variable-speed pumps generate under 45 decibels—roughly the volume of a quiet library whisper.</p>
     </details>
   </section>
 
@@ -213,47 +211,66 @@
   </footer>
 
   <script>
-    const generatorSize = document.getElementById('generatorSize');
-    const transferSwitch = document.getElementById('transferSwitch');
-    const fuelHookup = document.getElementById('fuelHookup');
+    const poolSize = document.getElementById('poolSize');
+    const poolSizeVal = document.getElementById('poolSizeVal');
+    const operatingSeason = document.getElementById('operatingSeason');
+    const electricRate = document.getElementById('electricRate');
 
-    const unitCost = document.getElementById('unitCost');
-    const atsCost = document.getElementById('atsCost');
-    const gasCost = document.getElementById('gasCost');
-    const totalCost = document.getElementById('totalCost');
+    const oldCost = document.getElementById('oldCost');
+    const newCost = document.getElementById('newCost');
+    const annualSavings = document.getElementById('annualSavings');
+    const paybackTime = document.getElementById('paybackTime');
+    const fiveYearSavings = document.getElementById('fiveYearSavings');
     const copyBtn = document.getElementById('copyEstimateBtn');
 
-    function updateGenerator() {
-      const unit = parseFloat(generatorSize.value);
-      const ats = parseFloat(transferSwitch.value);
-      const gas = parseFloat(fuelHookup.value);
+    function updatePool() {
+      const gallons = parseFloat(poolSize.value);
+      poolSizeVal.textContent = gallons.toLocaleString() + ' Gallons';
 
-      const grandTotal = unit + ats + gas;
+      const months = parseFloat(operatingSeason.value);
+      const rate = parseFloat(electricRate.value);
 
-      unitCost.textContent = '$' + unit.toLocaleString();
-      atsCost.textContent = '$' + ats.toLocaleString();
-      gasCost.textContent = '$' + gas.toLocaleString();
-      totalCost.textContent = '$' + grandTotal.toLocaleString();
+      const days = months * 30;
+      // Single speed: ~2.0 kW draw * 8 hrs/day = 16 kWh/day
+      const oldKwhPerDay = 16 * (gallons / 20000);
+      const oldAnnual = Math.round(oldKwhPerDay * days * rate);
+
+      // Variable speed: runs lower RPM longer, using ~75% less power
+      const newAnnual = Math.round(oldAnnual * 0.25);
+      const savings = oldAnnual - newAnnual;
+
+      // Turnkey replacement approx $1,300
+      const payback = (1300 / savings).toFixed(1);
+      const fiveYear = (savings * 5) - 1300;
+
+      oldCost.textContent = '$' + oldAnnual.toLocaleString() + ' / yr';
+      newCost.textContent = '$' + newAnnual.toLocaleString() + ' / yr';
+      annualSavings.textContent = '$' + savings.toLocaleString() + ' / yr';
+      paybackTime.textContent = payback + ' Seasons';
+      fiveYearSavings.textContent = '+$' + fiveYear.toLocaleString();
     }
 
     copyBtn.addEventListener('click', function() {
-      const summary = "The Buyer's Math - Standby Generator Estimate\\n" +
-        "Capacity: " + generatorSize.options[generatorSize.selectedIndex].text + "\\n" +
-        "Transfer Switch (ATS): " + transferSwitch.options[transferSwitch.selectedIndex].text + "\\n" +
-        "Fuel Hookup: " + fuelHookup.options[fuelHookup.selectedIndex].text + "\\n" +
-        "Total Installed Estimate: " + totalCost.textContent + "\\n" +
-        "Calculated at https://thebuyersmath.com/generator-calculator.html";
+      const summary = "The Buyer's Math - Pool Pump Energy ROI\\n" +
+        "Pool Size: " + poolSizeVal.textContent + "\\n" +
+        "Operating Season: " + operatingSeason.options[operatingSeason.selectedIndex].text + "\\n" +
+        "Old Single-Speed Cost: " + oldCost.textContent + "\\n" +
+        "Variable-Speed Cost: " + newCost.textContent + "\\n" +
+        "Annual Electric Savings: " + annualSavings.textContent + "\\n" +
+        "Payback Timeline: " + paybackTime.textContent + "\\n" +
+        "5-Year Net Savings: " + fiveYearSavings.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/pool.html";
       navigator.clipboard.writeText(summary).then(() => {
         copyBtn.textContent = '✓ Copied!';
         setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
       });
     });
 
-    generatorSize.addEventListener('change', updateGenerator);
-    transferSwitch.addEventListener('change', updateGenerator);
-    fuelHookup.addEventListener('change', updateGenerator);
+    poolSize.addEventListener('input', updatePool);
+    operatingSeason.addEventListener('change', updatePool);
+    electricRate.addEventListener('change', updatePool);
 
-    updateGenerator();
+    updatePool();
   </script>
 </body>
 </html>
