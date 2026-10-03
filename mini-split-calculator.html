@@ -1,213 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Ductless Mini-Split Cost & Sizing Estimator</title>
-    <meta name="description" content="Calculate required BTUs and estimated installation costs for a ductless mini-split AC system.">
-    
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
-        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
-        
-        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .receipt h3 { color: #38bdf8; border-color: #334155; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
-        
-        .checkbox-item { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 1rem; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0; cursor: pointer; }
-        .checkbox-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: #0284c7; }
-        
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
-        .tax-credit { background: #16a34a; color: white; padding: 0.75rem; border-radius: 6px; margin-top: 1.5rem; text-align: center; font-weight: bold; font-size: 1.1rem; display: none; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ductless Mini-Split Cost Estimator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate multi-zone ductless mini-split installation costs, 25C federal heat pump tax credits, and cold-climate heating capabilities based on 2026 pricing.">
+  <link rel="canonical" href="https://thebuyersmath.com/mini-split-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Ductless Mini-Split Cost Estimator",
-    "url": "https://thebuyersmath.com/mini-split-calculator.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Estimate multi-zone ductless mini-split heat pump installation costs and energy efficiency."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/mini-split-calculator.html#app",
+        "name": "Ductless Mini-Split Cost Estimator",
+        "url": "https://thebuyersmath.com/mini-split-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Size multi-zone ductless mini-split heat pump systems with 25C federal tax credits and electrical installation pricing."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/mini-split-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a ductless mini-split cost to install in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A single-zone mini-split costs between $2,800 and $4,500 installed, while a 3- to 4-zone whole-home system ranges from $8,500 to $14,000 before federal tax credits."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Ductless Mini-Split Cost Estimator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Mini-Split AC Cost Estimator</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Mini-Split Cost & Sizing Estimator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Determine required BTUs and budget for multi-zone ductless installations.</p>
-    </header>
-
-    <main class="split-layout">
-        <!-- Interactive Inputs -->
-        <div class="card">
-            <h3>System Sizing</h3>
-            
-            <label>Total Space to Cool/Heat (Sq Ft) <span class="val-display" id="sqftVal">1,000 Sq Ft</span></label>
-            <input type="range" id="sqft" min="200" max="3000" step="100" value="1000">
-            
-            <label>Number of Indoor Zones (Heads)</label>
-            <select id="zones">
-                <option value="1">1 Zone (Single Room / Garage / Add-on)</option>
-                <option value="2">2 Zones</option>
-                <option value="3" selected>3 Zones</option>
-                <option value="4">4 Zones</option>
-                <option value="5">5 Zones</option>
-            </select>
-
-            <h3 style="margin-top: 2rem;">Hardware Quality</h3>
-            <label>Equipment Tier</label>
-            <select id="efficiency">
-                <option value="standard">Standard (18 SEER / Basic Heating)</option>
-                <option value="premium" selected>Hyper-Heat (22+ SEER / Works in extreme cold)</option>
-            </select>
-
-            <label class="checkbox-item">
-                <input type="checkbox" id="panelUpgrade">
-                <div>
-                    <strong>Electrical Panel Upgrade Required?</strong><br>
-                    <span style="font-size: 0.9rem; color: #64748b; font-weight: normal;">(Check if your home still has a 100 Amp panel or lacks available breakers)</span>
-                </div>
-            </label>
-        </div>
-
-        <!-- Live Sticky Receipt -->
-        <div class="card receipt">
-            <h3>Installation Estimate</h3>
-            
-            <div class="result-row">
-                <span>Required Capacity:</span>
-                <span id="btuReq" style="color: #38bdf8; font-weight:bold;">0 BTU</span>
-            </div>
-
-            <div class="result-row">
-                <span>Equip. & Labor (Zones):</span>
-                <span id="hvacCost">$0</span>
-            </div>
-            
-            <div class="result-row" id="elecRow" style="display: none;">
-                <span>Electrical Upgrades:</span>
-                <span id="elecCost">$2,500</span>
-            </div>
-
-            <div class="total-row">
-                <span>Total Installed Cost:</span>
-                <span id="totalCost">$0</span>
-            </div>
-            
-            <div id="taxCredit" class="tax-credit">
-                Premium systems may qualify for up to $2,000 Federal Tax Credit (25C).
-            </div>
-        </div>
-    </main>
-
-    <!-- Affiliate Monetization Section -->
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Make Your Mini-Split Smart</h3>
-        <p style="color: #475569;">Upgrade your ductless AC with a smart controller. Adjust temperatures from your phone and set automated schedules to maximize your energy savings.</p>
-        <a href="https://www.amazon.com/s?k=smart+ac+controller+mini+split&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Smart AC Controllers</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Ductless Mini-Split Cost Estimator</h1>
+      <p>Calculate equipment, electrical hookup, and installation costs across 1 to 5 zones with 25C federal tax credits.</p>
     </div>
 
-    <script>
-        function updateMiniSplit() {
-            const sqft = parseInt(document.getElementById('sqft').value);
-            const zones = parseInt(document.getElementById('zones').value);
-            const efficiency = document.getElementById('efficiency').value;
-            const needsPanel = document.getElementById('panelUpgrade').checked;
-            
-            // Update UI Labels
-            document.getElementById('sqftVal').innerText = sqft.toLocaleString() + ' Sq Ft';
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="zoneCount">
+            Number of Indoor Zones (Air Handlers)
+            <span class="val-badge" id="zoneCountVal">2 Zones</span>
+          </label>
+          <input type="range" id="zoneCount" min="1" max="5" step="1" value="2">
+          <small style="color: #64748b;">1 zone = single room/addition; 3-4 zones = typical whole-floor layout.</small>
+        </div>
 
-            // Math: BTUs (Rule of thumb: 20 BTUs per sqft)
-            const btus = Math.ceil((sqft * 20) / 1000) * 1000;
-            let btuText = btus.toLocaleString() + " BTU";
-            if (btus >= 12000) {
-                btuText += ` (${(btus / 12000).toFixed(1)} Tons)`;
-            }
+        <div class="form-group">
+          <label for="efficiencyTier">Equipment Efficiency &amp; Climate Rating</label>
+          <select id="efficiencyTier">
+            <option value="2900" selected>Standard Inverter (18-20 SEER2 - $2,900 / zone installed)</option>
+            <option value="3700">Hyper-Heat Cold Climate (-15°F rated, 24+ SEER2 - $3,700 / zone installed)</option>
+          </select>
+        </div>
 
-            // Math: Cost
-            // Base cost per zone (Head + Condenser allocation + Labor)
-            let costPerZone = efficiency === 'premium' ? 4800 : 3600;
-            
-            // Discount slightly for 3+ zones (economies of scale on condenser)
-            if (zones >= 3) costPerZone = costPerZone * 0.9;
-            
-            let hvacTotal = Math.round(zones * costPerZone);
-            let elecTotal = needsPanel ? 2500 : 0;
-            let finalTotal = hvacTotal + elecTotal;
+        <div class="form-group">
+          <label for="electricService">Electrical 240V Circuit Requirement</label>
+          <select id="electricService">
+            <option value="0" selected>Existing 240V Disconnect Available ($0)</option>
+            <option value="850">New 240V Dedicated Circuit from Main Panel (+$850)</option>
+          </select>
+        </div>
 
-            // 3. Update DOM
-            document.getElementById('btuReq').innerText = btuText;
-            document.getElementById('hvacCost').innerText = '$' + hvacTotal.toLocaleString();
-            
-            document.getElementById('elecRow').style.display = needsPanel ? 'flex' : 'none';
-            document.getElementById('totalCost').innerText = '$' + finalTotal.toLocaleString();
-            
-            document.getElementById('taxCredit').style.display = efficiency === 'premium' ? 'block' : 'none';
-        }
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Installation Hardware</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Decorative line-set covers and ground condenser stands:</p>
+          <a href="https://www.amazon.com/s?k=mini+split+line+set+cover+kit&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Mini-Split Line-Set Covers on Amazon</a>
+        </div>
+      </div>
 
-        document.getElementById('sqft').addEventListener('input', updateMiniSplit);
-        document.getElementById('zones').addEventListener('change', updateMiniSplit);
-        document.getElementById('efficiency').addEventListener('change', updateMiniSplit);
-        document.getElementById('panelUpgrade').addEventListener('change', updateMiniSplit);
+      <!-- Receipt Card with Export Buttons -->
+      <div class="card receipt">
+        <h2>Installation Estimate</h2>
+        <div class="receipt-row">
+          <span>Equipment &amp; Zone Labor:</span>
+          <span id="zoneCost">$5,800</span>
+        </div>
+        <div class="receipt-row">
+          <span>Electrical Sub-Panel Hookup:</span>
+          <span id="electricCost">$0</span>
+        </div>
+        <div class="receipt-row">
+          <span>Federal 25C Tax Credit:</span>
+          <span id="taxCredit" style="color:#4ade80;">-$1,740</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Net Out-of-Pocket Cost:</span>
+          <span id="totalCost">$4,060</span>
+        </div>
 
-        updateMiniSplit();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+        <!-- Export Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Section 25C covers 30% of project costs up to $2,000 maximum for CEE Tier-1 qualifying heat pumps.
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Ductless Mini-Split Cost &amp; Sizing Guide (2026)</h2>
+    <p>Ductless mini-split heat pumps offer individual room temperature zoning and achieve high energy efficiency ratings (SEER2 up to 28+). Because they do not use ductwork, they avoid the 20% to 30% energy loss typical of forced-air systems.</p>
+
+    <h3>Cold-Climate Hyper-Heat Technology</h3>
+    <p>In northern climates (Zones 5–7), specify a cold-climate heat pump rated to operate down to -15°F with 100% capacity retention at 5°F to ensure adequate winter warmth without backup electric baseboards.</p>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>Can a single outdoor condenser run multiple indoor heads?</summary>
+      <p>Yes. Multi-zone outdoor units can power between 2 and 5 indoor air handlers independently, allowing each room to maintain its own temperature setting.</p>
+    </details>
+    <details>
+      <summary>How long does a ductless mini-split installation take?</summary>
+      <p>A single-zone system takes approximately 4 to 6 hours. Multi-zone whole-home systems typically require 1 to 2 days for line-set routing, vacuum testing, and electrical wiring.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const zoneCount = document.getElementById('zoneCount');
+    const zoneCountVal = document.getElementById('zoneCountVal');
+    const efficiencyTier = document.getElementById('efficiencyTier');
+    const electricService = document.getElementById('electricService');
+
+    const zoneCost = document.getElementById('zoneCost');
+    const electricCost = document.getElementById('electricCost');
+    const taxCredit = document.getElementById('taxCredit');
+    const totalCost = document.getElementById('totalCost');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateMiniSplit() {
+      const zones = parseInt(zoneCount.value);
+      zoneCountVal.textContent = zones + (zones === 1 ? ' Zone' : ' Zones');
+
+      const ratePerZone = parseFloat(efficiencyTier.value);
+      const electric = parseFloat(electricService.value);
+
+      const grossZones = zones * ratePerZone;
+      const subtotal = grossZones + electric;
+      const credit = Math.min(2000, Math.round(subtotal * 0.30));
+      const net = subtotal - credit;
+
+      zoneCost.textContent = '$' + grossZones.toLocaleString();
+      electricCost.textContent = '$' + electric.toLocaleString();
+      taxCredit.textContent = '-$' + credit.toLocaleString();
+      totalCost.textContent = '$' + net.toLocaleString();
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Ductless Mini-Split Estimate\\n" +
+        "Zones: " + zoneCountVal.textContent + "\\n" +
+        "Equipment & Labor: " + zoneCost.textContent + "\\n" +
+        "Electrical Service: " + electricCost.textContent + "\\n" +
+        "Federal 25C Credit: " + taxCredit.textContent + "\\n" +
+        "Net Installed Total: " + totalCost.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/mini-split-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    zoneCount.addEventListener('input', updateMiniSplit);
+    efficiencyTier.addEventListener('change', updateMiniSplit);
+    electricService.addEventListener('change', updateMiniSplit);
+
+    updateMiniSplit();
+  </script>
 </body>
 </html>
