@@ -1,186 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Window Replacement Cost Estimator</title>
-    <meta name="description" content="Estimate window replacement costs including frame materials, window styles, and full-frame vs insert labor.">
-    
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
-        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
-        
-        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .receipt h3 { color: #38bdf8; border-color: #334155; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
-        
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Replacement Cost Estimator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate window replacement costs across vinyl, composite fiberglass, and wood frames. Estimate Energy Star heating and cooling bill savings.">
+  <link rel="canonical" href="https://thebuyersmath.com/window-replacement-estimator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Window Replacement Estimator",
-    "url": "https://thebuyersmath.com/window-replacement-estimator.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Estimate vinyl, wood, and fiberglass replacement window pricing including installation."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/window-replacement-estimator.html#app",
+        "name": "Window Replacement Estimator",
+        "url": "https://thebuyersmath.com/window-replacement-estimator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate replacement window installation costs across vinyl, wood, and fiberglass frames with projected energy savings."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/window-replacement-estimator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does it cost to replace 10 windows in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Replacing 10 standard residential windows with Energy Star double-pane vinyl units averages $5,500 to $8,500 installed, while premium wood or fiberglass frames range from $9,000 to $14,000."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Window Replacement Estimator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Window Replacement Estimator</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Window Replacement Estimator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Price your upgrades based on frame quality, style, and installation type.</p>
-    </header>
-
-    <main class="split-layout">
-        <!-- Interactive Inputs -->
-        <div class="card">
-            <h3>Project Scope</h3>
-            
-            <label>Number of Windows to Replace <span class="val-display" id="countVal">10 Windows</span></label>
-            <input type="range" id="count" min="1" max="40" step="1" value="10">
-            
-            <h3>Materials & Labor</h3>
-            <label>Frame Material</label>
-            <select id="material">
-                <option value="400" selected>Standard Vinyl ($400 base per window)</option>
-                <option value="700">Fiberglass / Composite ($700 base per window)</option>
-                <option value="1000">Premium Wood / Aluminum Clad ($1,000 base per window)</option>
-            </select>
-
-            <label>Window Style Premium (Average over project)</label>
-            <select id="style">
-                <option value="0" selected>Standard Double/Single Hung (+$0)</option>
-                <option value="150">Mix of Casement / Awning Windows (+$150 avg/window)</option>
-                <option value="300">Large Custom / Bay / Bow (+$300 avg/window)</option>
-            </select>
-
-            <label>Installation Type</label>
-            <select id="install">
-                <option value="200" selected>Retrofit / Pocket Insert ($200 labor/window)</option>
-                <option value="400">Full-Frame Replacement to Studs ($400 labor/window)</option>
-            </select>
-        </div>
-
-        <!-- Live Sticky Receipt -->
-        <div class="card receipt">
-            <h3>Project Estimate</h3>
-
-            <div class="result-row">
-                <span>Materials & Hardware:</span>
-                <span id="matCost">$0</span>
-            </div>
-            
-            <div class="result-row">
-                <span>Contractor Labor:</span>
-                <span id="laborCost">$0</span>
-            </div>
-
-            <div class="total-row">
-                <span>Total Estimated Cost:</span>
-                <span id="totalCost">$0</span>
-            </div>
-            
-            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 0.9rem; color: #94a3b8;">Average Cost Per Window</span><br>
-                <span id="perWindow" style="font-size: 1.5rem; font-weight: bold; color: #38bdf8;">$0</span>
-            </div>
-        </div>
-    </main>
-
-    <!-- Affiliate Monetization Section -->
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Find Hidden Energy Leaks</h3>
-        <p style="color: #475569;">Not sure which windows to replace first? Use a thermal leak detector to pinpoint your home's worst drafts and prioritize the replacements.</p>
-        <a href="https://www.amazon.com/s?k=thermal+leak+detector&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Thermal Detectors on Amazon</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Window Replacement Estimator</h1>
+      <p>Estimate project pricing based on window count, frame materials, operating styles, and energy efficiency savings.</p>
     </div>
 
-    <script>
-        function updateWindows() {
-            const count = parseInt(document.getElementById('count').value);
-            const matPrice = parseInt(document.getElementById('material').value);
-            const stylePrice = parseInt(document.getElementById('style').value);
-            const laborPrice = parseInt(document.getElementById('install').value);
-            
-            document.getElementById('countVal').innerText = count + (count === 1 ? ' Window' : ' Windows');
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="windowCount">
+            Number of Windows to Replace
+            <span class="val-badge" id="windowCountVal">10 Windows</span>
+          </label>
+          <input type="range" id="windowCount" min="3" max="30" step="1" value="10">
+          <small style="color: #64748b;">Whole-home window replacement typically ranges from 8 to 22 units.</small>
+        </div>
 
-            // Math
-            const matTotal = count * (matPrice + stylePrice);
-            const laborTotal = count * laborPrice;
-            const total = matTotal + laborTotal;
-            const avgPer = Math.round(total / count);
+        <div class="form-group">
+          <label for="frameMaterial">Frame Material &amp; Glass Package</label>
+          <select id="frameMaterial">
+            <option value="580" selected>Double-Pane Vinyl ($580 / window installed - Most Popular)</option>
+            <option value="890">Composite / Fiberglass ($890 / window installed - Maximum Durability)</option>
+            <option value="1280">Wood / Aluminum-Clad Wood ($1,280 / window installed - Architectural Grade)</option>
+          </select>
+        </div>
 
-            // Update DOM
-            document.getElementById('matCost').innerText = '$' + matTotal.toLocaleString();
-            document.getElementById('laborCost').innerText = '$' + laborTotal.toLocaleString();
-            document.getElementById('totalCost').innerText = '$' + total.toLocaleString();
-            document.getElementById('perWindow').innerText = '$' + avgPer.toLocaleString();
-        }
+        <div class="form-group">
+          <label for="windowStyle">Window Style &amp; Configuration</label>
+          <select id="windowStyle">
+            <option value="1.0" selected>Standard Double-Hung / Sliding (Base Price)</option>
+            <option value="1.18">Casement / Awning Crank-Out (+18% premium)</option>
+            <option value="1.40">Picture / Fixed Architectural (+40% specialty sizing)</option>
+          </select>
+        </div>
 
-        document.getElementById('count').addEventListener('input', updateWindows);
-        document.getElementById('material').addEventListener('change', updateWindows);
-        document.getElementById('style').addEventListener('change', updateWindows);
-        document.getElementById('install').addEventListener('change', updateWindows);
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Weatherization Tools</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Prevent drafts around window sills with commercial low-expansion insulating foam and flashings:</p>
+          <a href="https://www.amazon.com/s?k=window+insulating+foam+sealant&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Window Weatherization Tools on Amazon</a>
+        </div>
+      </div>
 
-        updateWindows();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+      <!-- Receipt Card with Export Buttons -->
+      <div class="card receipt">
+        <h2>Replacement Estimate</h2>
+        <div class="receipt-row">
+          <span>Window Units &amp; Framing:</span>
+          <span id="unitsCost">$4,100</span>
+        </div>
+        <div class="receipt-row">
+          <span>Labor, Removal &amp; Flashing:</span>
+          <span id="installCost">$2,740</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total Project Estimate:</span>
+          <span id="totalCost">$6,840</span>
+        </div>
+
+        <div class="receipt-row" style="margin-top:1.25rem; border-top:1px solid #334155; padding-top:0.75rem;">
+          <span>Annual Utility Savings:</span>
+          <strong id="energySavings" style="color:#4ade80;">$320 / yr</strong>
+        </div>
+
+        <!-- Export Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Modeled on 2026 retrofit insert replacements utilizing existing window jambs and exterior aluminum capping.
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Window Replacement Cost Guide (2026)</h2>
+    <p>Upgrading to modern multi-pane low-E windows reduces drafts, improves sound insulation, and cuts heating and air conditioning losses by 12% to 15% annually according to Energy Star benchmarks.</p>
+
+    <h3>Pocket Retrofit vs. Full Frame Tear-Out</h3>
+    <ul>
+      <li><strong>Insert / Pocket Replacement:</strong> New windows slip directly into existing wood jambs without disturbing exterior siding or interior drywall casing. Highly economical ($500–$900 per opening).</li>
+      <li><strong>Full-Frame Replacement:</strong> Entire window, frame, and sill are removed down to rough framing. Required if existing jambs suffer rotted wood or water intrusion ($900–$1,600+ per opening).</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>Is double-pane glass sufficient or should I upgrade to triple-pane?</summary>
+      <p>Double-pane low-E argon-filled windows deliver optimal cost-performance for most climate zones. Triple-pane glass is recommended for extreme northern climates (Zone 6+) or homes adjacent to high-noise highways.</p>
+    </details>
+    <details>
+      <summary>Are replacement windows eligible for federal tax credits?</summary>
+      <p>Yes. Energy Star Most Efficient certified replacement windows qualify for a 30% federal tax credit under Section 25C up to $600 annually.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const windowCount = document.getElementById('windowCount');
+    const windowCountVal = document.getElementById('windowCountVal');
+    const frameMaterial = document.getElementById('frameMaterial');
+    const windowStyle = document.getElementById('windowStyle');
+
+    const unitsCost = document.getElementById('unitsCost');
+    const installCost = document.getElementById('installCost');
+    const totalCost = document.getElementById('totalCost');
+    const energySavings = document.getElementById('energySavings');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateWindows() {
+      const count = parseInt(windowCount.value);
+      windowCountVal.textContent = count + ' Windows';
+
+      const baseRate = parseFloat(frameMaterial.value);
+      const styleMult = parseFloat(windowStyle.value);
+
+      const perWindowTotal = baseRate * styleMult;
+      const total = Math.round(count * perWindowTotal);
+
+      const materials = Math.round(total * 0.60);
+      const labor = total - materials;
+      const savings = Math.round(count * 32); // ~$32/yr per window Energy Star savings
+
+      unitsCost.textContent = '$' + materials.toLocaleString();
+      installCost.textContent = '$' + labor.toLocaleString();
+      totalCost.textContent = '$' + total.toLocaleString();
+      energySavings.textContent = '$' + savings.toLocaleString() + ' / yr';
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Window Replacement Estimate\\n" +
+        "Window Count: " + windowCountVal.textContent + "\\n" +
+        "Window Units & Glass: " + unitsCost.textContent + "\\n" +
+        "Installation & Labor: " + installCost.textContent + "\\n" +
+        "Total Estimated Cost: " + totalCost.textContent + "\\n" +
+        "Projected Energy Savings: " + energySavings.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/window-replacement-estimator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    windowCount.addEventListener('input', updateWindows);
+    frameMaterial.addEventListener('change', updateWindows);
+    windowStyle.addEventListener('change', updateWindows);
+
+    updateWindows();
+  </script>
 </body>
 </html>
