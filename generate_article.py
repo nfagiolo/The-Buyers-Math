@@ -1,4 +1,4 @@
-# generate_article.py (Powered by Anthropic Claude with Model Fallback)
+# generate_article.py (Auto-Discovers Available Claude Models)
 import os
 import re
 from datetime import datetime
@@ -22,25 +22,23 @@ def slugify(text):
     text = text.lower()
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
-def call_claude(client, prompt, max_tokens=1500):
-    candidate_models = [
-        "claude-3-5-sonnet-20241022",
-        "claude-3-haiku-20240307",
-        "claude-3-5-sonnet-latest"
-    ]
-    for model_name in candidate_models:
-        try:
-            print(f"Calling Anthropic with model: {model_name}...")
-            msg = client.messages.create(
-                model=model_name,
-                max_tokens=max_tokens,
-                messages=[{"role": "user", "content": prompt}]
-            )
-            if msg and msg.content:
-                return msg.content[0].text.strip()
-        except Exception as e:
-            print(f"Notice: {model_name} returned: {e}. Trying fallback model...")
-    raise RuntimeError("All candidate Claude models failed.")
+def get_active_claude_model(client):
+    try:
+        models_resp = client.models.list()
+        model_ids = [m.id for m in models_resp.data]
+        print(f"Available Claude models on your account: {model_ids}")
+        # Prioritize 3.5 Sonnet, then Haiku, or fallback to first available
+        for target in ["3-5-sonnet", "3-haiku", "sonnet", "haiku"]:
+            for mid in model_ids:
+                if target in mid:
+                    print(f"Selected model: {mid}")
+                    return mid
+        if model_ids:
+            return model_ids[0]
+    except Exception as e:
+        print(f"Models list query notice: {e}")
+    # Default fallback
+    return "claude-3-5-sonnet-20241022"
 
 def main():
     api_key = os.getenv("ANTHROPIC_API_KEY")
@@ -49,6 +47,7 @@ def main():
         return
 
     client = anthropic.Anthropic(api_key=api_key)
+    model = get_active_claude_model(client)
     date_str = datetime.now().strftime("%Y-%m-%d")
 
     # Step 1: Generate Topic & Amazon Product Keyword
@@ -60,7 +59,12 @@ Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
 Site Calculators available for reference:
 {calc_list_str}
 """
-    raw_topic = call_claude(client, topic_prompt, max_tokens=150)
+    topic_msg = client.messages.create(
+        model=model,
+        max_tokens=150,
+        messages=[{"role": "user", "content": topic_prompt}]
+    )
+    raw_topic = topic_msg.content[0].text.strip()
     title_raw = raw_topic.split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
@@ -76,7 +80,12 @@ Requirements:
 4. Include a practical DIY vs. Professional Contractor decision breakdown.
 5. Conclude with an FAQ section featuring 3 questions formatted with <details> and <summary>.
 """
-    article_body = call_claude(client, content_prompt, max_tokens=3500)
+    body_msg = client.messages.create(
+        model=model,
+        max_tokens=3500,
+        messages=[{"role": "user", "content": content_prompt}]
+    )
+    article_body = body_msg.content[0].text.strip()
     article_body = re.sub(r'^```html\s*', '', article_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
@@ -144,14 +153,13 @@ Requirements:
 </body>
 </html>
 """
-    # Write article file
     os.makedirs("articles", exist_ok=True)
     article_path = f"articles/{date_str}-{slug}.html"
     with open(article_path, "w", encoding="utf-8") as f:
         f.write(full_html)
     print(f"Created: {article_path}")
 
-    # Step 4: Update index.html
+    # Step 4: Update index.html with Deduplication
     if os.path.exists("index.html"):
         with open("index.html", "r", encoding="utf-8") as f:
             idx_content = f.read()
@@ -164,7 +172,7 @@ Requirements:
                 f.write(idx_content)
             print("Updated index.html with new article.")
 
-    # Step 5: Automatically Update sitemap.xml
+    # Step 5: Update sitemap.xml
     if os.path.exists("sitemap.xml"):
         with open("sitemap.xml", "r", encoding="utf-8") as f:
             sitemap_content = f.read()
