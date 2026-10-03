@@ -1,3 +1,4 @@
+# generate_article.py (v2 with Unified Design System & Internal Cross-Linking)
 import os
 import re
 from datetime import datetime
@@ -33,7 +34,7 @@ def main():
     # Step 1: Generate Topic & Amazon Keyword
     calc_list_str = "\n".join([f"- {c['name']} ({c['url']})" for c in CALCULATORS])
     topic_prompt = f"""Generate a unique, high-intent home improvement or DIY cost analysis article title for 2026, paired with an Amazon product search keyword.
-Format as: Title | Keyword
+Format strictly as: Title | Keyword
 Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
 
 Site Calculators available for contextual reference:
@@ -46,22 +47,21 @@ Site Calculators available for contextual reference:
     slug = slugify(title)
 
     # Step 2: Generate Article Body with Contextual Links
-    content_prompt = f"""Write an informative, detailed 800-word homeowner's guide for: "{title}".
+    content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
 Requirements:
 1. Provide realistic 2026 cost ranges (materials, labor, permits).
 2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> if applicable. Do NOT include <html> or <body> tags.
 3. Where naturally relevant, reference and hyperlink to 1 or 2 of these site calculators:
 {calc_list_str}
 4. Provide a DIY vs. Professional breakdown.
-5. Conclude with an FAQ section (3 questions).
+5. Conclude with an FAQ section (3 questions using <details> and <summary>).
 """
     body_resp = client.models.generate_content(model="gemini-2.5-flash", contents=content_prompt)
     article_body = body_resp.text.strip()
-    # Clean possible markdown code fences
     article_body = re.sub(r'^```html\s*', '', article_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
-    # Step 3: Full Page Assembly with Navigation, Footer, and Amazon Disclosure
+    # Step 3: Full Page Assembly linked to styles.css
     full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,58 +69,58 @@ Requirements:
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} | The Buyer's Math</title>
   <meta name="description" content="{title} - Real 2026 cost estimates, labor vs material breakdown, and buying guide.">
+  <link rel="stylesheet" href="../styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-  <style>
-    :root {{ --bg: #fafafa; --card: #ffffff; --text: #0f172a; --muted: #475569; --border: #e2e8f0; --primary: #2563eb; }}
-    body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }}
-    .site-header {{ background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; max-width: 960px; margin: 0 auto; }}
-    .site-header a {{ color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.25rem; }}
-    .site-nav a {{ font-size: 0.95rem; font-weight: 500; color: var(--muted); margin-left: 1.25rem; text-decoration: none; }}
-    .site-nav a:hover {{ color: var(--primary); }}
-    .article-wrap {{ max-width: 820px; margin: 2rem auto; padding: 2rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }}
-    h1 {{ font-size: 2.2rem; color: #0f172a; margin-top: 0; }}
-    .meta {{ font-size: 0.875rem; color: #64748b; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }}
-    .affiliate-box {{ background: #fef3c7; border: 1px solid #f59e0b; padding: 1.25rem; border-radius: 6px; margin: 2rem 0; text-align: center; }}
-    .affiliate-btn {{ display: inline-block; background: #d97706; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 0.5rem; }}
-    .footer {{ border-top: 1px solid var(--border); padding: 2.5rem 1rem; text-align: center; font-size: 0.875rem; color: #64748b; margin-top: 4rem; background: #fff; }}
-    .footer a {{ color: var(--muted); text-decoration: none; margin: 0 0.5rem; }}
-  </style>
 </head>
 <body>
   <header class="site-header">
-    <a href="../index.html">The Buyer's Math</a>
-    <nav class="site-nav">
-      <a href="../index.html">Calculators</a>
-      <a href="../index.html#article-list">Guides</a>
-      <a href="../privacy-policy.html">Privacy</a>
-      <a href="../terms.html">Terms</a>
-      <a href="../contact.html">Contact</a>
-    </nav>
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="../index.html">Calculators</a>
+        <a href="../index.html#article-list">Guides</a>
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="article-wrap">
-    <h1>{title}</h1>
-    <div class="meta">Published on {date_str} &bull; The Buyer's Math Editorial Staff</div>
-    {article_body}
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> &gt;
+    <a href="../index.html#article-list">Guides</a> &gt;
+    <span class="current">{title}</span>
+  </nav>
 
-    <div class="affiliate-box">
-      <p style="margin:0 0 0.5rem 0; font-weight:600; color:#92400e;">Recommended Tools & Materials for This Project:</p>
-      <a href="https://www.amazon.com/s?k={slugify(amazon_kw)}&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="affiliate-btn">🛠️ View {amazon_kw.title()} on Amazon</a>
-    </div>
+  <main class="container" style="max-width: 860px; margin: 2rem auto; padding: 0 1.5rem;">
+    <article class="card" style="padding: 2.5rem;">
+      <h1 style="font-size: 2.25rem; margin-top: 0; margin-bottom: 0.5rem;">{title}</h1>
+      <div style="font-size: 0.875rem; color: #64748b; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
+        Published on {date_str} &bull; The Buyer's Math Editorial Staff &bull; 2026 Cost Data
+      </div>
+
+      {article_body}
+
+      <div class="curated-recommendation">
+        <p class="rec-title">Recommended Project Gear</p>
+        <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Compare top-rated tools and materials for this project on Amazon:</p>
+        <a href="https://www.amazon.com/s?k={slugify(amazon_kw)}&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View {amazon_kw.title()} on Amazon</a>
+      </div>
+    </article>
   </main>
 
-  <footer class="footer">
-    <div style="margin-bottom: 1rem;">
+  <footer class="site-footer">
+    <div class="footer-nav">
       <a href="../index.html">Calculators</a> |
       <a href="../index.html#article-list">Guides</a> |
       <a href="../privacy-policy.html">Privacy Policy</a> |
-      <a href="../terms.html">Terms & Disclaimer</a> |
+      <a href="../terms.html">Terms &amp; Disclaimer</a> |
       <a href="../contact.html">Contact Us</a>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 </body>
 </html>
