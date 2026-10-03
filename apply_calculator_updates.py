@@ -1,151 +1,40 @@
-# generate_article.py (v2 with Unified Design System & Internal Cross-Linking)
-import os
-import re
-from datetime import datetime
-from google import genai
+# apply_calculator_updates.py
+# Automatically adds <link rel="stylesheet" href="/styles.css"> to all 11 calculators
 
-CALCULATORS = [
-    {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "keywords": ["roof", "roofing", "shingles"]},
-    {"name": "Heat Pump vs. Gas Furnace ROI", "url": "../hvac-roi-calculator.html", "keywords": ["hvac", "heat pump", "furnace", "heating", "cooling"]},
-    {"name": "Basement Finishing Cost Estimator", "url": "../basement-cost-calculator.html", "keywords": ["basement", "remodel", "framing", "drywall"]},
-    {"name": "Solar Panel Payback Timeline", "url": "../solar-payback-calculator.html", "keywords": ["solar", "panels", "electric bill", "clean energy"]},
-    {"name": "Kitchen Remodel Cost Estimator", "url": "../kitchen-remodel-calculator.html", "keywords": ["kitchen", "cabinets", "countertops", "appliances"]},
-    {"name": "Driveway Paving Calculator", "url": "../driveway-paving-calculator.html", "keywords": ["driveway", "asphalt", "concrete", "paving"]},
-    {"name": "Window Replacement Estimator", "url": "../window-replacement-estimator.html", "keywords": ["windows", "glazing", "drafts", "replacement"]},
-    {"name": "Pool Pump Energy Calculator", "url": "../pool.html", "keywords": ["pool", "pump", "filtration", "energy"]},
-    {"name": "Mini-Split AC Cost Estimator", "url": "../mini-split-calculator.html", "keywords": ["mini-split", "ductless", "air conditioning"]},
-    {"name": "Backup Generator Sizing Guide", "url": "../generator-calculator.html", "keywords": ["generator", "backup power", "standby", "outage"]},
-    {"name": "Water Heater Replacement Cost", "url": "../water-heater-calculator.html", "keywords": ["water heater", "tankless", "plumbing"]}
+import os
+
+CALCULATOR_FILES = [
+    "roofing-cost-calculator.html",
+    "hvac-roi-calculator.html",
+    "basement-cost-calculator.html",
+    "solar-payback-calculator.html",
+    "kitchen-remodel-calculator.html",
+    "driveway-paving-calculator.html",
+    "window-replacement-estimator.html",
+    "pool.html",
+    "mini-split-calculator.html",
+    "generator-calculator.html",
+    "water-heater-calculator.html"
 ]
 
-def slugify(text):
-    text = text.lower()
-    return re.sub(r'[\W_]+', '-', text).strip('-')
+def update_file(filename):
+    if not os.path.exists(filename):
+        return
+    with open(filename, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    if 'href="/styles.css"' not in content and 'href="styles.css"' not in content:
+        content = content.replace("</head>", '  <link rel="stylesheet" href="/styles.css">\n</head>', 1)
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"Updated {filename}")
+    else:
+        print(f"{filename} already linked")
 
 def main():
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print("GEMINI_API_KEY not found.")
-        return
-
-    client = genai.Client(api_key=api_key)
-    date_str = datetime.now().strftime("%Y-%m-%d")
-
-    # Step 1: Generate Topic & Amazon Keyword
-    calc_list_str = "\n".join([f"- {c['name']} ({c['url']})" for c in CALCULATORS])
-    topic_prompt = f"""Generate a unique, high-intent home improvement or DIY cost analysis article title for 2026, paired with an Amazon product search keyword.
-Format strictly as: Title | Keyword
-Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
-
-Site Calculators available for contextual reference:
-{calc_list_str}
-"""
-    response = client.models.generate_content(model="gemini-2.5-flash", contents=topic_prompt)
-    title_raw = response.text.strip().split("|")
-    title = title_raw[0].strip()
-    amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
-    slug = slugify(title)
-
-    # Step 2: Generate Article Body with Contextual Links
-    content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
-Requirements:
-1. Provide realistic 2026 cost ranges (materials, labor, permits).
-2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> if applicable. Do NOT include <html> or <body> tags.
-3. Where naturally relevant, reference and hyperlink to 1 or 2 of these site calculators:
-{calc_list_str}
-4. Provide a DIY vs. Professional breakdown.
-5. Conclude with an FAQ section (3 questions using <details> and <summary>).
-"""
-    body_resp = client.models.generate_content(model="gemini-2.5-flash", contents=content_prompt)
-    article_body = body_resp.text.strip()
-    article_body = re.sub(r'^```html\s*', '', article_body)
-    article_body = re.sub(r'\s*```$', '', article_body)
-
-    # Step 3: Full Page Assembly linked to styles.css
-    full_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} | The Buyer's Math</title>
-  <meta name="description" content="{title} - Real 2026 cost estimates, labor vs material breakdown, and buying guide.">
-  <link rel="stylesheet" href="../styles.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="../index.html" class="site-logo">The Buyer's Math</a>
-      <nav class="site-nav">
-        <a href="../index.html">Calculators</a>
-        <a href="../index.html#article-list">Guides</a>
-        <a href="../privacy-policy.html">Privacy</a>
-        <a href="../terms.html">Terms</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="../index.html">Home</a> &gt;
-    <a href="../index.html#article-list">Guides</a> &gt;
-    <span class="current">{title}</span>
-  </nav>
-
-  <main class="container" style="max-width: 860px; margin: 2rem auto; padding: 0 1.5rem;">
-    <article class="card" style="padding: 2.5rem;">
-      <h1 style="font-size: 2.25rem; margin-top: 0; margin-bottom: 0.5rem;">{title}</h1>
-      <div style="font-size: 0.875rem; color: #64748b; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
-        Published on {date_str} &bull; The Buyer's Math Editorial Staff &bull; 2026 Cost Data
-      </div>
-
-      {article_body}
-
-      <div class="curated-recommendation">
-        <p class="rec-title">Recommended Project Gear</p>
-        <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Compare top-rated tools and materials for this project on Amazon:</p>
-        <a href="https://www.amazon.com/s?k={slugify(amazon_kw)}&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View {amazon_kw.title()} on Amazon</a>
-      </div>
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-nav">
-      <a href="../index.html">Calculators</a> |
-      <a href="../index.html#article-list">Guides</a> |
-      <a href="../privacy-policy.html">Privacy Policy</a> |
-      <a href="../terms.html">Terms &amp; Disclaimer</a> |
-      <a href="../contact.html">Contact Us</a>
-    </div>
-    <p class="footer-disclosure">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases.
-    </p>
-    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
-  </footer>
-</body>
-</html>
-"""
-    # Write article file
-    os.makedirs("articles", exist_ok=True)
-    article_path = f"articles/{date_str}-{slug}.html"
-    with open(article_path, "w", encoding="utf-8") as f:
-        f.write(full_html)
-    print(f"Created: {article_path}")
-
-    # Step 4: Robust Update of index.html with Deduplication
-    if os.path.exists("index.html"):
-        with open("index.html", "r", encoding="utf-8") as f:
-            idx_content = f.read()
-
-        article_rel_url = f"articles/{date_str}-{slug}.html"
-        if article_rel_url not in idx_content and slug not in idx_content:
-            new_item = f'<li><span class="article-date">{date_str}</span> <a href="{article_rel_url}">{title}</a></li>\n    <!-- ARTICLES_LIST_MARKER -->'
-            idx_content = idx_content.replace("<!-- ARTICLES_LIST_MARKER -->", new_item)
-            with open("index.html", "w", encoding="utf-8") as f:
-                f.write(idx_content)
-            print("Updated index.html with new article.")
-        else:
-            print("Article already present in index.html; skipped duplicate injection.")
+    for filename in CALCULATOR_FILES:
+        update_file(filename)
+    print("Done linking styles.css to all calculators.")
 
 if __name__ == "__main__":
     main()
