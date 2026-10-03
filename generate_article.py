@@ -40,7 +40,7 @@ Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
 Site Calculators available for contextual reference:
 {calc_list_str}
 """
-    response = client.models.generate_content(model="gemini-2.5-flash", contents=topic_prompt)
+    response = client.models.generate_content(model="gemini-3.8-flash", contents=topic_prompt)
     title_raw = response.text.strip().split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
