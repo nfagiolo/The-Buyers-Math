@@ -20,6 +20,30 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
 
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout {
+        display: block !important;
+      }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong {
+        color: #000000 !important;
+      }
+      .total-row {
+        color: #000000 !important;
+      }
+    }
+  </style>
+
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -137,7 +161,7 @@
         </div>
       </div>
 
-      <!-- Receipt Card with Visual Payback Bar -->
+      <!-- Receipt Card with Visual Payback Bar & Export Buttons -->
       <div class="card receipt">
         <h2>Comparison Summary</h2>
         <div class="receipt-row">
@@ -179,6 +203,12 @@
             <span>Break-even</span>
             <span>10-Yr Profit</span>
           </div>
+        </div>
+
+        <!-- Export Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
         </div>
 
         <p class="receipt-disclaimer">
@@ -236,6 +266,7 @@
     const paybackTime = document.getElementById('paybackTime');
     const paybackPercent = document.getElementById('paybackPercent');
     const paybackBar = document.getElementById('paybackBar');
+    const copyBtn = document.getElementById('copyEstimateBtn');
 
     function updateHVAC() {
       const sqft = parseFloat(homeSize.value);
@@ -243,7 +274,7 @@
 
       const tonnage = Math.max(2, Math.min(5, Math.ceil(sqft / 600)));
       const baseHpCost = 7000 + (tonnage * 1100);
-      const netHp = baseHpCost - 2000; // $2,000 IRA 25C Credit
+      const netHp = baseHpCost - 2000;
       const netGas = 6500 + (tonnage * 750);
 
       hpGross.textContent = '$' + baseHpCost.toLocaleString();
@@ -267,6 +298,21 @@
         paybackBar.style.width = Math.min(100, Math.max(10, percent)) + '%';
       }
     }
+
+    // Copy to Clipboard
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - HVAC ROI Estimate\\n" +
+        "Home Size: " + homeSizeVal.textContent + "\\n" +
+        "Heat Pump Net Cost: " + hpNet.textContent + " (after $2,000 25C tax credit)\\n" +
+        "Gas Furnace + AC Net Cost: " + gasNet.textContent + "\\n" +
+        "Annual Operational Savings: " + annualSavings.textContent + "\\n" +
+        "Estimated Break-even: " + paybackTime.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/hvac-roi-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
 
     homeSize.addEventListener('input', updateHVAC);
     climateZone.addEventListener('change', updateHVAC);
