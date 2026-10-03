@@ -1,43 +1,102 @@
+
+sitemap.xml
+
+100%
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
     <loc>https://thebuyersmath.com/</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>1.00</priority>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
+
+  <!-- Core Calculator Tools -->
   <url>
     <loc>https://thebuyersmath.com/roofing-cost-calculator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/hvac-roi-calculator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/basement-cost-calculator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/solar-payback-calculator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/window-replacement-estimator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/kitchen-remodel-calculator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/solar-payback-calculator.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/basement-cost-calculator.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/driveway-paving-calculator.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/window-replacement-estimator.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/pool.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/mini-split-calculator.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/generator-calculator.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/water-heater-calculator.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Legal & Compliance Pages -->
+  <url>
+    <loc>https://thebuyersmath.com/privacy-policy.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/terms.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/contact.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
