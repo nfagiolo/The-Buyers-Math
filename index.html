@@ -102,6 +102,11 @@
   </section>
 
   <!-- Interactive Category Filter Bar -->
+  <!-- Instant Live Search Bar -->
+  <div class="search-container">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="liveSearch" class="search-input" placeholder="Search calculators or topics (e.g., heat pump, roof, kitchen, solar)...">
+  </div>
   <div class="filter-bar" aria-label="Calculator Categories">
     <button class="filter-btn active" data-filter="all">All Tools (11)</button>
     <button class="filter-btn" data-filter="exterior">Roofing &amp; Exterior (4)</button>
@@ -267,22 +272,35 @@
   <script>
     const filterButtons = document.querySelectorAll('.filter-btn');
     const calcCards = document.querySelectorAll('.calc-card');
+    const searchInput = document.getElementById('liveSearch');
+
+    function filterTools() {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      const category = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+      calcCards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        const text = card.textContent.toLowerCase();
+
+        const matchesCat = (category === 'all' || cardCat === category);
+        const matchesQuery = (!query || text.includes(query));
+
+        card.style.display = (matchesCat && matchesQuery) ? 'flex' : 'none';
+      });
+    }
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const category = btn.getAttribute('data-filter');
-        calcCards.forEach(card => {
-          if (category === 'all' || card.getAttribute('data-category') === category) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        filterTools();
       });
     });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterTools);
+    }
   </script>
 </body>
 </html>
