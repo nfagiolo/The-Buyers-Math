@@ -1,198 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Roof Replacement Cost Estimator</title>
-    <meta name="description" content="Calculate real-time roofing costs based on footprint, pitch, materials, and tear-off fees.">
-    
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
-        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
-        
-        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .receipt h3 { color: #38bdf8; border-color: #334155; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
-        
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roof Replacement Cost Estimator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate roof replacement costs based on home footprint, pitch complexity, materials, and tear-off layers using 2026 national pricing averages.">
+  <link rel="canonical" href="https://thebuyersmath.com/roofing-cost-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Roof Replacement Cost Estimator",
-    "url": "https://thebuyersmath.com/roofing-cost-calculator.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Calculate roof replacement costs based on home footprint, pitch complexity, and tear-off layers."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/roofing-cost-calculator.html#app",
+        "name": "Roof Replacement Cost Estimator",
+        "url": "https://thebuyersmath.com/roofing-cost-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate roof replacement costs by home ground footprint, pitch complexity, material selection, and tear-off layers."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/roofing-cost-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a new roof cost on average in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The national average cost to replace an asphalt shingle roof on a 1,500–2,000 sq ft home ranges between $7,500 and $14,000, depending on roof pitch, material quality, tear-off layers, and regional labor rates."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Roof Replacement Cost Estimator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Roof Replacement Cost Estimator</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Roof Replacement Estimator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Price out materials, steepness labor premiums, and dumpster disposal fees.</p>
-    </header>
-
-    <main class="split-layout">
-        <!-- Interactive Inputs -->
-        <div class="card">
-            <h3>House Dimensions</h3>
-            
-            <label>Home Ground Footprint <span class="val-display" id="footprintVal">1,500 Sq Ft</span></label>
-            <input type="range" id="footprint" min="800" max="4000" step="100" value="1500">
-            <small style="color: #64748b; display:block; margin-bottom: 1rem;">(We automatically add ~30% for pitch and overhangs to calculate actual roof area)</small>
-            
-            <h3>Materials & Labor</h3>
-            <label>Roofing Material</label>
-            <select id="material">
-                <option value="4.50" selected>Architectural Asphalt Shingles ($4.50/sq ft)</option>
-                <option value="9.00">Standing Seam Metal ($9.00/sq ft)</option>
-                <option value="12.00">Cedar Shakes ($12.00/sq ft)</option>
-                <option value="18.00">Slate / Clay Tile ($18.00/sq ft)</option>
-            </select>
-
-            <label>Roof Complexity / Pitch</label>
-            <select id="pitch">
-                <option value="1.0" selected>Standard / Walkable (No extra charge)</option>
-                <option value="1.15">Steep / Complex (Add 15% labor premium)</option>
-                <option value="1.30">Very Steep / Multiple Valleys (Add 30% labor premium)</option>
-            </select>
-
-            <label>Old Roof Tear-Off Layers</label>
-            <select id="tearoff">
-                <option value="0">New Construction (No tear-off)</option>
-                <option value="1" selected>Tear off 1 Layer of old shingles</option>
-                <option value="2">Tear off 2 Layers (Requires extra dumpster weight)</option>
-            </select>
-        </div>
-
-        <!-- Live Sticky Receipt -->
-        <div class="card receipt">
-            <h3>Project Estimate</h3>
-            
-            <div class="result-row">
-                <span>Calculated Roof Area:</span>
-                <span id="roofArea" style="color: #38bdf8; font-weight:bold;">0 Sq Ft</span>
-            </div>
-
-            <div class="result-row">
-                <span>Materials & Install:</span>
-                <span id="matCost">$0</span>
-            </div>
-            
-            <div class="result-row">
-                <span>Tear-Off & Disposal:</span>
-                <span id="tearCost">$0</span>
-            </div>
-
-            <div class="total-row">
-                <span>Total Estimated Cost:</span>
-                <span id="totalCost">$0</span>
-            </div>
-            
-            <div style="margin-top: 1.5rem; font-size: 0.85rem; color: #94a3b8; text-align: center;">
-                *Note: This does not include replacing rotted plywood decking, which is typically discovered after tear-off and billed at $70-$90 per 4x8 sheet.
-            </div>
-        </div>
-    </main>
-
-    <!-- Affiliate Monetization Section -->
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Post-Roofing Cleanup Essential</h3>
-        <p style="color: #475569;">Protect your driveway and car tires from stray roofing nails with a heavy-duty magnetic sweeper.</p>
-        <a href="https://www.amazon.com/s?k=magnetic+nail+sweeper+with+wheels&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Magnetic Sweepers on Amazon</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Roof Replacement Cost Estimator</h1>
+      <p>Estimate your project cost based on home ground footprint, roof pitch, material grade, and tear-off layers.</p>
     </div>
 
-    <script>
-        function updateRoofing() {
-            const footprint = parseInt(document.getElementById('footprint').value);
-            const materialPrice = parseFloat(document.getElementById('material').value);
-            const pitchMult = parseFloat(document.getElementById('pitch').value);
-            const tearLayers = parseInt(document.getElementById('tearoff').value);
-            
-            document.getElementById('footprintVal').innerText = footprint.toLocaleString() + ' Sq Ft';
+    <div class="split-layout">
+      <!-- Inputs Card -->
+      <div class="card">
+        <div class="form-group">
+          <label for="footprint">
+            Home Ground Footprint
+            <span class="val-badge" id="footprintVal">1,500 sq ft</span>
+          </label>
+          <input type="range" id="footprint" min="800" max="4000" step="100" value="1500">
+          <small style="color: #64748b;">Ground floor footprint (single story home or first floor foundation).</small>
+        </div>
 
-            // Math: Actual roof area is roughly footprint * 1.3
-            const roofArea = Math.round(footprint * 1.3);
-            
-            // Materials & Base Install * Pitch complexity
-            const matCost = Math.round((roofArea * materialPrice) * pitchMult);
-            
-            // Tear off costs (~$1.50 per sqft per layer)
-            const tearCost = roofArea * (tearLayers * 1.50);
-            
-            const total = matCost + tearCost;
+        <div class="form-group">
+          <label for="material">Roofing Material</label>
+          <select id="material">
+            <option value="4.50" selected>Architectural Asphalt Shingles ($4.50 / sq ft installed)</option>
+            <option value="9.00">Standing Seam Metal ($9.00 / sq ft installed)</option>
+            <option value="12.00">Cedar Wood Shakes ($12.00 / sq ft installed)</option>
+            <option value="18.00">Slate / Clay Tile ($18.00 / sq ft installed)</option>
+          </select>
+        </div>
 
-            // Update DOM
-            document.getElementById('roofArea').innerText = roofArea.toLocaleString() + ' Sq Ft (' + (roofArea/100).toFixed(1) + ' Squares)';
-            document.getElementById('matCost').innerText = '$' + matCost.toLocaleString();
-            document.getElementById('tearCost').innerText = '$' + tearCost.toLocaleString();
-            document.getElementById('totalCost').innerText = '$' + total.toLocaleString();
-        }
+        <div class="form-group">
+          <label for="pitch">Roof Pitch &amp; Complexity</label>
+          <select id="pitch">
+            <option value="1.0" selected>Standard Walkable Pitch (4:12 to 6:12)</option>
+            <option value="1.15">Steep Pitch / Multi-Gable (7:12 to 9:12)</option>
+            <option value="1.30">Very Steep / Complex (10:12+ or Turrets)</option>
+          </select>
+        </div>
 
-        document.getElementById('footprint').addEventListener('input', updateRoofing);
-        document.getElementById('material').addEventListener('change', updateRoofing);
-        document.getElementById('pitch').addEventListener('change', updateRoofing);
-        document.getElementById('tearoff').addEventListener('change', updateRoofing);
+        <div class="form-group">
+          <label for="tearoff">Existing Roof Tear-Off</label>
+          <select id="tearoff">
+            <option value="0">None (New Construction / Overlay)</option>
+            <option value="1" selected>Tear Off 1 Existing Layer ($1.50 / sq ft)</option>
+            <option value="2">Tear Off 2 Existing Layers ($3.00 / sq ft)</option>
+          </select>
+        </div>
 
-        updateRoofing();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Safety Gear &amp; Materials</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">OSHA-compliant roofing harnesses and underlayment tools:</p>
+          <a href="https://www.amazon.com/s?k=roofing+safety+harness&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Roofing Safety Gear on Amazon</a>
+        </div>
+      </div>
+
+      <!-- Receipt Card with Export Buttons -->
+      <div class="card receipt">
+        <h2>Project Estimate</h2>
+        <div class="receipt-row">
+          <span>Estimated Roof Area:</span>
+          <strong id="roofArea">1,950 Sq Ft (19.5 Sq)</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Materials &amp; Base Install:</span>
+          <span id="matCost">$8,775</span>
+        </div>
+        <div class="receipt-row">
+          <span>Tear-Off &amp; Disposal:</span>
+          <span id="tearCost">$2,925</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Estimated Total:</span>
+          <span id="totalCost">$11,700</span>
+        </div>
+
+        <!-- Export & Share Utility Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Estimates reflect 2026 national median contractor rates. Rotted plywood decking replacement is billed separately at $70–$95 per 4x8 sheet.
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Understanding Your Roof Replacement Estimate</h2>
+    <p>A roof replacement is one of the most critical home investments you can make. In 2026, roofing costs continue to be driven by material supply chains, regional labor rates, and building code requirements for underlayment and ice-and-water barriers.</p>
+
+    <h3>Key Factors That Influence Your Quote</h3>
+    <ul>
+      <li><strong>Roof Size vs. Home Footprint:</strong> Due to pitch slope and overhangs, actual roof surface area is typically 25% to 40% greater than your home's ground footprint.</li>
+      <li><strong>Pitch and Complexity:</strong> Steeper roofs require staging and harness equipment, increasing labor hours by 15% to 30%.</li>
+      <li><strong>Decking Inspection:</strong> Water-damaged or soft plywood sheathing must be replaced before underlayment is applied.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>How long does a typical roof replacement take?</summary>
+      <p>For an average 1,500 to 2,500 sq ft single-family home, a professional roofing crew usually completes tear-off and new shingle installation in 1 to 2 days, weather permitting.</p>
+    </details>
+    <details>
+      <summary>Can I install new shingles over existing shingles?</summary>
+      <p>While some municipal building codes permit up to two layers of asphalt shingles, roofing experts strongly recommend a complete tear-off to inspect decking for rot and ensure proper manufacturer warranty coverage.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const footprintInput = document.getElementById('footprint');
+    const footprintVal = document.getElementById('footprintVal');
+    const materialSelect = document.getElementById('material');
+    const pitchSelect = document.getElementById('pitch');
+    const tearoffSelect = document.getElementById('tearoff');
+
+    const roofAreaDisp = document.getElementById('roofArea');
+    const matCostDisp = document.getElementById('matCost');
+    const tearCostDisp = document.getElementById('tearCost');
+    const totalCostDisp = document.getElementById('totalCost');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateRoofing() {
+      const footprint = parseFloat(footprintInput.value);
+      const materialPrice = parseFloat(materialSelect.value);
+      const pitchMult = parseFloat(pitchSelect.value);
+      const tearLayers = parseFloat(tearoffSelect.value);
+
+      footprintVal.textContent = footprint.toLocaleString() + ' sq ft';
+
+      const roofArea = Math.round(footprint * 1.3);
+      const squares = (roofArea / 100).toFixed(1);
+      roofAreaDisp.textContent = roofArea.toLocaleString() + ' Sq Ft (' + squares + ' Sq)';
+
+      const matCost = Math.round((roofArea * materialPrice) * pitchMult);
+      matCostDisp.textContent = '$' + matCost.toLocaleString();
+
+      const tearCost = Math.round(roofArea * (tearLayers * 1.50));
+      tearCostDisp.textContent = '$' + tearCost.toLocaleString();
+
+      const total = matCost + tearCost;
+      totalCostDisp.textContent = '$' + total.toLocaleString();
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Roof Replacement Estimate\\n" +
+        "Footprint: " + footprintVal.textContent + "\\n" +
+        "Calculated Roof Area: " + roofAreaDisp.textContent + "\\n" +
+        "Materials & Install: " + matCostDisp.textContent + "\\n" +
+        "Tear-Off & Disposal: " + tearCostDisp.textContent + "\\n" +
+        "Estimated Total: " + totalCostDisp.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/roofing-cost-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    footprintInput.addEventListener('input', updateRoofing);
+    materialSelect.addEventListener('change', updateRoofing);
+    pitchSelect.addEventListener('change', updateRoofing);
+    tearoffSelect.addEventListener('change', updateRoofing);
+
+    updateRoofing();
+  </script>
 </body>
 </html>
