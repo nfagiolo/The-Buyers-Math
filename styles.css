@@ -1,6 +1,6 @@
 /* ==========================================================================
-   THE BUYER'S MATH - UNIFIED DESIGN SYSTEM (styles.css)
-   Modern, accessible styling for calculators, guides, and site layout.
+   THE BUYER'S MATH - UNIFIED DESIGN SYSTEM (styles.css - v2)
+   Modern, accessible styling for calculators, guides, cards, and site layout.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -197,7 +197,7 @@ a:hover {
   gap: 1.5rem;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem 1.5rem;
+  padding: 0 1.5rem 3rem 1.5rem;
 }
 
 .calc-card {
@@ -242,22 +242,79 @@ a:hover {
   gap: 0.35rem;
 }
 
-/* --- 7. Interactive Calculator Page Layout --- */
+/* --- 7. Modern "Latest Guides" Section (Cards Grid) --- */
+#article-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+#article-list li {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#article-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+#article-list li .article-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+#article-list li a {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+#article-list li a:hover {
+  color: var(--primary);
+}
+
+/* --- 8. Interactive Calculator Page Layout --- */
+.container,
+.content-container,
 .calculator-layout {
   max-width: 1140px;
   margin: 1.5rem auto 4rem auto;
   padding: 0 1.5rem;
 }
 
-.calc-intro {
+.calc-intro,
+.calc-header {
   text-align: center;
   margin-bottom: 2.5rem;
 }
-.calc-intro h1 {
+.calc-intro h1,
+.calc-header h1 {
   font-size: 2.25rem;
   margin-bottom: 0.5rem;
 }
-.calc-intro p {
+.calc-intro p,
+.calc-header p {
   color: var(--slate-600);
   font-size: 1.1rem;
   max-width: 680px;
@@ -285,25 +342,29 @@ a:hover {
 }
 
 /* Sticky Receipt Panel */
+.receipt,
 .receipt-card {
-  background: var(--slate-900);
-  color: #f8fafc;
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-lg);
-  position: sticky;
-  top: 5.5rem;
+  background: var(--slate-900) !important;
+  color: #f8fafc !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 2rem !important;
+  box-shadow: var(--shadow-lg) !important;
+  position: sticky !important;
+  top: 5.5rem !important;
 }
 
+.receipt h2,
+.receipt h3,
 .receipt-card h2 {
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 1.35rem;
   margin-top: 0;
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--slate-700);
+  border-bottom: 1px solid var(--slate-700) !important;
 }
 
+.result-row,
 .receipt-row {
   display: flex;
   justify-content: space-between;
@@ -311,53 +372,49 @@ a:hover {
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
   color: var(--slate-400);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.4rem;
 }
-.receipt-row strong,
-.receipt-row span:last-child {
+.result-row span:last-child,
+.receipt-row span:last-child,
+.receipt-row strong {
   color: #f8fafc;
   font-weight: 600;
 }
 
 .total-row {
+  display: flex;
+  justify-content: space-between;
   border-top: 2px solid var(--slate-700);
   padding-top: 1rem;
   margin-top: 1.25rem;
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--amber-500);
+  color: var(--amber-500) !important;
 }
 
-.receipt-disclaimer {
-  font-size: 0.8rem;
-  color: var(--slate-400);
-  margin-top: 1.25rem;
-  line-height: 1.45;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 0.75rem;
-}
-
-/* --- 8. Styled Form Controls & Modern Sliders --- */
+/* --- 9. Styled Form Controls & Modern Sliders --- */
 .form-group {
   margin-bottom: 1.75rem;
 }
 
-.form-group label {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+label {
+  display: block;
   font-weight: 600;
   color: var(--slate-900);
   margin-bottom: 0.6rem;
   font-size: 0.95rem;
 }
 
+.val-display,
 .val-badge {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary) !important;
   background: var(--primary-light);
   padding: 0.2rem 0.6rem;
   border-radius: 6px;
+  float: right;
 }
 
 input[type="range"] {
@@ -407,28 +464,21 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-/* --- 9. Curated Recommendation / Monetization Card --- */
-.curated-recommendation {
-  background: var(--amber-50);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  margin-top: 2rem;
+/* --- 10. Curated Recommendation / Monetization Card --- */
+.curated-recommendation,
+.affiliate-box {
+  background: var(--amber-50) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 1.25rem !important;
+  margin: 2rem 0 !important;
   text-align: center;
 }
 
-.curated-recommendation p.rec-title {
-  margin: 0 0 0.5rem 0;
-  font-weight: 700;
-  color: #92400e;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.btn-affiliate {
+.btn-affiliate,
+.affiliate-btn {
   display: inline-block;
-  background: var(--amber-600);
+  background: var(--amber-600) !important;
   color: #ffffff !important;
   font-weight: 700;
   font-size: 0.925rem;
@@ -438,12 +488,14 @@ select:focus {
   transition: background 0.15s ease, transform 0.1s ease;
   box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2);
 }
-.btn-affiliate:hover {
-  background: #b45309;
+.btn-affiliate:hover,
+.affiliate-btn:hover {
+  background: #b45309 !important;
   transform: translateY(-1px);
 }
 
-/* --- 10. SEO Content & FAQ Accordion --- */
+/* --- 11. SEO Content & FAQ Accordion --- */
+.seo-section,
 .seo-guide-section {
   max-width: 1140px;
   margin: 3.5rem auto 0 auto;
@@ -454,6 +506,7 @@ select:focus {
   box-shadow: var(--shadow-sm);
 }
 
+.seo-section h2,
 .seo-guide-section h2 {
   font-size: 1.6rem;
   margin-top: 0;
@@ -462,7 +515,8 @@ select:focus {
   padding-bottom: 0.5rem;
 }
 
-.seo-guide-section details {
+details,
+.faq-item {
   background: var(--slate-50);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -471,12 +525,13 @@ select:focus {
   transition: background 0.15s ease;
 }
 
-.seo-guide-section details[open] {
+details[open],
+.faq-item[open] {
   background: #ffffff;
   border-color: #cbd5e1;
 }
 
-.seo-guide-section summary {
+summary {
   font-weight: 600;
   color: var(--slate-900);
   cursor: pointer;
@@ -486,11 +541,11 @@ select:focus {
   align-items: center;
 }
 
-.seo-guide-section summary::-webkit-details-marker {
+summary::-webkit-details-marker {
   display: none;
 }
 
-.seo-guide-section summary::after {
+summary::after {
   content: "+";
   font-size: 1.25rem;
   font-weight: bold;
@@ -498,18 +553,21 @@ select:focus {
   transition: transform 0.2s ease;
 }
 
-.seo-guide-section details[open] summary::after {
+details[open] summary::after,
+.faq-item[open] summary::after {
   content: "−";
 }
 
-.seo-guide-section details p {
+details p,
+.faq-item p {
   margin: 0.75rem 0 0 0;
   color: var(--slate-600);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-/* --- 11. Global Footer --- */
+/* --- 12. Global Footer --- */
+.footer,
 .site-footer {
   background: #ffffff;
   border-top: 1px solid var(--border);
@@ -520,17 +578,22 @@ select:focus {
   font-size: 0.875rem;
 }
 
-.footer-nav {
+.footer-nav,
+.footer-links {
   margin-bottom: 1.5rem;
 }
 
-.footer-nav a {
+.footer a,
+.footer-nav a,
+.footer-links a {
   color: var(--slate-600);
   font-weight: 500;
   margin: 0 0.85rem;
   text-decoration: none;
 }
-.footer-nav a:hover {
+.footer a:hover,
+.footer-nav a:hover,
+.footer-links a:hover {
   color: var(--primary);
 }
 
