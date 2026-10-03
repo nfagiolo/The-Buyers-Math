@@ -1,185 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Basement Finishing Cost Estimator</title>
-    <meta name="description" content="Calculate the total project cost of finishing your basement, including framing, drywall, and bathrooms.">
-    
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
-        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
-        
-        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .receipt h3 { color: #38bdf8; border-color: #334155; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
-        
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basement Finishing Cost Estimator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate basement finishing costs by square footage, framing, drywall, flooring, bathroom rough-ins, and egress windows.">
+  <link rel="canonical" href="https://thebuyersmath.com/basement-cost-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Basement Finishing Cost Estimator",
-    "url": "https://thebuyersmath.com/basement-cost-calculator.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Estimate total basement finishing costs including framing, drywall, electrical, and flooring."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/basement-cost-calculator.html#app",
+        "name": "Basement Finishing Cost Estimator",
+        "url": "https://thebuyersmath.com/basement-cost-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate basement finishing budgets across square footage, framing, flooring, and bathroom additions."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/basement-cost-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does it cost to finish an average basement in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Finishing a standard 800–1,000 sq ft basement costs between $32,000 and $65,000, averaging $40 to $75 per square foot depending on bathroom additions and subfloor moisture protection."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Basement Finishing Cost Estimator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Basement Finishing Cost Estimator</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Basement Finishing Estimator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Map out your budget based on size, layout, and bathroom additions.</p>
-    </header>
-
-    <main class="split-layout">
-        <div class="card">
-            <h3>Space Details</h3>
-            <label>Finished Square Footage <span class="val-display" id="sqftVal">800 Sq Ft</span></label>
-            <input type="range" id="sqft" min="300" max="2500" step="100" value="800">
-            
-            <h3 style="margin-top: 2rem;">Layout & Amenities</h3>
-            <label>Floor Plan Layout</label>
-            <select id="layout">
-                <option value="35" selected>Open Concept ($35/sq ft base)</option>
-                <option value="55">Multiple Rooms/Bedrooms ($55/sq ft base)</option>
-            </select>
-
-            <label>Ceiling Finish</label>
-            <select id="ceiling">
-                <option value="5" selected>Drop Ceiling (Tiles) - Easy pipe access</option>
-                <option value="12">Drywall Ceiling - Premium look</option>
-            </select>
-
-            <label>Bathroom Addition</label>
-            <select id="bathroom">
-                <option value="0" selected>None</option>
-                <option value="7500">Half Bath / Powder Room (+$7,500)</option>
-                <option value="12000">Full Bath with Shower (+$12,000)</option>
-            </select>
-        </div>
-
-        <div class="card receipt">
-            <h3>Project Estimate</h3>
-            
-            <div class="result-row">
-                <span>Framing, Electric, Drywall:</span>
-                <span id="baseCost">$0</span>
-            </div>
-            <div class="result-row">
-                <span>Ceiling & Flooring:</span>
-                <span id="finishCost">$0</span>
-            </div>
-            <div class="result-row" id="bathRow" style="display:none;">
-                <span>Bathroom Addition:</span>
-                <span id="bathCost">$0</span>
-            </div>
-
-            <div class="total-row">
-                <span>Total Estimated Cost:</span>
-                <span id="totalCost">$0</span>
-            </div>
-        </div>
-    </main>
-
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Protect Your Investment</h3>
-        <p style="color: #475569;">Don't let moisture ruin your newly finished drywall. A high-capacity smart dehumidifier with a pump will automatically control humidity and prevent mold growth behind the walls.</p>
-        <a href="https://www.amazon.com/s?k=smart+dehumidifier+with+pump+basement&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Basement Dehumidifiers on Amazon</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Basement Finishing Cost Estimator</h1>
+      <p>Estimate square footage finishing costs, bathroom additions, framing, and egress window installations.</p>
     </div>
 
-    <script>
-        function updateBasement() {
-            const sqft = parseInt(document.getElementById('sqft').value);
-            const layoutRate = parseInt(document.getElementById('layout').value);
-            const ceilRate = parseInt(document.getElementById('ceiling').value);
-            const bathCost = parseInt(document.getElementById('bathroom').value);
-            
-            document.getElementById('sqftVal').innerText = sqft.toLocaleString() + ' Sq Ft';
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="basementArea">
+            Basement Floor Area to Finish
+            <span class="val-badge" id="basementAreaVal">800 sq ft</span>
+          </label>
+          <input type="range" id="basementArea" min="300" max="2000" step="50" value="800">
+          <small style="color: #64748b;">Typical single-family basement is 600 to 1,200 sq ft.</small>
+        </div>
 
-            const baseCost = sqft * layoutRate;
-            // Floor is roughly $6 sq/ft plus chosen ceiling rate
-            const finishCost = sqft * (6 + ceilRate); 
-            const total = baseCost + finishCost + bathCost;
-            
-            document.getElementById('baseCost').innerText = '$' + baseCost.toLocaleString();
-            document.getElementById('finishCost').innerText = '$' + finishCost.toLocaleString();
-            
-            const bathRow = document.getElementById('bathRow');
-            if (bathCost > 0) {
-                bathRow.style.display = 'flex';
-                document.getElementById('bathCost').innerText = '$' + bathCost.toLocaleString();
-            } else {
-                bathRow.style.display = 'none';
-            }
+        <div class="form-group">
+          <label for="finishTier">Finishing Scope &amp; Quality</label>
+          <select id="finishTier">
+            <option value="45">Basic Rec Room ($45 / sq ft - Open layout, carpet/LVP, recessed lights)</option>
+            <option value="65" selected>Standard Living Space ($65 / sq ft - Divided rooms, drywall ceiling, trim)</option>
+            <option value="90">Luxury In-Law Suite ($90 / sq ft - Soundproofing, wet bar, custom built-ins)</option>
+          </select>
+        </div>
 
-            document.getElementById('totalCost').innerText = '$' + total.toLocaleString();
-        }
+        <div class="form-group">
+          <label for="bathOption">Basement Bathroom Addition</label>
+          <select id="bathOption">
+            <option value="0" selected>No Bathroom Added</option>
+            <option value="6500">Half Bath / Powder Room (+$6,500)</option>
+            <option value="12000">Full 3-Piece Bath with Shower (+$12,000)</option>
+          </select>
+        </div>
 
-        document.getElementById('sqft').addEventListener('input', updateBasement);
-        document.getElementById('layout').addEventListener('change', updateBasement);
-        document.getElementById('ceiling').addEventListener('change', updateBasement);
-        document.getElementById('bathroom').addEventListener('change', updateBasement);
+        <div class="form-group">
+          <label for="egressOption">Egress Window Installation</label>
+          <select id="egressOption">
+            <option value="0" selected>Existing Egress / Walkout Basement ($0)</option>
+            <option value="3800">Cut Foundation &amp; Install Code Egress Window (+$3,800)</option>
+          </select>
+        </div>
 
-        updateBasement();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Moisture Protection</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Protect finished basement drywall and subfloors with commercial dehumidification:</p>
+          <a href="https://www.amazon.com/s?k=basement+dehumidifier+commercial&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Basement Dehumidifiers on Amazon</a>
+        </div>
+      </div>
+
+      <!-- Receipt Card with Budget Breakdown Bar -->
+      <div class="card receipt">
+        <h2>Budget Breakdown</h2>
+        <div class="receipt-row">
+          <span>Framing &amp; Insulation (25%):</span>
+          <span id="framingCost">$13,000</span>
+        </div>
+        <div class="receipt-row">
+          <span>Drywall &amp; Ceiling (20%):</span>
+          <span id="drywallCost">$10,400</span>
+        </div>
+        <div class="receipt-row">
+          <span>Flooring &amp; Trim (20%):</span>
+          <span id="flooringCost">$10,400</span>
+        </div>
+        <div class="receipt-row">
+          <span>Electrical &amp; Lighting (15%):</span>
+          <span id="electricCost">$7,800</span>
+        </div>
+        <div class="receipt-row">
+          <span>Plumbing &amp; Upgrades (20%):</span>
+          <span id="plumbingCost">$10,400</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total Project Estimate:</span>
+          <span id="totalCost">$52,000</span>
+        </div>
+
+        <!-- Segmented Budget Bar -->
+        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
+          <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem; font-weight: 600;">
+            Trade Allocation Model
+          </div>
+          <div style="display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: #1e293b;">
+            <div style="width: 25%; background: #2563eb;" title="Framing (25%)"></div>
+            <div style="width: 20%; background: #64748b;" title="Drywall (20%)"></div>
+            <div style="width: 20%; background: #0d9488;" title="Flooring (20%)"></div>
+            <div style="width: 15%; background: #d97706;" title="Electrical (15%)"></div>
+            <div style="width: 20%; background: #8b5cf6;" title="Plumbing (20%)"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #94a3b8; margin-top: 0.5rem; flex-wrap: wrap;">
+            <span style="color:#60a5fa;">● Framing 25%</span>
+            <span style="color:#94a3b8;">● Drywall 20%</span>
+            <span style="color:#2dd4bf;">● Flooring 20%</span>
+            <span style="color:#fbbf24;">● Electrical 15%</span>
+          </div>
+        </div>
+
+        <!-- Export Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Modeled on 2026 building codes (minimum 7-foot ceiling clearance and emergency egress requirements for bedrooms).
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Basement Finishing Cost Guide (2026)</h2>
+    <p>Finishing a basement is one of the most cost-effective methods to expand conditioned living space, adding usable square footage at approximately half the cost of an above-ground room addition.</p>
+
+    <h3>Critical Code Requirements</h3>
+    <p>Building codes require an emergency egress window or walkout exterior door in any basement bedroom. Adding an egress window typically requires cutting through poured concrete foundation walls and excavating an exterior window well with drainage.</p>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>Do I need a vapor barrier before installing basement flooring?</summary>
+      <p>Yes. Concrete basement slabs continuously emit moisture vapor. Professional contractors install a dimpled subfloor membrane or 6-mil polyethylene vapor barrier beneath luxury vinyl plank (LVP) or carpet tiles to prevent mold.</p>
+    </details>
+    <details>
+      <summary>What is the return on investment (ROI) for a finished basement?</summary>
+      <p>A professionally finished basement typically recovers 70% to 75% of its cost upon resale while significantly expanding usable family space.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const basementArea = document.getElementById('basementArea');
+    const basementAreaVal = document.getElementById('basementAreaVal');
+    const finishTier = document.getElementById('finishTier');
+    const bathOption = document.getElementById('bathOption');
+    const egressOption = document.getElementById('egressOption');
+
+    const framingCost = document.getElementById('framingCost');
+    const drywallCost = document.getElementById('drywallCost');
+    const flooringCost = document.getElementById('flooringCost');
+    const electricCost = document.getElementById('electricCost');
+    const plumbingCost = document.getElementById('plumbingCost');
+    const totalCost = document.getElementById('totalCost');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateBasement() {
+      const sqft = parseFloat(basementArea.value);
+      basementAreaVal.textContent = sqft + ' sq ft';
+
+      const tierRate = parseFloat(finishTier.value);
+      const bath = parseFloat(bathOption.value);
+      const egress = parseFloat(egressOption.value);
+
+      const baseFinishing = sqft * tierRate;
+      const total = Math.round(baseFinishing + bath + egress);
+
+      const framing = Math.round(total * 0.25);
+      const drywall = Math.round(total * 0.20);
+      const flooring = Math.round(total * 0.20);
+      const electric = Math.round(total * 0.15);
+      const plumbing = total - (framing + drywall + flooring + electric);
+
+      framingCost.textContent = '$' + framing.toLocaleString();
+      drywallCost.textContent = '$' + drywall.toLocaleString();
+      flooringCost.textContent = '$' + flooring.toLocaleString();
+      electricCost.textContent = '$' + electric.toLocaleString();
+      plumbingCost.textContent = '$' + plumbing.toLocaleString();
+      totalCost.textContent = '$' + total.toLocaleString();
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Basement Finishing Estimate\\n" +
+        "Basement Area: " + basementAreaVal.textContent + "\\n" +
+        "Framing & Insulation: " + framingCost.textContent + "\\n" +
+        "Drywall & Ceiling: " + drywallCost.textContent + "\\n" +
+        "Flooring & Trim: " + flooringCost.textContent + "\\n" +
+        "Electrical & Lighting: " + electricCost.textContent + "\\n" +
+        "Plumbing & Upgrades: " + plumbingCost.textContent + "\\n" +
+        "Total Estimated Budget: " + totalCost.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/basement-cost-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    basementArea.addEventListener('input', updateBasement);
+    finishTier.addEventListener('change', updateBasement);
+    bathOption.addEventListener('change', updateBasement);
+    egressOption.addEventListener('change', updateBasement);
+
+    updateBasement();
+  </script>
 </body>
 </html>
