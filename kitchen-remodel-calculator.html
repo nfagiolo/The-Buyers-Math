@@ -1,211 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-V4GTQSCFW6');
-    </script>
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Kitchen Remodel Cost Estimator</title>
-    <meta name="description" content="Calculate your kitchen remodel costs, including cabinets, countertops, appliances, and estimated resale ROI.">
-    
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 2rem; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
-        .split-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-        @media (max-width: 768px) { .split-layout { grid-template-columns: 1fr; } }
-        
-        .card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .receipt { background: #0f172a; color: #f8fafc; position: sticky; top: 2rem; }
-        
-        h3 { color: #0369a1; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
-        .receipt h3 { color: #38bdf8; border-color: #334155; }
-        
-        label { font-weight: bold; display: block; margin-top: 1.5rem; }
-        .val-display { color: #0284c7; float: right; font-weight: bold; }
-        
-        input[type="range"] { width: 100%; margin-top: 0.5rem; accent-color: #0284c7; cursor: pointer; }
-        select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 1rem; background: #fff; }
-        
-        .checkbox-item { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 1rem; background: #f1f5f9; border-radius: 8px; border: 1px solid #e2e8f0; cursor: pointer; }
-        .checkbox-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: #0284c7; }
-        
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; color: #fbbf24; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #475569; }
-    </style>
-  <!-- Schema.org JSON-LD -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen Remodel Cost Estimator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate kitchen remodel costs across minor, midrange, and major luxury tiers. Visual budget breakdown for cabinets, countertops, appliances, and labor.">
+  <link rel="canonical" href="https://thebuyersmath.com/kitchen-remodel-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- Print Stylesheet -->
+  <style>
+    @media print {
+      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
+        display: none !important;
+      }
+      .split-layout { display: block !important; }
+      .receipt {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
+      .total-row { color: #000000 !important; }
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Kitchen Remodel Cost Estimator",
-    "url": "https://thebuyersmath.com/kitchen-remodel-calculator.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
-    "description": "Estimate kitchen remodeling budgets across minor, midrange, and major luxury renovations."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/kitchen-remodel-calculator.html#app",
+        "name": "Kitchen Remodel Cost Estimator",
+        "url": "https://thebuyersmath.com/kitchen-remodel-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Estimate kitchen remodeling budgets across minor, midrange, and major luxury renovations with trade breakdowns."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/kitchen-remodel-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does an average kitchen remodel cost in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A standard 150–200 sq ft midrange kitchen remodel averages $25,000 to $45,000, while minor cosmetic refreshes average $12,000 to $18,000 and upscale major renovations exceed $75,000."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
-  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <!-- Global Navigation Header -->
-  <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 0.875rem 1.5rem; margin-bottom: 1rem;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="color: #0f172a; text-decoration: none; font-weight: 700; font-size: 1.25rem;">The Buyer's Math</a>
-      <nav style="display: flex; gap: 1.25rem; font-size: 0.95rem;">
-        <a href="/" style="color: #2563eb; text-decoration: none; font-weight: 600;">Calculators</a>
-        <a href="/#article-list" style="color: #475569; text-decoration: none;">Guides</a>
-        <a href="/privacy-policy.html" style="color: #475569; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms.html" style="color: #475569; text-decoration: none;">Terms &amp; Disclaimer</a>
-        <a href="/contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
       </nav>
     </div>
   </header>
-  <nav style="max-width: 1100px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; font-size: 0.875rem; color: #64748b;" aria-label="Breadcrumb">
-    <a href="/" style="color: #475569; text-decoration: none;">Home</a> &gt;
-    <a href="/" style="color: #475569; text-decoration: none;">Calculators</a> &gt;
-    <span style="color: #0f172a; font-weight: 500;">Kitchen Remodel Cost Estimator</span>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Kitchen Remodel Cost Estimator</span>
   </nav>
 
-    <header style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Kitchen Remodel Estimator</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">Plan your budget based on materials, appliances, and labor complexity.</p>
-    </header>
-
-    <main class="split-layout">
-        <div class="card">
-            <h3>Kitchen Size</h3>
-            <label>Square Footage <span class="val-display" id="sqftVal">200 Sq Ft</span></label>
-            <input type="range" id="sqft" min="75" max="500" step="25" value="200">
-            
-            <h3 style="margin-top: 2rem;">Material Tiers</h3>
-            <label>Cabinetry</label>
-            <select id="cabinets">
-                <option value="150" selected>Stock / RTA Cabinets (Basic)</option>
-                <option value="300">Semi-Custom (Better finishes/sizing)</option>
-                <option value="500">Fully Custom (Built to spec)</option>
-            </select>
-
-            <label>Countertops</label>
-            <select id="counters">
-                <option value="40" selected>Laminate / Butcher Block</option>
-                <option value="80">Mid-Grade Granite / Solid Surface</option>
-                <option value="120">Premium Quartz / Marble</option>
-            </select>
-
-            <label>Appliance Package</label>
-            <select id="appliances">
-                <option value="2500" selected>Standard Stainless Steel ($2,500)</option>
-                <option value="6000">Premium / Smart Appliances ($6,000)</option>
-                <option value="12000">Luxury / Pro-Style Built-ins ($12,000+)</option>
-            </select>
-
-            <label class="checkbox-item">
-                <input type="checkbox" id="structural">
-                <div>
-                    <strong>Moving Plumbing or Walls?</strong><br>
-                    <span style="font-size: 0.9rem; color: #64748b; font-weight: normal;">(Adds significant structural and utility labor costs)</span>
-                </div>
-            </label>
-        </div>
-
-        <div class="card receipt">
-            <h3>Budget Breakdown</h3>
-            
-            <div class="result-row">
-                <span>Cabinets & Hardware:</span>
-                <span id="cabCost">$0</span>
-            </div>
-            <div class="result-row">
-                <span>Countertops:</span>
-                <span id="countCost">$0</span>
-            </div>
-            <div class="result-row">
-                <span>Appliances:</span>
-                <span id="appCost">$0</span>
-            </div>
-            <div class="result-row">
-                <span>Labor & Prep:</span>
-                <span id="labCost">$0</span>
-            </div>
-
-            <div class="total-row">
-                <span>Total Project Est:</span>
-                <span id="totalCost">$0</span>
-            </div>
-            
-            <div style="margin-top: 1.5rem; background: #1e293b; padding: 1rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 0.9rem; color: #94a3b8;">Est. Added Home Value (ROI)</span><br>
-                <span id="roiValue" style="font-size: 1.5rem; font-weight: bold; color: #22c55e;">$0</span>
-            </div>
-        </div>
-    </main>
-
-    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <h3 style="margin-top: 0; color: #0f172a; border: none;">Measure Twice, Order Once</h3>
-        <p style="color: #475569;">Cabinet and countertop layouts require millimeter precision. Ditch the tape measure and use a digital laser measure to map out your kitchen perfectly before ordering materials.</p>
-        <a href="https://www.amazon.com/s?k=digital+laser+measure&tag=nfagiolo-20" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: #f59e0b; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 0.5rem;">Shop Laser Measures on Amazon</a>
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Kitchen Remodel Cost Estimator</h1>
+      <p>Estimate remodeling budgets across square footage, finish tiers, and layout reconfiguration.</p>
     </div>
 
-    <script>
-        function updateKitchen() {
-            const sqft = parseInt(document.getElementById('sqft').value);
-            const cabRate = parseInt(document.getElementById('cabinets').value);
-            const countRate = parseInt(document.getElementById('counters').value);
-            const appCost = parseInt(document.getElementById('appliances').value);
-            const structural = document.getElementById('structural').checked;
-            
-            document.getElementById('sqftVal').innerText = sqft.toLocaleString() + ' Sq Ft';
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="kitchenSize">
+            Kitchen Floor Area
+            <span class="val-badge" id="kitchenSizeVal">160 sq ft</span>
+          </label>
+          <input type="range" id="kitchenSize" min="70" max="350" step="10" value="160">
+          <small style="color: #64748b;">Standard kitchen is 150-175 sq ft (approx. 10x15 to 12x14).</small>
+        </div>
 
-            const cabCost = sqft * cabRate;
-            const countCost = sqft * countRate;
-            
-            // Labor is roughly 20% of materials, or 40% if structural changes
-            const baseMaterials = cabCost + countCost + appCost;
-            let labCost = baseMaterials * 0.25;
-            if (structural) labCost += (sqft * 75); // Extra $75/sqft for heavy plumbing/wall changes
+        <div class="form-group">
+          <label for="remodelTier">Remodel Scope &amp; Finish Quality</label>
+          <select id="remodelTier">
+            <option value="150">Minor / Refresh ($150 / sq ft - Refacing, laminate/butcher block, paint)</option>
+            <option value="260" selected>Midrange ($260 / sq ft - Semi-custom cabinets, quartz, tile, SS appliances)</option>
+            <option value="420">Major / Upscale ($420 / sq ft - Custom cabinets, premium stone, luxury appliances)</option>
+          </select>
+        </div>
 
-            const total = cabCost + countCost + appCost + labCost;
-            
-            // ROI average is roughly 65-75% for kitchen remodels
-            const roi = total * 0.70;
+        <div class="form-group">
+          <label for="layoutChange">Floor Plan &amp; Plumbing Changes</label>
+          <select id="layoutChange">
+            <option value="1.0" selected>Keep Existing Footprint (No pipe or gas relocation)</option>
+            <option value="1.15">Move Island or Sink (+15% trade rough-in)</option>
+            <option value="1.30">Full Layout Reconfiguration (+30% electrical &amp; plumbing relocation)</option>
+          </select>
+        </div>
 
-            document.getElementById('cabCost').innerText = '$' + cabCost.toLocaleString();
-            document.getElementById('countCost').innerText = '$' + countCost.toLocaleString();
-            document.getElementById('appCost').innerText = '$' + appCost.toLocaleString();
-            document.getElementById('labCost').innerText = '$' + Math.round(labCost).toLocaleString();
-            document.getElementById('totalCost').innerText = '$' + Math.round(total).toLocaleString();
-            document.getElementById('roiValue').innerText = '+$' + Math.round(roi).toLocaleString();
-        }
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Fixtures &amp; Hardware</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Upgrade kitchen functionality with commercial pull-down faucets and cabinet pulls:</p>
+          <a href="https://www.amazon.com/s?k=kitchen+faucet+commercial+pull+down&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Kitchen Faucets on Amazon</a>
+        </div>
+      </div>
 
-        document.getElementById('sqft').addEventListener('input', updateKitchen);
-        document.getElementById('cabinets').addEventListener('change', updateKitchen);
-        document.getElementById('counters').addEventListener('change', updateKitchen);
-        document.getElementById('appliances').addEventListener('change', updateKitchen);
-        document.getElementById('structural').addEventListener('change', updateKitchen);
+      <!-- Receipt Card with Visual Budget Allocation Bar -->
+      <div class="card receipt">
+        <h2>Budget Breakdown</h2>
+        <div class="receipt-row">
+          <span>Cabinetry &amp; Hardware (30%):</span>
+          <span id="cabinetCost">$12,480</span>
+        </div>
+        <div class="receipt-row">
+          <span>Labor &amp; Installation (25%):</span>
+          <span id="laborCost">$10,400</span>
+        </div>
+        <div class="receipt-row">
+          <span>Countertops &amp; Tile (15%):</span>
+          <span id="counterCost">$6,240</span>
+        </div>
+        <div class="receipt-row">
+          <span>Appliances (15%):</span>
+          <span id="applianceCost">$6,240</span>
+        </div>
+        <div class="receipt-row">
+          <span>Plumbing &amp; Electrical (15%):</span>
+          <span id="tradeCost">$6,240</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total Project Estimate:</span>
+          <span id="totalCost">$41,600</span>
+        </div>
 
-        updateKitchen();
-    </script>
-  <!-- Global Footer with Amazon Disclosure -->
-  <footer style="margin-top: 4rem; padding: 2.5rem 1rem; border-top: 1px solid #e2e8f0; text-align: center; color: #64748b; font-size: 0.875rem; background-color: #f8fafc;">
-    <div style="margin-bottom: 1rem;">
-      <a href="/" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Calculators</a> |
-      <a href="/#article-list" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Guides</a> |
-      <a href="/privacy-policy.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Privacy Policy</a> |
-      <a href="/terms.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html" style="color: #475569; text-decoration: none; margin: 0 0.75rem; font-weight: 500;">Contact Us</a>
+        <!-- Segmented Budget Allocation Bar -->
+        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
+          <div style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem; font-weight: 600;">
+            Trade Allocation Model
+          </div>
+          <div style="display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: #1e293b;">
+            <div style="width: 30%; background: #2563eb;" title="Cabinets (30%)"></div>
+            <div style="width: 25%; background: #64748b;" title="Labor (25%)"></div>
+            <div style="width: 15%; background: #0d9488;" title="Countertops (15%)"></div>
+            <div style="width: 15%; background: #d97706;" title="Appliances (15%)"></div>
+            <div style="width: 15%; background: #8b5cf6;" title="Trades (15%)"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #94a3b8; margin-top: 0.5rem; flex-wrap: wrap;">
+            <span style="color:#60a5fa;">● Cabinets 30%</span>
+            <span style="color:#94a3b8;">● Labor 25%</span>
+            <span style="color:#2dd4bf;">● Counters 15%</span>
+            <span style="color:#fbbf24;">● Appliances 15%</span>
+          </div>
+        </div>
+
+        <!-- Export & Share Utility Buttons -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
+          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        </div>
+
+        <p class="receipt-disclaimer">
+          * Modeled on 2026 National Kitchen &amp; Bath Association (NKBA) expenditure guidelines.
+        </p>
+      </div>
     </div>
-    <p style="max-width: 680px; margin: 0 auto 0.75rem auto; font-size: 0.8rem; line-height: 1.5; color: #94a3b8;">
+  </main>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Kitchen Remodeling Cost Guide (2026)</h2>
+    <p>Kitchen remodels consistently deliver strong homeowner satisfaction and retain 60% to 75% of their value upon resale. Understanding the breakdown of your project expenditure helps avoid unexpected change orders.</p>
+
+    <h3>NKBA Rule of Thumb</h3>
+    <p>The National Kitchen &amp; Bath Association suggests budgeting 10% to 15% of your home's total market value for a comprehensive kitchen renovation to avoid over-improving or under-building for your neighborhood.</p>
+
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>What is the most expensive part of a kitchen remodel?</summary>
+      <p>Cabinetry and hardware make up the single largest cost category, typically claiming 28% to 35% of the total budget.</p>
+    </details>
+    <details>
+      <summary>How much can I save by keeping the same layout?</summary>
+      <p>Keeping your sink, dishwasher, and stove in their original locations avoids relocating gas lines, drain vents, and 240V circuits, saving $3,000 to $6,000 in trade rough-in labor.</p>
+    </details>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
       <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
     </p>
-    <p style="margin: 0; font-size: 0.8rem; color: #94a3b8;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <script>
+    const kitchenSize = document.getElementById('kitchenSize');
+    const kitchenSizeVal = document.getElementById('kitchenSizeVal');
+    const remodelTier = document.getElementById('remodelTier');
+    const layoutChange = document.getElementById('layoutChange');
+
+    const cabinetCost = document.getElementById('cabinetCost');
+    const laborCost = document.getElementById('laborCost');
+    const counterCost = document.getElementById('counterCost');
+    const applianceCost = document.getElementById('applianceCost');
+    const tradeCost = document.getElementById('tradeCost');
+    const totalCost = document.getElementById('totalCost');
+    const copyBtn = document.getElementById('copyEstimateBtn');
+
+    function updateKitchen() {
+      const sqft = parseFloat(kitchenSize.value);
+      kitchenSizeVal.textContent = sqft + ' sq ft';
+
+      const baseRate = parseFloat(remodelTier.value);
+      const layoutMult = parseFloat(layoutChange.value);
+
+      const total = Math.round(sqft * baseRate * layoutMult);
+
+      const cabinets = Math.round(total * 0.30);
+      const labor = Math.round(total * 0.25);
+      const counters = Math.round(total * 0.15);
+      const appliances = Math.round(total * 0.15);
+      const trades = total - (cabinets + labor + counters + appliances);
+
+      cabinetCost.textContent = '$' + cabinets.toLocaleString();
+      laborCost.textContent = '$' + labor.toLocaleString();
+      counterCost.textContent = '$' + counters.toLocaleString();
+      applianceCost.textContent = '$' + appliances.toLocaleString();
+      tradeCost.textContent = '$' + trades.toLocaleString();
+      totalCost.textContent = '$' + total.toLocaleString();
+    }
+
+    copyBtn.addEventListener('click', function() {
+      const summary = "The Buyer's Math - Kitchen Remodel Estimate\\n" +
+        "Kitchen Size: " + kitchenSizeVal.textContent + "\\n" +
+        "Cabinets & Hardware: " + cabinetCost.textContent + "\\n" +
+        "Labor & Install: " + laborCost.textContent + "\\n" +
+        "Countertops & Tile: " + counterCost.textContent + "\\n" +
+        "Appliances: " + applianceCost.textContent + "\\n" +
+        "Plumbing & Electrical: " + tradeCost.textContent + "\\n" +
+        "Total Estimated Budget: " + totalCost.textContent + "\\n" +
+        "Calculated at https://thebuyersmath.com/kitchen-remodel-calculator.html";
+      navigator.clipboard.writeText(summary).then(() => {
+        copyBtn.textContent = '✓ Copied!';
+        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
+      });
+    });
+
+    kitchenSize.addEventListener('input', updateKitchen);
+    remodelTier.addEventListener('change', updateKitchen);
+    layoutChange.addEventListener('change', updateKitchen);
+
+    updateKitchen();
+  </script>
 </body>
 </html>
