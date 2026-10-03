@@ -1,0 +1,19 @@
+name: Batch Update Calculators
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Run Updater Script
+        run: python apply_calculator_updates.py
+      - name: Commit Updated Calculators
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Batch update headers, footers, and schema on all calculators"
+          branch: main
