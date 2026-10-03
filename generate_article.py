@@ -1,4 +1,4 @@
-# generate_article.py (v3: With Automated Sitemap Updates & Unified Design)
+# generate_article.py (v3: Automated Sitemap & Unified Design)
 import os
 import re
 from datetime import datetime
@@ -125,7 +125,6 @@ Requirements:
 </body>
 </html>
 """
-    # Write article file
     os.makedirs("articles", exist_ok=True)
     article_path = f"articles/{date_str}-{slug}.html"
     with open(article_path, "w", encoding="utf-8") as f:
