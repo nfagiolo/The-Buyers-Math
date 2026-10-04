@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THE BUYER'S MATH - UNIFIED DESIGN SYSTEM (styles.css - v3 Rich Components)
+   THE BUYER'S MATH - UNIFIED DESIGN SYSTEM (styles.css)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -463,3 +463,103 @@ summary { font-weight: 600; cursor: pointer; color: var(--slate-900); }
 }
 .footer-nav a { color: var(--slate-600); font-weight: 500; margin: 0 0.85rem; }
 .footer-disclosure { max-width: 720px; margin: 0 auto 1rem auto; font-size: 0.8rem; color: var(--slate-400); }
+
+/* ==========================================================================
+   PRINT / CONTRACTOR BID SHEET STYLES
+   ========================================================================== */
+@media print {
+  .site-header,
+  .site-footer,
+  .site-nav,
+  .filter-bar,
+  .search-container,
+  .breadcrumbs,
+  .btn-affiliate,
+  .adsbygoogle,
+  .trust-pill,
+  .no-print,
+  #calc-search,
+  .btn-print,
+  #tbm-reset-btn {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .container, main, .card {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-header {
+    border-bottom: 2px solid #000000;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .print-title {
+    font-size: 16pt;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .print-meta {
+    font-size: 9pt;
+    color: #333333;
+    text-align: right;
+  }
+
+  .estimate-print-box {
+    border: 1px solid #000000;
+    padding: 12px;
+    margin-bottom: 16px;
+    background: #fdfdfd !important;
+  }
+
+  .contractor-bid-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 9.5pt;
+  }
+
+  .contractor-bid-table th,
+  .contractor-bid-table td {
+    border: 1px solid #333333;
+    padding: 6px 8px;
+    text-align: left;
+  }
+
+  .contractor-bid-table th {
+    background: #f0f0f0 !important;
+    font-weight: 700;
+  }
+
+  .contractor-bid-table tr:nth-child(even) td {
+    background: #fafafa !important;
+  }
+}
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
