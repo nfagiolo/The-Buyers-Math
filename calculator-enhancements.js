@@ -1,12 +1,13 @@
 /**
- * The Buyer's Math - Client-Side Calculator Enhancements (v3.3: Multi-Network Monetization)
+ * The Buyer's Math - Client-Side Calculator Enhancements (v3.4: CJ Auto-Monetization)
  * 1. Regional Cost Multiplier (Low, National, High, Urban)
  * 2. LocalStorage Persistence (Auto-Save & Restore)
  * 3. Live URL Parameter Serialization & 1-Click "Copy Share Link"
  * 4. 1-Page Printable Contractor Estimate & Bid Sheet
  * 5. High-Intent Local Contractor Bid Matching Card (ZIP Intake & CJ Ready)
- * 6. Curated Contractor-Grade Project Equipment Recommendations (Amazon Associates + CJ Affiliate Network)
- * 7. Mobile Non-Sticky Flow & Full Container Isolation
+ * 6. Curated Contractor-Grade Project Equipment Recommendations (Amazon Associates + SwitchBot CJ)
+ * 7. CJ Affiliate Auto-Monetization Page Tag (Property ID: 101896838)
+ * 8. Mobile Non-Sticky Flow & Full Container Isolation
  */
 
 (function() {
@@ -147,6 +148,15 @@
     if (fname.includes('.html')) return fname;
     if (fname) return fname + '.html';
     return 'roofing-cost-calculator.html';
+  }
+
+  function injectCjAutoMonetization() {
+    if (document.getElementById('cj-am-tag')) return;
+    const s = document.createElement('script');
+    s.id = 'cj-am-tag';
+    s.async = true;
+    s.src = 'https://www.anrdoezrs.net/am/' + CJ_PID + '/include/allCj/impressions/page/am.js';
+    document.head.appendChild(s);
   }
 
   function injectLayoutFixes() {
@@ -633,6 +643,7 @@
 
   function init() {
     if (document.querySelector('main input, main select, .calc-card')) {
+      try { injectCjAutoMonetization(); } catch(e) { console.warn('CJ Auto-Monetization error:', e); }
       try { injectLayoutFixes(); } catch(e) { console.warn('Layout fixes error:', e); }
       try { injectControls(); } catch(e) { console.warn('Controls error:', e); }
       try { injectMonetizationAndPrintModules(); } catch(e) { console.warn('Monetization error:', e); }
