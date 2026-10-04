@@ -25,10 +25,11 @@ jobs:
         run: |
           pip install anthropic
 
-      - name: Run Article Generator
+     - name: Run Article Generator
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          python retrofit_articles.py
           python generate_article.py
 
       - name: Commit and Push Changes
