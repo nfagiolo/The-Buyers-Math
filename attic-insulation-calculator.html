@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attic Insulation & Air Sealing ROI Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate attic insulation upgrade costs, air sealing savings, Section 25C federal tax credits, and utility payback timeline.">
+  <link rel="canonical" href="https://thebuyersmath.com/attic-insulation-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+  
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/attic-insulation-calculator.html#app",
+        "name": "Attic Insulation & Air Sealing ROI Calculator",
+        "url": "https://thebuyersmath.com/attic-insulation-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate attic insulation installation costs, air sealing, IRA 25C energy property tax credits, and annual heating and cooling utility savings."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/attic-insulation-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does attic insulation qualify for the federal Section 25C tax credit in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Qualified insulation and air sealing materials that meet International Energy Conservation Code (IECC) standards are eligible for a 30% federal tax credit up to a maximum annual limit of $1,200 under Section 25C."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is air sealing necessary before adding new attic insulation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Insulation slows conductive heat transfer, but air leakage through plumbing chases, recessed lights, and electrical penetrations accounts for up to 40% of home thermal loss. Air sealing stops convective drafts so the insulation can achieve its rated R-value."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What R-value is recommended for residential attics in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The US Department of Energy recommends R-38 to R-49 for moderate/southern zones (Zones 2-3) and R-49 to R-60 for northern cold climates (Zones 4-7), corresponding to approximately 14 to 19 inches of blown-in cellulose or fiberglass."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Attic Insulation &amp; Air Sealing ROI</span>
+  </nav>
+  
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Attic Insulation &amp; Air Sealing ROI Calculator</h1>
+      <p>Estimate retrofit costs, Section 25C federal tax credits, and annual utility bill savings.</p>
+    </div>
+  
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="atticArea">
+            Attic Floor Area
+            <span class="val-badge" id="atticAreaVal">1,500 sq ft</span>
+          </label>
+          <input type="range" id="atticArea" min="600" max="3500" step="50" value="1500">
+          <small style="color: #64748b;">Roughly equal to your home's top-floor conditioned footprint.</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="currentR">Current Attic Insulation Level</label>
+          <select id="currentR">
+            <option value="none">Bare / Under 3 Inches (R-0 to R-11)</option>
+            <option value="low" selected>Modest / 4 to 6 Inches (R-13 to R-19)</option>
+            <option value="moderate">Average / 7 to 9 Inches (R-22 to R-30)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="targetR">Target Upgrade Level (2026 Code)</label>
+          <select id="targetR">
+            <option value="r49" selected>Standard Code: R-49 (14-16 inches)</option>
+            <option value="r60">Cold Climate High Efficiency: R-60 (18-20 inches)</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="insulationType">Insulation Material &amp; Air Sealing</label>
+          <select id="insulationType">
+            <option value="cellulose" selected>Blown-In Cellulose + Comprehensive Air Sealing</option>
+            <option value="fiberglass">Blown-In Fiberglass + Comprehensive Air Sealing</option>
+            <option value="sprayfoam">Closed-Cell Spray Foam Roof Deck Cap (Unvented)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="climateZone">Climate Region</label>
+          <select id="climateZone">
+            <option value="mild">Mild / Southern (Zone 1-3)</option>
+            <option value="moderate" selected>Moderate / Mid-Atlantic (Zone 4)</option>
+            <option value="cold">Cold / Northern (Zone 5-7)</option>
+          </select>
+        </div>
+  
+        <!-- Monetization: Amazon Affiliate Box -->
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended DIY Sealing Gear</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Professional foam guns and soffit rafter baffles maximize airflow and draft prevention:</p>
+          <a href="https://www.amazon.com/s?k=expanding+foam+gun+pro+insulation&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Insulation Foam Tools on Amazon</a>
+        </div>
+      </div>
+  
+      <!-- Receipt Card with Visual Payback Bar -->
+      <div class="card receipt">
+        <h2>Financial Summary</h2>
+        <div class="receipt-row">
+          <span>Gross Installation Cost:</span>
+          <span id="grossCost">$2,850</span>
+        </div>
+        <div class="receipt-row">
+          <span>IRA 25C Tax Credit (30%):</span>
+          <span id="taxCredit" style="color:#4ade80;">-$855</span>
+        </div>
+        <div class="receipt-row">
+          <span>Net Out-of-Pocket:</span>
+          <strong id="netCost">$1,995</strong>
+        </div>
+        <div class="receipt-row" style="margin-top:1rem; border-top:1px solid #334155; padding-top:0.75rem;">
+          <span>HVAC Load Reduction:</span>
+          <span id="loadReduction">22%</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Annual Utility Savings:</span>
+          <span id="annualSavings">$480 / yr</span>
+        </div>
+        <div class="receipt-row" style="color:#fbbf24; font-weight:600; margin-top:0.5rem;">
+          <span>Estimated Break-even:</span>
+          <span id="paybackYears">4.2 Years</span>
+        </div>
+  
+        <!-- Visual ROI Payback Bar -->
+        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;">
+            <span>10-Year Return on Investment</span>
+            <strong id="tenYearROI" style="color: #38bdf8;">141%</strong>
+          </div>
+          <div style="width: 100%; height: 12px; background: #1e293b; border-radius: 6px; overflow: hidden;">
+            <div id="paybackBar" style="width: 42%; height: 100%; background: linear-gradient(90deg, #0284c7, #38bdf8); transition: width 0.3s ease;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">
+            <span>Installed</span>
+            <span>Break-even</span>
+            <span>Net Profit</span>
+          </div>
+        </div>
+  
+        <p class="receipt-disclaimer">
+          * Modeled on 2026 IECC standards, regional heating degree days, and Section 25C credit caps.
+        </p>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Responsive In-Page AdSense Unit -->
+  <div style="max-width: 1140px; margin: 2rem auto; text-align: center; min-height: 100px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1199906473460957"
+         data-ad-slot="responsive"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Attic Insulation &amp; Air Sealing: 2026 Homeowner's Guide</h2>
+    <p>According to the Department of Energy, the attic is the single most cost-effective area to insulate. Uninsulated attics act like open chimneys in winter, pulling heated living air upward through top plates, light fixtures, and plumbing vents via the stack effect.</p>
+  
+    <h3>Section 25C Federal Tax Credit Details</h3>
+    <p>Under the Inflation Reduction Act, homeowners can deduct 30% of insulation and air sealing material costs up to an annual maximum of $1,200. Because this credit resets each calendar year, homeowners frequently upgrade their attic envelope in year one before right-sizing HVAC equipment with our <a href="/hvac-roi-calculator.html" style="font-weight: 600; color: #2563eb; text-decoration: underline;">Heat Pump vs. Gas Furnace ROI Calculator</a> in year two.</p>
+  
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>Does attic insulation qualify for the federal Section 25C tax credit in 2026?</summary>
+      <p>Yes. Qualified insulation and air sealing materials that meet International Energy Conservation Code (IECC) standards are eligible for a 30% federal tax credit up to a maximum annual limit of $1,200 under Section 25C.</p>
+    </details>
+    <details>
+      <summary>Why is air sealing necessary before adding new attic insulation?</summary>
+      <p>Insulation slows conductive heat transfer, but air leakage through plumbing chases, recessed lights, and electrical penetrations accounts for up to 40% of home thermal loss. Air sealing stops convective drafts so the insulation can achieve its rated R-value.</p>
+    </details>
+    <details>
+      <summary>What R-value is recommended for residential attics in 2026?</summary>
+      <p>The US Department of Energy recommends R-38 to R-49 for moderate/southern zones (Zones 2-3) and R-49 to R-60 for northern cold climates (Zones 4-7), corresponding to approximately 14 to 19 inches of blown-in cellulose or fiberglass.</p>
+    </details>
+  </section>
+
+  <!-- Contractor Vetting Checklist -->
+  <section class="contractor-checklist-card" style="max-width: 1140px; margin: 2.5rem auto; padding: 2rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <h3 style="font-size: 1.35rem; margin-top: 0; color: #0f172a;">📋 Contractor Vetting Checklist: 4 Questions to Ask Before Signing</h3>
+    <p style="color: #64748b; font-size: 0.95rem; margin-top: 0.25rem;">Ensure your insulation retrofit performs to specification by verifying these standards with contractors:</p>
+    <div class="checklist-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Insist on Dedicated Air Sealing Scope</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Verify the estimate itemizes one-part and two-part spray foam sealing of all top plates, wire holes, and plumbing stacks before blowing insulation.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Install Rafter Vent Chutes (Baffles)</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Ensure cardboard or foam baffles are stapled at every soffit intake to maintain attic ventilation and prevent moisture condensation or ice dams.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Build Insulated Attic Hatch Box</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Require a weatherstripped rigid foam dam or zippered insulated tent over the attic access stair to prevent conditioned air from bypassing the ceiling.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Post Written Insulation Depth Markers</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Contractors must attach rigid depth rulers throughout the attic space and provide the manufacturer's bag count coverage sheet upon completion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Calculators Section -->
+  <section class="related-calculators-section" style="max-width: 1140px; margin: 2.5rem auto 4rem auto; padding: 0 1.5rem;">
+    <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem; color: #0f172a;">Explore Related Home Improvement Calculators</h3>
+    <div class="related-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <a href="/hvac-roi-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Heat Pump vs. Gas Furnace ROI</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Right-size heating and cooling equipment after tightening your attic envelope.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+
+      <a href="/window-replacement-estimator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Window Replacement Estimator</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Eliminate drafts and insulate wall openings alongside attic improvements.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+
+      <a href="/roofing-cost-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Roof Replacement Cost Estimator</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Coordinate ridge ventilation and underlayment before blowing fresh insulation.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+    </div>
+  </section>
+  
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+    </p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    const atticArea = document.getElementById('atticArea');
+    const atticAreaVal = document.getElementById('atticAreaVal');
+    const currentR = document.getElementById('currentR');
+    const targetR = document.getElementById('targetR');
+    const insulationType = document.getElementById('insulationType');
+    const climateZone = document.getElementById('climateZone');
+
+    const grossCostEl = document.getElementById('grossCost');
+    const taxCreditEl = document.getElementById('taxCredit');
+    const netCostEl = document.getElementById('netCost');
+    const loadReductionEl = document.getElementById('loadReduction');
+    const annualSavingsEl = document.getElementById('annualSavings');
+    const paybackYearsEl = document.getElementById('paybackYears');
+    const tenYearROIEl = document.getElementById('tenYearROI');
+    const paybackBar = document.getElementById('paybackBar');
+
+    function calculateInsulation() {
+      const sqft = parseFloat(atticArea.value);
+      atticAreaVal.textContent = sqft.toLocaleString() + ' sq ft';
+
+      let costPerSqft = 1.65; // base cellulose + air sealing
+      if (insulationType.value === 'fiberglass') costPerSqft = 1.55;
+      if (insulationType.value === 'sprayfoam') costPerSqft = 3.40;
+
+      if (targetR.value === 'r60') costPerSqft += 0.35;
+      if (currentR.value === 'none') costPerSqft += 0.20; // more volume needed
+
+      const gross = Math.round(sqft * costPerSqft);
+      const taxCredit = Math.min(1200, Math.round(gross * 0.30));
+      const net = gross - taxCredit;
+
+      let reductionPct = 18;
+      if (currentR.value === 'none') reductionPct = 28;
+      if (currentR.value === 'low') reductionPct = 22;
+      if (targetR.value === 'r60') reductionPct += 4;
+      loadReductionEl.textContent = reductionPct + '%';
+
+      let savings = (sqft * 0.30);
+      if (climateZone.value === 'cold') savings *= 1.35;
+      if (climateZone.value === 'mild') savings *= 0.85;
+      savings = Math.round(savings);
+      annualSavingsEl.textContent = '$' + savings.toLocaleString() + ' / yr';
+
+      grossCostEl.textContent = '$' + gross.toLocaleString();
+      taxCreditEl.textContent = '-$' + taxCredit.toLocaleString();
+      netCostEl.textContent = '$' + net.toLocaleString();
+
+      const payback = Math.max(1.0, net / savings);
+      paybackYearsEl.textContent = payback.toFixed(1) + ' Years';
+
+      const tenYearNetSavings = (savings * 10) - net;
+      const roiPct = Math.round((tenYearNetSavings / net) * 100);
+      tenYearROIEl.textContent = Math.max(0, roiPct) + '%';
+
+      const barPercent = Math.min(100, Math.max(10, Math.round((payback / 10) * 100)));
+      paybackBar.style.width = barPercent + '%';
+    }
+
+    atticArea.addEventListener('input', calculateInsulation);
+    currentR.addEventListener('change', calculateInsulation);
+    targetR.addEventListener('change', calculateInsulation);
+    insulationType.addEventListener('change', calculateInsulation);
+    climateZone.addEventListener('change', calculateInsulation);
+
+    calculateInsulation();
+  </script>
+</body>
+</html>
