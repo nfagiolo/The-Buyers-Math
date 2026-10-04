@@ -1,16 +1,16 @@
-name: Daily Automated Cost Guide (Anthropic)
+name: Daily Automated Operations (The Buyer's Math)
 
 on:
   schedule:
     # Runs daily at 10:00 UTC (6:00 AM EST)
     - cron: '0 10 * * *'
-  workflow_dispatch: # Allows manual run anytime from GitHub Actions tab
+  workflow_dispatch: # Allows manual trigger anytime from Actions tab
 
 permissions:
   contents: write
 
 jobs:
-  generate-and-publish:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -25,16 +25,27 @@ jobs:
         run: |
           pip install anthropic
 
-     - name: Run Article Generator
+      - name: 1. Update Core Calculators (Checklists & Related Tools)
+        run: |
+          if [ -f apply_calculator_updates.py ]; then
+            python apply_calculator_updates.py
+          fi
+
+      - name: 2. Retrofit Existing Articles (Revenue Blocks)
+        run: |
+          if [ -f retrofit_articles.py ]; then
+            python retrofit_articles.py
+          fi
+
+      - name: 3. Generate Daily High-Intent Guide (Claude)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python retrofit_articles.py
           python generate_article.py
 
-      - name: Commit and Push Changes
+      - name: Commit and Push All Site Updates
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add articles/ index.html sitemap.xml
-          git diff --staged --quiet || (git commit -m "Auto-generate daily buying guide via Claude and update sitemap" && git push origin main)
+          git add -A
+          git diff --staged --quiet || (git commit -m "Auto-update calculators, publish daily guide, and sync sitemap [skip ci]" && git push origin main)
