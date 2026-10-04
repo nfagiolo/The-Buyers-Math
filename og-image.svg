@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" rx="0" fill="#0f172a"/>
+  
+  <!-- Subtle Gradient Lighting -->
+  <circle cx="950" cy="120" r="350" fill="#2563eb" opacity="0.18"/>
+  <circle cx="200" cy="550" r="280" fill="#059669" opacity="0.12"/>
+  
+  <!-- Outer Card Border -->
+  <rect x="30" y="30" width="1140" height="570" rx="20" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Header Badge -->
+  <rect x="70" y="70" width="320" height="42" rx="21" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+  <text x="95" y="97" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#60a5fa" letter-spacing="1">THE BUYER'S MATH  •  2026</text>
+  
+  <!-- Main Headlines -->
+  <text x="70" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">16 Empirical Home Improvement</text>
+  <text x="70" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#38bdf8" letter-spacing="-1">Cost &amp; ROI Calculators</text>
+  
+  <!-- Subtitle -->
+  <text x="70" y="340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" fill="#94a3b8">Stop guessing on renovation bids. Model real materials, licensed labor,</text>
+  <text x="70" y="375" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" fill="#94a3b8">Section 25C federal tax credits, and contractor quote comparisons.</text>
+  
+  <!-- Feature Badges -->
+  <g transform="translate(70, 430)">
+    <rect x="0" y="0" width="220" height="42" rx="10" fill="#1e3a8a" stroke="#60a5fa"/>
+    <text x="14" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#60a5fa">⚡ 16 Empirical Calculators</text>
+    
+    <rect x="235" y="0" width="235" height="42" rx="10" fill="#064e3b" stroke="#34d399"/>
+    <text x="249" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#34d399">✓ 2026 Building Code Verified</text>
+    
+    <rect x="485" y="0" width="200" height="42" rx="10" fill="#4c1d95" stroke="#c084fc"/>
+    <text x="499" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#c084fc">📍 Regional Labor Rates</text>
+    
+    <rect x="700" y="0" width="205" height="42" rx="10" fill="#78350f" stroke="#fbbf24"/>
+    <text x="714" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#fbbf24">🖨️ Printable Bid Sheets</text>
+  </g>
+  
+  <!-- Footer Bar -->
+  <line x1="70" y1="520" x2="1130" y2="520" stroke="#334155" stroke-width="1"/>
+  <text x="70" y="555" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">thebuyersmath.com</text>
+  <text x="820" y="555" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="600" fill="#64748b">Independent Consumer Engineering</text>
+</svg>
