@@ -37,7 +37,6 @@ def retrofit_file(filepath):
 
     calc_name, calc_url = find_best_calculator(content)
 
-    # 1. Top Amazon Box (Inject after date/meta line)
     top_box = f"""
       <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0 2rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -51,7 +50,6 @@ def retrofit_file(filepath):
       </div>
     """
 
-    # 2. Mid-Article Calculator CTA + AdSense Unit
     mid_and_ads = f"""
       <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb; border-radius: 8px; padding: 1.5rem; margin: 2.5rem 0; text-align: center;">
         <span style="color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Interactive Estimator</span>
@@ -68,18 +66,22 @@ def retrofit_file(filepath):
              data-ad-client="ca-pub-1199906473460957"
              data-ad-slot="responsive"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             (adsbygoogle = window.adsbygoogle || []).push({{}});
         </script>
       </div>
     """
 
-    # Inject top box after the date meta container
+    # Inject top box safely after metadata
     if "Published on" in content:
-        content = re.sub(r'(Published on [^<]+</div>)', r'\1\n' + top_box, content, count=1)
-    elif "<h1" in content:
-        content = re.sub(r'(</h1>)', r'\1\n' + top_box, content, count=1)
+        idx = content.find("Published on")
+        end_div = content.find("</div>", idx)
+        if end_div != -1:
+            insert_pos = end_div + len("</div>")
+            content = content[:insert_pos] + "\n" + top_box + content[insert_pos:]
+    elif "</h1>" in content:
+        content = content.replace("</h1>", f"</h1>\n{top_box}", 1)
 
-    # Inject mid CTA and AdSense right before the closing </article> or </main>
+    # Inject mid-article card and AdSense
     if "</article>" in content:
         content = content.replace("</article>", f"{mid_and_ads}\n    </article>", 1)
     elif "</main>" in content:
