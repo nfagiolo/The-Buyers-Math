@@ -7,7 +7,7 @@
   <meta name="description" content="Compare upfront equipment costs, 25C federal tax credits, monthly utility bills, and 10-year cumulative payback between heat pumps and gas furnaces.">
   <link rel="canonical" href="https://thebuyersmath.com/hvac-roi-calculator.html">
   <link rel="stylesheet" href="/styles.css">
-
+  
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
   <script>
@@ -16,34 +16,10 @@
     gtag('js', new Date());
     gtag('config', 'G-V4GTQSCFW6');
   </script>
-
+  
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-
-  <!-- Print Stylesheet -->
-  <style>
-    @media print {
-      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
-        display: none !important;
-      }
-      .split-layout {
-        display: block !important;
-      }
-      .receipt {
-        background: #ffffff !important;
-        color: #000000 !important;
-        border: 2px solid #000000 !important;
-        box-shadow: none !important;
-      }
-      .receipt h2, .receipt-row span:last-child, .receipt-row strong {
-        color: #000000 !important;
-      }
-      .total-row {
-        color: #000000 !important;
-      }
-    }
-  </style>
-
+  
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -86,8 +62,8 @@
   </script>
 </head>
 <body>
-
-  <!-- Global Header -->
+  
+  <!-- Global Navigation Header -->
   <header class="site-header">
     <div class="header-inner">
       <a href="/" class="site-logo">The Buyer's Math</a>
@@ -100,21 +76,21 @@
       </nav>
     </div>
   </header>
-
+  
   <!-- Breadcrumb Navigation -->
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> &gt;
     <a href="/">Calculators</a> &gt;
     <span class="current">Heat Pump vs. Gas Furnace ROI</span>
   </nav>
-
+  
   <!-- Main Calculator -->
   <main class="container">
     <div class="calc-intro">
       <h1>Heat Pump vs. Gas Furnace ROI Calculator</h1>
       <p>Compare equipment replacement costs, 25C federal tax credits, and annual operating costs.</p>
     </div>
-
+  
     <div class="split-layout">
       <!-- Input Controls -->
       <div class="card">
@@ -126,7 +102,7 @@
           <input type="range" id="homeSize" min="1000" max="4500" step="100" value="2000">
           <small style="color: #64748b;">Determines required HVAC tonnage (approx. 500-600 sq ft per ton).</small>
         </div>
-
+  
         <div class="form-group">
           <label for="climateZone">Climate Region</label>
           <select id="climateZone">
@@ -135,7 +111,7 @@
             <option value="cold">Cold / Northern (Zone 5-7)</option>
           </select>
         </div>
-
+  
         <div class="form-group">
           <label for="electricRate">Average Electric Rate ($ / kWh)</label>
           <select id="electricRate">
@@ -144,7 +120,7 @@
             <option value="0.24">High ($0.24 / kWh)</option>
           </select>
         </div>
-
+  
         <div class="form-group">
           <label for="gasRate">Natural Gas Rate ($ / Therm)</label>
           <select id="gasRate">
@@ -153,15 +129,16 @@
             <option value="2.10">High ($2.10 / Therm)</option>
           </select>
         </div>
-
+  
+        <!-- Monetization: Amazon Affiliate Box -->
         <div class="curated-recommendation">
           <p class="rec-title">Recommended HVAC Upgrade</p>
           <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Smart thermostats with dual-fuel staging maximize heat pump savings:</p>
           <a href="https://www.amazon.com/s?k=smart+thermostat+heat+pump&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Smart Thermostats on Amazon</a>
         </div>
       </div>
-
-      <!-- Receipt Card with Visual Payback Bar & Export Buttons -->
+  
+      <!-- Receipt Card with Visual Payback Bar -->
       <div class="card receipt">
         <h2>Comparison Summary</h2>
         <div class="receipt-row">
@@ -188,7 +165,7 @@
           <span>Estimated Break-even:</span>
           <span id="paybackTime">2.2 Years</span>
         </div>
-
+  
         <!-- Visual ROI Payback Bar -->
         <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
           <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;">
@@ -204,82 +181,35 @@
             <span>10-Yr Profit</span>
           </div>
         </div>
-
-        <!-- Export Buttons -->
-        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
-          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
-          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
-        </div>
-
+  
         <p class="receipt-disclaimer">
           * Modeled on 2026 equipment pricing and Section 25C federal energy property credits.
         </p>
       </div>
     </div>
-    <!-- Contractor Vetting Checklist -->
-  <section class="contractor-checklist-card">
-    <h3>📋 Contractor Vetting Checklist: 4 Questions to Ask Before Signing</h3>
-    <p style="color: #64748b; font-size: 0.95rem; margin-top: 0.25rem;">Protect your home and budget by verifying these critical technical standards with prospective contractors:</p>
-    <div class="checklist-grid">
-        <div class="checklist-item">
-          <strong>✓ Require Manual J Load Calculation</strong>
-          <p>Never accept rule-of-thumb square footage sizing. Insist on a formal Manual J calculation to prevent oversized equipment short-cycling.</p>
-        </div>
-        <div class="checklist-item">
-          <strong>✓ Inspect Existing Ductwork Static Pressure</strong>
-          <p>Ensure existing supply and return ducts can handle heat pump airflow (typically 400 CFM per ton).</p>
-        </div>
-        <div class="checklist-item">
-          <strong>✓ Verify Section 25C AHRI Certificate</strong>
-          <p>Obtain the AHRI reference certificate proving the exact condenser and air handler combination qualifies for the $2,000 tax credit.</p>
-        </div>
-        <div class="checklist-item">
-          <strong>✓ Cold-Climate COP at 5°F</strong>
-          <p>Verify the heat pump maintains a Coefficient of Performance (COP) > 1.75 at 5°F to minimize electric auxiliary heat strip usage.</p>
-        </div>
-    </div>
-  </section>
-
-  <!-- Related Calculators Section -->
-  <section class="related-calculators-section">
-    <h3>Explore Related Home Improvement Calculators</h3>
-    <div class="related-grid">
-      <a href="mini-split-calculator.html" class="calc-card" style="text-decoration: none;">
-        <div>
-          <span class="badge-category">Related Tool</span>
-          <h3 style="font-size: 1.15rem; margin-top: 0.25rem;">Mini-Split AC Cost Estimator</h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Zone specific rooms or additions without ductwork.</p>
-        </div>
-        <span class="cta-link" style="font-size: 0.9rem;">Open Calculator &rarr;</span>
-      </a>
-      <a href="water-heater-calculator.html" class="calc-card" style="text-decoration: none;">
-        <div>
-          <span class="badge-category">Related Tool</span>
-          <h3 style="font-size: 1.15rem; margin-top: 0.25rem;">Water Heater Replacement Cost</h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Pair with a high-efficiency hybrid heat pump water heater.</p>
-        </div>
-        <span class="cta-link" style="font-size: 0.9rem;">Open Calculator &rarr;</span>
-      </a>
-      <a href="generator-calculator.html" class="calc-card" style="text-decoration: none;">
-        <div>
-          <span class="badge-category">Related Tool</span>
-          <h3 style="font-size: 1.15rem; margin-top: 0.25rem;">Backup Generator Sizing Guide</h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Protect critical electric heating loads during winter blackouts.</p>
-        </div>
-        <span class="cta-link" style="font-size: 0.9rem;">Open Calculator &rarr;</span>
-      </a>
-    </div>
-  </section>
-
   </main>
+  
+  <!-- Responsive In-Page AdSense Unit -->
+  <div style="max-width: 1140px; margin: 2rem auto; text-align: center; min-height: 100px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1199906473460957"
+         data-ad-slot="responsive"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <!-- SEO Supporting Content & FAQs -->
   <section class="seo-guide-section">
     <h2>Heat Pump vs. Gas Furnace: 2026 Buying Guide</h2>
     <p>Choosing between an electric heat pump and a high-efficiency gas furnace involves balancing upfront installation expenses against long-term fuel costs, dual heating/cooling capabilities, and available federal incentives.</p>
-
+  
     <h3>Federal Incentives Under Section 25C</h3>
-    <<p>Qualified heat pumps that meet Consortium for Energy Efficiency (CEE) highest tier specifications are eligible for a 30% federal tax credit up to $2,000 annually, significantly offsetting the upfront equipment cost. For full filing requirements and eligible equipment tiers, read our <a href="/guides/heat-pump-tax-credit-2026.html" style="font-weight: 600; color: #2563eb; text-decoration: underline;">2026 Heat Pump Tax Credit Guide</a>.</p>
+    <p>Qualified heat pumps that meet Consortium for Energy Efficiency (CEE) highest tier specifications are eligible for a 30% federal tax credit up to $2,000 annually, significantly offsetting the upfront equipment cost. For full filing criteria and qualifying models, read our <a href="/guides/heat-pump-tax-credit-2026.html" style="font-weight: 600; color: #2563eb; text-decoration: underline;">2026 Heat Pump Tax Credit Guide</a>.</p>
+  
     <h3>Frequently Asked Questions</h3>
     <details>
       <summary>Can a heat pump replace both my furnace and central air conditioner?</summary>
@@ -291,6 +221,63 @@
     </details>
   </section>
 
+  <!-- Contractor Vetting Checklist -->
+  <section class="contractor-checklist-card" style="max-width: 1140px; margin: 2.5rem auto; padding: 2rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <h3 style="font-size: 1.35rem; margin-top: 0; color: #0f172a;">📋 Contractor Vetting Checklist: 4 Questions to Ask Before Signing</h3>
+    <p style="color: #64748b; font-size: 0.95rem; margin-top: 0.25rem;">Protect your home and budget by verifying these critical technical standards with prospective HVAC contractors:</p>
+    <div class="checklist-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Require Manual J Load Calculation</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Never accept rule-of-thumb square footage sizing. Insist on a formal Manual J calculation to prevent oversized equipment short-cycling.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Inspect Ductwork Static Pressure</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Ensure existing supply and return ducts can handle heat pump airflow (typically 400 CFM per ton).</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Verify Section 25C AHRI Certificate</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Obtain the AHRI reference certificate proving the exact condenser and air handler combination qualifies for the $2,000 tax credit.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Cold-Climate COP at 5°F</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Verify the heat pump maintains a Coefficient of Performance (COP) > 1.75 at 5°F to minimize electric auxiliary heat strip usage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Calculators Section -->
+  <section class="related-calculators-section" style="max-width: 1140px; margin: 2.5rem auto 4rem auto; padding: 0 1.5rem;">
+    <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem; color: #0f172a;">Explore Related Home Improvement Calculators</h3>
+    <div class="related-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <a href="/mini-split-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Mini-Split AC Cost Estimator</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Zone specific rooms or additions without extensive ductwork.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+
+      <a href="/water-heater-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Water Heater Replacement Cost</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Pair with a high-efficiency hybrid heat pump water heater for another $2,000 credit.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+
+      <a href="/generator-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Backup Generator Sizing Guide</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Protect critical electric heating loads and compressors during winter outages.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+    </div>
+  </section>
+  
   <!-- Global Footer -->
   <footer class="site-footer">
     <div class="footer-nav">
@@ -305,14 +292,14 @@
     </p>
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
-
+  
   <script>
     const homeSize = document.getElementById('homeSize');
     const homeSizeVal = document.getElementById('homeSizeVal');
     const climateZone = document.getElementById('climateZone');
     const electricRate = document.getElementById('electricRate');
     const gasRate = document.getElementById('gasRate');
-
+  
     const hpGross = document.getElementById('hpGross');
     const hpNet = document.getElementById('hpNet');
     const gasNet = document.getElementById('gasNet');
@@ -320,26 +307,25 @@
     const paybackTime = document.getElementById('paybackTime');
     const paybackPercent = document.getElementById('paybackPercent');
     const paybackBar = document.getElementById('paybackBar');
-    const copyBtn = document.getElementById('copyEstimateBtn');
-
+  
     function updateHVAC() {
       const sqft = parseFloat(homeSize.value);
       homeSizeVal.textContent = sqft.toLocaleString() + ' sq ft';
-
+  
       const tonnage = Math.max(2, Math.min(5, Math.ceil(sqft / 600)));
       const baseHpCost = 7000 + (tonnage * 1100);
-      const netHp = baseHpCost - 2000;
+      const netHp = baseHpCost - 2000; // $2,000 IRA 25C Credit
       const netGas = 6500 + (tonnage * 750);
-
+  
       hpGross.textContent = '$' + baseHpCost.toLocaleString();
       hpNet.textContent = '$' + netHp.toLocaleString();
       gasNet.textContent = '$' + netGas.toLocaleString();
-
+  
       const costDiff = netHp - netGas;
       let savings = 200 + (tonnage * 40);
       if (climateZone.value === 'cold') savings += 80;
       annualSavings.textContent = '$' + Math.round(savings) + ' / yr';
-
+  
       if (costDiff <= 0) {
         paybackTime.textContent = 'Immediate (Lower Net Cost)';
         paybackPercent.textContent = '100% (Instant ROI)';
@@ -352,27 +338,12 @@
         paybackBar.style.width = Math.min(100, Math.max(10, percent)) + '%';
       }
     }
-
-    // Copy to Clipboard
-    copyBtn.addEventListener('click', function() {
-      const summary = "The Buyer's Math - HVAC ROI Estimate\\n" +
-        "Home Size: " + homeSizeVal.textContent + "\\n" +
-        "Heat Pump Net Cost: " + hpNet.textContent + " (after $2,000 25C tax credit)\\n" +
-        "Gas Furnace + AC Net Cost: " + gasNet.textContent + "\\n" +
-        "Annual Operational Savings: " + annualSavings.textContent + "\\n" +
-        "Estimated Break-even: " + paybackTime.textContent + "\\n" +
-        "Calculated at https://thebuyersmath.com/hvac-roi-calculator.html";
-      navigator.clipboard.writeText(summary).then(() => {
-        copyBtn.textContent = '✓ Copied!';
-        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
-      });
-    });
-
+  
     homeSize.addEventListener('input', updateHVAC);
     climateZone.addEventListener('change', updateHVAC);
     electricRate.addEventListener('change', updateHVAC);
     gasRate.addEventListener('change', updateHVAC);
-
+  
     updateHVAC();
   </script>
 </body>
