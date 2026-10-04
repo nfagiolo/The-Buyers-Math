@@ -1,12 +1,12 @@
 /**
- * The Buyer's Math - Client-Side Calculator Enhancements (v3.1: Layout & Scroll Optimized)
+ * The Buyer's Math - Client-Side Calculator Enhancements (v3.2: Unified Monetization & Scroll-Safe)
  * 1. Regional Cost Multiplier (Low, National, High, Urban)
  * 2. LocalStorage Persistence (Auto-Save & Restore)
  * 3. Live URL Parameter Serialization & 1-Click "Copy Share Link"
  * 4. 1-Page Printable Contractor Estimate & Bid Sheet
- * 5. High-Intent Local Contractor Bid Matching Card (ZIP Intake - Outside Grid & Scroll-Safe)
+ * 5. High-Intent Local Contractor Bid Matching Card (ZIP Intake)
  * 6. Curated Contractor-Grade Project Equipment Recommendations (Direct Tagged Links)
- * 7. Mobile Viewport & Sticky Container Protection (No Overlapping/Covering)
+ * 7. Mobile Non-Sticky Flow & Full Container Isolation
  */
 
 (function() {
@@ -140,7 +140,10 @@
 
   function getCurrentPageFilename() {
     const parts = window.location.pathname.split('/');
-    return parts[parts.length - 1] || 'roofing-cost-calculator.html';
+    const fname = parts[parts.length - 1] || '';
+    if (fname.includes('.html')) return fname;
+    if (fname) return fname + '.html';
+    return 'roofing-cost-calculator.html';
   }
 
   function injectLayoutFixes() {
@@ -148,7 +151,7 @@
     const style = document.createElement('style');
     style.id = 'tbm-layout-fixes';
     style.textContent = `
-      /* Prevent sticky receipt from covering content on mobile & tablet */
+      /* On mobile/tablet (< 820px), receipt must NOT stick so it cannot cover cards */
       @media (max-width: 820px) {
         .receipt,
         .card.receipt,
@@ -159,7 +162,7 @@
         }
       }
 
-      /* On desktop screens, keep sticky receipt comfortably within viewport */
+      /* On desktop, keep sticky receipt confined to viewport */
       @media (min-width: 821px) {
         .receipt,
         .card.receipt,
@@ -169,7 +172,8 @@
         }
       }
 
-      /* Clean full-width container flow for monetization modules */
+      /* Full width flow and clean z-index stacking */
+      #tbm-monetization-container,
       #tbm-print-container,
       #tbm-contractor-match-card,
       #tbm-curated-products-box {
@@ -194,7 +198,7 @@
     const controlsDiv = document.createElement('div');
     controlsDiv.id = 'tbm-enhancements-bar';
     controlsDiv.className = 'no-print';
-    controlsDiv.style.cssText = 'background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;';
+    controlsDiv.style.cssText = 'background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; box-sizing: border-box;';
 
     let regionOptionsHtml = '';
     REGIONS.forEach(r => {
@@ -226,39 +230,45 @@
 
     mainForm.insertBefore(controlsDiv, mainForm.firstChild);
 
-    document.getElementById('tbm-region-select').addEventListener('change', function(e) {
-      localStorage.setItem(REGION_STORAGE_KEY, e.target.value);
-      updateRegionalDisplay();
-      triggerRecalculate();
-    });
+    const regionSelect = document.getElementById('tbm-region-select');
+    if (regionSelect) {
+      regionSelect.addEventListener('change', function(e) {
+        localStorage.setItem(REGION_STORAGE_KEY, e.target.value);
+        updateRegionalDisplay();
+        triggerRecalculate();
+      });
+    }
 
-    document.getElementById('tbm-share-btn').addEventListener('click', function() {
-      const shareBtn = this;
-      const shareUrl = buildShareableUrl();
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(shareUrl).then(() => {
-          shareBtn.innerText = '✓ Link Copied!';
-          shareBtn.style.background = '#059669';
-          setTimeout(() => {
-            shareBtn.innerHTML = '🔗 Copy Share Link';
-            shareBtn.style.background = '#2563eb';
-          }, 2000);
-        });
-      } else {
-        prompt('Copy your custom calculation URL:', shareUrl);
-      }
-    });
+    const shareBtn = document.getElementById('tbm-share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function() {
+        const btn = this;
+        const shareUrl = buildShareableUrl();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            btn.innerText = '✓ Link Copied!';
+            btn.style.background = '#059669';
+            setTimeout(() => {
+              btn.innerHTML = '🔗 Copy Share Link';
+              btn.style.background = '#2563eb';
+            }, 2000);
+          });
+        } else {
+          prompt('Copy your custom calculation URL:', shareUrl);
+        }
+      });
+    }
 
-    document.getElementById('tbm-reset-btn').addEventListener('click', function() {
-      localStorage.removeItem(STORAGE_KEY);
-      if (window.history.replaceState) {
-        window.history.replaceState(null, '', window.location.pathname);
-      }
-      window.location.reload();
-    });
-
-    injectLayoutFixes();
-    injectMonetizationAndPrintModules();
+    const resetBtn = document.getElementById('tbm-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        localStorage.removeItem(STORAGE_KEY);
+        if (window.history.replaceState) {
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+        window.location.reload();
+      });
+    }
   }
 
   function buildShareableUrl() {
@@ -276,47 +286,45 @@
   }
 
   function injectMonetizationAndPrintModules() {
-    const mainEl = document.querySelector('main') || document.body;
-    // Target the split-layout container first so modules sit cleanly in the main flow outside the 2-column grid
+    if (document.getElementById('tbm-monetization-container')) return;
+
+    // Target the split-layout container or receipt/card
     const splitLayout = document.querySelector('.split-layout');
-    const anchor = splitLayout || document.querySelector('.receipt') || document.querySelector('.result-box') || document.querySelector('.estimate-box') || document.querySelector('.card');
-    if (!anchor || document.getElementById('tbm-contractor-match-card')) return;
+    const receiptBox = document.querySelector('.receipt') || document.querySelector('.result-box') || document.querySelector('.estimate-box');
+    const anchor = splitLayout || receiptBox || document.querySelector('main .card') || document.querySelector('main');
+    if (!anchor || !anchor.parentNode) return;
 
     const fname = getCurrentPageFilename();
     const gearData = CURATED_GEAR[fname] || { category: "Home Improvement", items: [] };
 
-    // Reference node for sequential insertion after anchor
-    let insertRef = anchor.nextSibling;
+    // Master wrapper to ensure clean placement and zero overlapping
+    const wrapper = document.createElement('div');
+    wrapper.id = 'tbm-monetization-container';
+    wrapper.className = 'no-print';
+    wrapper.style.cssText = 'width: 100%; box-sizing: border-box; clear: both; position: relative; z-index: 10; margin-top: 1.5rem;';
 
     // 1. Print / Save Contractor Bid Sheet Button Container
-    let printBtnContainer = document.getElementById('tbm-print-container');
-    if (!printBtnContainer) {
-      printBtnContainer = document.createElement('div');
-      printBtnContainer.id = 'tbm-print-container';
-      printBtnContainer.className = 'no-print';
-      printBtnContainer.style.cssText = 'margin: 2rem 0 1rem 0; text-align: center; width: 100%; position: relative; z-index: 10; clear: both;';
+    const printBtnContainer = document.createElement('div');
+    printBtnContainer.id = 'tbm-print-container';
+    printBtnContainer.style.cssText = 'margin: 1.5rem 0 1rem 0; text-align: center; width: 100%;';
 
-      const printBtn = document.createElement('button');
-      printBtn.type = 'button';
-      printBtn.id = 'tbm-print-trigger-btn';
-      printBtn.className = 'btn-print';
-      printBtn.style.cssText = 'background: #0f172a; color: #ffffff; border: none; padding: 0.85rem 1.75rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.12); transition: background 0.15s ease;';
-      printBtn.innerHTML = '🖨️ Print / Save Contractor Bid Sheet (PDF)';
-      printBtn.addEventListener('click', function() {
-        updatePrintSheet();
-        window.print();
-      });
-
-      printBtnContainer.appendChild(printBtn);
-      anchor.parentNode.insertBefore(printBtnContainer, insertRef);
-      insertRef = printBtnContainer.nextSibling;
-    }
+    const printBtn = document.createElement('button');
+    printBtn.type = 'button';
+    printBtn.id = 'tbm-print-trigger-btn';
+    printBtn.className = 'btn-print';
+    printBtn.style.cssText = 'background: #0f172a; color: #ffffff; border: none; padding: 0.85rem 1.75rem; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.12); transition: background 0.15s ease;';
+    printBtn.innerHTML = '🖨️ Print / Save Contractor Bid Sheet (PDF)';
+    printBtn.addEventListener('click', function() {
+      updatePrintSheet();
+      window.print();
+    });
+    printBtnContainer.appendChild(printBtn);
+    wrapper.appendChild(printBtnContainer);
 
     // 2. Local Contractor Quote Match Intake Card
     const contractorCard = document.createElement('div');
     contractorCard.id = 'tbm-contractor-match-card';
-    contractorCard.className = 'no-print';
-    contractorCard.style.cssText = 'background: #ffffff; border: 2px solid #2563eb; border-radius: 12px; padding: 1.75rem; margin: 1.5rem 0 2rem 0; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08); width: 100%; box-sizing: border-box; position: relative; z-index: 10; clear: both;';
+    contractorCard.style.cssText = 'background: #ffffff; border: 2px solid #2563eb; border-radius: 12px; padding: 1.75rem; margin: 1.5rem 0 2rem 0; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08); width: 100%; box-sizing: border-box;';
     contractorCard.innerHTML = `
       <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
         <span style="background: #2563eb; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Vetted Network</span>
@@ -337,25 +345,13 @@
         <span>✓ Transparent Line-Item Estimates</span>
       </div>
     `;
-
-    anchor.parentNode.insertBefore(contractorCard, insertRef);
-    insertRef = contractorCard.nextSibling;
-
-    document.getElementById('tbm-contractor-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const zip = document.getElementById('tbm-zip-input').value.trim();
-      if (zip.length === 5) {
-        const targetUrl = `https://www.angi.com/search?query=${encodeURIComponent(gearData.category)}&zipCode=${zip}`;
-        window.open(targetUrl, '_blank', 'noopener,noreferrer');
-      }
-    });
+    wrapper.appendChild(contractorCard);
 
     // 3. Curated Product Recommendation Box
-    if (gearData.items && gearData.items.length > 0 && !document.getElementById('tbm-curated-products-box')) {
+    if (gearData.items && gearData.items.length > 0) {
       const gearBox = document.createElement('div');
       gearBox.id = 'tbm-curated-products-box';
-      gearBox.className = 'no-print';
-      gearBox.style.cssText = 'background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1.75rem; margin: 1.5rem 0 3rem 0; width: 100%; box-sizing: border-box; position: relative; z-index: 10; clear: both;';
+      gearBox.style.cssText = 'background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1.75rem; margin: 1.5rem 0 3rem 0; width: 100%; box-sizing: border-box;';
 
       let itemsHtml = '';
       gearData.items.forEach(item => {
@@ -384,12 +380,28 @@
         </p>
         ${itemsHtml}
       `;
+      wrapper.appendChild(gearBox);
+    }
 
-      anchor.parentNode.insertBefore(gearBox, insertRef);
+    // Insert the single master wrapper cleanly after the anchor
+    anchor.parentNode.insertBefore(wrapper, anchor.nextSibling);
+
+    const formEl = document.getElementById('tbm-contractor-form');
+    if (formEl) {
+      formEl.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const zipEl = document.getElementById('tbm-zip-input');
+        const zip = zipEl ? zipEl.value.trim() : '';
+        if (zip.length === 5) {
+          const targetUrl = `https://www.angi.com/search?query=${encodeURIComponent(gearData.category)}&zipCode=${zip}`;
+          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+        }
+      });
     }
 
     // 4. Inject Printable Contractor Bid Sheet (Hidden on screen, active on print)
     if (!document.getElementById('tbm-print-sheet')) {
+      const mainEl = document.querySelector('main') || document.body;
       const printSheet = document.createElement('div');
       printSheet.id = 'tbm-print-sheet';
       printSheet.className = 'print-only';
@@ -474,3 +486,152 @@
       mainEl.appendChild(printSheet);
     }
   }
+
+  function updatePrintSheet() {
+    const summaryContainer = document.getElementById('tbm-print-inputs-summary');
+    if (!summaryContainer) return;
+
+    let items = [];
+    const inputs = document.querySelectorAll('main input, main select');
+    inputs.forEach(el => {
+      if (el.id === 'tbm-region-select' || el.id === 'calc-search' || el.id === 'tbm-zip-input') return;
+      let label = '';
+      const labelEl = document.querySelector(`label[for="${el.id}"]`);
+      if (labelEl) label = labelEl.innerText.replace(/[:*]/g, '').trim();
+      else if (el.placeholder) label = el.placeholder;
+      else if (el.name) label = el.name;
+
+      if (!label) return;
+
+      let val = el.value;
+      if (el.type === 'checkbox') val = el.checked ? 'Yes' : 'No';
+      if (el.tagName === 'SELECT') {
+        val = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : el.value;
+      }
+
+      if (val) items.push(`<strong>${label}:</strong> ${val}`);
+    });
+
+    const regionSelect = document.getElementById('tbm-region-select');
+    if (regionSelect) {
+      const regText = regionSelect.options[regionSelect.selectedIndex].text;
+      items.push(`<strong>Regional Labor Market:</strong> ${regText}`);
+    }
+
+    summaryContainer.innerHTML = items.length ? items.join(' &bull; ') : 'Custom project measurements evaluated on thebuyersmath.com';
+  }
+
+  function setupPersistenceAndUrlSync() {
+    const inputs = document.querySelectorAll('main input, main select');
+    if (!inputs.length) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    let loadedFromUrl = false;
+
+    if (Array.from(urlParams.keys()).length > 0) {
+      inputs.forEach(el => {
+        const key = el.id || el.name;
+        if (key && urlParams.has(key)) {
+          const val = urlParams.get(key);
+          if (el.type === 'checkbox') {
+            el.checked = (val === '1' || val === 'true');
+          } else {
+            el.value = val;
+          }
+          loadedFromUrl = true;
+        }
+      });
+      if (urlParams.has('tbm_region')) {
+        const rVal = urlParams.get('tbm_region');
+        localStorage.setItem(REGION_STORAGE_KEY, rVal);
+        const rSelect = document.getElementById('tbm-region-select');
+        if (rSelect) rSelect.value = rVal;
+      }
+    }
+
+    if (!loadedFromUrl) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const data = JSON.parse(raw);
+          inputs.forEach(el => {
+            const key = el.id || el.name;
+            if (key && data[key] !== undefined) {
+              if (el.type === 'checkbox') {
+                el.checked = data[key];
+              } else {
+                el.value = data[key];
+              }
+            }
+          });
+        }
+      } catch(e) {
+        console.warn('LocalStorage restore error:', e);
+      }
+    }
+
+    triggerRecalculate();
+
+    function handleInputChange() {
+      const data = {};
+      const params = new URLSearchParams();
+
+      inputs.forEach(el => {
+        if (el.id === 'calc-search' || el.id === 'tbm-zip-input') return;
+        const key = el.id || el.name;
+        if (key) {
+          const val = (el.type === 'checkbox') ? (el.checked ? '1' : '0') : el.value;
+          data[key] = (el.type === 'checkbox') ? el.checked : el.value;
+          params.set(key, val);
+        }
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+      if (window.history.replaceState) {
+        const newUrl = window.location.pathname + '?' + params.toString();
+        window.history.replaceState(null, '', newUrl);
+      }
+
+      const statusEl = document.getElementById('tbm-save-status');
+      if (statusEl) {
+        statusEl.innerText = '✓ Saved';
+        setTimeout(() => { if (statusEl) statusEl.innerText = '✓ Auto-saved'; }, 1500);
+      }
+    }
+
+    inputs.forEach(el => {
+      el.addEventListener('input', handleInputChange);
+      el.addEventListener('change', handleInputChange);
+    });
+  }
+
+  function triggerRecalculate() {
+    const firstInput = document.querySelector('main input, main select');
+    if (firstInput) {
+      firstInput.dispatchEvent(new Event('input', { bubbles: true }));
+      firstInput.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  function updateRegionalDisplay() {
+    const regionVal = parseFloat(localStorage.getItem(REGION_STORAGE_KEY) || '1.00');
+    window.TBM_REGIONAL_MULTIPLIER = regionVal;
+  }
+
+  function init() {
+    if (document.querySelector('main input, main select, .calc-card')) {
+      try { injectLayoutFixes(); } catch(e) { console.warn('Layout fixes error:', e); }
+      try { injectControls(); } catch(e) { console.warn('Controls error:', e); }
+      try { injectMonetizationAndPrintModules(); } catch(e) { console.warn('Monetization error:', e); }
+      try { setupPersistenceAndUrlSync(); } catch(e) { console.warn('Persistence error:', e); }
+      try { updateRegionalDisplay(); } catch(e) { console.warn('Regional display error:', e); }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
