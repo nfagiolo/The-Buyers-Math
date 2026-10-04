@@ -1,8 +1,9 @@
 /**
- * The Buyer's Math - Client-Side Calculator Enhancements
+ * The Buyer's Math - Client-Side Calculator Enhancements (v2)
  * 1. Regional Cost Multiplier (Low, National, High, Urban)
  * 2. LocalStorage Persistence (Auto-Save & Restore)
- * 3. 1-Page Printable Contractor Estimate & Bid Sheet
+ * 3. Live URL Parameter Serialization & 1-Click "Copy Share Link"
+ * 4. 1-Page Printable Contractor Estimate & Bid Sheet
  */
 
 (function() {
@@ -38,7 +39,7 @@
     });
 
     controlsDiv.innerHTML = `
-      <div style="flex: 1; min-width: 260px;">
+      <div style="flex: 1; min-width: 250px;">
         <label for="tbm-region-select" style="display: block; font-size: 0.825rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem;">
           📍 Location / Labor Cost Adjustment:
         </label>
@@ -46,12 +47,15 @@
           ${regionOptionsHtml}
         </select>
       </div>
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
+        <button type="button" id="tbm-share-btn" style="background: #2563eb; color: #ffffff; border: none; font-size: 0.825rem; font-weight: 700; padding: 0.45rem 0.85rem; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; transition: background 0.15s ease;">
+          🔗 Copy Share Link
+        </button>
         <span id="tbm-save-status" style="font-size: 0.8rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
           ✓ Auto-saved
         </span>
         <button type="button" id="tbm-reset-btn" style="background: none; border: 1px solid #cbd5e1; color: #64748b; font-size: 0.75rem; padding: 0.35rem 0.65rem; border-radius: 4px; cursor: pointer;">
-          Reset Inputs
+          Reset
         </button>
       </div>
     `;
@@ -64,12 +68,46 @@
       triggerRecalculate();
     });
 
+    document.getElementById('tbm-share-btn').addEventListener('click', function() {
+      const shareBtn = this;
+      const shareUrl = buildShareableUrl();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          shareBtn.innerText = '✓ Link Copied!';
+          shareBtn.style.background = '#059669';
+          setTimeout(() => {
+            shareBtn.innerHTML = '🔗 Copy Share Link';
+            shareBtn.style.background = '#2563eb';
+          }, 2000);
+        });
+      } else {
+        prompt('Copy your custom calculation URL:', shareUrl);
+      }
+    });
+
     document.getElementById('tbm-reset-btn').addEventListener('click', function() {
       localStorage.removeItem(STORAGE_KEY);
+      if (window.history.replaceState) {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
       window.location.reload();
     });
 
     injectPrintComponents();
+  }
+
+  function buildShareableUrl() {
+    const params = new URLSearchParams();
+    const inputs = document.querySelectorAll('main input, main select');
+    inputs.forEach(el => {
+      if (el.id === 'calc-search') return;
+      const key = el.id || el.name;
+      if (key) {
+        const val = (el.type === 'checkbox') ? (el.checked ? '1' : '0') : el.value;
+        params.set(key, val);
+      }
+    });
+    return window.location.origin + window.location.pathname + '?' + params.toString();
   }
 
   function injectPrintComponents() {
@@ -216,40 +254,79 @@
     summaryContainer.innerHTML = items.length ? items.join(' &bull; ') : 'Custom project measurements evaluated on thebuyersmath.com';
   }
 
-  function setupPersistence() {
+  function setupPersistenceAndUrlSync() {
     const inputs = document.querySelectorAll('main input, main select');
     if (!inputs.length) return;
 
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const data = JSON.parse(raw);
-        inputs.forEach(el => {
-          const key = el.id || el.name;
-          if (key && data[key] !== undefined) {
-            if (el.type === 'checkbox') {
-              el.checked = data[key];
-            } else {
-              el.value = data[key];
-            }
-          }
-        });
-        triggerRecalculate();
-      }
-    } catch(e) {
-      console.warn('LocalStorage restore error:', e);
-    }
+    // Check URL parameters first (takes precedence over localStorage)
+    const urlParams = new URLSearchParams(window.location.search);
+    let loadedFromUrl = false;
 
-    function saveForm() {
-      const data = {};
+    if (Array.from(urlParams.keys()).length > 0) {
       inputs.forEach(el => {
-        if (el.id === 'tbm-region-select' || el.id === 'calc-search') return;
         const key = el.id || el.name;
-        if (key) {
-          data[key] = (el.type === 'checkbox') ? el.checked : el.value;
+        if (key && urlParams.has(key)) {
+          const val = urlParams.get(key);
+          if (el.type === 'checkbox') {
+            el.checked = (val === '1' || val === 'true');
+          } else {
+            el.value = val;
+          }
+          loadedFromUrl = true;
         }
       });
+      if (urlParams.has('tbm_region')) {
+        const rVal = urlParams.get('tbm_region');
+        localStorage.setItem(REGION_STORAGE_KEY, rVal);
+        const rSelect = document.getElementById('tbm-region-select');
+        if (rSelect) rSelect.value = rVal;
+      }
+    }
+
+    if (!loadedFromUrl) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const data = JSON.parse(raw);
+          inputs.forEach(el => {
+            const key = el.id || el.name;
+            if (key && data[key] !== undefined) {
+              if (el.type === 'checkbox') {
+                el.checked = data[key];
+              } else {
+                el.value = data[key];
+              }
+            }
+          });
+        }
+      } catch(e) {
+        console.warn('LocalStorage restore error:', e);
+      }
+    }
+
+    triggerRecalculate();
+
+    // Auto-save on change & live sync URL parameters
+    function handleInputChange() {
+      const data = {};
+      const params = new URLSearchParams();
+
+      inputs.forEach(el => {
+        if (el.id === 'calc-search') return;
+        const key = el.id || el.name;
+        if (key) {
+          const val = (el.type === 'checkbox') ? (el.checked ? '1' : '0') : el.value;
+          data[key] = (el.type === 'checkbox') ? el.checked : el.value;
+          params.set(key, val);
+        }
+      });
+
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+      if (window.history.replaceState) {
+        const newUrl = window.location.pathname + '?' + params.toString();
+        window.history.replaceState(null, '', newUrl);
+      }
 
       const statusEl = document.getElementById('tbm-save-status');
       if (statusEl) {
@@ -259,8 +336,8 @@
     }
 
     inputs.forEach(el => {
-      el.addEventListener('input', saveForm);
-      el.addEventListener('change', saveForm);
+      el.addEventListener('input', handleInputChange);
+      el.addEventListener('change', handleInputChange);
     });
   }
 
@@ -280,7 +357,7 @@
   function init() {
     if (document.querySelector('main input, main select, .calc-card')) {
       injectControls();
-      setupPersistence();
+      setupPersistenceAndUrlSync();
       updateRegionalDisplay();
     }
   }
