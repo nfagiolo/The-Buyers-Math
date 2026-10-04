@@ -1,5 +1,6 @@
 import os
 import re
+import email.utils
 from datetime import datetime
 
 FLAGSHIP_GUIDES = [
@@ -88,6 +89,7 @@ def generate_guides_html(articles):
         '  <title>Home Improvement Buying Guides &amp; Cost Breakdowns | The Buyer\'s Math</title>\n'
         '  <meta name="description" content="Browse our comprehensive library of empirical home improvement cost guides, Inflation Reduction Act tax credit rules, and contractor quote benchmarks.">\n'
         '  <link rel="canonical" href="https://thebuyersmath.com/guides.html">\n'
+        '  <link rel="alternate" type="application/rss+xml" title="The Buyer\'s Math Guides" href="https://thebuyersmath.com/feed.xml">\n'
         '  <link rel="stylesheet" href="/styles.css">\n\n'
         '  <meta property="og:title" content="Home Improvement Buying Guides &amp; Cost Breakdowns | The Buyer\'s Math">\n'
         '  <meta property="og:description" content="Browse our library of empirical cost guides, tax credit breakdowns, and contractor pricing benchmarks.">\n'
@@ -186,12 +188,57 @@ def generate_guides_html(articles):
         f.write(html_content)
     print("Generated guides.html successfully.")
 
+def generate_rss_feed(articles):
+    items_xml = []
+    for a in articles[:20]:
+        try:
+            dt = datetime.strptime(a["date"], "%Y-%m-%d")
+        except Exception:
+            dt = datetime.now()
+        rfc_date = email.utils.format_datetime(dt)
+        full_url = "https://thebuyersmath.com" + a["url"]
+        item = (
+            '    <item>\n'
+            '      <title><![CDATA[' + a["title"] + ']]></title>\n'
+            '      <link>' + full_url + '</link>\n'
+            '      <guid isPermaLink="true">' + full_url + '</guid>\n'
+            '      <pubDate>' + rfc_date + '</pubDate>\n'
+            '      <description><![CDATA[' + a["description"] + ']]></description>\n'
+            '      <category><![CDATA[' + a["category"] + ']]></category>\n'
+            '    </item>'
+        )
+        items_xml.append(item)
+
+    now_rfc = email.utils.format_datetime(datetime.now())
+    feed_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '  <channel>\n'
+        '    <title>The Buyer\'s Math | Empirical Home Improvement Cost Guides</title>\n'
+        '    <link>https://thebuyersmath.com/</link>\n'
+        '    <description>Independent, data-driven financial modeling and cost estimators for homeowners.</description>\n'
+        '    <language>en-us</language>\n'
+        '    <atom:link href="https://thebuyersmath.com/feed.xml" rel="self" type="application/rss+xml" />\n'
+        '    <lastBuildDate>' + now_rfc + '</lastBuildDate>\n'
+        + '\n'.join(items_xml) + '\n'
+        '  </channel>\n'
+        '</rss>\n'
+    )
+
+    with open("feed.xml", "w", encoding="utf-8") as f:
+        f.write(feed_xml)
+    print("Generated feed.xml (RSS 2.0) successfully.")
+
 def update_index_latest(articles):
     if not os.path.exists("index.html"):
         return
 
     with open("index.html", "r", encoding="utf-8") as f:
         content = f.read()
+
+    if 'href="https://thebuyersmath.com/feed.xml"' not in content and 'href="/feed.xml"' not in content:
+        rss_tag = '  <link rel="alternate" type="application/rss+xml" title="The Buyer\'s Math Guides" href="https://thebuyersmath.com/feed.xml">\n</head>'
+        content = content.replace('</head>', rss_tag, 1)
 
     top_articles = articles[:6]
     items_html = []
@@ -220,4 +267,5 @@ def update_index_latest(articles):
 if __name__ == "__main__":
     all_articles = get_all_articles()
     generate_guides_html(all_articles)
+    generate_rss_feed(all_articles)
     update_index_latest(all_articles)
