@@ -75,7 +75,18 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://thebuyersmath.com/attic-insulation-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/bathroom-remodel-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <!-- High-Intent Guides -->
   <url>
     <loc>https://thebuyersmath.com/guides/heat-pump-tax-credit-2026.html</loc>
