@@ -8,13 +8,11 @@
   <link rel="canonical" href="https://thebuyersmath.com/guides.html">
   <link rel="stylesheet" href="/styles.css">
 
-  <!-- OpenGraph Social Meta Tags -->
   <meta property="og:title" content="Home Improvement Buying Guides &amp; Cost Breakdowns | The Buyer's Math">
   <meta property="og:description" content="Browse our library of empirical cost guides, tax credit breakdowns, and contractor pricing benchmarks.">
   <meta property="og:url" content="https://thebuyersmath.com/guides.html">
   <meta property="og:type" content="website">
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,132 +21,32 @@
     gtag('config', 'G-V4GTQSCFW6');
   </script>
 
-  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
 
   <style>
-    .guides-hero {
-      text-align: center;
-      padding: 3rem 1.5rem 2rem 1.5rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .guides-hero h1 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.03em;
-    }
-    .guides-hero p {
-      color: #64748b;
-      font-size: 1.15rem;
-      max-width: 680px;
-      margin: 0 auto 1.5rem auto;
-    }
-    .guide-search-box {
-      max-width: 520px;
-      margin: 0 auto 2rem auto;
-      padding: 0 1.5rem;
-    }
-    .guide-search-input {
-      width: 100%;
-      padding: 0.85rem 1.25rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 9999px;
-      font-size: 1rem;
-      font-family: inherit;
-      box-sizing: border-box;
-      outline: none;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      transition: all 0.2s ease;
-    }
-    .guide-search-input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-    }
-    .guides-container {
-      max-width: 1140px;
-      margin: 0 auto 4rem auto;
-      padding: 0 1.5rem;
-    }
-    .guides-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.75rem;
-    }
-    .guide-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .guide-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      border-color: #93c5fd;
-    }
-    .guide-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.85rem;
-    }
-    .guide-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #2563eb;
-      background: #eff6ff;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .guide-date {
-      font-size: 0.85rem;
-      color: #94a3b8;
-    }
-    .guide-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      line-height: 1.35;
-      margin: 0 0 0.75rem 0;
-    }
-    .guide-title a {
-      color: #0f172a;
-      text-decoration: none;
-    }
-    .guide-title a:hover {
-      color: #2563eb;
-    }
-    .guide-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      margin: 0 0 1.25rem 0;
-      flex-grow: 1;
-    }
-    .guide-read-link {
-      color: #2563eb;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .guide-read-link:hover {
-      color: #1d4ed8;
-      text-decoration: underline;
-    }
+    .guides-hero { text-align: center; padding: 3rem 1.5rem 2rem 1.5rem; max-width: 860px; margin: 0 auto; }
+    .guides-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
+    .guides-hero p { color: #64748b; font-size: 1.15rem; max-width: 680px; margin: 0 auto 1.5rem auto; }
+    .guide-search-box { max-width: 520px; margin: 0 auto 2rem auto; padding: 0 1.5rem; }
+    .guide-search-input { width: 100%; padding: 0.85rem 1.25rem; border: 1px solid #cbd5e1; border-radius: 9999px; font-size: 1rem; font-family: inherit; box-sizing: border-box; outline: none; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.2s ease; }
+    .guide-search-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+    .guides-container { max-width: 1140px; margin: 0 auto 4rem auto; padding: 0 1.5rem; }
+    .guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.75rem; }
+    .guide-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .guide-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: #93c5fd; }
+    .guide-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; }
+    .guide-badge { font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .guide-date { font-size: 0.85rem; color: #94a3b8; }
+    .guide-title { font-size: 1.25rem; font-weight: 700; line-height: 1.35; margin: 0 0 0.75rem 0; }
+    .guide-title a { color: #0f172a; text-decoration: none; }
+    .guide-title a:hover { color: #2563eb; }
+    .guide-desc { color: #475569; font-size: 0.95rem; line-height: 1.55; margin: 0 0 1.25rem 0; flex-grow: 1; }
+    .guide-read-link { color: #2563eb; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .guide-read-link:hover { color: #1d4ed8; text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <!-- Global Sticky Header -->
   <header class="site-header">
     <div class="header-inner">
       <a href="/" class="site-logo">The Buyer's Math</a>
@@ -162,26 +60,73 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="guides-hero">
     <h1>Guides &amp; Cost Analysis Archive</h1>
     <p>Comprehensive cost breakdowns, Section 25C federal tax credit instructions, and equipment comparison models for homeowners.</p>
   </section>
 
-  <!-- Live Search Bar -->
   <div class="guide-search-box">
     <input type="text" id="guide-search" class="guide-search-input" placeholder="Search guides (e.g. tax credit, roof, heat pump)..." aria-label="Search guides">
   </div>
 
-  <!-- Guides Grid -->
   <main class="guides-container">
     <div class="guides-grid" id="guides-grid">
-      <article class="guide-card" data-category="hvac &amp; energy">
+      <article class="guide-card" data-category="hvac & energy">
         <div class="guide-card-header">
-          <span class="guide-badge">HVAC &amp; Energy</span>
+          <span class="guide-badge">HVAC & Energy</span>
+          <span class="guide-date">2026-10-04</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html"># How Much Does a Mini-Split AC System Cost vs. Central Air in 2026?</a></h2>
+        <p class="guide-desc"># How Much Does a Mini-Split AC System Cost vs. Central Air in 2026? - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+        <a href="/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="hvac & energy">
+        <div class="guide-card-header">
+          <span class="guide-badge">HVAC & Energy</span>
+          <span class="guide-date">2026-10-04</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html"># 2026 Mini-Split AC Installation: What You'll Actually Pay Per Room</a></h2>
+        <p class="guide-desc"># 2026 Mini-Split AC Installation: What You</p>
+        <a href="/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="hvac & energy">
+        <div class="guide-card-header">
+          <span class="guide-badge">HVAC & Energy</span>
+          <span class="guide-date">2026-10-04</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-04-2026-mini-split-ac-installation-costs-is-ductless-cooling-worth-the-investment.html">2026 Mini-Split AC Installation Costs: Is Ductless Cooling Worth the Investment?</a></h2>
+        <p class="guide-desc">2026 Mini-Split AC Installation Costs: Is Ductless Cooling Worth the Investment? - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+        <a href="/articles/2026-10-04-2026-mini-split-ac-installation-costs-is-ductless-cooling-worth-the-investment.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="interior remodeling">
+        <div class="guide-card-header">
+          <span class="guide-badge">Interior Remodeling</span>
+          <span class="guide-date">2026-10-04</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-04-2026-kitchen-remodel-budget-breakdown-cabinets-countertops-appliances.html">2026 Kitchen Remodel Budget Breakdown: Cabinets, Countertops & Appliances</a></h2>
+        <p class="guide-desc">2026 Kitchen Remodel Budget Breakdown: Cabinets, Countertops & Appliances - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+        <a href="/articles/2026-10-04-2026-kitchen-remodel-budget-breakdown-cabinets-countertops-appliances.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="hvac & energy">
+        <div class="guide-card-header">
+          <span class="guide-badge">HVAC & Energy</span>
+          <span class="guide-date">2026-10-04</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-04-2026-cost-analysis-article-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html">2026-10-04-2026-cost-analysis-article-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-10-04-2026-cost-analysis-article-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="hvac & energy">
+        <div class="guide-card-header">
+          <span class="guide-badge">HVAC & Energy</span>
           <span class="guide-date">2026-10-03</span>
         </div>
-        <h2 class="guide-title"><a href="/guides/heat-pump-tax-credit-2026.html">Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs &amp; Payback</a></h2>
+        <h2 class="guide-title"><a href="/guides/heat-pump-tax-credit-2026.html">Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs & Payback</a></h2>
         <p class="guide-desc">Complete breakdown of 2026 Inflation Reduction Act Section 25C tax credits, AHRI standards, and payback economics for heat pumps.</p>
         <a href="/guides/heat-pump-tax-credit-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
       </article>
@@ -195,11 +140,79 @@
         <p class="guide-desc">Empirical pricing per roofing square (100 sq ft), tear-off labor rates, pitch slope premiums, and shingle warranties.</p>
         <a href="/guides/roof-replacement-cost-per-square-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
       </article>
-      <!-- ARTICLES_LIST_MARKER -->
+
+      <article class="guide-card" data-category="home improvement">
+        <div class="guide-card-header">
+          <span class="guide-badge">Home Improvement</span>
+          <span class="guide-date">2026-10-03</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html">Top Home Improvement ROI Projects for 2026</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="power & renewables">
+        <div class="guide-card-header">
+          <span class="guide-badge">Power & Renewables</span>
+          <span class="guide-date">2026-10-03</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-03-how-much-does-a-whole-house-generator-installation-cost-in-2026.html">How Much Does a Whole-House Generator Installation Cost in 2026?</a></h2>
+        <p class="guide-desc">How Much Does a Whole-House Generator Installation Cost in 2026? - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+        <a href="/articles/2026-10-03-how-much-does-a-whole-house-generator-installation-cost-in-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="home improvement">
+        <div class="guide-card-header">
+          <span class="guide-badge">Home Improvement</span>
+          <span class="guide-date">2026-10-02</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-10-02-top-home-improvement-roi-projects-for-2026.html">Top Home Improvement ROI Projects for 2026</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-10-02-top-home-improvement-roi-projects-for-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="home improvement">
+        <div class="guide-card-header">
+          <span class="guide-badge">Home Improvement</span>
+          <span class="guide-date">2026-09-30</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-09-30-top-home-improvement-roi-projects-for-2026.html">Top Home Improvement ROI Projects for 2026</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-09-30-top-home-improvement-roi-projects-for-2026.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="home improvement">
+        <div class="guide-card-header">
+          <span class="guide-badge">Home Improvement</span>
+          <span class="guide-date">2026-09-30</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html">Maximizing Your 2026 Property Value: Insulated Steel vs. Wood Garage Doors</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="home improvement">
+        <div class="guide-card-header">
+          <span class="guide-badge">Home Improvement</span>
+          <span class="guide-date">2026-09-30</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-09-30-ditra-heat-cost-guide.html">Schluter DITRA-HEAT Installation Cost Guide</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-09-30-ditra-heat-cost-guide.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
+
+      <article class="guide-card" data-category="power & renewables">
+        <div class="guide-card-header">
+          <span class="guide-badge">Power & Renewables</span>
+          <span class="guide-date">2026-09-30</span>
+        </div>
+        <h2 class="guide-title"><a href="/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charging-circuit-diy-vs-electrician-breakdown.html">Cost to Install a 240V 50-Amp EV Charging Circuit: DIY vs Electrician Breakdown</a></h2>
+        <p class="guide-desc">Empirical pricing data, materials breakdown, and buying advice.</p>
+        <a href="/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charging-circuit-diy-vs-electrician-breakdown.html" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>
     </div>
   </main>
 
-  <!-- Global Footer -->
   <footer class="site-footer">
     <div class="footer-nav">
       <a href="/">Calculators</a> |
@@ -217,7 +230,6 @@
   <script>
     const searchInput = document.getElementById('guide-search');
     const cards = document.querySelectorAll('.guide-card');
-
     if (searchInput) {
       searchInput.addEventListener('input', () => {
         const q = searchInput.value.toLowerCase().trim();
