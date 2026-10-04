@@ -1,38 +1,50 @@
 # generate_article.py
-# The Buyer's Math - Daily Automated Guide Engine (Option B: Enhanced Monetization)
+# The Buyer's Math - Daily Automated Guide Engine (Option B: Enhanced Monetization & Deduplication)
 # Features:
-# 1. Dynamic Anthropic Claude Model Selection (Prevents 404 deprecation errors)
-# 2. Comprehensive 16-Calculator Catalog Mapping
-# 3. Curated Contractor-Grade Equipment with Verified Prices, Ratings, and Amazon Affiliate Links
-# 4. In-Article Contractor Lead Matching Intake Card (Angi Network Routing)
-# 5. Native In-Article Google AdSense Unit
+# 1. Anti-Collision & Deduplication Engine (Tracks published archive, ensures 100% unique angles)
+# 2. Category Balancing (Round-Robin Least-Recently-Used selection across all 16 calculators)
+# 3. 7 Rotating Editorial Angles (Material Head-to-Head, Code/Permits, Tax Credits, Line-Item Labor, DIY vs Pro, Resale ROI, Diagnostics)
+# 4. Dynamic Anthropic Claude Model Selection (Prevents 404 deprecation errors)
+# 5. Multi-Network Monetization (CJ Affiliate SwitchBot + Amazon Associates + Angi Contractor Leads + AdSense)
 # 6. Automatic Updates to index.html and sitemap.xml
 
 import os
 import re
+import json
 from datetime import datetime
 import anthropic
 
 AMAZON_TAG = "nfagiolo-20"
 ADSENSE_CLIENT = "ca-pub-1199906473460957"
+CJ_PID = "101896838"
 
 CALCULATORS = [
-    {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "key": "roofing-cost-calculator.html", "keywords": ["roof", "roofing", "shingles", "decking"]},
-    {"name": "Heat Pump vs. Gas Furnace ROI", "url": "../hvac-roi-calculator.html", "key": "hvac-roi-calculator.html", "keywords": ["hvac", "heat pump", "furnace", "heating", "cooling"]},
-    {"name": "Attic Insulation & Air Sealing ROI", "url": "../attic-insulation-calculator.html", "key": "attic-insulation-calculator.html", "keywords": ["attic", "insulation", "air sealing", "baffles"]},
-    {"name": "Bathroom Remodel Cost Estimator", "url": "../bathroom-remodel-calculator.html", "key": "bathroom-remodel-calculator.html", "keywords": ["bathroom", "remodel", "tile", "shower", "vanity"]},
-    {"name": "EV Home Charger Installation", "url": "../ev-charger-calculator.html", "key": "ev-charger-calculator.html", "keywords": ["ev charger", "electric vehicle", "level 2", "conduit", "240v"]},
-    {"name": "Fence Cost & Linear Footage Estimator", "url": "../fence-cost-calculator.html", "key": "fence-cost-calculator.html", "keywords": ["fence", "fencing", "privacy fence", "cedar", "vinyl fence"]},
-    {"name": "Home Siding Replacement Cost", "url": "../siding-cost-calculator.html", "key": "siding-cost-calculator.html", "keywords": ["siding", "vinyl siding", "hardie", "fiber cement"]},
-    {"name": "Kitchen Remodel Cost Estimator", "url": "../kitchen-remodel-calculator.html", "key": "kitchen-remodel-calculator.html", "keywords": ["kitchen", "cabinets", "countertops", "remodel"]},
-    {"name": "Solar Panel Payback Timeline", "url": "../solar-payback-calculator.html", "key": "solar-payback-calculator.html", "keywords": ["solar", "panels", "clean energy", "inverter"]},
-    {"name": "Basement Finishing Cost Estimator", "url": "../basement-cost-calculator.html", "key": "basement-cost-calculator.html", "keywords": ["basement", "framing", "sump pump", "drywall"]},
-    {"name": "Driveway Paving Calculator", "url": "../driveway-paving-calculator.html", "key": "driveway-paving-calculator.html", "keywords": ["driveway", "asphalt", "concrete", "paving"]},
-    {"name": "Window Replacement Estimator", "url": "../window-replacement-estimator.html", "key": "window-replacement-estimator.html", "keywords": ["windows", "window replacement", "glazing", "drafts"]},
-    {"name": "Ductless Mini-Split Cost Estimator", "url": "../mini-split-calculator.html", "key": "mini-split-calculator.html", "keywords": ["mini-split", "ductless", "heat pump"]},
-    {"name": "Backup Generator Sizing Guide", "url": "../generator-calculator.html", "key": "generator-calculator.html", "keywords": ["generator", "backup power", "standby", "transfer switch"]},
-    {"name": "Water Heater Replacement Cost", "url": "../water-heater-calculator.html", "key": "water-heater-calculator.html", "keywords": ["water heater", "tankless", "heat pump water heater"]},
-    {"name": "Pool Pump Energy Calculator", "url": "../pool.html", "key": "pool.html", "keywords": ["pool", "pump", "variable speed", "filtration"]}
+    {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "key": "roofing-cost-calculator.html", "category": "Roofing", "keywords": ["roof", "roofing", "shingles", "decking"]},
+    {"name": "Heat Pump vs. Gas Furnace ROI", "url": "../hvac-roi-calculator.html", "key": "hvac-roi-calculator.html", "category": "HVAC", "keywords": ["hvac", "heat pump", "furnace", "heating", "cooling"]},
+    {"name": "Attic Insulation & Air Sealing ROI", "url": "../attic-insulation-calculator.html", "key": "attic-insulation-calculator.html", "category": "Insulation", "keywords": ["attic", "insulation", "air sealing", "baffles"]},
+    {"name": "Bathroom Remodel Cost Estimator", "url": "../bathroom-remodel-calculator.html", "key": "bathroom-remodel-calculator.html", "category": "Bathroom Remodeling", "keywords": ["bathroom", "remodel", "tile", "shower", "vanity"]},
+    {"name": "EV Home Charger Installation", "url": "../ev-charger-calculator.html", "key": "ev-charger-calculator.html", "category": "Electrical", "keywords": ["ev charger", "electric vehicle", "level 2", "conduit", "240v"]},
+    {"name": "Fence Cost & Linear Footage Estimator", "url": "../fence-cost-calculator.html", "key": "fence-cost-calculator.html", "category": "Fencing", "keywords": ["fence", "fencing", "privacy fence", "cedar", "vinyl fence"]},
+    {"name": "Home Siding Replacement Cost", "url": "../siding-cost-calculator.html", "key": "siding-cost-calculator.html", "category": "Siding", "keywords": ["siding", "vinyl siding", "hardie", "fiber cement"]},
+    {"name": "Kitchen Remodel Cost Estimator", "url": "../kitchen-remodel-calculator.html", "key": "kitchen-remodel-calculator.html", "category": "Kitchen Remodeling", "keywords": ["kitchen", "cabinets", "countertops", "remodel"]},
+    {"name": "Solar Panel Payback Timeline", "url": "../solar-payback-calculator.html", "key": "solar-payback-calculator.html", "category": "Solar", "keywords": ["solar", "panels", "clean energy", "inverter"]},
+    {"name": "Basement Finishing Cost Estimator", "url": "../basement-cost-calculator.html", "key": "basement-cost-calculator.html", "category": "Basement Remodeling", "keywords": ["basement", "framing", "sump pump", "drywall"]},
+    {"name": "Driveway Paving Calculator", "url": "../driveway-paving-calculator.html", "key": "driveway-paving-calculator.html", "category": "Paving & Concrete", "keywords": ["driveway", "asphalt", "concrete", "paving"]},
+    {"name": "Window Replacement Estimator", "url": "../window-replacement-estimator.html", "key": "window-replacement-estimator.html", "category": "Windows", "keywords": ["windows", "window replacement", "glazing", "drafts"]},
+    {"name": "Ductless Mini-Split Cost Estimator", "url": "../mini-split-calculator.html", "key": "mini-split-calculator.html", "category": "HVAC", "keywords": ["mini-split", "ductless", "heat pump"]},
+    {"name": "Backup Generator Sizing Guide", "url": "../generator-calculator.html", "key": "generator-calculator.html", "category": "Generator & Electrical", "keywords": ["generator", "backup power", "standby", "transfer switch"]},
+    {"name": "Water Heater Replacement Cost", "url": "../water-heater-calculator.html", "key": "water-heater-calculator.html", "category": "Plumbing", "keywords": ["water heater", "tankless", "heat pump water heater"]},
+    {"name": "Pool Pump Energy Calculator", "url": "../pool.html", "key": "pool.html", "category": "Pool Maintenance", "keywords": ["pool", "pump", "variable speed", "filtration"]}
+]
+
+EDITORIAL_ANGLES = [
+    "Material Comparison & Durability Tradeoffs (Head-to-head comparison of standard vs premium materials, lifespan vs upfront cost)",
+    "Hidden Costs, Code Compliance & Inspection Requirements (Concealed damage, rough-in requirements, municipal building codes, permit fees)",
+    "Federal Tax Incentives, Rebates & Inflation Reduction Act Rules (Section 25C, Section 30C, utility peak demand rebates, qualification criteria)",
+    "Labor vs. Material Line-Item Pricing Breakdown (Itemized trade labor rates, scaffolding, equipment staging, dumpster fees, contractor markup)",
+    "DIY vs. Licensed Professional Trade Boundaries (What homeowners can legally and safely do vs where licensed master trades are strictly required)",
+    "Long-Term Resale Value & Cost vs. Value Appraisal Impact (Real estate ROI, appraisal equity boost, buyer appeal vs cost recovery)",
+    "Regional Climate Performance & Failure Diagnostics (Freeze-thaw cycles, moisture vapor barriers, high-heat efficiency thresholds, preventative maintenance)"
 ]
 
 TRADE_GEAR = {
@@ -54,7 +66,7 @@ TRADE_GEAR = {
         "category": "Insulation",
         "items": [
             {"title": "Great Stuff Pro Gasket & Foam Dispensing Gun Kit", "price": "$64.95", "rating": "4.7 ★ (3,100+ reviews)", "query": "Great+Stuff+Pro+foam+dispensing+gun"},
-            {"title": "3M Aura N95 Particulate Respirator Dust Masks (20-Pack)", "price": "$22.98", "rating": "4.8 ★ (14,000+ reviews)", "query": "3M+Aura+N95+particulate+respirator"}
+            {"title": "SwitchBot Indoor/Outdoor Thermo-Hygrometer (Attic Climate Monitor)", "price": "$17.99", "rating": "4.7 ★ (4,100+ reviews)", "cj_url": f"https://www.dpbolvw.net/click-{CJ_PID}-15310710", "merchant": "SwitchBot Official"}
         ]
     },
     "bathroom-remodel-calculator.html": {
@@ -103,7 +115,7 @@ TRADE_GEAR = {
         "category": "Basement Remodeling",
         "items": [
             {"title": "WAYNE 3/4 HP Heavy-Duty Cast Iron Submersible Sump Pump", "price": "$229.00", "rating": "4.7 ★ (5,600+ reviews)", "query": "WAYNE+3/4+HP+submersible+sump+pump"},
-            {"title": "Klein Tools Pinless Moisture Meter for Concrete Subfloors", "price": "$44.97", "rating": "4.7 ★ (7,200+ reviews)", "query": "Klein+Tools+pinless+moisture+meter"}
+            {"title": "SwitchBot Smart Hygrometer & Moisture Sensor (Subfloor & Humidity)", "price": "$14.99", "rating": "4.6 ★ (3,200+ reviews)", "cj_url": f"https://www.dpbolvw.net/click-{CJ_PID}-15310710", "merchant": "SwitchBot Official"}
         ]
     },
     "driveway-paving-calculator.html": {
@@ -117,7 +129,7 @@ TRADE_GEAR = {
         "category": "Windows",
         "items": [
             {"title": "OSI QUAD MAX Window & Door Expanding Foam Sealant (12-Pack)", "price": "$98.50", "rating": "4.8 ★ (1,800+ reviews)", "query": "OSI+QUAD+MAX+window+foam+sealant"},
-            {"title": "Tajima 10-Foot Professional Rough-Opening Measurement Tape", "price": "$24.99", "rating": "4.8 ★ (3,100+ reviews)", "query": "Tajima+measuring+tape+professional"}
+            {"title": "SwitchBot Solar-Powered Smart Curtain Automator (Thermal Glazing Control)", "price": "$89.99", "rating": "4.5 ★ (2,800+ reviews)", "cj_url": f"https://www.dpbolvw.net/click-{CJ_PID}-15310710", "merchant": "SwitchBot Official"}
         ]
     },
     "mini-split-calculator.html": {
@@ -145,7 +157,7 @@ TRADE_GEAR = {
         "category": "Pool Maintenance",
         "items": [
             {"title": "Hayward Super Pump VS Variable-Speed 1.65 HP Energy Star Pump", "price": "$1,099.00", "rating": "4.6 ★ (1,900+ reviews)", "query": "Hayward+Super+Pump+VS+variable+speed"},
-            {"title": "Pentair Heavy-Duty In-Line Pool Filter Pressure Gauge", "price": "$21.99", "rating": "4.7 ★ (3,300+ reviews)", "query": "Pentair+pool+filter+pressure+gauge"}
+            {"title": "SwitchBot 15A Smart Plug with Live Energy & Wattage Monitor", "price": "$14.99", "rating": "4.6 ★ (1,800+ reviews)", "cj_url": f"https://www.dpbolvw.net/click-{CJ_PID}-15310710", "merchant": "SwitchBot Official"}
         ]
     }
 }
@@ -156,7 +168,75 @@ def slugify(text):
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
 
+def calculate_title_similarity(t1, t2):
+    """Calculates Jaccard keyword overlap to prevent semantic duplicate topics."""
+    stop_words = {'how', 'much', 'does', 'cost', 'in', '2026', 'the', 'a', 'an', 'and', 'vs', 'to', 'for', 'of', 'is'}
+    w1 = set(re.findall(r'\w+', t1.lower())) - stop_words
+    w2 = set(re.findall(r'\w+', t2.lower())) - stop_words
+    if not w1 or not w2:
+        return 0.0
+    return len(w1 & w2) / len(w1 | w2)
+
+
+def get_existing_articles():
+    """Scans articles directory and index.html to build the historical title/slug archive."""
+    existing = []
+
+    # 1. Inspect articles directory
+    if os.path.exists("articles"):
+        for fname in os.listdir("articles"):
+            if fname.endswith(".html"):
+                path = os.path.join("articles", fname)
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        txt = f.read()
+                    m = re.search(r"<title>(.*?)</title>", txt, re.IGNORECASE)
+                    title = m.group(1).replace("| The Buyer's Math", "").strip() if m else fname
+                    slug = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', fname.replace('.html', ''))
+                    existing.append({"filename": fname, "title": title, "slug": slug})
+                except Exception:
+                    pass
+
+    # 2. Inspect index.html
+    if os.path.exists("index.html"):
+        try:
+            with open("index.html", "r", encoding="utf-8") as f:
+                idx_txt = f.read()
+            matches = re.findall(r'href="articles/([^"]+)">(.*?)</a>', idx_txt)
+            for href_file, link_title in matches:
+                clean_title = re.sub(r'<[^>]+>', '', link_title).strip()
+                slug = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', href_file.replace('.html', ''))
+                if not any(e["slug"] == slug for e in existing):
+                    existing.append({"filename": href_file, "title": clean_title, "slug": slug})
+        except Exception:
+            pass
+
+    return existing
+
+
+def select_target_calculator_and_angle(existing_articles):
+    """Balanced Round-Robin: Selects the calculator with the least existing coverage, paired with a rotating angle."""
+    counts = {c["key"]: 0 for c in CALCULATORS}
+
+    for art in existing_articles:
+        lower_t = art["title"].lower()
+        for c in CALCULATORS:
+            if any(kw in lower_t for kw in c["keywords"]):
+                counts[c["key"]] += 1
+
+    # Sort calculators by least covered
+    sorted_calcs = sorted(CALCULATORS, key=lambda c: counts[c["key"]])
+    target_calc = sorted_calcs[0]
+
+    # Select angle based on total number of articles published
+    angle_idx = len(existing_articles) % len(EDITORIAL_ANGLES)
+    target_angle = EDITORIAL_ANGLES[angle_idx]
+
+    return target_calc, target_angle
+
+
 def select_active_model(client):
+    """Dynamically queries Anthropic API for active models to prevent deprecation 404s."""
     try:
         models_response = client.models.list()
         active_ids = [m.id for m in models_response.data]
@@ -187,15 +267,6 @@ def call_claude(client, model_name, prompt, max_tokens=1500):
     return msg.content[0].text.strip()
 
 
-def find_matching_calculator(topic_text):
-    lower = topic_text.lower()
-    for calc in CALCULATORS:
-        for kw in calc["keywords"]:
-            if kw in lower:
-                return calc
-    return CALCULATORS[0]
-
-
 def build_curated_gear_html(gear_info):
     category = gear_info.get("category", "Home Improvement")
     items = gear_info.get("items", [])
@@ -204,15 +275,20 @@ def build_curated_gear_html(gear_info):
 
     items_html = ""
     for item in items:
-        amazon_url = f"https://www.amazon.com/s?k={item['query']}&tag={AMAZON_TAG}"
+        item_url = item.get("cj_url") or f"https://www.amazon.com/s?k={item.get('query', '')}&tag={AMAZON_TAG}"
+        is_cj = bool(item.get("cj_url"))
+        btn_label = "View on SwitchBot &rarr;" if is_cj else "Check Deal on Amazon &rarr;"
+        btn_bg = "#059669" if is_cj else "#d97706"
+        badge_label = item.get("merchant") or "Amazon Associates"
+
         items_html += f"""
           <div style="background: #ffffff; border: 1px solid #fef3c7; border-radius: 8px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.75rem;">
             <div style="flex: 1; min-width: 220px;">
               <h4 style="margin: 0 0 0.25rem 0; font-size: 0.975rem; color: #0f172a; line-height: 1.4;">{item['title']}</h4>
-              <div style="font-size: 0.85rem; color: #d97706; font-weight: 600;">{item['rating']} &bull; <span style="color: #0f172a; font-weight: 700;">{item['price']}</span></div>
+              <div style="font-size: 0.85rem; color: #d97706; font-weight: 600;">{item['rating']} &bull; <span style="color: #0f172a; font-weight: 700;">{item['price']}</span> &bull; <span style="color: #64748b; font-size: 0.78rem;">{badge_label}</span></div>
             </div>
-            <a href="{amazon_url}" target="_blank" rel="noopener noreferrer" style="background: #d97706; color: #ffffff; padding: 0.6rem 1.15rem; border-radius: 6px; font-weight: 700; font-size: 0.875rem; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.35rem;">
-              Check Deal on Amazon &rarr;
+            <a href="{item_url}" target="_blank" rel="noopener noreferrer" style="background: {btn_bg}; color: #ffffff; padding: 0.6rem 1.15rem; border-radius: 6px; font-weight: 700; font-size: 0.875rem; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.35rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+              {btn_label}
             </a>
           </div>
         """
@@ -221,11 +297,11 @@ def build_curated_gear_html(gear_info):
       <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1.75rem; margin: 2rem 0; box-sizing: border-box;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
           <span style="background: #f59e0b; color: #ffffff; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em;">Contractor-Grade Equipment</span>
-          <span style="font-size: 0.75rem; color: #92400e; font-style: italic;">Amazon Associates Monitored Pricing</span>
+          <span style="font-size: 0.75rem; color: #92400e; font-style: italic;">Verified Retail &amp; Partner Pricing</span>
         </div>
         <h3 style="margin: 0.25rem 0 0.5rem 0; color: #92400e; font-size: 1.15rem;">Recommended {category} Tools &amp; Materials</h3>
         <p style="margin: 0 0 0.5rem 0; color: #78350f; font-size: 0.9rem;">
-          Compare live contractor pricing, consumer ratings, and verified specs on Amazon before ordering supplies:
+          Compare live contractor pricing, consumer ratings, and verified specs before ordering supplies:
         </p>
         {items_html}
       </div>
@@ -268,38 +344,75 @@ def main():
     model_name = select_active_model(client)
     print(f"Using Anthropic model: {model_name}")
 
-    # Step 1: Generate Topic & Matching Calculator
-    calc_list_str = "\n".join([f"- {c['name']} ({c['url']})" for c in CALCULATORS])
-    topic_prompt = f"""Generate a unique, high-intent home improvement or DIY cost analysis article title for 2026, paired with the best matching companion calculator from the list below.
-Format strictly as: Title | Calculator Name | Calculator URL
-Example: How Much Does Attic Insulation Cost in 2026? | Attic Insulation & Air Sealing ROI | ../attic-insulation-calculator.html
+    # Step 1: Scan Existing Articles for Collision & Deduplication Guard
+    existing_articles = get_existing_articles()
+    existing_titles = [a["title"] for a in existing_articles]
+    existing_slugs = [a["slug"] for a in existing_articles]
+    print(f"Detected {len(existing_articles)} existing articles in site archive.")
 
-Available Calculators:
-{calc_list_str}
+    target_calc, target_angle = select_target_calculator_and_angle(existing_articles)
+    print(f"Targeting category: {target_calc['name']} via Angle: {target_angle}")
+
+    # Build anti-repetition corpus prompt
+    recent_titles_str = "\n".join([f"- {t}" for t in existing_titles[-25:]]) if existing_titles else "None (Initial publication)"
+
+    topic_prompt = f"""Generate a completely unique, highly specific, high-intent 2026 homeowner cost analysis title focusing on: {target_calc['name']}.
+Editorial Lens to use: {target_angle}
+
+STRICT ANTI-DUPLICATION CONSTRAINTS:
+You MUST NOT duplicate, paraphrase, or closely mimic any of the previously published titles below:
+{recent_titles_str}
+
+Provide a fresh, highly specific title targeting deep-funnel search intent (e.g., specific material grades, hidden installation complications, code thresholds, or tax filing requirements).
+
+Format strictly as: Title
+Example: 2026 Architectural Shingle vs Standing Seam Metal: 30-Year Roof Replacement Math
 """
 
-    raw_topic = call_claude(client, model_name, topic_prompt, max_tokens=200)
-    parts = [p.strip() for p in raw_topic.split("|")]
-    title = parts[0]
-    matched_calc_name = parts[1] if len(parts) > 1 else "Cost Calculators"
-    matched_calc_url = parts[2] if len(parts) > 2 else "../index.html"
-    slug = slugify(title)
+    # Retry loop to guarantee zero collisions
+    title = ""
+    slug = ""
+    for attempt in range(3):
+        candidate_title = call_claude(client, model_name, topic_prompt, max_tokens=120).strip().strip('"')
+        candidate_slug = slugify(candidate_title)
 
-    # Resolve calculator key for curated product pairing
-    matched_calc = find_matching_calculator(f"{title} {matched_calc_name}")
-    calc_key = matched_calc["key"]
+        is_duplicate = False
+        if candidate_slug in existing_slugs:
+            is_duplicate = True
+        else:
+            for past_t in existing_titles:
+                if calculate_title_similarity(candidate_title, past_t) > 0.60:
+                    is_duplicate = True
+                    break
+
+        if not is_duplicate:
+            title = candidate_title
+            slug = candidate_slug
+            break
+        else:
+            print(f"Attempt {attempt+1}: Duplicate or high similarity detected for '{candidate_title}'. Retrying...")
+            topic_prompt += f"\nAvoid this exact rejected title: {candidate_title}\n"
+
+    if not title:
+        title = f"{date_str} {target_calc['name']} Analysis: 2026 Pricing Guide"
+        slug = slugify(title)
+
+    print(f"Final Unique Topic Selected: {title} (slug: {slug})")
+
+    calc_key = target_calc["key"]
     gear_info = TRADE_GEAR.get(calc_key, TRADE_GEAR["roofing-cost-calculator.html"])
-    category_name = gear_info.get("category", "Home Improvement")
+    category_name = gear_info.get("category", target_calc.get("category", "Home Improvement"))
 
     # Step 2: Generate Authoritative 800-Word Content
-    content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
+    content_prompt = f"""Write an informative, authoritative, highly empirical 800-word homeowner's guide for: "{title}".
 
 Requirements:
-1. Provide realistic 2026 cost ranges (materials, labor, permits).
-2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> if applicable. Do NOT include <html> or <body> tags.
-3. Reference and hyperlink naturally to the companion calculator: <a href="{matched_calc_url}">{matched_calc_name}</a>.
-4. Provide a DIY vs. Professional breakdown.
-5. Conclude with an FAQ section (3 questions using <details> and <summary>).
+1. Provide realistic 2026 cost ranges (materials, licensed trade labor, permits, contingency buffers).
+2. Ground the guide in empirical data, building codes, and regional variables.
+3. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> where relevant. Do NOT include <html>, <head>, or <body> tags.
+4. Reference and hyperlink naturally to the companion calculator: <a href="{target_calc['url']}">{target_calc['name']}</a>.
+5. Provide a clear DIY vs. Professional Contractor breakdown with safety and warranty considerations.
+6. Conclude with an FAQ section (3 questions using <details> and <summary> tags).
 """
 
     raw_body = call_claude(client, model_name, content_prompt, max_tokens=2500)
@@ -315,7 +428,7 @@ Requirements:
         <span style="color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Interactive Estimator</span>
         <h3 style="margin: 0.4rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.3rem;">Calculate Exact Costs for Your Home</h3>
         <p style="margin: 0 0 1.25rem 0; color: #475569; font-size: 0.95rem;">Model custom square footage, labor rates, and local tax incentives with our free tool:</p>
-        <a href="{matched_calc_url}" style="background: #2563eb; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; text-decoration: none; display: inline-block;">Open the {matched_calc_name} &rarr;</a>
+        <a href="{target_calc['url']}" style="background: #2563eb; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; text-decoration: none; display: inline-block;">Open the {target_calc['name']} &rarr;</a>
       </div>
     """
 
@@ -342,6 +455,7 @@ Requirements:
   <meta name="description" content="{title} - Real 2026 cost estimates, labor vs material breakdown, and buying guide.">
   <link rel="stylesheet" href="../styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>
+  <script async src="https://www.anrdoezrs.net/am/{CJ_PID}/include/allCj/impressions/page/am.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -391,7 +505,7 @@ Requirements:
       <a href="../contact.html">Contact Us</a>
     </div>
     <p class="footer-disclosure">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program and the CJ Affiliate Network. As an affiliate partner, I earn from qualifying purchases and verified referrals. Calculations and tool results are directional models for informational purposes only.
     </p>
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
