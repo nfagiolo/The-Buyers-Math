@@ -1,65 +1,78 @@
-name: Daily Automated Operations (The Buyer's Math)
+name: Daily Article & Market Intelligence Generation
 
 on:
   schedule:
-    # Runs daily at 10:00 UTC (6:00 AM EST)
-    - cron: '0 10 * * *'
-  workflow_dispatch: # Allows manual trigger anytime from Actions tab
+    - cron: '0 10 * * *' # Daily at 10:00 UTC (6:00 AM EDT)
+  workflow_dispatch:      # Allows manual trigger anytime from GitHub Actions tab
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
-  build-and-publish:
+  generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install anthropic
 
-      - name: 1. Update Core Calculators (Checklists & Related Tools)
+      - name: Apply Calculator Updates & Enhancements
         run: |
-          if [ -f apply_calculator_updates.py ]; then
+          if [ -f "apply_calculator_updates.py" ]; then
             python apply_calculator_updates.py
           fi
 
-      - name: 2. Retrofit Existing Articles (Revenue Blocks)
+      - name: Retrofit Monetization on Existing Articles
         run: |
-          if [ -f retrofit_articles.py ]; then
+          if [ -f "retrofit_articles.py" ]; then
             python retrofit_articles.py
           fi
 
-      - name: 3. Generate Daily High-Intent Guide (Claude)
+      - name: Generate Daily Deep-Dive Article
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python generate_article.py
+          if [ -f "generate_article.py" ]; then
+            python generate_article.py
+          fi
 
-      - name: 4. Sync RSS Feed & Guides Page
+      - name: Generate Daily Market & Contractor Intelligence (5-Part Suite)
         run: |
-          if [ -f sync_guides.py ]; then
+          if [ -f "generate_daily_intel.py" ]; then
+            python generate_daily_intel.py
+          fi
+
+      - name: Sync Guides, Archive, and RSS Feed
+        run: |
+          if [ -f "sync_guides.py" ]; then
             python sync_guides.py
           fi
 
-      - name: 5. Apply OpenGraph & Social Cards
+      - name: Apply OpenGraph, Twitter Cards & Schema.org Tags
         run: |
-          if [ -f apply_seo_social_tags.py ]; then
+          if [ -f "apply_seo_social_tags.py" ]; then
             python apply_seo_social_tags.py
           fi
 
-      - name: Commit and Push All Site Updates
+      - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add -A
-          git diff --staged --quiet || (git commit -m "Auto-update calculators, sync social tags, publish guide" && git push origin main)
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-generate daily article, market intelligence dispatch & feeds [skip ci]"
+            git push origin main
+          fi
