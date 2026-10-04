@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fence Cost & Linear Footage Estimator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate fence installation costs per linear foot. Compare pressure-treated pine, cedar, vinyl privacy, aluminum, and chain link fencing budgets.">
+  <link rel="canonical" href="https://thebuyersmath.com/fence-cost-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+  
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://thebuyersmath.com/fence-cost-calculator.html#app",
+        "name": "Fence Cost & Linear Footage Estimator",
+        "url": "https://thebuyersmath.com/fence-cost-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate residential fence replacement costs based on total linear footage, material types, gates, post hole digging, and concrete footings."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://thebuyersmath.com/fence-cost-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does a new fence cost per linear foot installed in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Installed residential fencing ranges from $18 to $28 per linear foot for chain link, $24 to $36 for pressure-treated pine, $32 to $48 for Western red cedar, and $38 to $58 for premium vinyl privacy or black aluminum ornamental fencing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How deep should residential fence posts be set in concrete?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fence posts must be set at least one-third of their total height (typically 24 to 36 inches deep) and extend at least 6 inches below the local frost line to prevent winter frost heave from pushing posts out of alignment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is wood or vinyl fencing cheaper in the long run?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pressure-treated wood has a 25% lower upfront installation cost, but requires cleaning, staining, and sealing every 2 to 3 years ($800–$1,500 per cycle). Vinyl has zero recurring maintenance costs, making it cheaper over a 10-to-15 year ownership period."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
+        <a href="/#article-list">Guides</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> &gt;
+    <a href="/">Calculators</a> &gt;
+    <span class="current">Fence Cost &amp; Linear Footage Estimator</span>
+  </nav>
+  
+  <!-- Main Calculator -->
+  <main class="container">
+    <div class="calc-intro">
+      <h1>Fence Cost &amp; Linear Footage Estimator</h1>
+      <p>Calculate materials, post-hole digging, concrete footings, gate hardware, and total installed costs.</p>
+    </div>
+  
+    <div class="split-layout">
+      <!-- Input Controls -->
+      <div class="card">
+        <div class="form-group">
+          <label for="linearFeet">
+            Total Perimeter (Linear Feet)
+            <span class="val-badge" id="linearFeetVal">175 linear ft</span>
+          </label>
+          <input type="range" id="linearFeet" min="40" max="600" step="5" value="175">
+          <small style="color: #64748b;">A standard quarter-acre suburban backyard perimeter is approx. 150–220 linear feet.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="fenceMaterial">Fence Material</label>
+          <select id="fenceMaterial">
+            <option value="pine">Pressure-Treated Pine (Economical Wood)</option>
+            <option value="cedar" selected>Western Red Cedar (Rot &amp; Insect Resistant)</option>
+            <option value="vinyl">Vinyl / PVC Privacy (Zero Maintenance)</option>
+            <option value="aluminum">Ornamental Black Aluminum (Pool Code Compliant)</option>
+            <option value="chainlink">Black Chain Link with Top Rail</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fenceHeight">Fence Height</label>
+          <select id="fenceHeight">
+            <option value="4ft">4-Foot (Front Yard / Decorative)</option>
+            <option value="6ft" selected>6-Foot (Backyard Privacy Standard)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="walkGates">Pedestrian Walk Gates (4 ft Wide)</label>
+          <select id="walkGates">
+            <option value="1">1 Single Walk Gate</option>
+            <option value="2" selected>2 Single Walk Gates (Both Sides of House)</option>
+            <option value="3">3 Single Walk Gates</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="driveGates">Double Drive Gates (10–12 ft Wide)</label>
+          <select id="driveGates">
+            <option value="0" selected>None</option>
+            <option value="1">1 Double Drive Gate (Mower / Vehicle Access)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="oldRemoval">Old Fence Tear-Off &amp; Haul Away</label>
+          <select id="oldRemoval">
+            <option value="no" selected>New Fence Line (No Removal Needed)</option>
+            <option value="yes">Tear Down &amp; Haul Away Existing Fence ($4.50/ft)</option>
+          </select>
+        </div>
+  
+        <!-- Monetization: Amazon Affiliate Box -->
+        <div class="curated-recommendation">
+          <p class="rec-title">Recommended Fence Accessories</p>
+          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Solar waterproof post cap lights and heavy-duty self-closing gate latches enhance security:</p>
+          <a href="https://www.amazon.com/s?k=solar+post+cap+lights+4x4+waterproof&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Solar Post Caps on Amazon</a>
+        </div>
+      </div>
+  
+      <!-- Receipt Card with Visual Payback Bar -->
+      <div class="card receipt">
+        <h2>Cost Estimate Summary</h2>
+        <div class="receipt-row">
+          <span>Pickets &amp; Rails Materials:</span>
+          <span id="materialsCost">$3,675</span>
+        </div>
+        <div class="receipt-row">
+          <span>Post Hole Digging &amp; Concrete:</span>
+          <span id="laborCost">$2,450</span>
+        </div>
+        <div class="receipt-row">
+          <span>Gate Hardware &amp; Latches:</span>
+          <span id="gateCost">$650</span>
+        </div>
+        <div class="receipt-row">
+          <span>Old Fence Tear-Off / Disposal:</span>
+          <span id="removalCost">$0</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total Installed Price:</span>
+          <span id="totalCost">$6,775</span>
+        </div>
+        <div class="receipt-row" style="color:#38bdf8; font-weight:600; margin-top:0.75rem;">
+          <span>Average Cost per Linear Foot:</span>
+          <span id="perFootCost">$38.71 / linear ft</span>
+        </div>
+  
+        <!-- Visual Maintenance Comparison Bar -->
+        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;">
+            <span>10-Year Maintenance Overhead</span>
+            <strong id="maintStatus" style="color: #fbbf24;">Moderate ($1,200)</strong>
+          </div>
+          <div style="width: 100%; height: 12px; background: #1e293b; border-radius: 6px; overflow: hidden;">
+            <div id="maintBar" style="width: 45%; height: 100%; background: linear-gradient(90deg, #f59e0b, #d97706); transition: width 0.3s ease;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">
+            <span>Zero (Vinyl/Alum)</span>
+            <span>Mid (Cedar)</span>
+            <span>High (Pine)</span>
+          </div>
+        </div>
+  
+        <p class="receipt-disclaimer">
+          * Modeled on standard 8-foot post spacing, 80-lb concrete bags per hole, and 2026 contractor pricing.
+        </p>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Responsive In-Page AdSense Unit -->
+  <div style="max-width: 1140px; margin: 2rem auto; text-align: center; min-height: 100px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1199906473460957"
+         data-ad-slot="responsive"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <!-- SEO Supporting Content & FAQs -->
+  <section class="seo-guide-section">
+    <h2>Residential Fencing: 2026 Buying &amp; Permitting Guide</h2>
+    <p>Installing a perimeter fence defines property boundaries, ensures child and pet safety, and provides essential visual privacy. However, fencing quotes fluctuate significantly based on post spacing, concrete footings, and gate latch hardware.</p>
+  
+    <h3>Navigating Property Surveys and Setback Codes</h3>
+    <p>Before ordering materials or hiring a contractor, obtain a certified property boundary survey and contact your local zoning office. Most municipalities restrict front yard fences to 4 feet in height while permitting 6-foot fences in side and back yards. If you are paving an adjacent asphalt or concrete driveway, coordinate boundary setbacks with our <a href="/driveway-paving-calculator.html" style="font-weight: 600; color: #2563eb; text-decoration: underline;">Driveway Paving Calculator</a> to prevent property encroachment disputes.</p>
+  
+    <h3>Frequently Asked Questions</h3>
+    <details>
+      <summary>How much does a new fence cost per linear foot installed in 2026?</summary>
+      <p>Installed residential fencing ranges from $18 to $28 per linear foot for chain link, $24 to $36 for pressure-treated pine, $32 to $48 for Western red cedar, and $38 to $58 for premium vinyl privacy or black aluminum ornamental fencing.</p>
+    </details>
+    <details>
+      <summary>How deep should residential fence posts be set in concrete?</summary>
+      <p>Fence posts must be set at least one-third of their total height (typically 24 to 36 inches deep) and extend at least 6 inches below the local frost line to prevent winter frost heave from pushing posts out of alignment.</p>
+    </details>
+    <details>
+      <summary>Is wood or vinyl fencing cheaper in the long run?</summary>
+      <p>Pressure-treated wood has a 25% lower upfront installation cost, but requires cleaning, staining, and sealing every 2 to 3 years ($800–$1,500 per cycle). Vinyl has zero recurring maintenance costs, making it cheaper over a 10-to-15 year ownership period.</p>
+    </details>
+  </section>
+
+  <!-- Contractor Vetting Checklist -->
+  <section class="contractor-checklist-card" style="max-width: 1140px; margin: 2.5rem auto; padding: 2rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <h3 style="font-size: 1.35rem; margin-top: 0; color: #0f172a;">📋 Fence Contractor Vetting Checklist: 4 Questions Before Digging</h3>
+    <p style="color: #64748b; font-size: 0.95rem; margin-top: 0.25rem;">Avoid property disputes and leaning posts by verifying these construction standards:</p>
+    <div class="checklist-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Call 811 Before Any Augering</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Ensure the contractor logs an official utility mark-out ticket with 811 to locate buried gas, fiber optic, and electric lines before augering post holes.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Pour Bell-Shaped Concrete Footings</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Require concrete to be flared outward at the bottom of each hole with 2 inches of drainage gravel beneath the wood post base to prevent rot.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Reinforce Gate Hinge Posts</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Insist that all gate swing posts utilize heavier gauge 4x6 timbers or internal steel stiffeners to prevent gate sagging over time.</p>
+      </div>
+      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
+        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Confirm Boundary Survey Markers</strong>
+        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Never rely on contractor assumptions. Locate physical boundary pins to install the fence at least 3 to 6 inches inside your legal property line.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Calculators Section -->
+  <section class="related-calculators-section" style="max-width: 1140px; margin: 2.5rem auto 4rem auto; padding: 0 1.5rem;">
+    <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem; color: #0f172a;">Explore Related Home Improvement Calculators</h3>
+    <div class="related-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <a href="/driveway-paving-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Driveway Paving Calculator</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Coordinate driveway resurfacing and gate swing clearances seamlessly.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+
+      <a href="/pool.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Pool Pump Energy Calculator</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Ensure self-closing gate code compliance for residential swimming pools.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+
+      <a href="/roofing-cost-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
+          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Roof Replacement Cost Estimator</h4>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Complete your whole-home exterior modernization and protection.</p>
+        </div>
+        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
+      </a>
+    </div>
+  </section>
+  
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/#article-list">Guides</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+    </p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    const linearFeet = document.getElementById('linearFeet');
+    const linearFeetVal = document.getElementById('linearFeetVal');
+    const fenceMaterial = document.getElementById('fenceMaterial');
+    const fenceHeight = document.getElementById('fenceHeight');
+    const walkGates = document.getElementById('walkGates');
+    const driveGates = document.getElementById('driveGates');
+    const oldRemoval = document.getElementById('oldRemoval');
+
+    const materialsCostEl = document.getElementById('materialsCost');
+    const laborCostEl = document.getElementById('laborCost');
+    const gateCostEl = document.getElementById('gateCost');
+    const removalCostEl = document.getElementById('removalCost');
+    const totalCostEl = document.getElementById('totalCost');
+    const perFootCostEl = document.getElementById('perFootCost');
+    const maintStatusEl = document.getElementById('maintStatus');
+    const maintBar = document.getElementById('maintBar');
+
+    function calculateFence() {
+      const feet = parseFloat(linearFeet.value);
+      linearFeetVal.textContent = feet + ' linear ft';
+
+      let matPerFt = 21;
+      let laborPerFt = 14;
+
+      if (fenceMaterial.value === 'pine') {
+        matPerFt = 15;
+        laborPerFt = 13;
+      } else if (fenceMaterial.value === 'vinyl') {
+        matPerFt = 26;
+        laborPerFt = 16;
+      } else if (fenceMaterial.value === 'aluminum') {
+        matPerFt = 28;
+        laborPerFt = 15;
+      } else if (fenceMaterial.value === 'chainlink') {
+        matPerFt = 11;
+        laborPerFt = 11;
+      }
+
+      if (fenceHeight.value === '4ft') {
+        matPerFt *= 0.82;
+      }
+
+      const rawMat = Math.round(feet * matPerFt);
+      const rawLabor = Math.round(feet * laborPerFt);
+
+      const numWalk = parseInt(walkGates.value);
+      const numDrive = parseInt(driveGates.value);
+      const gateTotal = (numWalk * 325) + (numDrive * 750);
+
+      let removal = 0;
+      if (oldRemoval.value === 'yes') {
+        removal = Math.round(feet * 4.50);
+      }
+
+      const grandTotal = rawMat + rawLabor + gateTotal + removal;
+      const perFoot = (grandTotal / feet).toFixed(2);
+
+      materialsCostEl.textContent = '$' + rawMat.toLocaleString();
+      laborCostEl.textContent = '$' + rawLabor.toLocaleString();
+      gateCostEl.textContent = '$' + gateTotal.toLocaleString();
+      removalCostEl.textContent = '$' + removal.toLocaleString();
+      totalCostEl.textContent = '$' + grandTotal.toLocaleString();
+      perFootCostEl.textContent = '$' + perFoot + ' / linear ft';
+
+      if (fenceMaterial.value === 'vinyl' || fenceMaterial.value === 'aluminum') {
+        maintStatusEl.textContent = 'Zero ($0)';
+        maintBar.style.width = '10%';
+        maintBar.style.background = '#10b981';
+      } else if (fenceMaterial.value === 'cedar') {
+        maintStatusEl.textContent = 'Moderate ($1,200)';
+        maintBar.style.width = '50%';
+        maintBar.style.background = '#f59e0b';
+      } else if (fenceMaterial.value === 'pine') {
+        maintStatusEl.textContent = 'High ($2,100)';
+        maintBar.style.width = '85%';
+        maintBar.style.background = '#ef4444';
+      } else {
+        maintStatusEl.textContent = 'Low ($300)';
+        maintBar.style.width = '20%';
+        maintBar.style.background = '#10b981';
+      }
+    }
+
+    linearFeet.addEventListener
