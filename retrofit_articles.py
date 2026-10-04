@@ -71,7 +71,7 @@ def retrofit_file(filepath):
       </div>
     """
 
-    # Inject top box safely after metadata
+    # Inject top box
     if "Published on" in content:
         idx = content.find("Published on")
         end_div = content.find("</div>", idx)
@@ -81,7 +81,7 @@ def retrofit_file(filepath):
     elif "</h1>" in content:
         content = content.replace("</h1>", f"</h1>\n{top_box}", 1)
 
-    # Inject mid-article card and AdSense
+    # Inject mid-article card
     if "</article>" in content:
         content = content.replace("</article>", f"{mid_and_ads}\n    </article>", 1)
     elif "</main>" in content:
