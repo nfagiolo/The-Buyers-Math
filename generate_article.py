@@ -1,6 +1,6 @@
 # generate_article.py
 # Automated Daily Cost Guide Generator powered by Anthropic Claude
-# Features multi-model fallback to ensure seamless runs without deprecation 404s.
+# Dynamically queries client.models.list() to always use active, current models.
 
 import os
 import re
@@ -25,26 +25,48 @@ def slugify(text):
     text = text.lower()
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
-def call_claude(client, prompt, max_tokens=1500):
-    """Tries primary models with automatic fallback to prevent 404 deprecation errors."""
-    candidate_models = [
-        "claude-3-5-sonnet-latest",
-        "claude-3-5-sonnet-20241022",
-        "claude-3-haiku-20240307"
-    ]
-    for model in candidate_models:
-        try:
-            print(f"Querying Claude model: {model}...")
-            msg = client.messages.create(
-                model=model,
-                max_tokens=max_tokens,
-                messages=[{"role": "user", "content": prompt}]
-            )
-            return msg.content[0].text.strip()
-        except anthropic.NotFoundError:
-            print(f"Model {model} returned 404, falling back to next candidate...")
-            continue
-    raise RuntimeError("None of the specified Anthropic models were accessible.")
+def select_active_model(client):
+    """Dynamically queries Anthropic API for active models available to this account."""
+    try:
+        models_response = client.models.list()
+        active_ids = [m.id for m in models_response.data]
+        print(f"Active models detected in account: {active_ids}")
+
+        # Preference hierarchy: optimal cost-to-performance for automated long-form publishing
+        preferred_patterns = [
+            "claude-haiku-4-5",
+            "claude-sonnet-4-6",
+            "claude-sonnet-4-5",
+            "claude-3-7-sonnet",
+            "claude-opus-4-6",
+            "claude-opus-4-5",
+        ]
+        for pattern in preferred_patterns:
+            for m_id in active_ids:
+                if pattern in m_id:
+                    print(f"Selected matched model: {m_id}")
+                    return m_id
+
+        # Fallback to any active text Claude model
+        for m_id in active_ids:
+            if "claude" in m_id and "embed" not in m_id:
+                print(f"Selected fallback active model: {m_id}")
+                return m_id
+
+        if active_ids:
+            return active_ids[0]
+    except Exception as e:
+        print(f"Warning: Could not list models dynamically ({e}). Using default.")
+
+    return "claude-sonnet-4-6"
+
+def call_claude(client, model_name, prompt, max_tokens=1500):
+    msg = client.messages.create(
+        model=model_name,
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return msg.content[0].text.strip()
 
 def main():
     api_key = os.getenv("ANTHROPIC_API_KEY")
@@ -55,7 +77,11 @@ def main():
     client = anthropic.Anthropic(api_key=api_key)
     date_str = datetime.now().strftime("%Y-%m-%d")
 
-    # Step 1: Generate Topic & Amazon Keyword
+    # Step 1: Detect available model dynamically
+    model_name = select_active_model(client)
+    print(f"Using model: {model_name}")
+
+    # Step 2: Generate Topic & Amazon Keyword
     calc_list_str = "\n".join([f"- {c['name']} ({c['url']})" for c in CALCULATORS])
     topic_prompt = f"""Generate a unique, high-intent home improvement or DIY cost analysis article title for 2026, paired with an Amazon product search keyword.
 Format strictly as: Title | Keyword
@@ -65,13 +91,13 @@ Site Calculators available for contextual reference:
 {calc_list_str}
 """
 
-    raw_topic = call_claude(client, topic_prompt, max_tokens=150)
+    raw_topic = call_claude(client, model_name, topic_prompt, max_tokens=150)
     title_raw = raw_topic.split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
     slug = slugify(title)
 
-    # Step 2: Generate Article Body with Contextual Links
+    # Step 3: Generate Article Body with Contextual Links
     content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
 
 Requirements:
@@ -83,11 +109,11 @@ Requirements:
 5. Conclude with an FAQ section (3 questions using <details> and <summary>).
 """
 
-    raw_body = call_claude(client, content_prompt, max_tokens=2500)
+    raw_body = call_claude(client, model_name, content_prompt, max_tokens=2500)
     article_body = re.sub(r'^```html\s*', '', raw_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
-    # Step 3: Full Page Assembly linked to styles.css
+    # Step 4: Full Page Assembly linked to styles.css
     full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +185,7 @@ Requirements:
         f.write(full_html)
     print(f"Created: {article_path}")
 
-    # Step 4: Update index.html with Deduplication
+    # Step 5: Update index.html with Deduplication
     if os.path.exists("index.html"):
         with open("index.html", "r", encoding="utf-8") as f:
             idx_content = f.read()
@@ -174,7 +200,7 @@ Requirements:
         else:
             print("Article already present in index.html; skipped duplicate injection.")
 
-    # Step 5: Automatically Update sitemap.xml with the New Article URL
+    # Step 6: Automatically Update sitemap.xml with the New Article URL
     if os.path.exists("sitemap.xml"):
         with open("sitemap.xml", "r", encoding="utf-8") as f:
             sitemap_content = f.read()
