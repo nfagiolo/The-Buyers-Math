@@ -23,7 +23,7 @@ SITE_DOMAIN = "thebuyersmath.com"
 SITE_URL = f"https://{SITE_DOMAIN}"
 AMAZON_TAG = "nfagiolo-20"
 CJ_PID = "101896838"
-CJ_SWITCHBOT_URL = "https://www.dpbolvw.net/click-101896838-15310710"
+CJ_SWITCHBOT_URL = "[https://www.dpbolvw.net/click-101896838-15310710](https://www.dpbolvw.net/click-101896838-15310710)"
 ADSENSE_CLIENT = "ca-pub-1199906473460957"
 GA4_ID = "G-V4GTQSCFW6"
 
@@ -323,7 +323,7 @@ TOOL_DEALS = [
         "deal_price": 129.98,
         "discount": "13% Off",
         "why_needed": "Essential for auditing heat pump amp draws, breaker panel load balancing, and diagnosing capacitor voltage safely without piercing live wire insulation.",
-        "affiliate_url": f"https://www.amazon.com/s?k=Klein+Tools+CL800+Clamp+Meter&tag={AMAZON_TAG}",
+        "affiliate_url": f"[https://www.amazon.com/s?k=Klein+Tools+CL800+Clamp+Meter&tag=](https://www.amazon.com/s?k=Klein+Tools+CL800+Clamp+Meter&tag=){AMAZON_TAG}",
         "badge": "Amazon Prime Deal",
         "network": "Amazon"
     },
@@ -345,7 +345,7 @@ TOOL_DEALS = [
         "deal_price": 189.99,
         "discount": "$39 Off Instant",
         "why_needed": "Pinpoint thermal bypasses, missing fiberglass wall insulation, cold air infiltration around window casings, and overheated electrical circuit breakers in real time.",
-        "affiliate_url": f"https://www.amazon.com/s?k=FLIR+ONE+Gen+3+Thermal+Camera&tag={AMAZON_TAG}",
+        "affiliate_url": f"[https://www.amazon.com/s?k=FLIR+ONE+Gen+3+Thermal+Camera&tag=](https://www.amazon.com/s?k=FLIR+ONE+Gen+3+Thermal+Camera&tag=){AMAZON_TAG}",
         "badge": "Energy Auditor Favorite",
         "network": "Amazon"
     },
@@ -356,7 +356,7 @@ TOOL_DEALS = [
         "deal_price": 139.00,
         "discount": "22% Off Limited Time",
         "why_needed": "Cleanly undercut door jambs for new flooring, plunge cut drywall for electrical boxes, and flush-cut corroded copper plumbing pipes in tight studs.",
-        "affiliate_url": f"https://www.amazon.com/s?k=Dewalt+DCS356D1+Oscillating+Tool&tag={AMAZON_TAG}",
+        "affiliate_url": f"[https://www.amazon.com/s?k=Dewalt+DCS356D1+Oscillating+Tool&tag=](https://www.amazon.com/s?k=Dewalt+DCS356D1+Oscillating+Tool&tag=){AMAZON_TAG}",
         "badge": "Contractor Standard",
         "network": "Amazon"
     },
@@ -367,7 +367,7 @@ TOOL_DEALS = [
         "deal_price": 119.00,
         "discount": "20% Off",
         "why_needed": "Crucial for establishing a dead-level baseline for kitchen wall cabinets, bathroom subway tile runs, and basement partition stud framing.",
-        "affiliate_url": f"https://www.amazon.com/s?k=Bosch+GLL+55+Cross+Line+Laser&tag={AMAZON_TAG}",
+        "affiliate_url": f"[https://www.amazon.com/s?k=Bosch+GLL+55+Cross+Line+Laser&tag=](https://www.amazon.com/s?k=Bosch+GLL+55+Cross+Line+Laser&tag=){AMAZON_TAG}",
         "badge": "Top Rated Layout Tool",
         "network": "Amazon"
     }
@@ -377,7 +377,6 @@ def get_deterministic_data(target_date):
     """Selects deterministic items for the day based on the day of the year."""
     day_of_year = target_date.timetuple().tm_yday
     
-    # 1. Commodities with daily realistic market variance
     commodities = []
     random.seed(day_of_year * 41)
     for c in COMMODITIES:
@@ -395,16 +394,9 @@ def get_deterministic_data(target_date):
             "calc_name": c["calc_name"]
         })
         
-    # 2. Quote Teardown
     quote = QUOTE_TEARDOWNS[day_of_year % len(QUOTE_TEARDOWNS)]
-    
-    # 3. Code Brief
     code = CODE_BRIEFS[(day_of_year + 1) % len(CODE_BRIEFS)]
-    
-    # 4. Rebate Alert
     rebate = REBATE_ALERTS[(day_of_year + 2) % len(REBATE_ALERTS)]
-    
-    # 5. Tool Spotlight
     tool = TOOL_DEALS[(day_of_year + 3) % len(TOOL_DEALS)]
     
     return commodities, quote, code, rebate, tool
@@ -416,7 +408,6 @@ def build_daily_report_html(target_date, commodities, quote, code, rebate, tool)
     page_title = f"Daily Homeowner & Contractor Intelligence — {date_str} | The Buyer's Math"
     meta_desc = f"Daily empirical home improvement market report for {date_str}: material spot prices, {quote['title']} quote teardown, building code requirements, energy tax credit alerts, and tool drops."
 
-    # Materials table rows
     comm_rows = ""
     for c in commodities:
         badge_color = "#16a34a" if not c["is_up"] else "#dc2626"
@@ -431,7 +422,6 @@ def build_daily_report_html(target_date, commodities, quote, code, rebate, tool)
         </tr>
         """
 
-    # Quote teardown materials
     mat_breakdown_rows = ""
     mat_sum = sum(cost for _, cost in quote["materials"])
     for item, cost in quote["materials"]:
@@ -448,7 +438,6 @@ def build_daily_report_html(target_date, commodities, quote, code, rebate, tool)
     labor_total = quote["labor_hours"] * quote["labor_rate"]
     direct_subtotal = mat_sum + labor_total + quote["permits_disposal"]
     op_dollars = int(direct_subtotal * (quote["overhead_profit_pct"] / 100.0))
-    calculated_total = direct_subtotal + op_dollars
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -474,13 +463,13 @@ def build_daily_report_html(target_date, commodities, quote, code, rebate, tool)
   <meta name="twitter:image" content="{SITE_URL}/og-image.svg">
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>
+  <script async src="[https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=](https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=){ADSENSE_CLIENT}" crossorigin="anonymous"></script>
 
   <!-- CJ Auto-Monetization Page Tag -->
-  <script src="https://www.anrdoezrs.net/am/{CJ_PID}/include/allCj/impressions/page/am.js"></script>
+  <script src="[https://www.anrdoezrs.net/am/](https://www.anrdoezrs.net/am/){CJ_PID}/include/allCj/impressions/page/am.js"></script>
 
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+  <script async src="[https://www.googletagmanager.com/gtag/js?id=](https://www.googletagmanager.com/gtag/js?id=){GA4_ID}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){{dataLayer.push(arguments);}}
@@ -491,7 +480,7 @@ def build_daily_report_html(target_date, commodities, quote, code, rebate, tool)
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {{
-    "@context": "https://schema.org",
+    "@context": "[https://schema.org](https://schema.org)",
     "@type": "Article",
     "headline": "{page_title}",
     "description": "{meta_desc}",
@@ -812,7 +801,7 @@ def build_homepage_widget(target_date, commodities, quote, tool, latest_slug):
         
     widget = f"""
 <!-- TBM DAILY INTELLIGENCE WIDGET -->
-<section id="tbm-daily-intel-widget" style="max-width: 1180px; margin: 2rem auto; padding: 0 1.25rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+<section id="tbm-daily-intel-widget" style="max-width: 1140px; margin: 0 auto 2.5rem auto; padding: 0 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
   <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); border-left: 6px solid #2563eb;">
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
       <div>
@@ -847,22 +836,31 @@ def build_homepage_widget(target_date, commodities, quote, tool, latest_slug):
     return widget
 
 def inject_homepage_widget(index_file_path, widget_code):
+    """Safely updates or injects the daily intelligence widget without regex or truncation."""
     if not os.path.exists(index_file_path):
         return
         
     with open(index_file_path, "r", encoding="utf-8") as f:
         content = f.read()
         
-    if "<!-- TBM DAILY INTELLIGENCE WIDGET -->" in content:
-        pattern = r"<!-- TBM DAILY INTELLIGENCE WIDGET -->.*?<!-- END TBM DAILY INTELLIGENCE WIDGET -->"
-        content = re.sub(pattern, widget_code.strip(), content, flags=re.DOTALL)
+    start_tag = "<!-- TBM DAILY INTELLIGENCE WIDGET -->"
+    end_tag = "<!-- END TBM DAILY INTELLIGENCE WIDGET -->"
+    
+    if start_tag in content and end_tag in content:
+        start_idx = content.find(start_tag)
+        end_idx = content.find(end_tag) + len(end_tag)
+        content = content[:start_idx] + widget_code.strip() + content[end_idx:]
+        print("Safely replaced existing daily intelligence widget in index.html.")
     else:
+        nl = chr(10)
         if "<main" in content:
-            idx = content.find(">", content.find("<main"))
-            content = content[:idx+1] + "\n" + widget_code + "\n" + content[idx+1:]
-        elif "<header" in content:
-            end_hdr = content.find("</header>")
-            content = content[:end_hdr+len("</header>")] + "\n" + widget_code + "\n" + content[end_hdr+len("</header>"):]
+            idx = content.find("<main")
+            content = content[:idx] + widget_code.strip() + nl + nl + "  " + content[idx:]
+            print("Injected daily intelligence widget before <main>.")
+        elif "</header>" in content:
+            idx = content.find("</header>") + len("</header>")
+            content = content[:idx] + nl + nl + widget_code.strip() + nl + content[idx:]
+            print("Injected daily intelligence widget after </header>.")
             
     with open(index_file_path, "w", encoding="utf-8") as f:
         f.write(content)
