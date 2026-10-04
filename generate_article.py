@@ -1,8 +1,11 @@
-# generate_article.py (v3: With Automated Sitemap Updates & Unified Design)
+# generate_article.py
+# Automated Daily Cost Guide Generator powered by Anthropic Claude
+# Automatically updates index.html and sitemap.xml with each publication.
+
 import os
 import re
 from datetime import datetime
-from google import genai
+import anthropic
 
 CALCULATORS = [
     {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "keywords": ["roof", "roofing", "shingles"]},
@@ -23,12 +26,12 @@ def slugify(text):
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
 def main():
-    api_key = os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        print("GEMINI_API_KEY not found.")
+        print("ANTHROPIC_API_KEY not found in environment.")
         return
 
-    client = genai.Client(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key)
     date_str = datetime.now().strftime("%Y-%m-%d")
 
     # Step 1: Generate Topic & Amazon Keyword
@@ -40,14 +43,20 @@ Example: How Much Does Attic Insulation Cost in 2026? | attic insulation baffles
 Site Calculators available for contextual reference:
 {calc_list_str}
 """
-    response = client.models.generate_content(model="gemini-2.5-flash", contents=topic_prompt)
-    title_raw = response.text.strip().split("|")
+
+    topic_msg = client.messages.create(
+        model="claude-3-5-haiku-latest",
+        max_tokens=150,
+        messages=[{"role": "user", "content": topic_prompt}]
+    )
+    title_raw = topic_msg.content[0].text.strip().split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
     slug = slugify(title)
 
     # Step 2: Generate Article Body with Contextual Links
     content_prompt = f"""Write an informative, authoritative 800-word homeowner's guide for: "{title}".
+
 Requirements:
 1. Provide realistic 2026 cost ranges (materials, labor, permits).
 2. Format cleanly using HTML: <h2>, <h3>, <p>, <ul>, <li>, and <table> if applicable. Do NOT include <html> or <body> tags.
@@ -56,8 +65,13 @@ Requirements:
 4. Provide a DIY vs. Professional breakdown.
 5. Conclude with an FAQ section (3 questions using <details> and <summary>).
 """
-    body_resp = client.models.generate_content(model="gemini-2.5-flash", contents=content_prompt)
-    article_body = body_resp.text.strip()
+
+    content_msg = client.messages.create(
+        model="claude-3-5-haiku-latest",
+        max_tokens=2500,
+        messages=[{"role": "user", "content": content_prompt}]
+    )
+    article_body = content_msg.content[0].text.strip()
     article_body = re.sub(r'^```html\s*', '', article_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
@@ -85,13 +99,13 @@ Requirements:
       </nav>
     </div>
   </header>
-
+  
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="../index.html">Home</a> &gt;
     <a href="../index.html#article-list">Guides</a> &gt;
     <span class="current">{title}</span>
   </nav>
-
+  
   <main class="container" style="max-width: 860px; margin: 2rem auto; padding: 0 1.5rem;">
     <article class="card" style="padding: 2.5rem;">
       <h1 style="font-size: 2.25rem; margin-top: 0; margin-bottom: 0.5rem;">{title}</h1>
@@ -108,7 +122,7 @@ Requirements:
       </div>
     </article>
   </main>
-
+  
   <footer class="site-footer">
     <div class="footer-nav">
       <a href="../index.html">Calculators</a> |
@@ -125,6 +139,7 @@ Requirements:
 </body>
 </html>
 """
+
     # Write article file
     os.makedirs("articles", exist_ok=True)
     article_path = f"articles/{date_str}-{slug}.html"
