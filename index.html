@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Buyer's Math | 16 Empirical Home Improvement Cost & ROI Calculators (2026)</title>
+  <title>The Buyer's Math | 16 Home Improvement Cost & ROI Calculators (2026)</title>
   <meta name="description" content="Transparent, empirical pricing models, Section 25C federal tax credits, and contractor estimate calculators for 16 major residential renovations.">
   <link rel="canonical" href="https://thebuyersmath.com/">
   <link rel="stylesheet" href="/styles.css">
-  
+
+  <!-- OpenGraph Social Meta Tags -->
+  <meta property="og:title" content="The Buyer's Math | 16 Home Improvement Cost & ROI Calculators">
+  <meta property="og:description" content="Instant cost estimators, HVAC payback comparisons, and project budget models for analytical homeowners.">
+  <meta property="og:url" content="https://thebuyersmath.com/">
+  <meta property="og:type" content="website">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
   <script>
@@ -16,10 +22,10 @@
     gtag('js', new Date());
     gtag('config', 'G-V4GTQSCFW6');
   </script>
-  
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-  
+
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -40,9 +46,89 @@
     ]
   }
   </script>
+
+  <style>
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      max-width: 1140px;
+      margin: 0 auto 1.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      padding: 0.5rem 1.15rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .filter-btn:hover {
+      border-color: #cbd5e1;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .filter-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15);
+    }
+    .search-container {
+      max-width: 480px;
+      margin: 0 auto 1.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .badge-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .badge-new {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #1e40af;
+      background: #dbeafe;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  
+
   <!-- Global Navigation Header -->
   <header class="site-header">
     <div class="header-inner">
@@ -56,7 +142,7 @@
       </nav>
     </div>
   </header>
-  
+
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="trust-pill">
@@ -69,7 +155,7 @@
   </section>
 
   <!-- Responsive AdSense Banner Unit -->
-  <div style="max-width: 1140px; margin: 0 auto 2.5rem auto; padding: 0 1.5rem; text-align: center; min-height: 100px;">
+  <div style="max-width: 1140px; margin: 0 auto 2rem auto; padding: 0 1.5rem; text-align: center; min-height: 100px;">
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-1199906473460957"
@@ -80,15 +166,28 @@
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </div>
-  
+
+  <!-- Interactive Search & Category Filter Controls -->
+  <div class="search-container">
+    <input type="text" id="calc-search" class="search-input" placeholder="Search calculators (e.g. heat pump, roof, fence)..." aria-label="Search calculators">
+  </div>
+
+  <div class="filter-bar" aria-label="Calculator Categories">
+    <button class="filter-btn active" data-filter="all">All Tools (16)</button>
+    <button class="filter-btn" data-filter="exterior">Roofing &amp; Exterior (6)</button>
+    <button class="filter-btn" data-filter="hvac">Heating &amp; Cooling (4)</button>
+    <button class="filter-btn" data-filter="remodel">Interior &amp; Remodeling (3)</button>
+    <button class="filter-btn" data-filter="energy">Power &amp; Renewables (3)</button>
+  </div>
+
   <!-- Core Calculator Suite (16 Tools) -->
   <main>
-    <section class="calculator-grid">
+    <section class="calculator-grid" id="calculators">
       
       <!-- 1. Roofing -->
-      <a href="/roofing-cost-calculator.html" class="calc-card">
+      <a href="/roofing-cost-calculator.html" class="calc-card" data-category="exterior">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
+          <span class="badge-category">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Roof Replacement Cost Estimator</h3>
           <p>Model roof replacement costs by house footprint, roof pitch slope, tear-off layers, and architectural shingle grades.</p>
         </div>
@@ -96,9 +195,9 @@
       </a>
 
       <!-- 2. HVAC -->
-      <a href="/hvac-roi-calculator.html" class="calc-card">
+      <a href="/hvac-roi-calculator.html" class="calc-card" data-category="hvac">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Energy</span>
+          <span class="badge-category">HVAC &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Heat Pump vs. Gas Furnace ROI</h3>
           <p>Compare equipment replacement costs, 25C federal tax credits, and annual operating costs across climate zones.</p>
         </div>
@@ -106,9 +205,9 @@
       </a>
 
       <!-- 3. Attic Insulation -->
-      <a href="/attic-insulation-calculator.html" class="calc-card" style="border: 1px solid #93c5fd; background: #f8fafc;">
+      <a href="/attic-insulation-calculator.html" class="calc-card" data-category="exterior" style="border: 1px solid #93c5fd; background: #f8fafc;">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
+          <span class="badge-new">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Attic Insulation &amp; Air Sealing ROI</h3>
           <p>Calculate retrofit costs to R-49/R-60, air sealing savings, and 30% Section 25C energy property tax credits.</p>
         </div>
@@ -116,9 +215,9 @@
       </a>
 
       <!-- 4. Bathroom Remodel -->
-      <a href="/bathroom-remodel-calculator.html" class="calc-card" style="border: 1px solid #93c5fd; background: #f8fafc;">
+      <a href="/bathroom-remodel-calculator.html" class="calc-card" data-category="remodel" style="border: 1px solid #93c5fd; background: #f8fafc;">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
+          <span class="badge-new">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Bathroom Remodel Cost Estimator</h3>
           <p>Estimate powder room, 5x8 guest bath, and luxury primary suite budgets across plumbing, tile, and fixture tiers.</p>
         </div>
@@ -126,9 +225,9 @@
       </a>
 
       <!-- 5. EV Home Charger -->
-      <a href="/ev-charger-calculator.html" class="calc-card" style="border: 1px solid #93c5fd; background: #f8fafc;">
+      <a href="/ev-charger-calculator.html" class="calc-card" data-category="energy" style="border: 1px solid #93c5fd; background: #f8fafc;">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
+          <span class="badge-new">New Tool</span>
           <h3 style="margin-top: 0.5rem;">EV Home Charger Installation</h3>
           <p>Model Level 2 48A charging hardware, 240V conduit distance, panel capacity, Section 30C credits, and fuel savings.</p>
         </div>
@@ -136,9 +235,9 @@
       </a>
 
       <!-- 6. Fence Cost -->
-      <a href="/fence-cost-calculator.html" class="calc-card" style="border: 1px solid #93c5fd; background: #f8fafc;">
+      <a href="/fence-cost-calculator.html" class="calc-card" data-category="exterior" style="border: 1px solid #93c5fd; background: #f8fafc;">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
+          <span class="badge-new">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Fence Cost &amp; Linear Footage</h3>
           <p>Calculate materials, post hole augering, concrete footings, and gate hardware across cedar, vinyl, and aluminum.</p>
         </div>
@@ -146,9 +245,9 @@
       </a>
 
       <!-- 7. Siding Replacement -->
-      <a href="/siding-cost-calculator.html" class="calc-card" style="border: 1px solid #93c5fd; background: #f8fafc;">
+      <a href="/siding-cost-calculator.html" class="calc-card" data-category="exterior" style="border: 1px solid #93c5fd; background: #f8fafc;">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
+          <span class="badge-new">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Home Siding Replacement Cost</h3>
           <p>Compare costs per square (100 sq ft) for insulated vinyl, James Hardie fiber cement, and engineered wood siding.</p>
         </div>
@@ -156,9 +255,9 @@
       </a>
 
       <!-- 8. Kitchen Remodel -->
-      <a href="/kitchen-remodel-calculator.html" class="calc-card">
+      <a href="/kitchen-remodel-calculator.html" class="calc-card" data-category="remodel">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior Remodeling</span>
+          <span class="badge-category">Interior Remodeling</span>
           <h3 style="margin-top: 0.5rem;">Kitchen Remodel Cost Estimator</h3>
           <p>Estimate kitchen renovation budgets across minor cosmetic, midrange, and major luxury reconfigurations.</p>
         </div>
@@ -166,9 +265,9 @@
       </a>
 
       <!-- 9. Solar Payback -->
-      <a href="/solar-payback-calculator.html" class="calc-card">
+      <a href="/solar-payback-calculator.html" class="calc-card" data-category="energy">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Renewables</span>
+          <span class="badge-category">Renewables</span>
           <h3 style="margin-top: 0.5rem;">Solar Panel Payback Timeline</h3>
           <p>Calculate system sizing, 30% residential clean energy credits, and utility bill offset payback years.</p>
         </div>
@@ -176,9 +275,9 @@
       </a>
 
       <!-- 10. Basement Finishing -->
-      <a href="/basement-cost-calculator.html" class="calc-card">
+      <a href="/basement-cost-calculator.html" class="calc-card" data-category="remodel">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior Remodeling</span>
+          <span class="badge-category">Interior Remodeling</span>
           <h3 style="margin-top: 0.5rem;">Basement Finishing Cost Estimator</h3>
           <p>Calculate basement finish costs including framing, moisture barriers, electrical, plumbing, and flooring.</p>
         </div>
@@ -186,9 +285,9 @@
       </a>
 
       <!-- 11. Driveway Paving -->
-      <a href="/driveway-paving-calculator.html" class="calc-card">
+      <a href="/driveway-paving-calculator.html" class="calc-card" data-category="exterior">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Exterior &amp; Hardscape</span>
+          <span class="badge-category">Exterior &amp; Hardscape</span>
           <h3 style="margin-top: 0.5rem;">Driveway Paving Calculator</h3>
           <p>Compare asphalt, concrete, and interlocking paver installation costs based on surface dimensions and prep.</p>
         </div>
@@ -196,9 +295,9 @@
       </a>
 
       <!-- 12. Window Replacement -->
-      <a href="/window-replacement-estimator.html" class="calc-card">
+      <a href="/window-replacement-estimator.html" class="calc-card" data-category="exterior">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
+          <span class="badge-category">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Window Replacement Estimator</h3>
           <p>Estimate vinyl, composite, wood, and fiberglass replacement window pricing including licensed installation.</p>
         </div>
@@ -206,9 +305,9 @@
       </a>
 
       <!-- 13. Mini-Split -->
-      <a href="/mini-split-calculator.html" class="calc-card">
+      <a href="/mini-split-calculator.html" class="calc-card" data-category="hvac">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Energy</span>
+          <span class="badge-category">HVAC &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Ductless Mini-Split Cost Estimator</h3>
           <p>Size single and multi-zone ductless heat pump installations for room additions, basements, and homes without ducts.</p>
         </div>
@@ -216,9 +315,9 @@
       </a>
 
       <!-- 14. Standby Generator -->
-      <a href="/generator-calculator.html" class="calc-card">
+      <a href="/generator-calculator.html" class="calc-card" data-category="energy">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Electrical &amp; Resilience</span>
+          <span class="badge-category">Electrical &amp; Resilience</span>
           <h3 style="margin-top: 0.5rem;">Backup Generator Sizing Guide</h3>
           <p>Size whole-home standby generators, calculate gas plumbing requirements, and estimate transfer switch costs.</p>
         </div>
@@ -226,9 +325,9 @@
       </a>
 
       <!-- 15. Water Heater -->
-      <a href="/water-heater-calculator.html" class="calc-card">
+      <a href="/water-heater-calculator.html" class="calc-card" data-category="hvac">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Plumbing &amp; Water</span>
+          <span class="badge-category">Plumbing &amp; Water</span>
           <h3 style="margin-top: 0.5rem;">Water Heater Replacement Cost</h3>
           <p>Compare standard tank, gas tankless, and hybrid heat pump water heaters, tax credits, and installation fees.</p>
         </div>
@@ -236,9 +335,9 @@
       </a>
 
       <!-- 16. Pool Pump -->
-      <a href="/pool.html" class="calc-card">
+      <a href="/pool.html" class="calc-card" data-category="exterior">
         <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Pool &amp; Outdoors</span>
+          <span class="badge-category">Pool &amp; Outdoors</span>
           <h3 style="margin-top: 0.5rem;">Pool Pump Energy Calculator</h3>
           <p>Calculate seasonal electricity cost savings from replacing a single-speed pump with a variable speed drive.</p>
         </div>
@@ -267,7 +366,7 @@
       </div>
     </section>
   </main>
-  
+
   <!-- Global Footer -->
   <footer class="site-footer">
     <div class="footer-nav">
@@ -283,5 +382,46 @@
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <!-- Client-Side Filter & Live Search Script -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('calc-search');
+    const calcCards = document.querySelectorAll('.calc-card');
+
+    let currentFilter = 'all';
+
+    function filterCalculators() {
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+      calcCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const cardText = card.innerText.toLowerCase();
+
+        const matchesCategory = (currentFilter === 'all' || category === currentFilter);
+        const matchesQuery = !query || cardText.includes(query);
+
+        if (matchesCategory && matchesQuery) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    if (filterButtons.length > 0) {
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter');
+          filterCalculators();
+        });
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterCalculators);
+    }
+  </script>
 </body>
 </html>
