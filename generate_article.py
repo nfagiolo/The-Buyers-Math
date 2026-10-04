@@ -1,6 +1,6 @@
 # generate_article.py
 # Automated Daily Cost Guide Generator powered by Anthropic Claude
-# Automatically updates index.html and sitemap.xml with each publication.
+# Features multi-model fallback to ensure seamless runs without deprecation 404s.
 
 import os
 import re
@@ -25,6 +25,27 @@ def slugify(text):
     text = text.lower()
     return re.sub(r'[\W_]+', '-', text).strip('-')
 
+def call_claude(client, prompt, max_tokens=1500):
+    """Tries primary models with automatic fallback to prevent 404 deprecation errors."""
+    candidate_models = [
+        "claude-3-5-sonnet-latest",
+        "claude-3-5-sonnet-20241022",
+        "claude-3-haiku-20240307"
+    ]
+    for model in candidate_models:
+        try:
+            print(f"Querying Claude model: {model}...")
+            msg = client.messages.create(
+                model=model,
+                max_tokens=max_tokens,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            return msg.content[0].text.strip()
+        except anthropic.NotFoundError:
+            print(f"Model {model} returned 404, falling back to next candidate...")
+            continue
+    raise RuntimeError("None of the specified Anthropic models were accessible.")
+
 def main():
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
@@ -44,12 +65,8 @@ Site Calculators available for contextual reference:
 {calc_list_str}
 """
 
-    topic_msg = client.messages.create(
-        model="claude-3-5-haiku-latest",
-        max_tokens=150,
-        messages=[{"role": "user", "content": topic_prompt}]
-    )
-    title_raw = topic_msg.content[0].text.strip().split("|")
+    raw_topic = call_claude(client, topic_prompt, max_tokens=150)
+    title_raw = raw_topic.split("|")
     title = title_raw[0].strip()
     amazon_kw = title_raw[1].strip() if len(title_raw) > 1 else "home improvement tools"
     slug = slugify(title)
@@ -66,13 +83,8 @@ Requirements:
 5. Conclude with an FAQ section (3 questions using <details> and <summary>).
 """
 
-    content_msg = client.messages.create(
-        model="claude-3-5-haiku-latest",
-        max_tokens=2500,
-        messages=[{"role": "user", "content": content_prompt}]
-    )
-    article_body = content_msg.content[0].text.strip()
-    article_body = re.sub(r'^```html\s*', '', article_body)
+    raw_body = call_claude(client, content_prompt, max_tokens=2500)
+    article_body = re.sub(r'^```html\s*', '', raw_body)
     article_body = re.sub(r'\s*```$', '', article_body)
 
     # Step 3: Full Page Assembly linked to styles.css
