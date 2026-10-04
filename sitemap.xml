@@ -1,158 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
   <url>
     <loc>https://thebuyersmath.com/</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- 16 Core Calculator Tools -->
   <url>
-    <loc>https://thebuyersmath.com/roofing-cost-calculator.html</loc>
+    <loc>https://thebuyersmath.com/intel/index.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/hvac-roi-calculator.html</loc>
+    <loc>https://thebuyersmath.com/roofing-cost-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/attic-insulation-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/bathroom-remodel-calculator.html</loc>
+    <loc>https://thebuyersmath.com/window-replacement-estimator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/ev-charger-calculator.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/fence-cost-calculator.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/siding-cost-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/kitchen-remodel-calculator.html</loc>
+    <loc>https://thebuyersmath.com/driveway-paving-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/fence-cost-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/hvac-roi-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/mini-split-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/water-heater-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/solar-payback-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/pool.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/bathroom-remodel-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/kitchen-remodel-calculator.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/basement-cost-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/driveway-paving-calculator.html</loc>
+    <loc>https://thebuyersmath.com/ev-charger-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/window-replacement-estimator.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/mini-split-calculator.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/generator-calculator.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/water-heater-calculator.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/pool.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- High-Intent Guides -->
-  <url>
-    <loc>https://thebuyersmath.com/guides/heat-pump-tax-credit-2026.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://thebuyersmath.com/guides/roof-replacement-cost-per-square-2026.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Legal & Compliance -->
   <url>
-    <loc>https://thebuyersmath.com/privacy-policy.html</loc>
+    <loc>https://thebuyersmath.com/guides/heat-pump-tax-credit-2026.html</loc>
     <lastmod>2026-10-04</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/terms.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/contact.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-cost-analysis-article-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html</loc>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-cost-breakdown-by-home-size.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs-budget-planning-for-modern-upgrades.html</loc>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-kitchen-remodel-budget-breakdown-cabinets-countertops-appliances.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -164,13 +139,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-roof-replacement-tax-credits-under-ira-section-25c-metal-vs-asphalt-shingle-net-cost-after-federal-rebates-state-utility-peak-demand-incentives.html</loc>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-fence-installation-cost-per-linear-foot-diy-property-line-marking-vs-licensed-surveyor-requirements-where-building-permits-trigger-master-tradesman-liability-thresholds.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -182,15 +151,117 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-fence-installation-cost-per-linear-foot-diy-property-line-marking-vs-licensed-surveyor-requirements-where-building-permits-trigger-master-tradesman-liability-thresholds.html</loc>
+    <loc>https://thebuyersmath.com/articles/2026-10-02-top-home-improvement-roi-projects-for-2026.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-cost-analysis-article-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thebuyersmath.com/intel/index.html</loc>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charging-circuit-diy-vs-electrician-breakdown.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-03-how-much-does-a-whole-house-generator-installation-cost-in-2026.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-cost-breakdown-by-home-size.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-09-30-ditra-heat-cost-guide.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs-budget-planning-for-modern-upgrades.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-09-30-top-home-improvement-roi-projects-for-2026.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-fiber-cement-vs-vinyl-siding-replacement-full-material-labor-cost-analysis-with-appraisal-impact-modeling-buyer-perception-roi-by-climate-zone.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-roof-replacement-tax-credits-under-ira-section-25c-metal-vs-asphalt-shingle-net-cost-after-federal-rebates-state-utility-peak-demand-incentives.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-costs-is-ductless-cooling-worth-the-investment.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/intel/2026-10-04-daily-market-intelligence.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/privacy-policy.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/terms.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/contact.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
