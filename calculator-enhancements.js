@@ -1,11 +1,11 @@
 /**
- * The Buyer's Math - Client-Side Calculator Enhancements (v3.2: Unified Monetization & Scroll-Safe)
+ * The Buyer's Math - Client-Side Calculator Enhancements (v3.3: Multi-Network Monetization)
  * 1. Regional Cost Multiplier (Low, National, High, Urban)
  * 2. LocalStorage Persistence (Auto-Save & Restore)
  * 3. Live URL Parameter Serialization & 1-Click "Copy Share Link"
  * 4. 1-Page Printable Contractor Estimate & Bid Sheet
- * 5. High-Intent Local Contractor Bid Matching Card (ZIP Intake)
- * 6. Curated Contractor-Grade Project Equipment Recommendations (Direct Tagged Links)
+ * 5. High-Intent Local Contractor Bid Matching Card (ZIP Intake & CJ Ready)
+ * 6. Curated Contractor-Grade Project Equipment Recommendations (Amazon Associates + CJ Affiliate Network)
  * 7. Mobile Non-Sticky Flow & Full Container Isolation
  */
 
@@ -15,6 +15,9 @@
   const STORAGE_KEY = 'tbm_calc_' + window.location.pathname.replace(/[^a-zA-Z0-9]/g, '_');
   const REGION_STORAGE_KEY = 'tbm_global_region_multiplier';
   const AMAZON_TAG = 'nfagiolo-20';
+  const CJ_PID = '101896838';
+  const CJ_SWITCHBOT_URL = 'https://www.dpbolvw.net/click-101896838-15310710';
+  const CJ_ANGI_AID = null; // Set to Angi AID once approved
 
   const REGIONS = [
     { factor: '1.00', label: 'National Average (Baseline 1.0x)' },
@@ -49,7 +52,7 @@
       category: "Insulation",
       items: [
         { title: "Great Stuff Pro Gasket & Foam Dispensing Gun Kit", price: "$64.95", rating: "4.7 ★ (3,100+ reviews)", query: "Great+Stuff+Pro+foam+dispensing+gun" },
-        { title: "3M Aura N95 Particulate Respirator Dust Masks (20-Pack)", price: "$22.98", rating: "4.8 ★ (14,000+ reviews)", query: "3M+Aura+N95+particulate+respirator" }
+        { title: "SwitchBot Indoor/Outdoor Thermo-Hygrometer (Attic Climate Monitor)", price: "$17.99", rating: "4.7 ★ (4,100+ reviews)", cj_url: CJ_SWITCHBOT_URL, merchant: "SwitchBot Official" }
       ]
     },
     "bathroom-remodel-calculator.html": {
@@ -91,7 +94,7 @@
       category: "Basement Remodeling",
       items: [
         { title: "WAYNE 3/4 HP Heavy-Duty Cast Iron Submersible Sump Pump", price: "$229.00", rating: "4.7 ★ (5,600+ reviews)", query: "WAYNE+3/4+HP+submersible+sump+pump" },
-        { title: "Klein Tools Pinless Moisture Meter for Concrete Subfloors", price: "$44.97", rating: "4.7 ★ (7,200+ reviews)", query: "Klein+Tools+pinless+moisture+meter" }
+        { title: "SwitchBot Smart Hygrometer & Moisture Sensor (Subfloor & Humidity)", price: "$14.99", rating: "4.6 ★ (3,200+ reviews)", cj_url: CJ_SWITCHBOT_URL, merchant: "SwitchBot Official" }
       ]
     },
     "driveway-paving-calculator.html": {
@@ -105,7 +108,7 @@
       category: "Windows",
       items: [
         { title: "OSI QUAD MAX Window & Door Expanding Foam Sealant (12-Pack)", price: "$98.50", rating: "4.8 ★ (1,800+ reviews)", query: "OSI+QUAD+MAX+window+foam+sealant" },
-        { title: "Tajima 10-Foot Professional Rough-Opening Measurement Tape", price: "$24.99", rating: "4.8 ★ (3,100+ reviews)", query: "Tajima+measuring+tape+professional" }
+        { title: "SwitchBot Solar-Powered Smart Curtain Automator (Thermal Glazing Control)", price: "$89.99", rating: "4.5 ★ (2,800+ reviews)", cj_url: CJ_SWITCHBOT_URL, merchant: "SwitchBot Official" }
       ]
     },
     "mini-split-calculator.html": {
@@ -133,7 +136,7 @@
       category: "Pool Maintenance",
       items: [
         { title: "Hayward Super Pump VS Variable-Speed 1.65 HP Energy Star Pump", price: "$1,099.00", rating: "4.6 ★ (1,900+ reviews)", query: "Hayward+Super+Pump+VS+variable+speed" },
-        { title: "Pentair Heavy-Duty In-Line Pool Filter Pressure Gauge", price: "$21.99", rating: "4.7 ★ (3,300+ reviews)", query: "Pentair+pool+filter+pressure+gauge" }
+        { title: "SwitchBot 15A Smart Plug with Live Energy & Wattage Monitor", price: "$14.99", rating: "4.6 ★ (1,800+ reviews)", cj_url: CJ_SWITCHBOT_URL, merchant: "SwitchBot Official" }
       ]
     }
   };
@@ -355,15 +358,20 @@
 
       let itemsHtml = '';
       gearData.items.forEach(item => {
-        const amazonUrl = `https://www.amazon.com/s?k=${item.query}&tag=${AMAZON_TAG}`;
+        const itemUrl = item.cj_url ? item.cj_url : `https://www.amazon.com/s?k=${item.query}&tag=${AMAZON_TAG}`;
+        const isCJ = !!item.cj_url;
+        const btnLabel = isCJ ? 'View on SwitchBot &rarr;' : 'Check Deal on Amazon &rarr;';
+        const btnBg = isCJ ? '#059669' : '#d97706';
+        const merchantBadge = isCJ ? (item.merchant || 'Direct Partner') : 'Amazon Associates';
+
         itemsHtml += `
           <div style="background: #ffffff; border: 1px solid #fef3c7; border-radius: 8px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.75rem;">
             <div style="flex: 1; min-width: 220px;">
               <h4 style="margin: 0 0 0.25rem 0; font-size: 0.975rem; color: #0f172a; line-height: 1.4;">${item.title}</h4>
-              <div style="font-size: 0.85rem; color: #d97706; font-weight: 600;">${item.rating} &bull; <span style="color: #0f172a; font-weight: 700;">${item.price}</span></div>
+              <div style="font-size: 0.85rem; color: #d97706; font-weight: 600;">${item.rating} &bull; <span style="color: #0f172a; font-weight: 700;">${item.price}</span> &bull; <span style="color: #64748b; font-size: 0.78rem;">${merchantBadge}</span></div>
             </div>
-            <a href="${amazonUrl}" target="_blank" rel="noopener noreferrer" style="background: #d97706; color: #ffffff; padding: 0.6rem 1.15rem; border-radius: 6px; font-weight: 700; font-size: 0.875rem; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.35rem;">
-              Check Deal on Amazon &rarr;
+            <a href="${itemUrl}" target="_blank" rel="noopener noreferrer" style="background: ${btnBg}; color: #ffffff; padding: 0.6rem 1.15rem; border-radius: 6px; font-weight: 700; font-size: 0.875rem; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.35rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+              ${btnLabel}
             </a>
           </div>
         `;
@@ -372,11 +380,11 @@
       gearBox.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
           <span style="background: #f59e0b; color: #ffffff; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em;">Contractor-Grade Equipment</span>
-          <span style="font-size: 0.75rem; color: #92400e; font-style: italic;">Amazon Associates Monitored Pricing</span>
+          <span style="font-size: 0.75rem; color: #92400e; font-style: italic;">Verified Retail &amp; Partner Pricing</span>
         </div>
         <h3 style="margin: 0.25rem 0 0.5rem 0; color: #92400e; font-size: 1.15rem;">Recommended Project Tools &amp; Materials</h3>
         <p style="margin: 0 0 0.5rem 0; color: #78350f; font-size: 0.9rem;">
-          Review live contractor pricing, consumer ratings, and verified specs on Amazon before ordering materials:
+          Review live contractor pricing, consumer ratings, and verified specs before ordering supplies:
         </p>
         ${itemsHtml}
       `;
@@ -393,7 +401,11 @@
         const zipEl = document.getElementById('tbm-zip-input');
         const zip = zipEl ? zipEl.value.trim() : '';
         if (zip.length === 5) {
-          const targetUrl = `https://www.angi.com/search?query=${encodeURIComponent(gearData.category)}&zipCode=${zip}`;
+          const directUrl = `https://www.angi.com/search?query=${encodeURIComponent(gearData.category)}&zipCode=${zip}`;
+          let targetUrl = directUrl;
+          if (CJ_ANGI_AID) {
+            targetUrl = `https://www.anrdoezrs.net/click-${CJ_PID}-${CJ_ANGI_AID}?url=${encodeURIComponent(directUrl)}`;
+          }
           window.open(targetUrl, '_blank', 'noopener,noreferrer');
         }
       });
