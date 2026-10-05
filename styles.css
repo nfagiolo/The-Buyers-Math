@@ -563,3 +563,200 @@ summary { font-weight: 600; cursor: pointer; color: var(--slate-900); }
     display: none !important;
   }
 }
+/* ==========================================================================
+   PHASE 1 ADDITIONS: NAVIGATION DROPDOWN, BID METER & LEAD COMPONENTS
+   ========================================================================== */
+
+/* 1. Header Navigation Dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-btn {
+  color: var(--slate-600);
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: inherit;
+}
+.nav-dropdown-btn:hover { color: var(--primary); }
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  min-width: 240px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0;
+  z-index: 150;
+}
+.nav-dropdown:hover .nav-dropdown-content { display: block; }
+.nav-dropdown-group {
+  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.nav-dropdown-content a {
+  display: block;
+  padding: 0.45rem 1rem;
+  color: var(--slate-700);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nav-dropdown-content a:hover {
+  background: var(--slate-50);
+  color: var(--primary);
+}
+
+/* 2. Visual 3-Tier Bid Meter */
+.bid-meter-container {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.bid-meter-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 1rem 0 0.5rem 0;
+}
+.bid-meter-segment.economy { background: #93c5fd; flex: 1; }
+.bid-meter-segment.fair { background: var(--emerald-500); flex: 2; }
+.bid-meter-segment.high { background: #f87171; flex: 1; }
+.bid-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+/* 3. Mobile Sticky Price Bar */
+.mobile-sticky-bar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile-sticky-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
+    padding: 0.85rem 1.25rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+  }
+  .mobile-sticky-total {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--slate-900);
+  }
+}
+
+/* 4. Market Pulse Newsletter Capture Box */
+.newsletter-card {
+  max-width: 1140px;
+  margin: 3rem auto;
+  padding: 2.25rem;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: var(--radius-lg);
+  color: #ffffff;
+  text-align: center;
+}
+.newsletter-card h3 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem 0;
+}
+.newsletter-card p {
+  color: #94a3b8;
+  max-width: 580px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 0.95rem;
+}
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.newsletter-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: inherit;
+}
+.newsletter-btn {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.newsletter-btn:hover { background: var(--primary-hover); }
+
+/* 5. Frequently Bundled Projects Grid */
+.bundled-projects-section {
+  margin: 2.5rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.bundled-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.bundled-card {
+  padding: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+.bundled-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-sm);
+}
+.bundled-card h4 {
+  margin: 0 0 0.35rem 0;
+  color: var(--slate-900);
+  font-size: 1.05rem;
+}
+.bundled-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--slate-600);
+}
