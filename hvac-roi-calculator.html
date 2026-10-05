@@ -4,11 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heat Pump vs. Gas Furnace ROI Calculator (2026) | The Buyer's Math</title>
-  <meta name="description" content="Compare upfront equipment costs, 25C federal tax credits, monthly utility bills, and 10-year cumulative payback between heat pumps and gas furnaces.">
+  <meta name="description" content="Compare upfront equipment costs, Section 25C federal tax credits ($2,000), utility bill offsets, and 10-year cumulative ROI between heat pumps and gas furnaces.">
   <link rel="canonical" href="https://thebuyersmath.com/hvac-roi-calculator.html">
   <link rel="stylesheet" href="/styles.css">
-  
-  <!-- Google tag (gtag.js) -->
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebuyersmath.com/hvac-roi-calculator.html">
+  <meta property="og:title" content="Heat Pump vs. Gas Furnace ROI Calculator (2026) | The Buyer's Math">
+  <meta property="og:description" content="Model equipment costs, IRA Section 25C tax credits ($2,000), monthly electric/gas utility rates, and 10-year breakeven.">
+  <meta property="og:image" content="https://thebuyersmath.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -16,43 +24,57 @@
     gtag('js', new Date());
     gtag('config', 'G-V4GTQSCFW6');
   </script>
-  
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-  
-  <!-- Schema.org JSON-LD Structured Data -->
+
+  <!-- CJ Affiliate Auto-Monetization -->
+  <script>
+    (function(a,b,c,d,e,f,g){a['CJDynamicTrack']=e;a[e]=a[e]||function(){
+    (a[e].q=a[e].q||[]).push(arguments)},a[e].l=1*new Date();f=b.createElement(c),
+    g=b.getElementsByTagName(c)[0];f.async=1;f.src=d;g.parentNode.insertBefore(f,g)
+    })(window,document,'script','//www.emjcd.com/dynamic/tracking.js','cj');
+    cj('init', { enterpriseId: '8090259', propertyId: '101896838' });
+  </script>
+
+  <!-- Schema.org JSON-LD (WebApplication + FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebApplication",
-        "@id": "https://thebuyersmath.com/hvac-roi-calculator.html#app",
         "name": "Heat Pump vs. Gas Furnace ROI Calculator",
         "url": "https://thebuyersmath.com/hvac-roi-calculator.html",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript",
-        "description": "Calculate lifetime heating and cooling costs comparing cold-climate heat pumps and high-efficiency gas furnaces."
+        "description": "Interactive residential HVAC cost comparison modeling upfront installation, Section 25C federal tax credits, utility fuel pricing, and 10-year cumulative savings."
       },
       {
         "@type": "FAQPage",
-        "@id": "https://thebuyersmath.com/hvac-roi-calculator.html#faq",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Do heat pumps save money compared to gas furnaces?",
+            "name": "Do heat pumps save money compared to high-efficiency gas furnaces?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, especially when factoring in federal Inflation Reduction Act (IRA Section 25C) tax credits of up to $2,000 and combined summer AC efficiency."
+              "text": "Yes, especially when factoring in the $2,000 federal Section 25C tax credit and combined heating and cooling efficiency (16+ SEER2 / 9+ HSPF2). In mild and moderate climate zones, annual utility savings range from $280 to $650 per year."
             }
           },
           {
             "@type": "Question",
-            "name": "Do heat pumps work in freezing northern climates?",
+            "name": "Do modern heat pumps work in freezing winter temperatures?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Modern cold-climate heat pumps (CCHPs) maintain 100% heating capacity down to -5°F and operate efficiently down to -15°F without auxiliary heat strips."
+              "text": "Modern cold-climate heat pumps (CCHPs) equipped with variable-speed inverter compressors maintain 100% rated heating capacity down to -5°F (-20°C) and provide efficient operation down to -15°F without needing costly auxiliary electric resistance strips."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the AHRI criteria to qualify for the $2,000 Section 25C credit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under the Inflation Reduction Act, ducted heat pumps in northern climates must meet CEE Tier 1 or Cold Climate specifications (SEER2 ≥ 15.2, EER2 ≥ 10.0, HSPF2 ≥ 8.1, and COP at 5°F ≥ 1.75). In southern climates, SEER2 ≥ 15.2 and HSPF2 ≥ 7.8 are required."
             }
           }
         ]
@@ -60,307 +82,406 @@
     ]
   }
   </script>
-  <!-- OpenGraph / Social Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Buyer's Math">
-  <meta property="og:url" content="https://thebuyersmath.com/hvac-roi-calculator.html">
-  <meta property="og:title" content="Heat Pump vs. Gas Furnace ROI Calculator (2026) | The Buyer's Math">
-  <meta property="og:description" content="Compare upfront installation costs, Section 25C federal tax credits, and annual operating costs between heat pumps and gas furnaces.">
-  <meta property="og:image" content="https://thebuyersmath.com/og-image.svg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Heat Pump vs. Gas Furnace ROI Calculator (2026) | The Buyer's Math">
-  <meta name="twitter:description" content="Compare upfront installation costs, Section 25C federal tax credits, and annual operating costs between heat pumps and gas furnaces.">
-  <meta name="twitter:image" content="https://thebuyersmath.com/og-image.svg">
 </head>
 <body>
-  
-  <!-- Global Navigation Header -->
+
+  <!-- Global Header -->
   <header class="site-header">
     <div class="header-inner">
       <a href="/" class="site-logo">The Buyer's Math</a>
       <nav class="site-nav">
-        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
-        <a href="/#article-list">Guides</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms &amp; Disclaimer</a>
-        <a href="/contact.html">Contact Us</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Calculators &#9662;</button>
+          <div class="nav-dropdown-content">
+            <div class="nav-dropdown-group">Building Envelope</div>
+            <a href="/roofing-cost-calculator.html">Roof Replacement</a>
+            <a href="/siding-cost-calculator.html">Home Siding</a>
+            <a href="/window-replacement-estimator.html">Window Replacement</a>
+            <a href="/fence-cost-calculator.html">Fence Installation</a>
+            <a href="/driveway-paving-calculator.html">Driveway Paving</a>
+            <div class="nav-dropdown-group">Mechanical &amp; Energy</div>
+            <a href="/hvac-roi-calculator.html" style="color: var(--primary); font-weight: 700;">Heat Pump vs. Gas Furnace</a>
+            <a href="/mini-split-calculator.html">Ductless Mini-Split</a>
+            <a href="/attic-insulation-calculator.html">Attic Insulation &amp; Air Sealing</a>
+            <a href="/water-heater-calculator.html">Water Heater Replacement</a>
+            <a href="/solar-payback-calculator.html">Solar Panel Payback</a>
+            <a href="/pool.html">Pool Pump Savings</a>
+            <div class="nav-dropdown-group">Interior &amp; Power</div>
+            <a href="/kitchen-remodel-calculator.html">Kitchen Remodel</a>
+            <a href="/bathroom-remodel-calculator.html">Bathroom Remodel</a>
+            <a href="/basement-cost-calculator.html">Basement Finishing</a>
+            <a href="/ev-charger-calculator.html">EV Home Charger</a>
+            <a href="/generator-calculator.html">Standby Generator</a>
+          </div>
+        </div>
+        <a href="/intel/index.html">Daily Intel</a>
+        <a href="/guides.html">Guides</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/contact.html">Contact</a>
       </nav>
     </div>
   </header>
-  
-  <!-- Breadcrumb Navigation -->
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a> &gt;
-    <a href="/">Calculators</a> &gt;
-    <span class="current">Heat Pump vs. Gas Furnace ROI</span>
-  </nav>
-  
-  <!-- Main Calculator -->
-  <main class="container">
-    <div class="calc-intro">
-      <h1>Heat Pump vs. Gas Furnace ROI Calculator</h1>
-      <p>Compare equipment replacement costs, 25C federal tax credits, and annual operating costs.</p>
-    </div>
-  
-    <div class="split-layout">
-      <!-- Input Controls -->
-      <div class="card">
-        <div class="form-group">
-          <label for="homeSize">
-            Home Conditioned Floor Area
-            <span class="val-badge" id="homeSizeVal">2,000 sq ft</span>
-          </label>
-          <input type="range" id="homeSize" min="1000" max="4500" step="100" value="2000">
-          <small style="color: #64748b;">Determines required HVAC tonnage (approx. 500-600 sq ft per ton).</small>
-        </div>
-  
-        <div class="form-group">
-          <label for="climateZone">Climate Region</label>
-          <select id="climateZone">
-            <option value="mild" selected>Mild / Southern (Zone 1-3)</option>
-            <option value="moderate">Moderate / Mid-Atlantic (Zone 4)</option>
-            <option value="cold">Cold / Northern (Zone 5-7)</option>
-          </select>
-        </div>
-  
-        <div class="form-group">
-          <label for="electricRate">Average Electric Rate ($ / kWh)</label>
-          <select id="electricRate">
-            <option value="0.12">Low ($0.12 / kWh)</option>
-            <option value="0.16" selected>National Average ($0.16 / kWh)</option>
-            <option value="0.24">High ($0.24 / kWh)</option>
-          </select>
-        </div>
-  
-        <div class="form-group">
-          <label for="gasRate">Natural Gas Rate ($ / Therm)</label>
-          <select id="gasRate">
-            <option value="1.10">Low ($1.10 / Therm)</option>
-            <option value="1.45" selected>National Average ($1.45 / Therm)</option>
-            <option value="2.10">High ($2.10 / Therm)</option>
-          </select>
-        </div>
-  
-        <!-- Monetization: Amazon Affiliate Box -->
-        <div class="curated-recommendation">
-          <p class="rec-title">Recommended HVAC Upgrade</p>
-          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Smart thermostats with dual-fuel staging maximize heat pump savings:</p>
-          <a href="https://www.amazon.com/s?k=smart+thermostat+heat+pump&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Smart Thermostats on Amazon</a>
-        </div>
-      </div>
-  
-      <!-- Receipt Card with Visual Payback Bar -->
-      <div class="card receipt">
-        <h2>Comparison Summary</h2>
-        <div class="receipt-row">
-          <span>Heat Pump Gross Cost:</span>
-          <span id="hpGross">$12,500</span>
-        </div>
-        <div class="receipt-row">
-          <span>IRA 25C Tax Credit:</span>
-          <span id="taxCredit" style="color:#4ade80;">-$2,000</span>
-        </div>
-        <div class="receipt-row">
-          <span>Heat Pump Net Installed:</span>
-          <strong id="hpNet">$10,500</strong>
-        </div>
-        <div class="receipt-row" style="margin-top:1rem; border-top:1px solid #334155; padding-top:0.75rem;">
-          <span>Gas Furnace + AC Net:</span>
-          <span id="gasNet">$9,800</span>
-        </div>
-        <div class="receipt-row total-row">
-          <span>Annual Operational Savings:</span>
-          <span id="annualSavings">$320 / yr</span>
-        </div>
-        <div class="receipt-row" style="color:#fbbf24; font-weight:600; margin-top:0.5rem;">
-          <span>Estimated Break-even:</span>
-          <span id="paybackTime">2.2 Years</span>
-        </div>
-  
-        <!-- Visual ROI Payback Bar -->
-        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;">
-            <span>10-Year Payback Progress</span>
-            <strong id="paybackPercent" style="color: #38bdf8;">22%</strong>
-          </div>
-          <div style="width: 100%; height: 12px; background: #1e293b; border-radius: 6px; overflow: hidden;">
-            <div id="paybackBar" style="width: 22%; height: 100%; background: linear-gradient(90deg, #0284c7, #38bdf8); transition: width 0.3s ease;"></div>
-          </div>
-          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">
-            <span>Install</span>
-            <span>Break-even</span>
-            <span>10-Yr Profit</span>
-          </div>
-        </div>
-  
-        <p class="receipt-disclaimer">
-          * Modeled on 2026 equipment pricing and Section 25C federal energy property credits.
-        </p>
-      </div>
-    </div>
-  </main>
-  
-  <!-- Responsive In-Page AdSense Unit -->
-  <div style="max-width: 1140px; margin: 2rem auto; text-align: center; min-height: 100px;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1199906473460957"
-         data-ad-slot="responsive"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <a href="/">Home</a> &gt; <a href="/#calculators">Calculators</a> &gt; <span class="current">Heat Pump vs. Gas Furnace ROI</span>
   </div>
 
-  <!-- SEO Supporting Content & FAQs -->
-  <section class="seo-guide-section">
-    <h2>Heat Pump vs. Gas Furnace: 2026 Buying Guide</h2>
-    <p>Choosing between an electric heat pump and a high-efficiency gas furnace involves balancing upfront installation expenses against long-term fuel costs, dual heating/cooling capabilities, and available federal incentives.</p>
-  
-    <h3>Federal Incentives Under Section 25C</h3>
-    <p>Qualified heat pumps that meet Consortium for Energy Efficiency (CEE) highest tier specifications are eligible for a 30% federal tax credit up to $2,000 annually, significantly offsetting the upfront equipment cost. For full filing criteria and qualifying models, read our <a href="/guides/heat-pump-tax-credit-2026.html" style="font-weight: 600; color: #2563eb; text-decoration: underline;">2026 Heat Pump Tax Credit Guide</a>.</p>
-  
-    <h3>Frequently Asked Questions</h3>
-    <details>
-      <summary>Can a heat pump replace both my furnace and central air conditioner?</summary>
-      <p>Yes. A heat pump functions as an air conditioner in the summer by extracting indoor heat, and reverses in winter to extract heat from outside air, eliminating the need for a separate AC condenser.</p>
-    </details>
-    <details>
-      <summary>How long do modern heat pumps last?</summary>
-      <p>With annual maintenance and regular filter changes, modern inverter-driven heat pumps typically have a service life of 15 to 20 years.</p>
-    </details>
-  </section>
-
-  <!-- Contractor Vetting Checklist -->
-  <section class="contractor-checklist-card" style="max-width: 1140px; margin: 2.5rem auto; padding: 2rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-    <h3 style="font-size: 1.35rem; margin-top: 0; color: #0f172a;">📋 Contractor Vetting Checklist: 4 Questions to Ask Before Signing</h3>
-    <p style="color: #64748b; font-size: 0.95rem; margin-top: 0.25rem;">Protect your home and budget by verifying these critical technical standards with prospective HVAC contractors:</p>
-    <div class="checklist-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
-      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
-        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Require Manual J Load Calculation</strong>
-        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Never accept rule-of-thumb square footage sizing. Insist on a formal Manual J calculation to prevent oversized equipment short-cycling.</p>
-      </div>
-      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
-        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Inspect Ductwork Static Pressure</strong>
-        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Ensure existing supply and return ducts can handle heat pump airflow (typically 400 CFM per ton).</p>
-      </div>
-      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
-        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Verify Section 25C AHRI Certificate</strong>
-        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Obtain the AHRI reference certificate proving the exact condenser and air handler combination qualifies for the $2,000 tax credit.</p>
-      </div>
-      <div class="checklist-item" style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.25rem; border-radius: 8px;">
-        <strong style="color: #0f172a; display: block; margin-bottom: 0.35rem;">✓ Cold-Climate COP at 5°F</strong>
-        <p style="margin: 0; font-size: 0.9rem; color: #475569;">Verify the heat pump maintains a Coefficient of Performance (COP) > 1.75 at 5°F to minimize electric auxiliary heat strip usage.</p>
-      </div>
+  <main style="max-width: 1140px; margin: 1.5rem auto 3rem auto; padding: 0 1.5rem;">
+    
+    <!-- Title Header -->
+    <div style="margin-bottom: 2rem;">
+      <span class="badge-category" style="font-size: 0.8rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Energy</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.5rem 0 0.5rem 0;">Heat Pump vs. Gas Furnace ROI Calculator</h1>
+      <p style="color: var(--slate-600); font-size: 1.1rem; max-width: 780px; margin: 0;">
+        Compare equipment replacement bids, 2026 Inflation Reduction Act 25C tax credits ($2,000 cap), utility fuel rates, and 10-year cumulative payback.
+      </p>
     </div>
-  </section>
 
-  <!-- Related Calculators Section -->
-  <section class="related-calculators-section" style="max-width: 1140px; margin: 2.5rem auto 4rem auto; padding: 0 1.5rem;">
-    <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem; color: #0f172a;">Explore Related Home Improvement Calculators</h3>
-    <div class="related-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-      <a href="/mini-split-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
-          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Mini-Split AC Cost Estimator</h4>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Zone specific rooms or additions without extensive ductwork.</p>
+    <!-- Interactive Calculator Card -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+      
+      <!-- Left Column: Inputs -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">1. Home &amp; Utility Inputs</h3>
+        
+        <!-- Conditioned Area Input -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <label for="homeSizeInput" style="font-weight: 600; color: var(--slate-800); font-size: 0.95rem;">Conditioned Floor Area</label>
+            <span id="homeSizeVal" style="font-weight: 700; color: var(--primary);">2,000 sq ft</span>
+          </div>
+          <input type="range" id="homeSizeInput" min="1000" max="4500" step="100" value="2000" style="width: 100%; accent-color: var(--primary);">
+          <small id="tonnageRecommendation" style="color: var(--slate-500); font-size: 0.8rem; display: block; margin-top: 0.25rem;">Estimated Sizing: 3.5 Tons (approx. 500-600 sq ft/ton)</small>
         </div>
-        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
-      </a>
 
-      <a href="/water-heater-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
-          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Water Heater Replacement Cost</h4>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Pair with a high-efficiency hybrid heat pump water heater for another $2,000 credit.</p>
+        <!-- Climate Region -->
+        <div style="margin-bottom: 1.5rem;">
+          <label for="climateSelect" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Climate Region (Heating Demand)</label>
+          <select id="climateSelect" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.95rem; background: #ffffff;">
+            <option value="mild" selected>Mild / Southern (Zone 1-3) — Cooling Dominant</option>
+            <option value="moderate">Moderate / Mid-Atlantic (Zone 4) — Balanced Heating &amp; Cooling</option>
+            <option value="cold">Cold / Northern (Zone 5-7) — Cold-Climate Inverter Required</option>
+          </select>
         </div>
-        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
-      </a>
 
-      <a href="/generator-calculator.html" class="calc-card" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Related Tool</span>
-          <h4 style="font-size: 1.15rem; margin: 0.5rem 0 0.25rem 0; color: #0f172a;">Backup Generator Sizing Guide</h4>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Protect critical electric heating loads and compressors during winter outages.</p>
+        <!-- Electricity Rate -->
+        <div style="margin-bottom: 1.5rem;">
+          <label for="electricRateSelect" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Average Electric Rate ($ / kWh)</label>
+          <select id="electricRateSelect" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.95rem; background: #ffffff;">
+            <option value="0.12">Low ($0.12 / kWh)</option>
+            <option value="0.16" selected>National Average ($0.16 / kWh)</option>
+            <option value="0.22">High / Northeast / CA ($0.22 / kWh)</option>
+            <option value="0.28">Peak Utility ($0.28 / kWh)</option>
+          </select>
         </div>
-        <span style="font-size: 0.9rem; font-weight: 600; color: #2563eb;">Open Calculator &rarr;</span>
-      </a>
+
+        <!-- Natural Gas Rate -->
+        <div style="margin-bottom: 1.5rem;">
+          <label for="gasRateSelect" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Natural Gas Rate ($ / Therm)</label>
+          <select id="gasRateSelect" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.95rem; background: #ffffff;">
+            <option value="1.10">Low ($1.10 / Therm)</option>
+            <option value="1.45" selected>National Average ($1.45 / Therm)</option>
+            <option value="1.95">High ($1.95 / Therm)</option>
+            <option value="2.40">Elevated Regional ($2.40 / Therm)</option>
+          </select>
+        </div>
+
+        <!-- Print Action -->
+        <button type="button" onclick="window.print()" style="width: 100%; padding: 0.75rem; background: var(--slate-100); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; color: var(--slate-700); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          🖨️ Print HVAC Bid Audit Sheet
+        </button>
+      </div>
+
+      <!-- Right Column: Results & Comparison -->
+      <div id="resultsCard" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">2. Head-to-Head Equipment Financials</h3>
+        
+        <!-- Heat Pump Breakdown Box -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="color: var(--slate-900); font-size: 1.05rem;">Inverter Heat Pump (Heating + Cooling)</strong>
+            <span style="font-size: 0.75rem; background: #ecfdf5; color: #059669; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px;">IRA 25C ELIGIBLE</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.35rem;">
+            <span>Gross Equipment &amp; Installation:</span>
+            <span id="hpGrossText" style="font-weight: 600; color: var(--slate-800);">$12,800</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #059669; margin-bottom: 0.5rem;">
+            <span>Section 25C Federal Tax Credit:</span>
+            <span id="hpCreditText" style="font-weight: 700;">-$2,000</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 1.1rem; border-top: 1px solid #cbd5e1; padding-top: 0.5rem;">
+            <strong>Net Heat Pump Outlay:</strong>
+            <strong id="hpNetText" style="color: var(--primary);">$10,800</strong>
+          </div>
+        </div>
+
+        <!-- Gas Furnace + AC Breakdown Box -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="color: var(--slate-900); font-size: 1.05rem;">Gas Furnace (96% AFUE) + Central AC</strong>
+            <span style="font-size: 0.75rem; background: #f1f5f9; color: var(--slate-600); font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px;">TRADITIONAL DUAL SYSTEM</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.5rem;">
+            <span>Combined Equipment &amp; Install:</span>
+            <span id="gasNetText" style="font-weight: 600; color: var(--slate-800);">$10,200</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-500); border-top: 1px solid #cbd5e1; padding-top: 0.5rem;">
+            <span>Upfront Capital Difference:</span>
+            <span id="upfrontDiffText" style="font-weight: 600; color: var(--slate-800);">+$600 for Heat Pump</span>
+          </div>
+        </div>
+
+        <!-- Annual Savings & Breakeven Banner -->
+        <div style="background: var(--slate-900); color: #ffffff; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #38bdf8; font-weight: 700;">Annual Operational Fuel Savings</div>
+          <div id="annualSavingsText" style="font-size: 2.25rem; font-weight: 800; color: #10b981; margin: 0.25rem 0;">$340 / year</div>
+          <div id="paybackYearsText" style="font-size: 0.95rem; color: #e2e8f0; font-weight: 600;">Estimated Breakeven: 1.8 Years</div>
+        </div>
+
+        <!-- 3-Tier Bid Meter -->
+        <div class="bid-meter-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.85rem; color: var(--slate-800); text-transform: uppercase;">Heat Pump Bid Audit Meter</span>
+            <span style="font-size: 0.75rem; color: var(--slate-500);">3-Ton Inverter Benchmarks</span>
+          </div>
+          <div class="bid-meter-bar">
+            <div class="bid-meter-segment economy" title="Economy single-stage equipment"></div>
+            <div class="bid-meter-segment fair" title="Fair Market Inverter System Range"></div>
+            <div class="bid-meter-segment high" title="Overcharge / High Sales Commission Zone"></div>
+          </div>
+          <div class="bid-meter-labels">
+            <span id="lowBidLabel">Budget: &lt; $9,800</span>
+            <span id="fairBidLabel" style="color: var(--emerald-600); font-weight: 700;">Fair: $10,800 – $13,500</span>
+            <span id="highBidLabel" style="color: #dc2626;">Red Flag: &gt; $15,200</span>
+          </div>
+        </div>
+
+        <!-- Contractor Lead Matching Card -->
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #1e40af; letter-spacing: 0.05em;">Verify Heat Pump Contractors</div>
+          <h4 style="margin: 0.25rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.1rem;">Find Certified Inverter HVAC Installers</h4>
+          <p style="margin: 0 0 1rem 0; font-size: 0.85rem; color: #334155; line-height: 1.4;">
+            Ensure your contractor performs Manual J load calculations and provides AHRI certificates for the $2,000 tax credit:
+          </p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="text" id="zipInput" placeholder="Enter ZIP Code" style="padding: 0.65rem 0.85rem; border: 1px solid #93c5fd; border-radius: 6px; font-size: 0.9rem; width: 140px; background: #ffffff;" maxlength="5">
+            <a id="leadMatchLink" href="https://www.angi.com/companylist/search.htm?query=HVAC" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;">
+              Compare HVAC Bids &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </section>
-  
+
+    <!-- Frequently Bundled Projects Cross-Promotion -->
+    <section class="bundled-projects-section">
+      <h3 style="margin: 0; font-size: 1.35rem; color: var(--slate-900);">Frequently Bundled HVAC &amp; Electrical Projects</h3>
+      <p style="color: var(--slate-600); font-size: 0.95rem; margin: 0.25rem 0 0 0;">Homeowners maximize energy tax credits and utility rebates by pairing these upgrades with an HVAC modernization:</p>
+      
+      <div class="bundled-grid">
+        <a href="/water-heater-calculator.html" class="bundled-card">
+          <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Water &amp; Plumbing</span>
+          <h4>Water Heater Replacement Cost</h4>
+          <p>Pair with a hybrid heat pump water heater to claim an additional 30% ($2,000 max) Section 25C federal energy tax credit.</p>
+        </a>
+
+        <a href="/mini-split-calculator.html" class="bundled-card">
+          <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">HVAC &amp; Energy</span>
+          <h4>Ductless Mini-Split Cost Estimator</h4>
+          <p>Size individual inverter wall heads for room additions, home offices, and second stories that central ducts under-cool.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Comprehensive Editorial Guide & Contractor Vetting Checklist -->
+    <section style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+      <h2>Understanding Your Heat Pump vs. Gas Furnace Quote</h2>
+      <p style="color: var(--slate-600); line-height: 1.7;">
+        HVAC replacement is typically a 15- to 20-year capital decision. In 2026, dual-fuel and cold-climate heat pump systems have dramatically shifted the economics away from fossil fuel gas furnaces due to federal Inflation Reduction Act incentives and advanced inverter modulation.
+      </p>
+
+      <h3>5 HVAC Contractor Red Flags to Watch For</h3>
+      <ul style="color: var(--slate-700); line-height: 1.7; padding-left: 1.25rem;">
+        <li><strong>Sizing by Rule of Thumb Instead of Manual J:</strong> Contractors who estimate tonnage solely by square footage (e.g. "500 sq ft per ton") frequently oversize systems, leading to short-cycling, poor summer humidity removal, and premature compressor failure.</li>
+        <li><strong>Failing to Provide AHRI Certificate for Tax Credits:</strong> To claim the $2,000 Section 25C credit on IRS Form 5695, your installed condenser and air handler combination must have a verified AHRI certificate meeting CEE Tier 1 or Cold Climate standards.</li>
+        <li><strong>Reusing Obsolete Refrigerant Lines Without Flushing:</strong> If upgrading from an old R-410A or R-22 system to modern equipment, linesets must be properly flushed with solvent or replaced to prevent oil contamination and pinhole leaks.</li>
+        <li><strong>Unquoted Electrical Panel Upgrades:</strong> A standard electric heat pump condenser and air handler typically require a dedicated 30A or 50A breaker. Verify that your electrical panel has sufficient physical breaker spaces and bus rating.</li>
+        <li><strong>Refusing to Install a Dual-Fuel Thermostat:</strong> In hybrid setups (heat pump paired with existing gas furnace backup), an intelligent dual-fuel thermostat is mandatory to configure the economic thermal balance point.</li>
+      </ul>
+
+      <!-- FAQs -->
+      <h3 style="margin-top: 2.5rem;">Frequently Asked Questions</h3>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">Can a heat pump replace both my furnace and central air conditioner?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">Yes. A heat pump acts as an air conditioner in summer by extracting indoor heat, and reverses in winter to extract heat from outside air, eliminating the need for a separate AC condenser.</p>
+      </div>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">How long do modern inverter heat pumps last?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">With annual maintenance and regular seasonal filter changes, modern variable-speed inverter systems typically deliver a service life of 15 to 20 years.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile Sticky Bar -->
+  <div class="mobile-sticky-bar">
+    <div>
+      <div style="font-size: 0.75rem; color: var(--slate-500); text-transform: uppercase;">Net Heat Pump Outlay</div>
+      <div id="stickyTotal" class="mobile-sticky-total">$10,800</div>
+    </div>
+    <button type="button" onclick="document.getElementById('resultsCard').scrollIntoView({behavior:'smooth'})" style="background: var(--primary); color: #ffffff; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem;">
+      Review ROI &rarr;
+    </button>
+  </div>
+
   <!-- Global Footer -->
   <footer class="site-footer">
     <div class="footer-nav">
       <a href="/">Calculators</a> |
-      <a href="/#article-list">Guides</a> |
+      <a href="/intel/index.html">Daily Intel</a> |
+      <a href="/guides.html">Guides</a> |
       <a href="/privacy-policy.html">Privacy Policy</a> |
       <a href="/terms.html">Terms &amp; Disclaimer</a> |
       <a href="/contact.html">Contact Us</a>
     </div>
     <p class="footer-disclosure">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only. Commission Junction Affiliate PID: 101896838.
     </p>
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
-  
+
+  <!-- Calculator Engine Script -->
   <script>
-    const homeSize = document.getElementById('homeSize');
-    const homeSizeVal = document.getElementById('homeSizeVal');
-    const climateZone = document.getElementById('climateZone');
-    const electricRate = document.getElementById('electricRate');
-    const gasRate = document.getElementById('gasRate');
-  
-    const hpGross = document.getElementById('hpGross');
-    const hpNet = document.getElementById('hpNet');
-    const gasNet = document.getElementById('gasNet');
-    const annualSavings = document.getElementById('annualSavings');
-    const paybackTime = document.getElementById('paybackTime');
-    const paybackPercent = document.getElementById('paybackPercent');
-    const paybackBar = document.getElementById('paybackBar');
-  
-    function updateHVAC() {
-      const sqft = parseFloat(homeSize.value);
-      homeSizeVal.textContent = sqft.toLocaleString() + ' sq ft';
-  
-      const tonnage = Math.max(2, Math.min(5, Math.ceil(sqft / 600)));
-      const baseHpCost = 7000 + (tonnage * 1100);
-      const netHp = baseHpCost - 2000; // $2,000 IRA 25C Credit
-      const netGas = 6500 + (tonnage * 750);
-  
-      hpGross.textContent = '$' + baseHpCost.toLocaleString();
-      hpNet.textContent = '$' + netHp.toLocaleString();
-      gasNet.textContent = '$' + netGas.toLocaleString();
-  
-      const costDiff = netHp - netGas;
-      let savings = 200 + (tonnage * 40);
-      if (climateZone.value === 'cold') savings += 80;
-      annualSavings.textContent = '$' + Math.round(savings) + ' / yr';
-  
-      if (costDiff <= 0) {
-        paybackTime.textContent = 'Immediate (Lower Net Cost)';
-        paybackPercent.textContent = '100% (Instant ROI)';
-        paybackBar.style.width = '100%';
-      } else {
-        const years = Math.min(10, Math.max(0.5, costDiff / savings));
-        paybackTime.textContent = years.toFixed(1) + ' Years';
-        const percent = Math.min(100, Math.round((years / 10) * 100));
-        paybackPercent.textContent = years.toFixed(1) + ' yrs (' + percent + '% of 10-yr cycle)';
-        paybackBar.style.width = Math.min(100, Math.max(10, percent)) + '%';
+    document.addEventListener('DOMContentLoaded', () => {
+      const homeSizeInput = document.getElementById('homeSizeInput');
+      const homeSizeVal = document.getElementById('homeSizeVal');
+      const tonnageRecommendation = document.getElementById('tonnageRecommendation');
+      const climateSelect = document.getElementById('climateSelect');
+      const electricRateSelect = document.getElementById('electricRateSelect');
+      const gasRateSelect = document.getElementById('gasRateSelect');
+      const zipInput = document.getElementById('zipInput');
+      const leadMatchLink = document.getElementById('leadMatchLink');
+
+      const hpGrossText = document.getElementById('hpGrossText');
+      const hpCreditText = document.getElementById('hpCreditText');
+      const hpNetText = document.getElementById('hpNetText');
+      const gasNetText = document.getElementById('gasNetText');
+      const upfrontDiffText = document.getElementById('upfrontDiffText');
+      const annualSavingsText = document.getElementById('annualSavingsText');
+      const paybackYearsText = document.getElementById('paybackYearsText');
+      const stickyTotal = document.getElementById('stickyTotal');
+
+      const lowBidLabel = document.getElementById('lowBidLabel');
+      const fairBidLabel = document.getElementById('fairBidLabel');
+      const highBidLabel = document.getElementById('highBidLabel');
+
+      function calculate() {
+        const sqft = parseFloat(homeSizeInput.value);
+        homeSizeVal.textContent = sqft.toLocaleString() + ' sq ft';
+
+        // Sizing in Tons
+        let tonnage = 2.0;
+        if (sqft >= 3500) tonnage = 5.0;
+        else if (sqft >= 2800) tonnage = 4.0;
+        else if (sqft >= 2200) tonnage = 3.5;
+        else if (sqft >= 1700) tonnage = 3.0;
+        else if (sqft >= 1300) tonnage = 2.5;
+
+        tonnageRecommendation.textContent = `Estimated Sizing: ${tonnage.toFixed(1)} Tons (approx. 500-600 sq ft/ton)`;
+
+        const climate = climateSelect.value;
+        const electricRate = parseFloat(electricRateSelect.value);
+        const gasRate = parseFloat(gasRateSelect.value);
+
+        // Equipment Base Costs
+        let hpGross = 8500 + (tonnage * 1250);
+        let gasGross = 7000 + (tonnage * 950);
+
+        if (climate === 'cold') {
+          hpGross += 1400; // Cold-climate inverter premium
+        } else if (climate === 'mild') {
+          gasGross -= 400; // Lower heating BTU requirement
+        }
+
+        // Section 25C Tax Credit (30% up to $2,000 max)
+        const hpCredit = Math.min(2000, Math.round(hpGross * 0.30));
+        const hpNet = hpGross - hpCredit;
+
+        // Operating Costs Calculation
+        // Annual MMBtu heating + cooling demand modeled on climate
+        let heatingMMBtu = 40;
+        let coolingHours = 1100;
+        if (climate === 'cold') {
+          heatingMMBtu = 65;
+          coolingHours = 600;
+        } else if (climate === 'mild') {
+          heatingMMBtu = 22;
+          coolingHours = 1600;
+        }
+
+        // Annual costs
+        // Heat pump: COP ~ 3.2 avg heating, SEER2 ~ 16.5 cooling
+        const hpHeatingKwh = (heatingMMBtu * 293.07) / 3.2;
+        const hpCoolingKwh = (tonnage * 12000 * coolingHours) / (16.5 * 1000);
+        const hpAnnualUtility = Math.round((hpHeatingKwh + hpCoolingKwh) * electricRate);
+
+        // Gas furnace: 96% AFUE + standard 14.5 SEER2 AC
+        const gasTherms = heatingMMBtu / 0.096;
+        const acCoolingKwh = (tonnage * 12000 * coolingHours) / (14.5 * 1000);
+        const gasAnnualUtility = Math.round((gasTherms * gasRate) + (acCoolingKwh * electricRate));
+
+        const annualSavings = Math.max(120, gasAnnualUtility - hpAnnualUtility);
+        const upfrontDiff = hpNet - gasGross;
+        const breakevenYears = upfrontDiff > 0 ? (upfrontDiff / annualSavings).toFixed(1) : "Immediate (Net Cheaper Upfront)";
+
+        // 3-Tier Bid Meter for Heat Pump
+        const economyThreshold = Math.round(hpGross * 0.85);
+        const fairMin = Math.round(hpGross * 0.92);
+        const fairMax = Math.round(hpGross * 1.10);
+        const redFlagThreshold = Math.round(hpGross * 1.20);
+
+        // DOM Updates
+        hpGrossText.textContent = `$${Math.round(hpGross).toLocaleString()}`;
+        hpCreditText.textContent = `-$${hpCredit.toLocaleString()}`;
+        hpNetText.textContent = `$${Math.round(hpNet).toLocaleString()}`;
+        gasNetText.textContent = `$${Math.round(gasGross).toLocaleString()}`;
+
+        if (upfrontDiff > 0) {
+          upfrontDiffText.textContent = `+$${Math.round(upfrontDiff).toLocaleString()} for Heat Pump`;
+        } else {
+          upfrontDiffText.textContent = `-$${Math.abs(Math.round(upfrontDiff)).toLocaleString()} (Heat Pump Net Cheaper)`;
+        }
+
+        annualSavingsText.textContent = `$${annualSavings.toLocaleString()} / year`;
+        paybackYearsText.textContent = typeof breakevenYears === 'string' ? `Breakeven: ${breakevenYears}` : `Estimated Breakeven: ${breakevenYears} Years`;
+        if (stickyTotal) stickyTotal.textContent = `$${Math.round(hpNet).toLocaleString()}`;
+
+        lowBidLabel.textContent = `Budget: < $${economyThreshold.toLocaleString()}`;
+        fairBidLabel.textContent = `Fair: $${fairMin.toLocaleString()} – $${fairMax.toLocaleString()}`;
+        highBidLabel.textContent = `Red Flag: > $${redFlagThreshold.toLocaleString()}`;
       }
-    }
-  
-    homeSize.addEventListener('input', updateHVAC);
-    climateZone.addEventListener('change', updateHVAC);
-    electricRate.addEventListener('change', updateHVAC);
-    gasRate.addEventListener('change', updateHVAC);
-  
-    updateHVAC();
+
+      homeSizeInput.addEventListener('input', calculate);
+      climateSelect.addEventListener('change', calculate);
+      electricRateSelect.addEventListener('change', calculate);
+      gasRateSelect.addEventListener('change', calculate);
+
+      if (zipInput && leadMatchLink) {
+        zipInput.addEventListener('input', () => {
+          const zip = zipInput.value.trim();
+          if (zip.length === 5) {
+            leadMatchLink.href = `https://www.angi.com/companylist/search.htm?query=HVAC&postalCode=${zip}`;
+          }
+        });
+      }
+
+      calculate();
+    });
   </script>
-  <script src="/calculator-enhancements.js"></script>
 </body>
 </html>
+
