@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solar Panel Payback Timeline Calculator (2026) | The Buyer's Math</title>
-  <meta name="description" content="Calculate solar panel payback years, 30% federal clean energy tax credits (25D), monthly electric bill savings, and 25-year lifetime net return.">
+  <title>Solar Panel Payback &amp; ROI Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate realistic 2026 solar panel system costs, 30% Section 25D federal tax credits, NEM 3.0 utility bill offsets, battery storage ROI, and breakeven timelines.">
   <link rel="canonical" href="https://thebuyersmath.com/solar-payback-calculator.html">
   <link rel="stylesheet" href="/styles.css">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebuyersmath.com/solar-payback-calculator.html">
+  <meta property="og:title" content="Solar Panel Payback &amp; ROI Calculator (2026) | The Buyer's Math">
+  <meta property="og:description" content="Model solar installation costs, 30% IRA federal tax credits, NEM 3.0 utility rates, battery storage, and 25-year cumulative ROI.">
+  <meta property="og:image" content="https://thebuyersmath.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,49 +28,53 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
 
-  <!-- Print Stylesheet -->
-  <style>
-    @media print {
-      .site-header, .breadcrumbs, .site-footer, .curated-recommendation, .seo-guide-section, input[type="range"], select {
-        display: none !important;
-      }
-      .split-layout { display: block !important; }
-      .receipt {
-        background: #ffffff !important;
-        color: #000000 !important;
-        border: 2px solid #000000 !important;
-        box-shadow: none !important;
-      }
-      .receipt h2, .receipt-row span:last-child, .receipt-row strong { color: #000000 !important; }
-      .total-row { color: #000000 !important; }
-    }
-  </style>
+  <!-- CJ Affiliate Auto-Monetization -->
+  <script>
+    (function(a,b,c,d,e,f,g){a['CJDynamicTrack']=e;a[e]=a[e]||function(){
+    (a[e].q=a[e].q||[]).push(arguments)},a[e].l=1*new Date();f=b.createElement(c),
+    g=b.getElementsByTagName(c)[0];f.async=1;f.src=d;g.parentNode.insertBefore(f,g)
+    })(window,document,'script','//www.emjcd.com/dynamic/tracking.js','cj');
+    cj('init', { enterpriseId: '8090259', propertyId: '101896838' });
+  </script>
 
-  <!-- Schema.org JSON-LD Structured Data -->
+  <!-- Schema.org JSON-LD (WebApplication + FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebApplication",
-        "@id": "https://thebuyersmath.com/solar-payback-calculator.html#app",
-        "name": "Solar Panel Payback Timeline Calculator",
+        "name": "Solar Panel Payback & ROI Calculator",
         "url": "https://thebuyersmath.com/solar-payback-calculator.html",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript",
-        "description": "Calculate residential solar break-even years, 30% federal tax credit savings, and 25-year return on investment."
+        "description": "Interactive residential solar panel cost and payback calculator modeling system sizing, Section 25D 30% tax credits, NEM 3.0 export rates, and battery storage economics."
       },
       {
         "@type": "FAQPage",
-        "@id": "https://thebuyersmath.com/solar-payback-calculator.html#faq",
         "mainEntity": [
           {
             "@type": "Question",
             "name": "What is the average payback period for residential solar panels in 2026?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The national median payback timeline for a residential solar PV system is between 7 and 10 years, depending on local utility electricity rates, net metering policies, and sun exposure."
+              "text": "In states with favorable 1:1 net metering, the average payback period is 6.5 to 8.5 years. In NEM 3.0 or net billing markets (such as California), grid-only solar payback extends to 9 to 12 years unless paired with battery storage, which shortens payback to 7 to 9 years by avoiding peak time-of-use grid rates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the 30% federal clean energy tax credit apply to solar batteries?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Under Section 25D of the Internal Revenue Code, standalone and solar-paired energy storage systems with a capacity of 3 kWh or greater qualify for the full uncapped 30% federal tax credit through 2032."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a fair price per watt for residential solar installation in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In 2026, the national median fair market rate for turnkey residential rooftop solar ranges from $2.80 to $3.25 per watt DC installed for premium Tier-1 monocrystalline panels with microinverters. Bids exceeding $3.75 per watt often indicate excessive sales commissions or uncompetitive financing dealer fees."
             }
           }
         ]
@@ -70,21 +82,6 @@
     ]
   }
   </script>
-  <!-- OpenGraph / Social Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Buyer's Math">
-  <meta property="og:url" content="https://thebuyersmath.com/solar-payback-calculator.html">
-  <meta property="og:title" content="Solar Panel Payback Timeline Calculator (2026) | The Buyer's Math">
-  <meta property="og:description" content="Calculate residential solar panel payback period, net metering utility offset, and federal 30% solar tax credit.">
-  <meta property="og:image" content="https://thebuyersmath.com/og-image.svg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Solar Panel Payback Timeline Calculator (2026) | The Buyer's Math">
-  <meta name="twitter:description" content="Calculate residential solar panel payback period, net metering utility offset, and federal 30% solar tax credit.">
-  <meta name="twitter:image" content="https://thebuyersmath.com/og-image.svg">
 </head>
 <body>
 
@@ -93,294 +90,384 @@
     <div class="header-inner">
       <a href="/" class="site-logo">The Buyer's Math</a>
       <nav class="site-nav">
-        <a href="/" style="color: #2563eb; font-weight: 600;">Calculators</a>
-        <a href="/#article-list">Guides</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms &amp; Disclaimer</a>
-        <a href="/contact.html">Contact Us</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Calculators &#9662;</button>
+          <div class="nav-dropdown-content">
+            <div class="nav-dropdown-group">Building Envelope</div>
+            <a href="/roofing-cost-calculator.html">Roof Replacement</a>
+            <a href="/siding-cost-calculator.html">Home Siding</a>
+            <a href="/window-replacement-estimator.html">Window Replacement</a>
+            <a href="/fence-cost-calculator.html">Fence Installation</a>
+            <a href="/driveway-paving-calculator.html">Driveway Paving</a>
+            <div class="nav-dropdown-group">Mechanical &amp; Energy</div>
+            <a href="/hvac-roi-calculator.html">Heat Pump vs. Gas Furnace</a>
+            <a href="/mini-split-calculator.html">Ductless Mini-Split</a>
+            <a href="/attic-insulation-calculator.html">Attic Insulation &amp; Air Sealing</a>
+            <a href="/water-heater-calculator.html">Water Heater Replacement</a>
+            <a href="/solar-payback-calculator.html" style="color: var(--primary); font-weight: 700;">Solar Panel Payback</a>
+            <a href="/ev-charger-calculator.html">EV Home Charger</a>
+            <a href="/generator-calculator.html">Standby Generator</a>
+            <div class="nav-dropdown-group">Interior &amp; Structural</div>
+            <a href="/kitchen-remodel-calculator.html">Kitchen Remodel</a>
+            <a href="/bathroom-remodel-calculator.html">Bathroom Remodel</a>
+            <a href="/basement-cost-calculator.html">Basement Finishing</a>
+          </div>
+        </div>
+        <a href="/intel/index.html">Daily Intel</a>
+        <a href="/guides.html">Guides</a>
+        <a href="/#about">About</a>
       </nav>
     </div>
   </header>
 
-  <!-- Breadcrumb Navigation -->
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a> &gt;
-    <a href="/">Calculators</a> &gt;
-    <span class="current">Solar Panel Payback Timeline</span>
-  </nav>
+  <!-- Main Container -->
+  <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
 
-  <!-- Main Calculator -->
-  <main class="container">
-    <div class="calc-intro">
-      <h1>Solar Panel Payback Timeline Calculator</h1>
-      <p>Estimate equipment installation costs, Section 25D federal tax credits, and 25-year lifetime electric bill savings.</p>
+    <!-- Breadcrumb Navigation -->
+    <nav style="font-size: 0.85rem; color: var(--slate-500); margin-bottom: 1.25rem;" aria-label="Breadcrumb">
+      <a href="/" style="color: var(--slate-600); text-decoration: none;">Home</a> &rsaquo;
+      <span style="color: var(--slate-400);">Calculators</span> &rsaquo;
+      <span style="color: var(--slate-400);">Mechanical &amp; Energy</span> &rsaquo;
+      <span style="color: var(--slate-800); font-weight: 600;">Solar Panel Payback</span>
+    </nav>
+
+    <!-- Calculator Title & Introduction -->
+    <div style="margin-bottom: 2rem;">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+        <span style="background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px;">IRA Section 25D 30% Credit</span>
+        <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px;">NEM 3.0 &amp; Battery Modeling</span>
+        <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px;">2026 Turnkey Pricing</span>
+      </div>
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--slate-900); margin: 0 0 0.5rem 0; line-height: 1.2;">
+        Solar Panel Payback &amp; ROI Calculator
+      </h1>
+      <p style="font-size: 1.05rem; color: var(--slate-600); max-width: 800px; margin: 0; line-height: 1.6;">
+        Model gross installation costs, the 30% federal clean energy tax credit, monthly utility offsets under NEM 2.0 vs. NEM 3.0 rules, battery storage economics, and cumulative 25-year return on investment.
+      </p>
     </div>
 
-    <div class="split-layout">
-      <!-- Input Controls -->
-      <div class="card">
-        <div class="form-group">
-          <label for="monthlyBill">
-            Average Monthly Electric Bill
-            <span class="val-badge" id="monthlyBillVal">$175 / mo</span>
-          </label>
-          <input type="range" id="monthlyBill" min="75" max="450" step="5" value="175">
-          <small style="color: #64748b;">Annual electricity expense: <span id="annualExpense">$2,100</span> / yr.</small>
+    <!-- 2-Column Calculator Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+
+      <!-- Left Column: Inputs Form -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">1. System Specifications</h3>
+
+        <!-- Monthly Electric Bill -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+            <label for="monthlyBill" style="font-weight: 600; font-size: 0.9rem; color: var(--slate-700);">Current Monthly Electric Bill:</label>
+            <span id="billDisplay" style="font-weight: 700; color: var(--primary);">$220 / mo</span>
+          </div>
+          <input type="range" id="monthlyBill" min="80" max="600" step="10" value="220" style="width: 100%;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--slate-400); margin-top: 0.25rem;">
+            <span>$80/mo</span>
+            <span>$340/mo</span>
+            <span>$600/mo</span>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="systemSize">
-            Recommended System Size (kW DC)
-            <span class="val-badge" id="systemSizeVal">8.0 kW</span>
+        <!-- System Sizing (kW DC) -->
+        <div style="margin-bottom: 1.25rem;">
+          <label for="systemSize" style="display: block; font-weight: 600; font-size: 0.9rem; color: var(--slate-700); margin-bottom: 0.4rem;">
+            Solar System Capacity:
           </label>
-          <input type="range" id="systemSize" min="4" max="16" step="0.5" value="8">
-          <small style="color: #64748b;">An 8 kW system uses approximately 20 modern 400W panels (400 sq ft of roof area).</small>
-        </div>
-
-        <div class="form-group">
-          <label for="sunHours">Sunlight Exposure / Region</label>
-          <select id="sunHours">
-            <option value="3.8">Low Sun (Northeast / Pacific NW - ~3.8 peak hrs/day)</option>
-            <option value="4.5" selected>Average Sun (Mid-Atlantic / Midwest - ~4.5 peak hrs/day)</option>
-            <option value="5.5">High Sun (Sunbelt / Southwest - ~5.5 peak hrs/day)</option>
+          <select id="systemSize" style="width: 100%; padding: 0.65rem 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #fff;">
+            <option value="5">5.0 kW DC (~12 Panels | Small Cottage / 600 kWh/mo)</option>
+            <option value="8" selected>8.0 kW DC (~20 Panels | Average Home / 950 kWh/mo)</option>
+            <option value="10">10.0 kW DC (~25 Panels | Medium Home / 1,200 kWh/mo)</option>
+            <option value="12">12.0 kW DC (~30 Panels | Large Home / Heat Pump / 1,500 kWh/mo)</option>
+            <option value="15">15.0 kW DC (~38 Panels | High Usage / EV / Pool / 1,900 kWh/mo)</option>
           </select>
         </div>
 
-        <div class="curated-recommendation">
-          <p class="rec-title">Recommended Solar Accessories</p>
-          <p style="margin: 0.25rem 0 1rem 0; font-size: 0.95rem; color: #475569;">Maximize your solar generation with smart energy monitors and Level 2 EV chargers:</p>
-          <a href="https://www.amazon.com/s?k=home+energy+monitor+solar+smart&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" class="btn-affiliate">🛠️ View Home Energy Monitors on Amazon</a>
+        <!-- Hardware & Inverter Grade -->
+        <div style="margin-bottom: 1.25rem;">
+          <label for="hardwareGrade" style="display: block; font-weight: 600; font-size: 0.9rem; color: var(--slate-700); margin-bottom: 0.4rem;">
+            Equipment &amp; Inverter Architecture:
+          </label>
+          <select id="hardwareGrade" style="width: 100%; padding: 0.65rem 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #fff;">
+            <option value="string">Standard Monocrystalline + String Inverter ($2.70 / Watt)</option>
+            <option value="micro" selected>Tier-1 Panels + Enphase Microinverters ($2.95 / Watt)</option>
+            <option value="premium">Premium High-Efficiency (REC/Maxeon) + Microinverters ($3.35 / Watt)</option>
+          </select>
+          <span style="font-size: 0.75rem; color: var(--slate-500); display: block; margin-top: 0.35rem;">
+            Microinverters optimize panel-level production under partial shading and eliminate single-point string inverter failure.
+          </span>
         </div>
+
+        <!-- Battery Storage -->
+        <div style="margin-bottom: 1.25rem;">
+          <label for="batteryOption" style="display: block; font-weight: 600; font-size: 0.9rem; color: var(--slate-700); margin-bottom: 0.4rem;">
+            Home Energy Storage Battery:
+          </label>
+          <select id="batteryOption" style="width: 100%; padding: 0.65rem 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #fff;">
+            <option value="0" selected>No Battery Storage (Grid-Tied Solar Only)</option>
+            <option value="10500">1x 10 kWh LFP Battery (+$10,500 installed | Critical Backup)</option>
+            <option value="19500">2x 10 kWh LFP Batteries (+$19,500 installed | Whole-Home Backup)</option>
+          </select>
+          <span style="font-size: 0.75rem; color: var(--slate-500); display: block; margin-top: 0.35rem;">
+            Batteries qualify for the full 30% federal tax credit under Section 25D. Essential for NEM 3.0 markets.
+          </span>
+        </div>
+
+        <!-- Utility Net Metering Policy -->
+        <div style="margin-bottom: 1.5rem;">
+          <label for="netMeteringPolicy" style="display: block; font-weight: 600; font-size: 0.9rem; color: var(--slate-700); margin-bottom: 0.4rem;">
+            Utility Net Metering Policy:
+          </label>
+          <select id="netMeteringPolicy" style="width: 100%; padding: 0.65rem 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #fff;">
+            <option value="full" selected>1:1 Retail Net Metering (Full Credit for Grid Exports)</option>
+            <option value="nem3">NEM 3.0 / Net Billing (~75% reduction on export credits)</option>
+            <option value="zero">Zero Export / Self-Consumption Only</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="window.print()" style="width: 100%; background: #f8fafc; border: 1px solid var(--border); padding: 0.75rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; color: var(--slate-700); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          🖨️ Print Solar Quote Audit Sheet
+        </button>
       </div>
 
-      <!-- Receipt Card with 25-Year Progress Bar & Export Buttons -->
-      <div class="card receipt">
-        <h2>Financial Return Model</h2>
-        <div class="receipt-row">
-          <span>Gross System Cost ($2.80/W):</span>
-          <span id="grossCost">$22,400</span>
-        </div>
-        <div class="receipt-row">
-          <span>Federal 30% Tax Credit (25D):</span>
-          <span id="taxCredit" style="color:#4ade80;">-$6,720</span>
-        </div>
-        <div class="receipt-row">
-          <span>Net Out-of-Pocket Cost:</span>
-          <strong id="netCost">$15,680</strong>
-        </div>
-        <div class="receipt-row" style="margin-top:1rem; border-top:1px solid #334155; padding-top:0.75rem;">
-          <span>Estimated Year 1 Savings:</span>
-          <span id="annualSavings">$1,890 / yr</span>
-        </div>
-        <div class="receipt-row total-row">
-          <span>Estimated Break-even:</span>
-          <span id="paybackYears">8.3 Years</span>
-        </div>
-        <div class="receipt-row" style="color:#4ade80; font-weight:700; margin-top:0.5rem;">
-          <span>25-Year Net Profit:</span>
-          <span id="lifetimeProfit">+$34,200</span>
+      <!-- Right Column: Results & Itemized Breakdown -->
+      <div id="resultsCard" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">2. Financial Model &amp; Payback</h3>
+        
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.65rem; font-size: 0.95rem; color: var(--slate-600);">
+          <span>Gross Turnkey System Cost:</span>
+          <strong id="grossCost" style="color: var(--slate-900);">$23,600</strong>
         </div>
 
-        <!-- 25-Year Visual Cumulative Savings Bar -->
-        <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.08); padding: 1.25rem; border-radius: 8px; border: 1px solid #334155;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.5rem;">
-            <span>25-Year Warranty Lifecycle</span>
-            <strong id="paybackPercent" style="color: #38bdf8;">Year 8.3 Break-even</strong>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.65rem; font-size: 0.95rem; color: #059669;">
+          <span>Federal 30% Tax Credit (Sec. 25D):</span>
+          <strong id="taxCredit" style="color: #059669;">-$7,080</strong>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.95rem; color: var(--slate-600);">
+          <span>Net Out-of-Pocket Investment:</span>
+          <strong id="netCost" style="color: var(--slate-900);">$16,520</strong>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1.25rem; font-size: 0.95rem; color: var(--slate-600); border-top: 1px dashed var(--border); padding-top: 0.75rem;">
+          <span>Estimated Annual Utility Offset:</span>
+          <strong id="annualSavings" style="color: var(--primary); font-size: 1.05rem;">$2,112 / yr</strong>
+        </div>
+
+        <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500); font-weight: 700;">Estimated Payback Period</div>
+          <div id="paybackYears" style="font-size: 2.25rem; font-weight: 800; color: #059669; margin: 0.25rem 0;">7.8 Years</div>
+          <div id="profit25Yr" style="color: var(--slate-700); font-weight: 600; font-size: 0.9rem;">25-Year Cumulative Net Profit: <strong style="color: #059669;">$36,280</strong></div>
+        </div>
+
+        <!-- 3-Tier Bid Meter -->
+        <div class="bid-meter-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.85rem; color: var(--slate-800); text-transform: uppercase;">Solar Turnkey Quote Audit Meter</span>
+            <span style="font-size: 0.75rem; color: var(--slate-500);">Per-Watt Benchmarks</span>
           </div>
-          <div style="width: 100%; height: 12px; background: #1e293b; border-radius: 6px; overflow: hidden;">
-            <div id="paybackBar" style="width: 33%; height: 100%; background: linear-gradient(90deg, #d97706, #059669); transition: width 0.3s ease;"></div>
+          <div class="bid-meter-bar">
+            <div class="bid-meter-segment economy" title="Economy / Direct-hire pricing"></div>
+            <div class="bid-meter-segment fair" title="Fair Market Turnkey Contractor Range"></div>
+            <div class="bid-meter-segment high" title="Overcharge / High Dealer Fee Zone"></div>
           </div>
-          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">
-            <span>Install</span>
-            <span>Break-even</span>
-            <span>25-Yr Net Gain</span>
+          <div class="bid-meter-labels">
+            <span id="lowBidLabel">Budget: &lt; $21,000</span>
+            <span id="fairBidLabel" style="color: var(--emerald-600); font-weight: 700;">Fair: $22,000 – $26,000</span>
+            <span id="highBidLabel" style="color: #dc2626;">Red Flag: &gt; $30,000</span>
           </div>
         </div>
 
-        <!-- Export Buttons -->
-        <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
-          <button id="copyEstimateBtn" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">📋 Copy Estimate</button>
-          <button onclick="window.print()" type="button" style="flex: 1; padding: 0.65rem 0.5rem; background: #334155; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">🖨️ Print / PDF</button>
+        <!-- Contractor Lead Matching Card -->
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #1e40af; letter-spacing: 0.05em;">Vetted Solar Installers</div>
+          <h4 style="margin: 0.25rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.1rem;">Compare Bids From Licensed Solar Pros</h4>
+          <p style="margin: 0 0 1rem 0; font-size: 0.85rem; color: #334155; line-height: 1.4;">
+            Get transparent quotes from certified NABCEP solar electricians without inflated door-to-door sales commissions:
+          </p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="text" id="zipInput" placeholder="Enter ZIP Code" style="padding: 0.65rem 0.85rem; border: 1px solid #93c5fd; border-radius: 6px; font-size: 0.9rem; width: 140px; background: #ffffff;" maxlength="5">
+            <a id="leadMatchLink" href="https://www.angi.com/companylist/search.htm?query=Solar+Panel+Installation" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;">
+              Compare Solar Bids &rarr;
+            </a>
+          </div>
         </div>
 
-        <p class="receipt-disclaimer">
-          * Calculated with 2026 national turnkey installation pricing ($2.80/W DC), 30% Section 25D clean energy tax credit, and 2.5% annual utility escalation.
-        </p>
       </div>
-    </div>
-    <!-- Contractor Vetting Checklist -->
-  <section class="contractor-checklist-card">
-    <h3>📋 Contractor Vetting Checklist: 4 Questions to Ask Before Signing</h3>
-    <p style="color: #64748b; font-size: 0.95rem; margin-top: 0.25rem;">Protect your home and budget by verifying these critical technical standards with prospective contractors:</p>
-    <div class="checklist-grid">
-        <div class="checklist-item">
-          <strong>✓ Verify Roof Shingle Lifespan</strong>
-          <p>If your roof is over 12-15 years old, replace shingles first; removing panels later for re-roofing costs $150-$250 per panel.</p>
-        </div>
-        <div class="checklist-item">
-          <strong>✓ Confirm Utility Interconnection & Net Metering</strong>
-          <p>Verify in writing whether your local utility operates under 1:1 net metering or avoided-cost export rates (NEM 3.0).</p>
-        </div>
-        <div class="checklist-item">
-          <strong>✓ Compare Inverter Architectures</strong>
-          <p>Evaluate microinverters (Enphase) vs string inverters with DC optimizers (SolarEdge) for roof shading resilience.</p>
-        </div>
-        <div class="checklist-item">
-          <strong>✓ Review 25-Year Production Warranties</strong>
-          <p>Ensure linear production warranties guarantee at least 85% rated power output at year 25.</p>
-        </div>
-    </div>
-  </section>
 
-  <!-- Related Calculators Section -->
-  <section class="related-calculators-section">
-    <h3>Explore Related Home Improvement Calculators</h3>
-    <div class="related-grid">
-      <a href="roofing-cost-calculator.html" class="calc-card" style="text-decoration: none;">
-        <div>
-          <span class="badge-category">Related Tool</span>
-          <h3 style="font-size: 1.15rem; margin-top: 0.25rem;">Roof Replacement Cost Estimator</h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Inspect and replace aging shingles before installing 25-year solar panels.</p>
-        </div>
-        <span class="cta-link" style="font-size: 0.9rem;">Open Calculator &rarr;</span>
-      </a>
-      <a href="hvac-roi-calculator.html" class="calc-card" style="text-decoration: none;">
-        <div>
-          <span class="badge-category">Related Tool</span>
-          <h3 style="font-size: 1.15rem; margin-top: 0.25rem;">Heat Pump vs. Gas Furnace ROI</h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Power high-efficiency electric heating with self-generated solar kWh.</p>
-        </div>
-        <span class="cta-link" style="font-size: 0.9rem;">Open Calculator &rarr;</span>
-      </a>
-      <a href="generator-calculator.html" class="calc-card" style="text-decoration: none;">
-        <div>
-          <span class="badge-category">Related Tool</span>
-          <h3 style="font-size: 1.15rem; margin-top: 0.25rem;">Backup Generator Sizing Guide</h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">Pair grid-tied solar with whole-home backup power.</p>
-        </div>
-        <span class="cta-link" style="font-size: 0.9rem;">Open Calculator &rarr;</span>
-      </a>
     </div>
-  </section>
+
+    <!-- Frequently Bundled Projects Cross-Promotion -->
+    <section class="bundled-projects-section">
+      <h3 style="margin: 0; font-size: 1.35rem; color: var(--slate-900);">Frequently Bundled Energy Projects</h3>
+      <p style="color: var(--slate-600); font-size: 0.95rem; margin: 0.25rem 0 0 0;">Maximize electrical infrastructure upgrades and tax credits by pairing these projects together:</p>
+      
+      <div class="bundled-grid">
+        <a href="/roofing-cost-calculator.html" class="bundled-card">
+          <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Building Envelope</span>
+          <h4>Roof Replacement Cost Estimator</h4>
+          <p>Replacing your roof before installing a 25-year solar array avoids costly $3,000–$6,000 panel de-installation and re-racking fees.</p>
+        </a>
+
+        <a href="/ev-charger-calculator.html" class="bundled-card">
+          <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Electrification</span>
+          <h4>EV Home Charger Installation</h4>
+          <p>Pair Level 2 48A home vehicle charging with rooftop solar generation for zero-emission, near-zero-cost driving.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Comprehensive Editorial Guide & Contractor Vetting Checklist -->
+    <section style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+      <h2>Understanding Your Residential Solar Quote</h2>
+      <p style="color: var(--slate-600); line-height: 1.7;">
+        Rooftop photovoltaic solar represents one of the highest-yielding home improvements available, generating 10% to 18% annual internal rates of return (IRR). However, navigating door-to-door sales pitches, inflated financing dealer fees, and evolving utility net metering policies requires rigorous diligence.
+      </p>
+
+      <h3>4 Solar Contractor Red Flags to Watch For</h3>
+      <ul style="color: var(--slate-700); line-height: 1.7; padding-left: 1.25rem;">
+        <li><strong>Misrepresenting the 30% Federal Tax Credit as a 'Free Government Grant':</strong> The Section 25D credit reduces your federal income tax liability dollar-for-dollar. If you lack sufficient tax liability, you cannot monetize the credit immediately. It is never a direct cash rebate or government check.</li>
+        <li><strong>Opaque Financing Dealer Fees (25% to 35% Markups):</strong> Low advertised interest rates (e.g. 3.99% or 4.99%) frequently conceal hidden 'dealer fees' tacked onto the principal loan balance, raising a $24,000 cash project to $34,000+. Always request the cash price breakdown first.</li>
+        <li><strong>Installing Over an Aging Roof (10+ Years Old):</strong> Solar panels carry 25-year power production warranties. If your asphalt shingle roof fails in year 8, removing and re-installing panels costs $3,500 to $6,000 out of pocket.</li>
+        <li><strong>Promising 1:1 Net Metering in NEM 3.0 Utility Territories:</strong> In net billing jurisdictions, daytime exported solar electricity is credited at wholesale avoided cost (~4&cent; to 6&cent;/kWh) rather than retail rates (~35&cent;/kWh). A battery storage system is essential to store excess energy for evening usage.</li>
+      </ul>
+
+      <!-- FAQs -->
+      <h3 style="margin-top: 2.5rem;">Frequently Asked Questions</h3>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">How does the 30% Section 25D federal tax credit work?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">Under the Inflation Reduction Act, homeowners who purchase their system outright (cash or solar loan) can claim 30% of total project costs—including panels, inverters, racking, labor, and battery storage—on IRS Form 5695.</p>
+      </div>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">Should I buy or lease my solar panel system?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">Direct ownership (cash or unsecured credit union solar loan) consistently delivers 2.5x to 3x higher lifetime savings than third-party power purchase agreements (PPAs) or solar leases, which often include 2.9% annual cost escalators and complicate home sales.</p>
+      </div>
+    </section>
 
   </main>
 
-  <!-- SEO Supporting Content & FAQs -->
-  <section class="seo-guide-section">
-    <h2>Residential Solar Payback Guide (2026)</h2>
-    <p>Installing a rooftop solar panel system allows homeowners to lock in electricity expenses and protect against rising utility rates. The federal 30% residential clean energy tax credit significantly reduces capital outlay.</p>
-
-    <h3>How the 30% Federal Tax Credit Works</h3>
-    <p>Under Section 25D of the Internal Revenue Code, homeowners who purchase their solar PV system (cash or loan) can deduct 30% of total system equipment and installation costs directly from their federal tax liability.</p>
-
-    <h3>Frequently Asked Questions</h3>
-    <details>
-      <summary>Do solar panels still generate power on cloudy days?</summary>
-      <p>Yes. Photovoltaic panels generate approximately 10% to 25% of their rated capacity on overcast days using diffuse ambient light.</p>
-    </details>
-    <details>
-      <summary>What happens to my solar panels after 25 years?</summary>
-      <p>Tier-1 solar manufacturers guarantee panels will produce at least 80% to 85% of their initial output after 25 years of continuous operation.</p>
-    </details>
-  </section>
+  <!-- Mobile Sticky Bar -->
+  <div class="mobile-sticky-bar">
+    <div>
+      <div style="font-size: 0.75rem; color: var(--slate-500); text-transform: uppercase;">Net Solar Investment</div>
+      <div id="stickyTotal" class="mobile-sticky-total">$16,520</div>
+    </div>
+    <button type="button" onclick="document.getElementById('resultsCard').scrollIntoView({behavior:'smooth'})" style="background: var(--primary); color: #ffffff; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem;">
+      Audit Quote &rarr;
+    </button>
+  </div>
 
   <!-- Global Footer -->
   <footer class="site-footer">
     <div class="footer-nav">
       <a href="/">Calculators</a> |
-      <a href="/#article-list">Guides</a> |
+      <a href="/intel/index.html">Daily Intel</a> |
+      <a href="/guides.html">Guides</a> |
       <a href="/privacy-policy.html">Privacy Policy</a> |
       <a href="/terms.html">Terms &amp; Disclaimer</a> |
       <a href="/contact.html">Contact Us</a>
     </div>
     <p class="footer-disclosure">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only.
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only. Commission Junction Affiliate PID: 101896838.
     </p>
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
+  <!-- Calculator Engine Script -->
   <script>
-    const monthlyBill = document.getElementById('monthlyBill');
-    const monthlyBillVal = document.getElementById('monthlyBillVal');
-    const annualExpense = document.getElementById('annualExpense');
-    const systemSize = document.getElementById('systemSize');
-    const systemSizeVal = document.getElementById('systemSizeVal');
-    const sunHours = document.getElementById('sunHours');
+    document.addEventListener('DOMContentLoaded', () => {
+      const monthlyBill = document.getElementById('monthlyBill');
+      const billDisplay = document.getElementById('billDisplay');
+      const systemSize = document.getElementById('systemSize');
+      const hardwareGrade = document.getElementById('hardwareGrade');
+      const batteryOption = document.getElementById('batteryOption');
+      const netMeteringPolicy = document.getElementById('netMeteringPolicy');
+      const zipInput = document.getElementById('zipInput');
+      const leadMatchLink = document.getElementById('leadMatchLink');
 
-    const grossCost = document.getElementById('grossCost');
-    const taxCredit = document.getElementById('taxCredit');
-    const netCost = document.getElementById('netCost');
-    const annualSavings = document.getElementById('annualSavings');
-    const paybackYears = document.getElementById('paybackYears');
-    const lifetimeProfit = document.getElementById('lifetimeProfit');
-    const paybackPercent = document.getElementById('paybackPercent');
-    const paybackBar = document.getElementById('paybackBar');
-    const copyBtn = document.getElementById('copyEstimateBtn');
+      const grossCostEl = document.getElementById('grossCost');
+      const taxCreditEl = document.getElementById('taxCredit');
+      const netCostEl = document.getElementById('netCost');
+      const annualSavingsEl = document.getElementById('annualSavings');
+      const paybackYearsEl = document.getElementById('paybackYears');
+      const profit25YrEl = document.getElementById('profit25Yr');
+      const stickyTotal = document.getElementById('stickyTotal');
 
-    function updateSolar() {
-      const bill = parseFloat(monthlyBill.value);
-      const kw = parseFloat(systemSize.value);
-      const sun = parseFloat(sunHours.value);
+      const lowBidLabel = document.getElementById('lowBidLabel');
+      const fairBidLabel = document.getElementById('fairBidLabel');
+      const highBidLabel = document.getElementById('highBidLabel');
 
-      monthlyBillVal.textContent = '$' + bill + ' / mo';
-      annualExpense.textContent = '$' + (bill * 12).toLocaleString();
-      systemSizeVal.textContent = kw.toFixed(1) + ' kW';
+      function calculateSolar() {
+        const bill = parseFloat(monthlyBill.value);
+        billDisplay.textContent = `$${bill} / mo`;
 
-      // Turnkey solar at $2.80 per Watt DC
-      const gross = Math.round(kw * 1000 * 2.80);
-      const credit = Math.round(gross * 0.30);
-      const net = gross - credit;
+        const kw = parseFloat(systemSize.value);
+        const watts = kw * 1000;
 
-      // Annual generation: kW * sun hours * 365 * 0.80 derate factor * $0.16/kWh
-      const annualKwh = kw * sun * 365 * 0.80;
-      const savings = Math.min(bill * 12, Math.round(annualKwh * 0.16));
+        let costPerWatt = 2.95;
+        if (hardwareGrade.value === 'string') costPerWatt = 2.70;
+        if (hardwareGrade.value === 'premium') costPerWatt = 3.35;
 
-      const payback = (net / savings).toFixed(1);
-      
-      // 25-year lifecycle savings assuming 2% utility escalation
-      let cumulativeSavings = 0;
-      let curSavings = savings;
-      for (let yr = 1; yr <= 25; yr++) {
-        cumulativeSavings += curSavings;
-        curSavings *= 1.02;
+        const solarHardwareCost = watts * costPerWatt;
+        const batteryCost = parseFloat(batteryOption.value);
+        const grossCost = Math.round(solarHardwareCost + batteryCost);
+
+        const federalCredit = Math.round(grossCost * 0.30);
+        const netCost = grossCost - federalCredit;
+
+        // Annual production in kWh (US average 1,400 kWh / kW DC / year)
+        const annualKwh = kw * 1400;
+        // Estimated utility rate per kWh ($0.19/kWh average)
+        const utilityRate = 0.19;
+
+        let exportEfficiency = 0.95;
+        if (netMeteringPolicy.value === 'nem3') {
+          // Under NEM 3.0, without battery, export value drops sharply
+          exportEfficiency = batteryCost > 0 ? 0.88 : 0.58;
+        } else if (netMeteringPolicy.value === 'zero') {
+          exportEfficiency = batteryCost > 0 ? 0.82 : 0.45;
+        }
+
+        const potentialAnnualSavings = annualKwh * utilityRate * exportEfficiency;
+        const cappedAnnualSavings = Math.min(potentialAnnualSavings, bill * 12 * 0.95);
+        const annualSavings = Math.round(cappedAnnualSavings);
+
+        const paybackYears = annualSavings > 0 ? (netCost / annualSavings).toFixed(1) : 'N/A';
+        const netProfit25 = Math.round((annualSavings * 25) - netCost);
+
+        grossCostEl.textContent = '$' + grossCost.toLocaleString();
+        taxCreditEl.textContent = '-$' + federalCredit.toLocaleString();
+        netCostEl.textContent = '$' + netCost.toLocaleString();
+        annualSavingsEl.textContent = '$' + annualSavings.toLocaleString() + ' / yr';
+        paybackYearsEl.textContent = paybackYears + ' Years';
+        profit25YrEl.innerHTML = `25-Year Cumulative Net Profit: <strong style="color: #059669;">$${netProfit25.toLocaleString()}</strong>`;
+        if (stickyTotal) stickyTotal.textContent = '$' + netCost.toLocaleString();
+
+        const lowBid = Math.round(grossCost * 0.88);
+        const fairMin = Math.round(grossCost * 0.95);
+        const fairMax = Math.round(grossCost * 1.10);
+        const highBid = Math.round(grossCost * 1.25);
+
+        lowBidLabel.textContent = `Budget: < $${lowBid.toLocaleString()}`;
+        fairBidLabel.textContent = `Fair: $${fairMin.toLocaleString()} – $${fairMax.toLocaleString()}`;
+        highBidLabel.textContent = `Red Flag: > $${highBid.toLocaleString()}`;
       }
-      const netProfit = Math.round(cumulativeSavings - net);
 
-      grossCost.textContent = '$' + gross.toLocaleString();
-      taxCredit.textContent = '-$' + credit.toLocaleString();
-      netCost.textContent = '$' + net.toLocaleString();
-      annualSavings.textContent = '$' + savings.toLocaleString() + ' / yr';
-      paybackYears.textContent = payback + ' Years';
-      lifetimeProfit.textContent = '+$' + netProfit.toLocaleString();
+      monthlyBill.addEventListener('input', calculateSolar);
+      systemSize.addEventListener('change', calculateSolar);
+      hardwareGrade.addEventListener('change', calculateSolar);
+      batteryOption.addEventListener('change', calculateSolar);
+      netMeteringPolicy.addEventListener('change', calculateSolar);
 
-      const pctOf25 = Math.min(100, Math.round((parseFloat(payback) / 25) * 100));
-      paybackPercent.textContent = 'Year ' + payback + ' Break-even';
-      paybackBar.style.width = pctOf25 + '%';
-    }
+      if (zipInput && leadMatchLink) {
+        zipInput.addEventListener('input', () => {
+          const zip = zipInput.value.trim();
+          if (zip.length === 5) {
+            leadMatchLink.href = `https://www.angi.com/companylist/search.htm?query=Solar+Panel+Installation&postalCode=${zip}`;
+          }
+        });
+      }
 
-    copyBtn.addEventListener('click', function() {
-      const summary = "The Buyer's Math - Solar Payback Analysis\\n" +
-        "Current Electric Bill: " + monthlyBillVal.textContent + "\\n" +
-        "System Size: " + systemSizeVal.textContent + "\\n" +
-        "Gross System Cost: " + grossCost.textContent + "\\n" +
-        "Federal 30% Tax Credit (25D): " + taxCredit.textContent + "\\n" +
-        "Net Turnkey Cost: " + netCost.textContent + "\\n" +
-        "Annual Electric Savings: " + annualSavings.textContent + "\\n" +
-        "Break-even Timeline: " + paybackYears.textContent + "\\n" +
-        "25-Year Net Profit: " + lifetimeProfit.textContent + "\\n" +
-        "Calculated at https://thebuyersmath.com/solar-payback-calculator.html";
-      navigator.clipboard.writeText(summary).then(() => {
-        copyBtn.textContent = '✓ Copied!';
-        setTimeout(() => { copyBtn.textContent = '📋 Copy Estimate'; }, 2000);
-      });
+      calculateSolar();
     });
-
-    monthlyBill.addEventListener('input', updateSolar);
-    systemSize.addEventListener('input', updateSolar);
-    sunHours.addEventListener('change', updateSolar);
-
-    updateSolar();
   </script>
-  <script src="/calculator-enhancements.js"></script>
 </body>
 </html>
