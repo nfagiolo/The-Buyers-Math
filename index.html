@@ -160,14 +160,13 @@
     <span class="search-icon">🔍</span>
   </div>
 
-  <!-- Category Filter Bar -->
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All Tools (21)</button>
-    <button class="filter-btn" data-filter="roofing">Roofing &amp; Exterior (11)</button>
-    <button class="filter-btn" data-filter="hvac">Heating &amp; Cooling (3)</button>
-    <button class="filter-btn" data-filter="interior">Interior Remodel (3)</button>
-    <button class="filter-btn" data-filter="electrical">Electrical &amp; Power (3)</button>
-    <button class="filter-btn" data-filter="energy">Energy &amp; Tax Credits (6)</button>
+  <!-- Consolidated Trade Hub Filter Tabs -->
+  <div class="filter-bar" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;">
+    <button class="filter-btn active" data-filter="featured">⭐ Featured Models (6)</button>
+    <button class="filter-btn" data-filter="envelope">Building Envelope (10)</button>
+    <button class="filter-btn" data-filter="mechanical">Mechanical &amp; Energy (5)</button>
+    <button class="filter-btn" data-filter="interior">Interior &amp; Power (6)</button>
+    <button class="filter-btn" data-filter="all">All 21 Calculators</button>
   </div>
 
   <!-- Core Calculator Suite (21 Tools) -->
@@ -175,7 +174,7 @@
     <section class="calculator-grid" id="calculators">
       
       <!-- 1. Roofing -->
-      <a href="/roofing-cost-calculator.html" class="calc-card" data-category="roofing energy" data-keywords="roof shingles architectural tear-off pitch underlayment decking ice water shield ridge vent flashing replacement cost">
+      <a href="/roofing-cost-calculator.html" class="calc-card" data-category="featured envelope" data-keywords="roof shingles architectural tear-off pitch underlayment decking ice water shield ridge vent flashing replacement cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Roof Replacement Cost Estimator</h3>
@@ -185,7 +184,7 @@
       </a>
 
       <!-- 2. HVAC -->
-      <a href="/hvac-roi-calculator.html" class="calc-card" data-category="hvac energy" data-keywords="heat pump gas furnace dual fuel seer2 hspf2 seer efficiency cop annual savings 25c tax credit operating cost">
+      <a href="/hvac-roi-calculator.html" class="calc-card" data-category="featured mechanical" data-keywords="heat pump gas furnace dual fuel seer2 hspf2 seer efficiency cop annual savings 25c tax credit operating cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Heat Pump vs. Gas Furnace ROI</h3>
@@ -195,7 +194,7 @@
       </a>
 
       <!-- 3. Attic Insulation -->
-      <a href="/attic-insulation-calculator.html" class="calc-card" data-category="roofing energy" data-keywords="attic insulation blown fiberglass cellulose air sealing r-49 r-60 rim joist draft 25c energy credit savings">
+      <a href="/attic-insulation-calculator.html" class="calc-card" data-category="mechanical" data-keywords="attic insulation blown fiberglass cellulose air sealing r-49 r-60 rim joist draft 25c energy credit savings">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Attic Insulation &amp; Air Sealing ROI</h3>
@@ -205,7 +204,7 @@
       </a>
 
       <!-- 4. Bathroom Remodel -->
-      <a href="/bathroom-remodel-calculator.html" class="calc-card" data-category="interior" data-keywords="bathroom remodel vanity tile shower bathtub plumbing fixtures waterproofing electrical exhaust fan gut remodel">
+      <a href="/bathroom-remodel-calculator.html" class="calc-card" data-category="featured interior" data-keywords="bathroom remodel vanity tile shower bathtub plumbing fixtures waterproofing electrical exhaust fan gut remodel">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Bathroom Remodel Cost Estimator</h3>
@@ -215,7 +214,7 @@
       </a>
 
       <!-- 5. EV Home Charger -->
-      <a href="/ev-charger-calculator.html" class="calc-card" data-category="electrical energy" data-keywords="ev charger level 2 electric vehicle charging station 240v nema 14-50 hardwired 48a conduit permit 30c credit">
+      <a href="/ev-charger-calculator.html" class="calc-card" data-category="featured interior" data-keywords="ev charger level 2 electric vehicle charging station 240v nema 14-50 hardwired 48a conduit permit 30c credit">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">EV Home Charger Installation</h3>
@@ -225,7 +224,7 @@
       </a>
 
       <!-- 6. Fence Cost -->
-      <a href="/fence-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="fence linear feet cedar pine vinyl chain link aluminum privacy post holes concrete auger gate hardware">
+      <a href="/fence-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="fence linear feet cedar pine vinyl chain link aluminum privacy post holes concrete auger gate hardware">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Fence Cost &amp; Linear Footage</h3>
@@ -235,7 +234,7 @@
       </a>
 
       <!-- 7. Siding Replacement -->
-      <a href="/siding-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="siding vinyl insulated hardie fiber cement lp smartside trim soffit fascia house wrap exterior squares">
+      <a href="/siding-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="siding vinyl insulated hardie fiber cement lp smartside trim soffit fascia house wrap exterior squares">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Home Siding Replacement Cost</h3>
@@ -245,7 +244,7 @@
       </a>
 
       <!-- 8. Kitchen Remodel -->
-      <a href="/kitchen-remodel-calculator.html" class="calc-card" data-category="interior" data-keywords="kitchen remodel cabinets quartz granite countertops tile backsplash appliances plumbing electrical layout gut">
+      <a href="/kitchen-remodel-calculator.html" class="calc-card" data-category="featured interior" data-keywords="kitchen remodel cabinets quartz granite countertops tile backsplash appliances plumbing electrical layout gut">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior Remodeling</span>
           <h3 style="margin-top: 0.5rem;">Kitchen Remodel Cost Estimator</h3>
@@ -254,7 +253,7 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
       <!-- 9. Solar Payback -->
-      <a href="/solar-payback-calculator.html" class="calc-card" data-category="electrical energy" data-keywords="solar panels photovoltaic kw inverter net metering kilowatt hours kwh electric bill offset federal 30 percent tax credit payback">
+      <a href="/solar-payback-calculator.html" class="calc-card" data-category="interior" data-keywords="solar panels photovoltaic kw inverter net metering kilowatt hours kwh electric bill offset federal 30 percent tax credit payback">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Renewables</span>
           <h3 style="margin-top: 0.5rem;">Solar Panel Payback Timeline</h3>
@@ -274,7 +273,7 @@
       </a>
 
       <!-- 11. Driveway Paving -->
-      <a href="/driveway-paving-calculator.html" class="calc-card" data-category="roofing" data-keywords="driveway paving asphalt concrete pavers excavation subbase gravel compaction sealing square footage">
+      <a href="/driveway-paving-calculator.html" class="calc-card" data-category="envelope" data-keywords="driveway paving asphalt concrete pavers excavation subbase gravel compaction sealing square footage">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Exterior &amp; Hardscape</span>
           <h3 style="margin-top: 0.5rem;">Driveway Paving Calculator</h3>
@@ -284,7 +283,7 @@
       </a>
 
       <!-- 12. Window Replacement -->
-      <a href="/window-replacement-estimator.html" class="calc-card" data-category="roofing energy" data-keywords="window replacement vinyl wood composite fiberglass double hung casement argon low-e u-factor energy star 25c credit">
+      <a href="/window-replacement-estimator.html" class="calc-card" data-category="envelope" data-keywords="window replacement vinyl wood composite fiberglass double hung casement argon low-e u-factor energy star 25c credit">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Window Replacement Estimator</h3>
@@ -294,7 +293,7 @@
       </a>
 
       <!-- 13. Mini-Split -->
-      <a href="/mini-split-calculator.html" class="calc-card" data-category="hvac energy" data-keywords="mini-split ductless multi-zone heat pump condenser wall unit seer2 btu zoning installation refrigerant line">
+      <a href="/mini-split-calculator.html" class="calc-card" data-category="mechanical" data-keywords="mini-split ductless multi-zone heat pump condenser wall unit seer2 btu zoning installation refrigerant line">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Ductless Mini-Split Cost Estimator</h3>
@@ -304,7 +303,7 @@
       </a>
 
       <!-- 14. Standby Generator -->
-      <a href="/generator-calculator.html" class="calc-card" data-category="electrical" data-keywords="generator standby whole house natural gas propane automatic transfer switch ats kw outage emergency power">
+      <a href="/generator-calculator.html" class="calc-card" data-category="interior" data-keywords="generator standby whole house natural gas propane automatic transfer switch ats kw outage emergency power">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Electrical &amp; Resilience</span>
           <h3 style="margin-top: 0.5rem;">Backup Generator Sizing Guide</h3>
@@ -314,7 +313,7 @@
       </a>
 
       <!-- 15. Water Heater -->
-      <a href="/water-heater-calculator.html" class="calc-card" data-category="interior energy" data-keywords="water heater tank tankless hybrid heat pump gas electric expansion tank venting recirculating pump 25c credit">
+      <a href="/water-heater-calculator.html" class="calc-card" data-category="mechanical" data-keywords="water heater tank tankless hybrid heat pump gas electric expansion tank venting recirculating pump 25c credit">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Plumbing &amp; Water</span>
           <h3 style="margin-top: 0.5rem;">Water Heater Replacement Cost</h3>
@@ -324,7 +323,7 @@
       </a>
 
       <!-- 16. Pool Pump -->
-      <a href="/pool.html" class="calc-card" data-category="roofing energy" data-keywords="pool pump variable speed vs single speed horsepower filtration turnover gpm kwh annual electricity cost savings">
+      <a href="/pool.html" class="calc-card" data-category="mechanical" data-keywords="pool pump variable speed vs single speed horsepower filtration turnover gpm kwh annual electricity cost savings">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Pool &amp; Outdoors</span>
           <h3 style="margin-top: 0.5rem;">Pool Pump Energy Calculator</h3>
@@ -334,7 +333,7 @@
       </a>
 
       <!-- 17. Deck Installation -->
-      <a href="/deck-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="deck building composite wood trex pressure treated pine cedar ipe elevation railing stairs permits substructure square footage cost">
+      <a href="/deck-cost-calculator.html" class="calc-card" data-category="featured envelope" data-keywords="deck building composite wood trex pressure treated pine cedar ipe elevation railing stairs permits substructure square footage cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Deck Installation Cost Estimator</h3>
@@ -344,7 +343,7 @@
       </a>
 
       <!-- 18. Seamless Gutters -->
-      <a href="/gutter-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="gutters seamless aluminum 5 inch 6 inch downspouts gutter guards leaf protection micro mesh fascia linear feet replacement cost">
+      <a href="/gutter-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="gutters seamless aluminum 5 inch 6 inch downspouts gutter guards leaf protection micro mesh fascia linear feet replacement cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Seamless Gutters &amp; Gutter Guards</h3>
@@ -354,7 +353,7 @@
       </a>
 
       <!-- 19. Garage Door Replacement -->
-      <a href="/garage-door-calculator.html" class="calc-card" data-category="roofing energy" data-keywords="garage door replacement insulated polyurethane r-value torsion springs belt drive opener smart myq curb appeal resale roi">
+      <a href="/garage-door-calculator.html" class="calc-card" data-category="envelope" data-keywords="garage door replacement insulated polyurethane r-value torsion springs belt drive opener smart myq curb appeal resale roi">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Garage Door Replacement &amp; ROI</h3>
@@ -364,7 +363,7 @@
       </a>
 
       <!-- 20. Patio & Pavers -->
-      <a href="/patio-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="patio pavers interlocking concrete pavers bluestone flagstone stamped concrete subbase geotextile polymeric sand sitting wall firepit cost">
+      <a href="/patio-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="patio pavers interlocking concrete pavers bluestone flagstone stamped concrete subbase geotextile polymeric sand sitting wall firepit cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Patio &amp; Paver Installation Estimator</h3>
@@ -374,7 +373,7 @@
       </a>
 
       <!-- 21. Exterior House Painting -->
-      <a href="/exterior-painting-calculator.html" class="calc-card" data-category="roofing" data-keywords="exterior painting house painters wood lap siding stucco fiber cement brick scraping power washing primer acrylic latex labor cost">
+      <a href="/exterior-painting-calculator.html" class="calc-card" data-category="envelope" data-keywords="exterior painting house painters wood lap siding stucco fiber cement brick scraping power washing primer acrylic latex labor cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
           <h3 style="margin-top: 0.5rem;">Exterior House Painting Estimator</h3>
@@ -385,6 +384,12 @@
 
     </section>
 
+    <!-- Expand / Consolidate Toggle Button -->
+    <div style="text-align: center; margin: 2rem auto 3rem auto;">
+      <button id="toggleAllCalcsBtn" type="button" style="background: #ffffff; border: 1px solid var(--border, #cbd5e1); color: var(--primary, #2563eb); padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; cursor: pointer; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.08)); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <span>Browse All 21 Calculators &darr;</span>
+      </button>
+    </div>
 
     <!-- Latest Guides Section -->
     <section class="container" style="max-width: 1140px; margin: 3rem auto; padding: 0 1.5rem 4rem 1.5rem;">
@@ -402,12 +407,32 @@
           <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html">Ductless Mini-Split vs. Central AC: Which Cooling System Saves More in 2026?</a></li>
           <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-breaking-down-2026-solar-installation-costs-when-does-going-solar-pay-off.html">Breaking Down 2026 Solar Installation Costs: When Does Going Solar Pay Off?</a></li>
           <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs.html">Breaking Down 2026 Kitchen Remodel Costs: Realistic Budgeting Guide</a></li>
-          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-emergency-generator-cost-vs-portable-which-backup-power-plan-makes-financial-sense.html">Standby Generator vs. Portable: Cost &amp; Reliability Breakdown</a></li>
-          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-residential-solar-battery-storage-payback-is-it-worth-adding-storage-in-2026.html">Solar Battery Storage Payback: Is Backup Worth the Premium?</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-roof-replacement-tax-credits-and-rebates.html">2026 Roof Replacement Tax Credits and Energy Rebates Guide</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html">2026 Mini-Split AC Installation: What You'll Actually Pay Per Room</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-mini-split-ac-installation-cost-breakdown-by-home-size.html">2026 Mini-Split AC Installation Cost Breakdown by Home Size</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-kitchen-remodel-budget-breakdown-cabinets-countertops-appliances.html">2026 Kitchen Remodel Budget Breakdown: Cabinets, Countertops &amp; Appliances</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-fiber-cement-vs-vinyl-siding-roi.html">2026 Fiber Cement vs. Vinyl Siding ROI: Costs, Durability &amp; Resale Value</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-fence-installation-cost-per-linear-foot.html">2026 Fence Installation Cost Per Linear Foot: Wood, Vinyl &amp; Aluminum</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-cost-analysis-article-what-s-the-real-cost.html">2026 Cost Analysis: What's the Real Cost of Home Improvements?</a></li>
+          <li><span class="article-date">2026-10-04</span> <a href="/articles/2026-10-04-2026-attic-insulation-air-sealing-costs.html">2026 Attic Insulation &amp; Air Sealing Costs: R-Value Pricing Guide</a></li>
+          <li><span class="article-date">2026-10-03</span> <a href="/articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html">Top Home Improvement ROI Projects for 2026: Data-Backed Renovations</a></li>
+          <li><span class="article-date">2026-10-03</span> <a href="/articles/2026-10-03-how-much-does-a-whole-house-generator-installation-cost-in-2026.html">How Much Does a Whole-House Generator Installation Cost in 2026?</a></li>
+          <li><span class="article-date">2026-10-03</span> <a href="/guides/heat-pump-tax-credit-2026.html">Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs &amp; Payback</a></li>
+          <li><span class="article-date">2026-10-03</span> <a href="/guides/roof-replacement-cost-per-square-2026.html">Roof Replacement Cost per Square in 2026: Architectural vs. 3-Tab</a></li>
+          <li><span class="article-date">2026-10-02</span> <a href="/articles/2026-10-02-top-home-improvement-roi-projects-for-2026.html">Top Home Improvement ROI Projects: High-Yield Renovation Strategies</a></li>
+          <li><span class="article-date">2026-09-30</span> <a href="/articles/2026-09-30-top-home-improvement-roi-projects-for-2026.html">Top Home Improvement ROI Projects Ranked by Value Recouped</a></li>
+          <li><span class="article-date">2026-09-30</span> <a href="/articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html">Insulated Steel vs. Wood Garage Doors: Cost, R-Value &amp; ROI Breakdown</a></li>
+          <li><span class="article-date">2026-09-30</span> <a href="/articles/2026-09-30-ditra-heat-cost-guide.html">Ditra Heat Cost Guide: Electric Radiant Floor Heating Breakdown</a></li>
+          <li><span class="article-date">2026-09-30</span> <a href="/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charger-in-2026.html">Cost to Install a 240V 50 Amp EV Charger in 2026</a></li>
+          <li style="margin-top: 1.5rem; list-style: none;">
+            <a href="/guides.html" style="display: inline-block; background: #2563eb; color: #ffffff; padding: 0.65rem 1.25rem; border-radius: 6px; font-weight: 700; text-decoration: none;">
+              Browse Full Guides Archive (21 Articles) &rarr;
+            </a>
+          </li>
+          <!-- ARTICLES_LIST_MARKER -->
         </ul>
       </div>
     </section>
-
   </main>
 
   <!-- Global Footer -->
@@ -426,48 +451,75 @@
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
-  <!-- Search & Filter JavaScript -->
+  <!-- Interactive Client-side Search and Filter Engine -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('calcSearch');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const calcCards = document.querySelectorAll('.calc-card');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.calculator-grid .calc-card');
+      const toggleAllBtn = document.getElementById('toggleAllCalcsBtn');
 
-      function filterCalculators() {
+      function applyFilters() {
         const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+        const activeBtn = document.querySelector('.filter-btn.active');
+        const category = activeBtn ? activeBtn.getAttribute('data-filter') : 'featured';
 
-        calcCards.forEach(card => {
-          const category = card.dataset.category || '';
-          const keywords = card.dataset.keywords || '';
-          const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-          const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+        cards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category') || '';
+          const keywords = card.getAttribute('data-keywords') || '';
+          const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+          const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
           
-          const matchesCategory = (activeFilter === 'all') || category.split(' ').includes(activeFilter);
-          const matchesSearch = !query || 
-            title.includes(query) || 
-            desc.includes(query) || 
-            keywords.includes(query);
-
-          if (matchesCategory && matchesSearch) {
-            card.style.display = 'flex';
+          // If searching, search across all 21 models
+          if (query.length > 0) {
+            const matchesSearch = title.includes(query) || desc.includes(query) || keywords.toLowerCase().includes(query);
+            card.style.display = matchesSearch ? 'flex' : 'none';
           } else {
-            card.style.display = 'none';
+            // Otherwise, filter strictly by active category tab
+            const categories = cardCategory.split(' ');
+            const matchesCategory = (category === 'all') || categories.includes(category);
+            card.style.display = matchesCategory ? 'flex' : 'none';
+          }
+        });
+
+        // Update expand/collapse button label
+        if (toggleAllBtn) {
+          if (category === 'all') {
+            toggleAllBtn.innerHTML = '<span>Showing All 21 Calculators &uarr;</span>';
+          } else {
+            toggleAllBtn.innerHTML = '<span>Browse All 21 Calculators &darr;</span>';
+          }
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+      }
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (searchInput) searchInput.value = '';
+          applyFilters();
+        });
+      });
+
+      if (toggleAllBtn) {
+        toggleAllBtn.addEventListener('click', () => {
+          const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+          if (allBtn) {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            allBtn.classList.add('active');
+            if (searchInput) searchInput.value = '';
+            applyFilters();
+            allBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         });
       }
 
-      if (searchInput) {
-        searchInput.addEventListener('input', filterCalculators);
-      }
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          filterCalculators();
-        });
-      });
+      // Initial filter on page load (shows 6 featured calculators)
+      applyFilters();
     });
   </script>
 </body>
