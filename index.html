@@ -65,6 +65,25 @@
     ]
   }
   </script>
+
+  <style>
+    /* Clean Segmented Trade Tabs */
+    .trade-tabs-container { max-width: 1140px; margin: 0 auto 1.5rem auto; padding: 0 1.5rem; }
+    .trade-tabs { display: flex; gap: 0.5rem; background: #f1f5f9; padding: 0.35rem; border-radius: 12px; border: 1px solid var(--border, #e2e8f0); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .trade-tab-btn { flex: 1; min-width: 140px; padding: 0.65rem 1rem; border: none; background: transparent; border-radius: 8px; font-weight: 700; font-size: 0.9rem; color: #475569; cursor: pointer; transition: all 0.2s ease; text-align: center; white-space: nowrap; }
+    .trade-tab-btn:hover { color: #0f172a; }
+    .trade-tab-btn.active { background: #ffffff; color: var(--primary, #2563eb); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+    .trade-tab-count { font-size: 0.75rem; opacity: 0.75; font-weight: 600; margin-left: 0.25rem; }
+    
+    /* Search Bar */
+    .search-wrap { max-width: 1140px; margin: 0 auto 1.25rem auto; padding: 0 1.5rem; }
+    .search-input-box { width: 100%; padding: 0.85rem 1.25rem; border: 1px solid #cbd5e1; border-radius: 9999px; font-size: 1rem; font-family: inherit; box-sizing: border-box; outline: none; transition: border-color 0.2s, box-shadow 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .search-input-box:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+    
+    /* Search Active Banner */
+    #searchStatus { max-width: 1140px; margin: 0 auto 1rem auto; padding: 0 1.5rem; display: none; font-size: 0.9rem; color: #64748b; }
+    #searchStatus strong { color: #0f172a; }
+  </style>
 </head>
 <body>
 
@@ -112,67 +131,62 @@
     </div>
     <h1>Cut Through Contractor Quotes With Real Math</h1>
     <p class="subtitle">
-      Stop guessing on residential renovation budgets. Explore our suite of 16 interactive calculators modeling realistic materials, licensed labor rates, equipment sizing, and federal tax incentives.
+      Stop guessing on residential renovation budgets. Explore 16 empirical calculators modeling realistic materials, licensed labor rates, equipment sizing, and federal tax incentives.
     </p>
   </section>
 
-  <!-- Daily Intelligence Widget -->
-  <div class="market-pulse-widget" style="max-width: 1140px; margin: 0 auto 2.5rem auto; padding: 1.5rem; background: #ffffff; border: 1px solid var(--border, #e2e8f0); border-radius: var(--radius-lg, 16px); box-shadow: var(--shadow-sm);">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+  <!-- Daily Intelligence Pulse Strip -->
+  <div class="market-pulse-widget" style="max-width: 1140px; margin: 0 auto 2rem auto; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid var(--border, #e2e8f0); border-radius: var(--radius-lg, 16px); box-shadow: var(--shadow-sm);">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.65rem; margin-bottom: 0.85rem;">
       <div>
-        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; font-weight: 700;">Daily Intelligence &bull; October 2026</span>
-        <h3 style="margin: 0.2rem 0 0 0; font-size: 1.25rem; color: #0f172a;">Today's Construction Spot Prices &amp; Quote Teardown</h3>
+        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; font-weight: 700;">Daily Intelligence &bull; Spot Prices</span>
+        <h3 style="margin: 0.15rem 0 0 0; font-size: 1.15rem; color: #0f172a;">Construction Commodity Benchmarks &amp; Bid Audits</h3>
       </div>
-      <a href="/intel/index.html" style="font-size: 0.875rem; color: #2563eb; text-decoration: none; font-weight: 600;">Browse All Intel Reports &rarr;</a>
+      <a href="/intel/index.html" style="font-size: 0.85rem; color: #2563eb; text-decoration: none; font-weight: 600;">Browse Intel Archive &rarr;</a>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-      <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-        <div style="font-size: 0.75rem; color: #64748b; font-weight: 500;">2x4x8 SPF Lumber</div>
-        <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0.2rem 0;">$3.88 <span style="font-size: 0.8rem; color: #059669; font-weight: 600;">▼ -0.5%</span></div>
-        <div style="font-size: 0.7rem; color: #94a3b8;">Framing stud retail avg</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+      <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+        <div style="font-size: 0.75rem; color: #64748b;">2x4x8 SPF Lumber</div>
+        <div style="font-size: 1.15rem; font-weight: 700; color: #0f172a;">$3.88 <span style="font-size: 0.75rem; color: #059669;">▼ -0.5%</span></div>
       </div>
-      <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-        <div style="font-size: 0.75rem; color: #64748b; font-weight: 500;">12/2 Romex (250ft)</div>
-        <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0.2rem 0;">$142.50 <span style="font-size: 0.8rem; color: #dc2626; font-weight: 600;">▲ +2.4%</span></div>
-        <div style="font-size: 0.7rem; color: #94a3b8;">Copper branch wire</div>
+      <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+        <div style="font-size: 0.75rem; color: #64748b;">12/2 Romex (250ft)</div>
+        <div style="font-size: 1.15rem; font-weight: 700; color: #0f172a;">$142.50 <span style="font-size: 0.75rem; color: #dc2626;">▲ +2.4%</span></div>
       </div>
-      <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-        <div style="font-size: 0.75rem; color: #64748b; font-weight: 500;">Architectural Shingles</div>
-        <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0.2rem 0;">$118.00 <span style="font-size: 0.8rem; color: #64748b; font-weight: 600;">▬ Steady</span></div>
-        <div style="font-size: 0.7rem; color: #94a3b8;">Per square (100 sq ft)</div>
+      <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+        <div style="font-size: 0.75rem; color: #64748b;">Architectural Shingles</div>
+        <div style="font-size: 1.15rem; font-weight: 700; color: #0f172a;">$118.00 <span style="font-size: 0.75rem; color: #64748b;">▬ Flat</span></div>
       </div>
-      <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
-        <div style="font-size: 0.75rem; color: #64748b; font-weight: 500;">Concrete 80lb Bag</div>
-        <div style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0.2rem 0;">$6.45 <span style="font-size: 0.8rem; color: #059669; font-weight: 600;">▼ -1.2%</span></div>
-        <div style="font-size: 0.7rem; color: #94a3b8;">4000 PSI high strength</div>
+      <div style="background: #f8fafc; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+        <div style="font-size: 0.75rem; color: #64748b;">Concrete 80lb Bag</div>
+        <div style="font-size: 1.15rem; font-weight: 700; color: #0f172a;">$6.45 <span style="font-size: 0.75rem; color: #059669;">▼ -1.2%</span></div>
       </div>
-    </div>
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.875rem; color: #475569;">
-      <span>Audited Contractor Teardown: <strong style="color: #0f172a;">200A Electrical Service Upgrade &amp; EV Circuit ($2,800 – $4,200)</strong></span>
-      <a href="/intel/index.html" style="color: #2563eb; font-weight: 600; text-decoration: underline;">Read Today's Brief &rarr;</a>
     </div>
   </div>
 
-  <!-- Live Search Bar -->
-  <div class="search-container">
-    <input type="text" id="calcSearch" class="search-input" placeholder="Search calculators (e.g. heat pump, roof, kitchen, ev charger)..." aria-label="Search calculators">
-    <span class="search-icon">🔍</span>
+  <!-- Global Instant Search -->
+  <div class="search-wrap">
+    <input type="text" id="calcSearch" class="search-input-box" placeholder="Search all 16 calculators (e.g. heat pump, roof, kitchen, ev charger, pool)..." aria-label="Search all calculators">
   </div>
 
-  <!-- Category Filter Bar -->
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All Tools (16)</button>
-    <button class="filter-btn" data-filter="envelope">Building Envelope (5)</button>
-    <button class="filter-btn" data-filter="mechanical">Mechanical &amp; Energy (6)</button>
-    <button class="filter-btn" data-filter="interior">Interior &amp; Power (5)</button>
+  <div id="searchStatus">Searching all tools for "<strong id="searchQueryText"></strong>" &bull; <a href="javascript:void(0)" id="clearSearchBtn" style="color: #2563eb; text-decoration: underline;">Clear search</a></div>
+
+  <!-- Segmented Trade Hub Navigation -->
+  <div class="trade-tabs-container">
+    <div class="trade-tabs">
+      <button class="trade-tab-btn active" data-tab="featured">Featured Projects <span class="trade-tab-count">(6)</span></button>
+      <button class="trade-tab-btn" data-tab="envelope">Building Envelope <span class="trade-tab-count">(5)</span></button>
+      <button class="trade-tab-btn" data-tab="mechanical">Mechanical &amp; Energy <span class="trade-tab-count">(6)</span></button>
+      <button class="trade-tab-btn" data-tab="interior">Interior &amp; Power <span class="trade-tab-count">(5)</span></button>
+    </div>
   </div>
 
   <!-- Core Calculator Suite (16 Tools) -->
   <main>
     <section class="calculator-grid" id="calculators">
       
-      <!-- 1. Roofing -->
-      <a href="/roofing-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="roof shingles architectural tear-off pitch underlayment decking ice water shield ridge vent flashing replacement cost">
+      <!-- 1. Roofing (Featured + Envelope) -->
+      <a href="/roofing-cost-calculator.html" class="calc-card" data-trade="envelope" data-featured="true" data-keywords="roof shingles architectural tear-off pitch underlayment decking ice water shield ridge vent flashing replacement cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Roof Replacement Cost Estimator</h3>
@@ -181,8 +195,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 2. Siding -->
-      <a href="/siding-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="siding vinyl insulated hardie fiber cement lp smartside trim soffit fascia house wrap exterior squares">
+      <!-- 2. Siding (Envelope) -->
+      <a href="/siding-cost-calculator.html" class="calc-card" data-trade="envelope" data-keywords="siding vinyl insulated hardie fiber cement lp smartside trim soffit fascia house wrap exterior squares">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Home Siding Replacement Cost</h3>
@@ -191,8 +205,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 3. Window Replacement -->
-      <a href="/window-replacement-estimator.html" class="calc-card" data-category="envelope" data-keywords="window replacement vinyl wood composite fiberglass double hung casement argon low-e u-factor energy star 25c credit">
+      <!-- 3. Window Replacement (Envelope) -->
+      <a href="/window-replacement-estimator.html" class="calc-card" data-trade="envelope" data-keywords="window replacement vinyl wood composite fiberglass double hung casement argon low-e u-factor energy star 25c credit">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Window Replacement Estimator</h3>
@@ -201,8 +215,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 4. Fence Cost -->
-      <a href="/fence-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="fence linear feet cedar pine vinyl chain link aluminum privacy post holes concrete auger gate hardware">
+      <!-- 4. Fence Cost (Envelope) -->
+      <a href="/fence-cost-calculator.html" class="calc-card" data-trade="envelope" data-keywords="fence linear feet cedar pine vinyl chain link aluminum privacy post holes concrete auger gate hardware">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Fence Cost &amp; Linear Footage</h3>
@@ -211,8 +225,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 5. Driveway Paving -->
-      <a href="/driveway-paving-calculator.html" class="calc-card" data-category="envelope" data-keywords="driveway paving asphalt concrete pavers excavation subbase gravel compaction sealing square footage">
+      <!-- 5. Driveway Paving (Envelope) -->
+      <a href="/driveway-paving-calculator.html" class="calc-card" data-trade="envelope" data-keywords="driveway paving asphalt concrete pavers excavation subbase gravel compaction sealing square footage">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
           <h3 style="margin-top: 0.5rem;">Driveway Paving Calculator</h3>
@@ -221,8 +235,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 6. HVAC (Heat Pump vs Gas) -->
-      <a href="/hvac-roi-calculator.html" class="calc-card" data-category="mechanical" data-keywords="heat pump gas furnace dual fuel seer2 hspf2 seer efficiency cop annual savings 25c tax credit operating cost">
+      <!-- 6. HVAC Heat Pump vs Gas (Featured + Mechanical) -->
+      <a href="/hvac-roi-calculator.html" class="calc-card" data-trade="mechanical" data-featured="true" data-keywords="heat pump gas furnace dual fuel seer2 hspf2 seer efficiency cop annual savings 25c tax credit operating cost">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Heat Pump vs. Gas Furnace ROI</h3>
@@ -230,8 +244,8 @@
         </div>
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
-      <!-- 7. Mini-Split -->
-      <a href="/mini-split-calculator.html" class="calc-card" data-category="mechanical" data-keywords="mini-split ductless multi-zone heat pump condenser wall unit seer2 btu zoning installation refrigerant line 25c">
+      <!-- 7. Mini-Split (Mechanical) -->
+      <a href="/mini-split-calculator.html" class="calc-card" data-trade="mechanical" data-keywords="mini-split ductless multi-zone heat pump condenser wall unit seer2 btu zoning installation refrigerant line 25c">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Ductless Mini-Split Cost Estimator</h3>
@@ -240,8 +254,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 8. Attic Insulation -->
-      <a href="/attic-insulation-calculator.html" class="calc-card" data-category="mechanical" data-keywords="attic insulation blown fiberglass cellulose air sealing r-49 r-60 rim joist draft 25c energy credit savings">
+      <!-- 8. Attic Insulation (Mechanical) -->
+      <a href="/attic-insulation-calculator.html" class="calc-card" data-trade="mechanical" data-keywords="attic insulation blown fiberglass cellulose air sealing r-49 r-60 rim joist draft 25c energy credit savings">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Attic Insulation &amp; Air Sealing ROI</h3>
@@ -250,8 +264,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 9. Water Heater -->
-      <a href="/water-heater-calculator.html" class="calc-card" data-category="mechanical" data-keywords="water heater tank tankless hybrid heat pump gas electric expansion tank venting recirculating pump 25c credit">
+      <!-- 9. Water Heater (Mechanical) -->
+      <a href="/water-heater-calculator.html" class="calc-card" data-trade="mechanical" data-keywords="water heater tank tankless hybrid heat pump gas electric expansion tank venting recirculating pump 25c credit">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Water Heater Replacement Cost</h3>
@@ -260,8 +274,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 10. Solar Payback -->
-      <a href="/solar-payback-calculator.html" class="calc-card" data-category="mechanical" data-keywords="solar panels photovoltaic kw inverter net metering kilowatt hours kwh electric bill offset federal 30 percent tax credit payback">
+      <!-- 10. Solar Payback (Featured + Mechanical) -->
+      <a href="/solar-payback-calculator.html" class="calc-card" data-trade="mechanical" data-featured="true" data-keywords="solar panels photovoltaic kw inverter net metering kilowatt hours kwh electric bill offset federal 30 percent tax credit payback">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Solar Panel Payback Timeline</h3>
@@ -270,8 +284,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 11. Pool Pump -->
-      <a href="/pool.html" class="calc-card" data-category="mechanical" data-keywords="pool pump variable speed vs single speed horsepower filtration turnover gpm kwh annual electricity cost savings rebate">
+      <!-- 11. Pool Pump (Mechanical) -->
+      <a href="/pool.html" class="calc-card" data-trade="mechanical" data-keywords="pool pump variable speed vs single speed horsepower filtration turnover gpm kwh annual electricity cost savings rebate">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
           <h3 style="margin-top: 0.5rem;">Pool Pump Energy Calculator</h3>
@@ -280,8 +294,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 12. Kitchen Remodel -->
-      <a href="/kitchen-remodel-calculator.html" class="calc-card" data-category="interior" data-keywords="kitchen remodel cabinets quartz granite countertops tile backsplash appliances plumbing electrical layout gut">
+      <!-- 12. Kitchen Remodel (Featured + Interior) -->
+      <a href="/kitchen-remodel-calculator.html" class="calc-card" data-trade="interior" data-featured="true" data-keywords="kitchen remodel cabinets quartz granite countertops tile backsplash appliances plumbing electrical layout gut">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
           <h3 style="margin-top: 0.5rem;">Kitchen Remodel Cost Estimator</h3>
@@ -290,8 +304,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 13. Bathroom Remodel -->
-      <a href="/bathroom-remodel-calculator.html" class="calc-card" data-category="interior" data-keywords="bathroom remodel vanity tile shower bathtub plumbing fixtures waterproofing electrical exhaust fan gut remodel">
+      <!-- 13. Bathroom Remodel (Featured + Interior) -->
+      <a href="/bathroom-remodel-calculator.html" class="calc-card" data-trade="interior" data-featured="true" data-keywords="bathroom remodel vanity tile shower bathtub plumbing fixtures waterproofing electrical exhaust fan gut remodel">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
           <h3 style="margin-top: 0.5rem;">Bathroom Remodel Cost Estimator</h3>
@@ -300,8 +314,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 14. Basement Finishing -->
-      <a href="/basement-cost-calculator.html" class="calc-card" data-category="interior" data-keywords="basement finish remodel framing drywall flooring subfloor vapor barrier egress window bathroom waterproof">
+      <!-- 14. Basement Finishing (Interior) -->
+      <a href="/basement-cost-calculator.html" class="calc-card" data-trade="interior" data-keywords="basement finish remodel framing drywall flooring subfloor vapor barrier egress window bathroom waterproof">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
           <h3 style="margin-top: 0.5rem;">Basement Finishing Cost Estimator</h3>
@@ -310,8 +324,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 15. EV Home Charger -->
-      <a href="/ev-charger-calculator.html" class="calc-card" data-category="interior" data-keywords="ev charger level 2 electric vehicle charging station 240v nema 14-50 hardwired 48a conduit permit 30c credit panel">
+      <!-- 15. EV Home Charger (Featured + Interior) -->
+      <a href="/ev-charger-calculator.html" class="calc-card" data-trade="interior" data-featured="true" data-keywords="ev charger level 2 electric vehicle charging station 240v nema 14-50 hardwired 48a conduit permit 30c credit panel">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
           <h3 style="margin-top: 0.5rem;">EV Home Charger Installation</h3>
@@ -320,8 +334,8 @@
         <span class="cta-link">Open Calculator &rarr;</span>
       </a>
 
-      <!-- 16. Standby Generator -->
-      <a href="/generator-calculator.html" class="calc-card" data-category="interior" data-keywords="generator standby whole house natural gas propane automatic transfer switch ats kw outage emergency power surge">
+      <!-- 16. Standby Generator (Interior) -->
+      <a href="/generator-calculator.html" class="calc-card" data-trade="interior" data-keywords="generator standby whole house natural gas propane automatic transfer switch ats kw outage emergency power surge">
         <div>
           <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
           <h3 style="margin-top: 0.5rem;">Backup Generator Sizing Guide</h3>
@@ -412,47 +426,88 @@
     <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
-  <!-- Search & Category Filtering Script -->
+  <!-- Search & Segmented Trade Filter Engine -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('calcSearch');
-      const filterBtns = document.querySelectorAll('.filter-btn');
+      const searchStatus = document.getElementById('searchStatus');
+      const searchQueryText = document.getElementById('searchQueryText');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+      const tabBtns = document.querySelectorAll('.trade-tab-btn');
       const cards = document.querySelectorAll('.calc-card');
 
-      let currentCategory = 'all';
+      let currentTab = 'featured';
       let searchQuery = '';
 
-      function filterCards() {
-        cards.forEach(card => {
-          const cat = card.getAttribute('data-category') || '';
-          const keywords = (card.getAttribute('data-keywords') || '') + ' ' + card.innerText.toLowerCase();
-          
-          const matchesCat = (currentCategory === 'all') || cat.includes(currentCategory);
-          const matchesSearch = !searchQuery || keywords.includes(searchQuery);
+      function updateGrid() {
+        const isSearching = searchQuery.length > 0;
 
-          if (matchesCat && matchesSearch) {
-            card.style.display = 'flex';
+        if (isSearching) {
+          searchStatus.style.display = 'block';
+          searchQueryText.textContent = searchQuery;
+          tabBtns.forEach(btn => btn.style.opacity = '0.5');
+        } else {
+          searchStatus.style.display = 'none';
+          tabBtns.forEach(btn => btn.style.opacity = '1');
+        }
+
+        cards.forEach(card => {
+          const trade = card.getAttribute('data-trade') || '';
+          const isFeatured = card.getAttribute('data-featured') === 'true';
+          const keywords = (card.getAttribute('data-keywords') || '') + ' ' + card.innerText.toLowerCase();
+
+          if (isSearching) {
+            // Global search overrides active tab
+            if (keywords.includes(searchQuery)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
           } else {
-            card.style.display = 'none';
+            // Tab filtering
+            if (currentTab === 'featured') {
+              card.style.display = isFeatured ? 'flex' : 'none';
+            } else if (currentTab === trade) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
           }
         });
       }
 
-      filterBtns.forEach(btn => {
+      tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
+          tabBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          currentCategory = btn.getAttribute('data-filter');
-          filterCards();
+          currentTab = btn.getAttribute('data-tab');
+          
+          // Clear search when switching tabs for clean user intent
+          if (searchQuery) {
+            searchQuery = '';
+            searchInput.value = '';
+          }
+          updateGrid();
         });
       });
 
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
           searchQuery = e.target.value.toLowerCase().trim();
-          filterCards();
+          updateGrid();
         });
       }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          searchQuery = '';
+          searchInput.value = '';
+          updateGrid();
+        });
+      }
+
+      // Initial state: show featured (6)
+      updateGrid();
     });
   </script>
 </body>
