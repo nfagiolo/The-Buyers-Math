@@ -4,149 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Market &amp; Contractor Intelligence Archive | The Buyer's Math</title>
-  <meta name="description" content="Archive of daily home improvement market intelligence dispatches: building material spot price indexes, contractor quote audits, IRC/NEC codes, and energy rebates.">
+  <meta name="description" content="Archive of daily home improvement market intelligence dispatches: building material price index, contractor quote audits, IRC/NEC codes, and energy rebates.">
   <link rel="canonical" href="https://thebuyersmath.com/intel/index.html">
-  <link rel="stylesheet" href="/styles.css">
-
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="Daily Market &amp; Contractor Intelligence Archive | The Buyer's Math">
-  <meta property="og:description" content="Daily tracking of construction material commodities, contractor quote teardowns, building codes, and federal energy rebates.">
-  <meta property="og:url" content="https://thebuyersmath.com/intel/index.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://thebuyersmath.com/assets/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-V4GTQSCFW6');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-
-  <!-- CJ Affiliate Auto-Monetization -->
-  <script>
-    (function(a,b,c,d,e,f,g){a['CJDynamicTrack']=e;a[e]=a[e]||function(){
-    (a[e].q=a[e].q||[]).push(arguments)},a[e].l=1*new Date();f=b.createElement(c),
-    g=b.getElementsByTagName(c)[0];f.async=1;f.src=d;g.parentNode.insertBefore(f,g)
-    })(window,document,'script','//www.emjcd.com/dynamic/tracking.js','cj');
-    cj('init', { enterpriseId: '8090259', propertyId: '101896838' });
-  </script>
-
-  <style>
-    .intel-hero { text-align: center; padding: 2.5rem 1.5rem 1.5rem 1.5rem; max-width: 860px; margin: 0 auto; }
-    .intel-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 0.75rem; letter-spacing: -0.03em; }
-    .intel-hero p { color: #64748b; font-size: 1.15rem; max-width: 680px; margin: 0 auto; }
-    .intel-container { max-width: 980px; margin: 0 auto 4rem auto; padding: 0 1.5rem; }
-    .dispatch-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: all 0.2s ease; }
-    .dispatch-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); border-color: #93c5fd; }
-    .dispatch-badge { font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .dispatch-title { margin: 0.35rem 0 0.25rem 0; font-size: 1.2rem; }
-    .dispatch-title a { color: #0f172a; text-decoration: none; }
-    .dispatch-title a:hover { color: #2563eb; }
-    .dispatch-desc { margin: 0; color: #64748b; font-size: 0.9rem; line-height: 1.5; }
-    .read-btn { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; padding: 0.6rem 1.1rem; border-radius: 6px; font-weight: 700; font-size: 0.88rem; text-decoration: none; white-space: nowrap; transition: all 0.2s ease; }
-    .read-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
-  </style>
+  <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
-
-  <!-- Global Header -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="site-logo">The Buyer's Math</a>
-      <nav class="site-nav">
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-btn" aria-haspopup="true">Calculators &#9662;</button>
-          <div class="nav-dropdown-content">
-            <div class="nav-dropdown-group">Building Envelope</div>
-            <a href="/roofing-cost-calculator.html">Roof Replacement</a>
-            <a href="/siding-cost-calculator.html">Home Siding</a>
-            <a href="/window-replacement-estimator.html">Window Replacement</a>
-            <a href="/fence-cost-calculator.html">Fence Installation</a>
-            <a href="/driveway-paving-calculator.html">Driveway Paving</a>
-            <div class="nav-dropdown-group">Mechanical &amp; Energy</div>
-            <a href="/hvac-roi-calculator.html">Heat Pump vs. Gas Furnace</a>
-            <a href="/mini-split-calculator.html">Ductless Mini-Split</a>
-            <a href="/attic-insulation-calculator.html">Attic Insulation &amp; Air Sealing</a>
-            <a href="/water-heater-calculator.html">Water Heater Replacement</a>
-            <a href="/solar-payback-calculator.html">Solar Panel Payback</a>
-            <a href="/pool.html">Pool Pump Savings</a>
-            <div class="nav-dropdown-group">Interior &amp; Power</div>
-            <a href="/kitchen-remodel-calculator.html">Kitchen Remodel</a>
-            <a href="/bathroom-remodel-calculator.html">Bathroom Remodel</a>
-            <a href="/basement-cost-calculator.html">Basement Finishing</a>
-            <a href="/ev-charger-calculator.html">EV Home Charger</a>
-            <a href="/generator-calculator.html">Standby Generator</a>
-          </div>
-        </div>
-        <a href="/intel/index.html" style="color: var(--primary); font-weight: 700;">Daily Intel</a>
-        <a href="/guides.html">Guides</a>
-        <a href="/privacy-policy.html">Privacy</a>
-        <a href="/contact.html">Contact</a>
+<body style="background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1e293b; margin: 0;">
+  <header style="background: #0f172a; color: #ffffff; padding: 1rem 1.5rem; border-bottom: 1px solid #334155;">
+    <div style="max-width: 980px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <a href="../index.html" style="color: #ffffff; text-decoration: none; font-weight: 800; font-size: 1.2rem;">THE BUYER'S MATH</a>
+      <nav>
+        <a href="../index.html" style="color: #94a3b8; text-decoration: none; margin-right: 1.25rem; font-size: 0.9rem;">Calculators</a>
+        <a href="../articles/index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem;">Guides</a>
       </nav>
     </div>
   </header>
-
-  <!-- Breadcrumbs -->
-  <div class="breadcrumbs">
-    <a href="/">Home</a> &gt; <span class="current">Daily Market Intelligence Archive</span>
-  </div>
-
-  <section class="intel-hero">
-    <h1>Daily Market &amp; Contractor Intelligence</h1>
-    <p>Every morning, we audit contractor bids, track raw construction commodities, review building codes, and monitor IRA clean energy incentives.</p>
-  </section>
-
-  <main class="intel-container">
+  <main style="max-width: 980px; margin: 2rem auto 4rem; padding: 0 1.25rem;">
+    <h1 style="font-size: 2rem; color: #0f172a; margin-bottom: 0.5rem;">Daily Market &amp; Contractor Intelligence Archive</h1>
+    <p style="color: #64748b; font-size: 1rem; margin-bottom: 2rem;">Every day, we audit contractor bids, track raw construction commodities, review building codes, and monitor IRA energy rebates.</p>
     <div>
       
-      <!-- October 05, 2026 -->
-      <article class="dispatch-card">
-        <div>
-          <span class="dispatch-badge">Today's Dispatch</span>
-          <h2 class="dispatch-title">
-            <a href="2026-10-05-daily-market-intelligence.html">Homeowner &amp; Contractor Intelligence &mdash; October 05, 2026</a>
-          </h2>
-          <p class="dispatch-desc">6-commodity spot prices, contractor quote teardowns, IRC/NEC code fast-briefs, and verified jobsite tool deals.</p>
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Daily Dispatch</span>
+            <h3 style="margin: 0.25rem 0 0; font-size: 1.15rem; color: #0f172a;"><a href="2026-10-06-daily-market-intelligence.html" style="text-decoration: none; color: #0f172a;">Homeowner &amp; Contractor Intelligence &mdash; October 06, 2026</a></h3>
+            <p style="margin: 0.25rem 0 0; color: #64748b; font-size: 0.85rem;">Commodity index, quote audit, code brief, energy credits, and hardware drops.</p>
+          </div>
+          <a href="2026-10-06-daily-market-intelligence.html" style="background: #f1f5f9; color: #2563eb; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.85rem;">Read Edition &rarr;</a>
         </div>
-        <a href="2026-10-05-daily-market-intelligence.html" class="read-btn">Read Edition &rarr;</a>
-      </article>
-
-      <!-- October 04, 2026 -->
-      <article class="dispatch-card">
-        <div>
-          <span class="dispatch-badge">Archive Edition</span>
-          <h2 class="dispatch-title">
-            <a href="2026-10-04-daily-market-intelligence.html">Homeowner &amp; Contractor Intelligence &mdash; October 04, 2026</a>
-          </h2>
-          <p class="dispatch-desc">Commodity index, roofing bid teardown, IRC ice barrier codes, Section 25C tax credits, and contractor hardware drops.</p>
+        
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Daily Dispatch</span>
+            <h3 style="margin: 0.25rem 0 0; font-size: 1.15rem; color: #0f172a;"><a href="2026-10-05-daily-market-intelligence.html" style="text-decoration: none; color: #0f172a;">Homeowner &amp; Contractor Intelligence &mdash; October 05, 2026</a></h3>
+            <p style="margin: 0.25rem 0 0; color: #64748b; font-size: 0.85rem;">Commodity index, quote audit, code brief, energy credits, and hardware drops.</p>
+          </div>
+          <a href="2026-10-05-daily-market-intelligence.html" style="background: #f1f5f9; color: #2563eb; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.85rem;">Read Edition &rarr;</a>
         </div>
-        <a href="2026-10-04-daily-market-intelligence.html" class="read-btn">Read Edition &rarr;</a>
-      </article>
-
+        
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Daily Dispatch</span>
+            <h3 style="margin: 0.25rem 0 0; font-size: 1.15rem; color: #0f172a;"><a href="2026-10-04-daily-market-intelligence.html" style="text-decoration: none; color: #0f172a;">Homeowner &amp; Contractor Intelligence &mdash; October 04, 2026</a></h3>
+            <p style="margin: 0.25rem 0 0; color: #64748b; font-size: 0.85rem;">Commodity index, quote audit, code brief, energy credits, and hardware drops.</p>
+          </div>
+          <a href="2026-10-04-daily-market-intelligence.html" style="background: #f1f5f9; color: #2563eb; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.85rem;">Read Edition &rarr;</a>
+        </div>
+        
     </div>
   </main>
-
-  <!-- Global Footer -->
-  <footer class="site-footer">
-    <div class="footer-nav">
-      <a href="/">Calculators</a> |
-      <a href="/intel/index.html">Daily Intel</a> |
-      <a href="/guides.html">Guides</a> |
-      <a href="/privacy-policy.html">Privacy Policy</a> |
-      <a href="/terms.html">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html">Contact Us</a>
-    </div>
-    <p class="footer-disclosure">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only. Commission Junction Affiliate PID: 101896838.
-    </p>
-    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
-  </footer>
-
 </body>
 </html>
