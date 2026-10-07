@@ -526,7 +526,7 @@ Requirements:
             idx_content = f.read()
 
         article_rel_url = f"articles/{date_str}-{slug}.html"
-        if article_rel_url not in idx_content and slug not in idx_content:
+           if article_rel_url not in idx_content:
             calc_cat = target_calc.get("category", "")
             if calc_cat in ["Roofing", "Insulation", "Windows", "Siding", "Fencing", "Paving & Concrete", "Decks", "Gutters", "Garage Doors", "Painting"]:
                 cat_slug = "envelope"
@@ -568,7 +568,7 @@ Requirements:
         with open("guides.html", "r", encoding="utf-8") as f:
             guides_content = f.read()
 
-        if article_rel_url not in guides_content and slug not in guides_content:
+        if article_rel_url not in guides_content:
             guide_card_entry = f"""    <div class="guides-grid" id="guides-grid">
       <!-- Guide: {title} -->
       <article class="guide-card" data-category="{cat_slug}">
