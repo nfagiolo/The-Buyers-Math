@@ -163,9 +163,12 @@ TRADE_GEAR = {
 }
 
 
-def slugify(text):
+def slugify(text, max_len=60):
     text = text.lower()
-    return re.sub(r'[\W_]+', '-', text).strip('-')
+    slug = re.sub(r'[\W_]+', '-', text).strip('-')
+    if len(slug) > max_len:
+        slug = slug[:max_len].rsplit('-', 1)[0]
+    return slug
 
 
 def calculate_title_similarity(t1, t2):
