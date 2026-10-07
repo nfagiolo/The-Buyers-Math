@@ -519,18 +519,71 @@ Requirements:
         f.write(full_html)
     print(f"Created: {article_path}")
 
-    # Update index.html
+ # Update index.html (Consolidated Trade Hub Grid)
     if os.path.exists("index.html"):
         with open("index.html", "r", encoding="utf-8") as f:
             idx_content = f.read()
 
         article_rel_url = f"articles/{date_str}-{slug}.html"
         if article_rel_url not in idx_content and slug not in idx_content:
-            new_item = f'<li><span class="article-date">{date_str}</span> <a href="{article_rel_url}">{title}</a></li>\n    <!-- ARTICLES_LIST_MARKER -->'
-            idx_content = idx_content.replace("<!-- ARTICLES_LIST_MARKER -->", new_item)
-            with open("index.html", "w", encoding="utf-8") as f:
-                f.write(idx_content)
-            print("Updated index.html with new article.")
+            calc_cat = target_calc.get("category", "")
+            if calc_cat in ["Roofing", "Insulation", "Windows", "Siding", "Fencing", "Paving & Concrete", "Decks", "Gutters", "Garage Doors", "Painting"]:
+                cat_slug = "envelope"
+                badge_title = "Building Envelope"
+            elif calc_cat in ["Bathroom Remodeling", "Kitchen Remodeling", "Basement Remodeling", "Electrical", "Generator & Electrical"]:
+                cat_slug = "interior"
+                badge_title = "Interior & Power"
+            else:
+                cat_slug = "mechanical"
+                badge_title = "Mechanical & Energy"
+
+            summary_snippet = meta_desc if 'meta_desc' in locals() and meta_desc else "Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification."
+            if len(summary_snippet) > 170:
+                summary_snippet = summary_snippet[:167].rsplit(" ", 1)[0] + "..."
+
+            new_card = f'''        <div class="calculator-grid" id="guides-grid" style="padding-bottom: 1rem;">
+      <!-- Guide: {title} -->
+      <a href="/{article_rel_url}" class="calc-card guide-card" data-guide-category="featured {cat_slug}">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">{badge_title}</span>
+            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">{date_str}</span>
+          </div>
+          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">{title}</h3>
+          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">{summary_snippet}</p>
+        </div>
+        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
+      </a>'''
+
+            grid_target = '<div class="calculator-grid" id="guides-grid" style="padding-bottom: 1rem;">'
+            if grid_target in idx_content:
+                idx_content = idx_content.replace(grid_target, new_card, 1)
+                with open("index.html", "w", encoding="utf-8") as f:
+                    f.write(idx_content)
+                print("Updated index.html guides grid with new card.")
+
+    # Update guides.html
+    if os.path.exists("guides.html"):
+        with open("guides.html", "r", encoding="utf-8") as f:
+            guides_content = f.read()
+
+        if article_rel_url not in guides_content and slug not in guides_content:
+            guide_card_entry = f"""    <div class="guides-grid" id="guides-grid">
+      <!-- Guide: {title} -->
+      <article class="guide-card" data-category="{cat_slug}">
+        <div class="guide-card-header">
+          <span class="guide-badge">{badge_title}</span>
+          <span class="guide-date">{date_str}</span>
+        </div>
+        <h2 class="guide-title"><a href="/{article_rel_url}">{title}</a></h2>
+        <p class="guide-desc">{summary_snippet}</p>
+        <a href="/{article_rel_url}" class="guide-read-link">Read Full Guide &rarr;</a>
+      </article>"""
+            if '<div class="guides-grid" id="guides-grid">' in guides_content:
+                guides_content = guides_content.replace('<div class="guides-grid" id="guides-grid">', guide_card_entry, 1)
+                with open("guides.html", "w", encoding="utf-8") as f:
+                    f.write(guides_content)
+                print("Updated guides.html with new article card.")
 
     # Update sitemap.xml
     if os.path.exists("sitemap.xml"):
