@@ -526,7 +526,7 @@ Requirements:
             idx_content = f.read()
 
         article_rel_url = f"articles/{date_str}-{slug}.html"
-           if article_rel_url not in idx_content:
+        if article_rel_url not in idx_content:
             calc_cat = target_calc.get("category", "")
             if calc_cat in ["Roofing", "Insulation", "Windows", "Siding", "Fencing", "Paving & Concrete", "Decks", "Gutters", "Garage Doors", "Painting"]:
                 cat_slug = "envelope"
@@ -562,12 +562,16 @@ Requirements:
                 with open("index.html", "w", encoding="utf-8") as f:
                     f.write(idx_content)
                 print("Updated index.html guides grid with new card.")
+            elif "<!-- ARTICLES_LIST_MARKER -->" in idx_content:
+                idx_content = idx_content.replace("<!-- ARTICLES_LIST_MARKER -->", f'<li><span class="article-date">{date_str}</span> <a href="/{article_rel_url}">{title}</a></li>\n    <!-- ARTICLES_LIST_MARKER -->')
+                with open("index.html", "w", encoding="utf-8") as f:
+                    f.write(idx_content)
+                print("Updated index.html via fallback marker.")
 
     # Update guides.html
     if os.path.exists("guides.html"):
         with open("guides.html", "r", encoding="utf-8") as f:
             guides_content = f.read()
-
         if article_rel_url not in guides_content:
             guide_card_entry = f"""    <div class="guides-grid" id="guides-grid">
       <!-- Guide: {title} -->
