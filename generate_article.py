@@ -359,24 +359,23 @@ def main():
     # Build anti-repetition corpus prompt
     recent_titles_str = "\n".join([f"- {t}" for t in existing_titles[-25:]]) if existing_titles else "None (Initial publication)"
 
-    topic_prompt = f"""Generate a completely unique, highly specific, high-intent 2026 homeowner cost analysis title focusing on: {target_calc['name']}.
+  topic_prompt = f"""Generate a completely unique, highly specific, high-intent 2026 homeowner cost analysis title focusing on: {target_calc['name']}.
 Editorial Lens to use: {target_angle}
 
-STRICT ANTI-DUPLICATION CONSTRAINTS:
-You MUST NOT duplicate, paraphrase, or closely mimic any of the previously published titles below:
+STRICT CONSTRAINTS:
+1. Title Length: Between 6 and 10 words (MAXIMUM 70 characters). Never output run-on sentences.
+2. Anti-Duplication: You MUST NOT duplicate or closely mimic any previously published title below:
 {recent_titles_str}
 
-Provide a fresh, highly specific title targeting deep-funnel search intent (e.g., specific material grades, hidden installation complications, code thresholds, or tax filing requirements).
-
 Format strictly as: Title
-Example: 2026 Architectural Shingle vs Standing Seam Metal: 30-Year Roof Replacement Math
+Example: 2026 Architectural Shingle vs Metal: 30-Year Roof Math
 """
 
     # Retry loop to guarantee zero collisions
     title = ""
     slug = ""
     for attempt in range(3):
-        candidate_title = call_claude(client, model_name, topic_prompt, max_tokens=120).strip().strip('"')
+        candidate_title = call_claude(client, model_name, topic_prompt, max_tokens=30).strip().strip('"')
         candidate_slug = slugify(candidate_title)
 
         is_duplicate = False
