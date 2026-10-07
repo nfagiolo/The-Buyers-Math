@@ -356,20 +356,19 @@ def main():
     target_calc, target_angle = select_target_calculator_and_angle(existing_articles)
     print(f"Targeting category: {target_calc['name']} via Angle: {target_angle}")
 
-    # Build anti-repetition corpus prompt
+   # Build anti-repetition corpus prompt
     recent_titles_str = "\n".join([f"- {t}" for t in existing_titles[-25:]]) if existing_titles else "None (Initial publication)"
 
-  topic_prompt = f"""Generate a completely unique, highly specific, high-intent 2026 homeowner cost analysis title focusing on: {target_calc['name']}.
-Editorial Lens to use: {target_angle}
-
-STRICT CONSTRAINTS:
-1. Title Length: Between 6 and 10 words (MAXIMUM 70 characters). Never output run-on sentences.
-2. Anti-Duplication: You MUST NOT duplicate or closely mimic any previously published title below:
-{recent_titles_str}
-
-Format strictly as: Title
-Example: 2026 Architectural Shingle vs Metal: 30-Year Roof Math
-"""
+    topic_prompt = (
+        f"Generate a completely unique, highly specific, high-intent 2026 homeowner cost analysis title focusing on: {target_calc['name']}.\n"
+        f"Editorial Lens to use: {target_angle}\n\n"
+        f"STRICT CONSTRAINTS:\n"
+        f"1. Title Length: Between 6 and 10 words (MAXIMUM 70 characters). Never output run-on sentences.\n"
+        f"2. Anti-Duplication: You MUST NOT duplicate or closely mimic any previously published title below:\n"
+        f"{recent_titles_str}\n\n"
+        f"Format strictly as: Title\n"
+        f"Example: 2026 Architectural Shingle vs Metal: 30-Year Roof Math"
+    )
 
     # Retry loop to guarantee zero collisions
     title = ""
