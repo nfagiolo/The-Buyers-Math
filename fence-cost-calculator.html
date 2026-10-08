@@ -286,7 +286,7 @@
           </p>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <input type="text" id="zipInput" placeholder="Enter ZIP Code" style="padding: 0.65rem 0.85rem; border: 1px solid #93c5fd; border-radius: 6px; font-size: 0.9rem; width: 140px; background: #ffffff;" maxlength="5">
-            <a id="leadMatchLink" href="https://www.angi.com/companylist/search.htm?query=Fence" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;">
+            <a id="leadMatchLink" href="https://www.jdoqocy.com/click-101896838-17142784?url=https%3A%2F%2Fwww.angi.com%2Fcompanylist%2Fsearch.htm%3Fquery%3DFence" target="_blank" rel="noopener noreferrer" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;">
               Compare Fence Bids &rarr;
             </a>
           </div>
@@ -515,7 +515,8 @@
         zipInput.addEventListener('input', () => {
           const zip = zipInput.value.trim();
           if (zip.length === 5) {
-            leadMatchLink.href = `https://www.angi.com/companylist/search.htm?query=Fence&postalCode=${zip}`;
+            const dest = `https://www.angi.com/companylist/search.htm?query=Fence&postalCode=${zip}`;
+            leadMatchLink.href = `https://www.jdoqocy.com/click-101896838-17142784?url=${encodeURIComponent(dest)}`;
           }
         });
       }
