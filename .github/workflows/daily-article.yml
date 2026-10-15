@@ -3,16 +3,23 @@ name: Daily Article & Market Intelligence Generation
 on:
   schedule:
     - cron: '0 10 * * *' # Daily at 10:00 UTC (6:00 AM EDT)
-  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  generate:
+  generate-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -68,8 +75,6 @@ jobs:
           fi
 
       - name: Commit and push changes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -79,5 +84,16 @@ jobs:
           else
             git commit -m "Auto-generate daily article, market intelligence dispatch & feeds"
             git push origin main
-            gh api -X POST /repos/${{ github.repository }}/pages/builds || true
           fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
