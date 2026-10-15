@@ -3,7 +3,7 @@ name: Daily Article & Market Intelligence Generation
 on:
   schedule:
     - cron: '0 10 * * *' # Daily at 10:00 UTC (6:00 AM EDT)
-  workflow_dispatch:      # Allows manual trigger anytime from GitHub Actions tab
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
 
 permissions:
   contents: write
@@ -68,16 +68,16 @@ jobs:
           fi
 
       - name: Commit and push changes
-     env:
-       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-     run: |
-       git config --local user.email "action@github.com"
-       git config --local user.name "GitHub Action"
-       git add -A
-       if git diff --staged --quiet; then
-         echo "No changes to commit."
-       else
-         git commit -m "Auto-generate daily article, market intelligence dispatch & feeds"
-         git push origin main
-         gh api -X POST /repos/${{ github.repository }}/pages/builds || true
-       fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-generate daily article, market intelligence dispatch & feeds"
+            git push origin main
+            gh api -X POST /repos/${{ github.repository }}/pages/builds || true
+          fi
