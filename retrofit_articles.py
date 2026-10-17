@@ -1,106 +1,119 @@
-# retrofit_articles.py
-# One-time script to inject all 4 revenue generators into previously published articles.
+#!/usr/bin/env python3
+"""
+retrofit_articles.py - Retrofits all existing articles in `articles/` and `guides/` with:
+ 1. Clean titles (strips any raw Markdown '# ' from <title> and <h1>).
+ 2. Unique <meta name="description"> extracted from the opening paragraph if generic boilerplate is present.
+ 3. Interactive "Audit My Contractor Quote" Red-Flag Scorecard Widget.
+ 4. Inline SVG Turnkey Cost Benchmark Bar Chart.
+ 5. Shoppable 5-Row Amazon Associates (`tag=nfagiolo-20`) Bill-of-Materials (BOM) Table.
+"""
 
 import os
 import re
+from generate_article import (
+    CALCULATORS,
+    sanitize_title,
+    extract_meta_description,
+    build_svg_cost_chart,
+    build_shoppable_bom_table,
+    build_quote_auditor_widget
+)
 
-CALCULATORS = [
-    {"name": "Roof Replacement Cost Estimator", "url": "../roofing-cost-calculator.html", "keywords": ["roof", "shingle"]},
-    {"name": "Heat Pump vs. Gas Furnace ROI", "url": "../hvac-roi-calculator.html", "keywords": ["hvac", "heat pump", "furnace"]},
-    {"name": "Basement Finishing Cost Estimator", "url": "../basement-cost-calculator.html", "keywords": ["basement", "framing"]},
-    {"name": "Solar Panel Payback Timeline", "url": "../solar-payback-calculator.html", "keywords": ["solar", "panels"]},
-    {"name": "Kitchen Remodel Cost Estimator", "url": "../kitchen-remodel-calculator.html", "keywords": ["kitchen", "cabinet"]},
-    {"name": "Driveway Paving Calculator", "url": "../driveway-paving-calculator.html", "keywords": ["driveway", "asphalt", "paving"]},
-    {"name": "Window Replacement Estimator", "url": "../window-replacement-estimator.html", "keywords": ["window", "glazing"]},
-    {"name": "Pool Pump Energy Calculator", "url": "../pool.html", "keywords": ["pool", "pump"]},
-    {"name": "Mini-Split AC Cost Estimator", "url": "../mini-split-calculator.html", "keywords": ["mini-split", "ductless"]},
-    {"name": "Backup Generator Sizing Guide", "url": "../generator-calculator.html", "keywords": ["generator", "backup"]},
-    {"name": "Water Heater Replacement Cost", "url": "../water-heater-calculator.html", "keywords": ["water heater", "tankless"]}
-]
+GENERIC_BOILERPLATE = "Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification."
 
-def find_best_calculator(content):
-    lower_content = content.lower()
-    for calc in CALCULATORS:
-        for kw in calc["keywords"]:
-            if kw in lower_content:
-                return calc["name"], calc["url"]
-    return "Cost Calculators", "../index.html"
 
-def retrofit_file(filepath):
+def match_calculator(content: str) -> dict:
+    low = content.lower()
+    keyword_map = [
+        (["pool", "pump"], "pool"),
+        (["water heater", "tankless"], "water-heater"),
+        (["generator", "standby", "transfer switch"], "generator"),
+        (["ev ", "charger", "30c", "nema 14-50"], "ev-charger"),
+        (["mini-split", "ductless"], "mini-split"),
+        (["insulation", "air sealing", "r-49", "r-60"], "insulation"),
+        (["solar", "photovoltaic", "25d"], "solar"),
+        (["window", "glazing", "u-factor"], "windows"),
+        (["siding", "hardie", "vinyl siding"], "siding"),
+        (["fence", "fencing"], "fence"),
+        (["driveway", "asphalt"], "driveway"),
+        (["basement", "egress"], "basement"),
+        (["bathroom", "shower", "ditra"], "bathroom"),
+        (["kitchen", "cabinet"], "kitchen"),
+        (["roof", "shingle"], "roofing"),
+        (["heat pump", "furnace", "hvac", "seer2"], "hvac"),
+    ]
+    calc_by_id = {c["id"]: c for c in CALCULATORS}
+    for kws, cid in keyword_map:
+        if any(k in low for k in kws) and cid in calc_by_id:
+            return calc_by_id[cid]
+    return calc_by_id["roofing"]
+
+
+def retrofit_file(filepath: str) -> bool:
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
+    orig = content
 
-    # Skip if already has top revenue box
-    if "Recommended Project Gear" in content:
-        print(f"Skipping {filepath} (already monetized)")
-        return
+    # 1. Strip raw Markdown '# ' from <title> and <h1>
+    t_match = re.search(r"<title>(.*?)</title>", content, flags=re.IGNORECASE | re.DOTALL)
+    if t_match:
+        raw_t = t_match.group(1)
+        clean_t = sanitize_title(raw_t.replace("| The Buyer's Math", "")) + " | The Buyer's Math"
+        if raw_t != clean_t:
+            content = content.replace(f"<title>{raw_t}</title>", f"<title>{clean_t}</title>", 1)
 
-    calc_name, calc_url = find_best_calculator(content)
+    content = re.sub(r"(<h1[^>]*>)\s*#+\s*", r"\1", content, flags=re.IGNORECASE)
 
-    top_box = f"""
-      <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0 2rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <span style="background: #f59e0b; color: #ffffff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em;">Recommended Project Gear</span>
-          <p style="margin: 0.4rem 0 0 0; font-weight: 600; color: #92400e; font-size: 1rem;">Tools &amp; Materials on Amazon</p>
-          <p style="margin: 0.2rem 0 0 0; color: #78350f; font-size: 0.85rem;">Check real-time pricing and customer reviews before starting:</p>
-        </div>
-        <a href="https://www.amazon.com/s?k=home+improvement+tools&tag=nfagiolo-20" target="_blank" rel="noopener noreferrer" style="background: #d97706; color: #ffffff; padding: 0.65rem 1.25rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 2px 4px rgba(217, 119, 6, 0.25);">
-          🛒 Check Deals on Amazon &rarr;
-        </a>
-      </div>
-    """
+    # 2. Upgrade generic boilerplate <meta name="description">
+    title_only = sanitize_title(t_match.group(1)) if t_match else "Home Improvement Guide"
+    unique_desc = extract_meta_description(content, title_only)
+    if GENERIC_BOILERPLATE.lower() in content.lower():
+        content = re.sub(
+            r'(<meta\s+name=["\']description["\']\s+content=["\']).*?(["\']\s*/?>)',
+            rf"\g<1>{unique_desc}\g<2>",
+            content,
+            flags=re.IGNORECASE | re.DOTALL
+        )
 
-    mid_and_ads = f"""
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb; border-radius: 8px; padding: 1.5rem; margin: 2.5rem 0; text-align: center;">
-        <span style="color: #2563eb; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Interactive Estimator</span>
-        <h3 style="margin: 0.4rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.3rem;">Calculate Exact Costs for Your Home</h3>
-        <p style="margin: 0 0 1.25rem 0; color: #475569; font-size: 0.95rem;">Model custom square footage, labor rates, and local tax incentives with our free tool:</p>
-        <a href="{calc_url}" style="background: #2563eb; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 700; text-decoration: none; display: inline-block;">Open the {calc_name} &rarr;</a>
-      </div>
+    calc = match_calculator(content)
 
-      <div style="margin: 2.5rem 0; text-align: center; min-height: 250px;">
-        <ins class="adsbygoogle"
-             style="display:block; text-align:center;"
-             data-ad-layout="in-article"
-             data-ad-format="fluid"
-             data-ad-client="ca-pub-1199906473460957"
-             data-ad-slot="responsive"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({{}});
-        </script>
-      </div>
-    """
+    # 3. Inject Interactive Quote Auditor & SVG Cost Chart if not already present
+    if "<!-- TBM QUOTE AUDITOR WIDGET START -->" not in content:
+        auditor_html = build_quote_auditor_widget(calc)
+        chart_html = build_svg_cost_chart(calc)
+        combo = "\n" + auditor_html + "\n" + chart_html + "\n"
+        if "</p>" in content:
+            content = content.replace("</p>", "</p>" + combo, 1)
+        elif "</h1>" in content:
+            content = content.replace("</h1>", "</h1>" + combo, 1)
 
-    # Inject top box
-    if "Published on" in content:
-        idx = content.find("Published on")
-        end_div = content.find("</div>", idx)
-        if end_div != -1:
-            insert_pos = end_div + len("</div>")
-            content = content[:insert_pos] + "\n" + top_box + content[insert_pos:]
-    elif "</h1>" in content:
-        content = content.replace("</h1>", f"</h1>\n{top_box}", 1)
+    # 4. Inject Shoppable Amazon BOM Table before </article> or </main>
+    if "<!-- TBM SHOPPABLE BOM START -->" not in content:
+        bom_html = build_shoppable_bom_table(calc)
+        if "</article>" in content:
+            content = content.replace("</article>", bom_html + "\n    </article>", 1)
+        elif "</main>" in content:
+            content = content.replace("</main>", bom_html + "\n  </main>", 1)
 
-    # Inject mid-article card
-    if "</article>" in content:
-        content = content.replace("</article>", f"{mid_and_ads}\n    </article>", 1)
-    elif "</main>" in content:
-        content = content.replace("</main>", f"{mid_and_ads}\n  </main>", 1)
+    if content != orig:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"Retrofitted {filepath} with Quote Auditor, SVG Chart & Shoppable BOM.")
+        return True
+    return False
 
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
-    print(f"Updated: {filepath}")
 
 def main():
-    articles_dir = "articles"
-    if not os.path.exists(articles_dir):
-        print("No articles directory found.")
-        return
+    updated = 0
+    for folder in ["articles", "guides"]:
+        if not os.path.exists(folder):
+            continue
+        for fname in sorted(os.listdir(folder)):
+            if fname.endswith(".html"):
+                if retrofit_file(os.path.join(folder, fname)):
+                    updated += 1
+    print(f"Retrofit complete: {updated} article(s) upgraded.")
 
-    for fname in os.listdir(articles_dir):
-        if fname.endswith(".html"):
-            retrofit_file(os.path.join(articles_dir, fname))
-    print("Done retrofitting existing articles.")
 
 if __name__ == "__main__":
     main()

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-sync_guides.py - Automated Editorial-First Homepage, Guide Archive & RSS Sync for The Buyer's Math
-1. Scans `articles/` and `guides/`, stripping any raw Markdown `# ` prefixes from titles.
-2. Replaces generic boilerplate meta descriptions with real first-paragraph article excerpts.
-3. Updates the above-the-fold Split Hero (`<!-- TBM LEAD STORY START -->`) in `index.html` with Today's Lead Cost Analysis + 4 Recent Daily Dispatches.
-4. Updates the full `#guideGrid` (`<!-- TBM GUIDES GRID START -->`) in `index.html`, `guides.html`, `feed.xml`, and `sitemap.xml`.
+sync_guides.py - Bidirectional Content, Sitemap & Calculator Freshness Sync for The Buyer's Math
+1. Scans `articles/` and `guides/`, stripping any raw Markdown `# ` prefixes and extracting unique excerpts.
+2. Updates `index.html` (`<!-- TBM LEAD STORY START -->` and `<!-- TBM GUIDES GRID START -->`).
+3. Regenerates `guides.html`, `feed.xml` (RSS 2.0), and `sitemap.xml` (updating `<lastmod>` to today across all calculators, guides, and intel dispatches with clean canonical URLs).
+4. Bidirectional Sync: Injects the 3 newest trade-matched articles directly into each of the 21 calculator HTML files (`<!-- TBM CALCULATOR TRADE GUIDES START -->`) so every calculator page updates daily with fresh internal links and editorial context.
 """
 
 import os
@@ -13,6 +13,30 @@ import email.utils
 from datetime import datetime
 
 GENERIC_BOILERPLATE = "Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification."
+
+ALL_21_CALCULATORS = [
+    "roofing-cost-calculator.html",
+    "siding-cost-calculator.html",
+    "window-replacement-estimator.html",
+    "fence-cost-calculator.html",
+    "driveway-paving-calculator.html",
+    "deck-cost-calculator.html",
+    "gutter-cost-calculator.html",
+    "garage-door-calculator.html",
+    "patio-cost-calculator.html",
+    "exterior-painting-calculator.html",
+    "hvac-roi-calculator.html",
+    "mini-split-calculator.html",
+    "attic-insulation-calculator.html",
+    "water-heater-calculator.html",
+    "solar-payback-calculator.html",
+    "pool.html",
+    "kitchen-remodel-calculator.html",
+    "bathroom-remodel-calculator.html",
+    "basement-cost-calculator.html",
+    "ev-charger-calculator.html",
+    "generator-calculator.html"
+]
 
 FLAGSHIP_GUIDES = [
     {
@@ -49,14 +73,12 @@ FLAGSHIP_GUIDES = [
 
 
 def clean_heading(raw_title: str) -> str:
-    """Strips Markdown '#' prefixes, quotes, and extra whitespace from titles."""
     t = re.sub(r"\s*\|\s*The Buyer'?s Math.*$", "", raw_title, flags=re.IGNORECASE)
     t = re.sub(r"^[\s#*\"'`>]+|[\s*\"'`]+$", "", t)
     return re.sub(r"\s+", " ", t).strip()
 
 
 def extract_unique_excerpt(html_content: str, fallback_title: str) -> str:
-    """Extracts a unique description from <meta name='description'> or the first substantive <p> tag."""
     desc_match = re.search(
         r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']',
         html_content,
@@ -66,7 +88,6 @@ def extract_unique_excerpt(html_content: str, fallback_title: str) -> str:
     if meta_desc and meta_desc.lower() != GENERIC_BOILERPLATE.lower():
         return re.sub(r"\s+", " ", meta_desc)
 
-    # Extract paragraphs from main/article body
     paragraphs = re.findall(r"<p[^>]*>(.*?)</p>", html_content, flags=re.IGNORECASE | re.DOTALL)
     for p in paragraphs:
         clean_p = re.sub(r"<[^>]+>", " ", p)
@@ -85,7 +106,6 @@ def extract_unique_excerpt(html_content: str, fallback_title: str) -> str:
 
 
 def classify_article(title: str, description: str):
-    """Maps an article to its display category, filter tag, and companion calculator."""
     low = (title + " " + description).lower()
     if any(w in low for w in ["roof", "shingle"]):
         return ("Building Envelope", "envelope", "/roofing-cost-calculator.html", "Roofing Calc")
@@ -149,13 +169,6 @@ def get_all_articles():
             t_match = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE | re.DOTALL)
             raw_title = t_match.group(1) if t_match else fname.replace(".html", "")
             title = clean_heading(raw_title)
-
-            # Fix any raw '# ' inside the article HTML file itself
-            if raw_title.strip().startswith("#"):
-                content_fixed = content.replace(raw_title, title)
-                content_fixed = re.sub(r"(<h1[^>]*>)\s*#+\s*", r"\1", content_fixed, flags=re.IGNORECASE)
-                with open(fpath, "w", encoding="utf-8") as fw:
-                    fw.write(content_fixed)
 
             d_match = re.match(r"^(\d{4}-\d{2}-\d{2})", fname)
             if not d_match:
@@ -278,7 +291,6 @@ def update_index_editorial(articles):
             flags=re.DOTALL
         )
 
-    # Update total guides button count
     content = re.sub(
         r'(<button[^>]*data-guide-filter="all"[^>]*>)All \d+ Guides(</button>)',
         rf"\g<1>All {len(articles)} Guides\g<2>",
@@ -287,9 +299,161 @@ def update_index_editorial(articles):
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"Updated index.html with Lead Story ({lead['date']}) and {len(articles)} cleaned guide cards.")
+    print(f"Updated index.html with Lead Story ({lead['date']}) and {len(articles)} guide cards.")
+
+
+def inject_trade_guides_into_calculators(articles):
+    """Bidirectional sync: injects the 3 newest trade-matched articles into each of the 21 calculator HTML files."""
+    if not articles:
+        return
+    updated_calcs = 0
+    for calc_file in ALL_21_CALCULATORS:
+        if not os.path.exists(calc_file):
+            continue
+        calc_rel = "/" + calc_file
+        matched = [a for a in articles if a["calc_url"] == calc_rel]
+        if len(matched) < 3:
+            # Fill remaining slots with newest articles in the same category or overall newest
+            seen = {a["url"] for a in matched}
+            for a in articles:
+                if a["url"] not in seen:
+                    matched.append(a)
+                    seen.add(a["url"])
+                if len(matched) >= 3:
+                    break
+        top_three = matched[:3]
+
+        cards_html = []
+        for a in top_three:
+            cards_html.append(f"""        <a href="{a['url']}" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">{a['category']}</span>
+              <span style="font-size: 0.75rem; color: #94a3b8;">{a['date']}</span>
+            </div>
+            <h4 style="margin: 0 0 0.45rem 0; font-size: 1.02rem; color: #0f172a; line-height: 1.38;">{a['title']}</h4>
+            <p style="margin: 0 0 0.85rem 0; font-size: 0.84rem; color: #475569; line-height: 1.5;">{a['description']}</p>
+          </div>
+          <span style="font-size: 0.84rem; font-weight: 700; color: #2563eb;">Read Cost Breakdown &rarr;</span>
+        </a>""")
+
+        block_html = f"""<!-- TBM CALCULATOR TRADE GUIDES START -->
+    <section class="tbm-calc-latest-guides" style="margin-top: 2.75rem; padding-top: 2.25rem; border-top: 1px solid #e2e8f0;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb;">Daily Research Sync</span>
+          <h3 style="margin: 0.2rem 0 0 0; font-size: 1.35rem; color: #0f172a;">Latest 2026 Cost Audits &amp; Code Briefs for This Trade</h3>
+        </div>
+        <a href="/guides.html" style="font-size: 0.88rem; font-weight: 700; color: #2563eb; text-decoration: none;">Browse All Guides &rarr;</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.15rem;">
+{chr(10).join(cards_html)}
+      </div>
+    </section>
+    <!-- TBM CALCULATOR TRADE GUIDES END -->"""
+
+        with open(calc_file, "r", encoding="utf-8") as f:
+            c_html = f.read()
+        orig = c_html
+
+        if "<!-- TBM CALCULATOR TRADE GUIDES START -->" in c_html:
+            c_html = re.sub(
+                r"<!-- TBM CALCULATOR TRADE GUIDES START -->.*?<!-- TBM CALCULATOR TRADE GUIDES END -->",
+                block_html,
+                c_html,
+                flags=re.DOTALL
+            )
+        elif "</main>" in c_html:
+            c_html = c_html.replace("</main>", block_html + "\n\n  </main>", 1)
+
+        if c_html != orig:
+            with open(calc_file, "w", encoding="utf-8") as f:
+                f.write(c_html)
+            updated_calcs += 1
+
+    print(f"Injected latest trade-matched guides into {updated_calcs} calculator page(s).")
+
+
+def generate_sitemap_xml(articles):
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    urls = [
+        ("https://thebuyersmath.com/", today_str, "daily", "1.0"),
+        ("https://thebuyersmath.com/guides.html", today_str, "daily", "0.9"),
+        ("https://thebuyersmath.com/intel/index.html", today_str, "daily", "0.9"),
+        ("https://thebuyersmath.com/about.html", today_str, "monthly", "0.6"),
+        ("https://thebuyersmath.com/privacy-policy.html", "2026-10-09", "monthly", "0.3"),
+        ("https://thebuyersmath.com/terms.html", "2026-10-09", "monthly", "0.3"),
+        ("https://thebuyersmath.com/contact.html", "2026-10-09", "monthly", "0.4"),
+    ]
+    for c in ALL_21_CALCULATORS:
+        urls.append((f"https://thebuyersmath.com/{c}", today_str, "daily", "0.9"))
+
+    if os.path.exists("intel"):
+        for fname in sorted(os.listdir("intel"), reverse=True):
+            if fname.endswith("-daily-market-intelligence.html"):
+                urls.append((f"https://thebuyersmath.com/intel/{fname}", fname[:10], "daily", "0.8"))
+
+    for a in articles:
+        urls.append((f"https://thebuyersmath.com{a['url']}", a["date"], "monthly", "0.8"))
+
+    xml_items = []
+    seen = set()
+    for loc, lastmod, freq, prio in urls:
+        if loc in seen:
+            continue
+        seen.add(loc)
+        xml_items.append(
+            f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n"
+            f"    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>"
+        )
+
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(xml_items) + "\n</urlset>\n"
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(sitemap)
+    print(f"Generated clean sitemap.xml with {len(xml_items)} canonical URLs.")
+
+
+def generate_rss_feed(articles):
+    items_xml = []
+    for a in articles[:25]:
+        try:
+            dt = datetime.strptime(a["date"], "%Y-%m-%d")
+        except Exception:
+            dt = datetime.now()
+        rfc_date = email.utils.format_datetime(dt)
+        full_url = "https://thebuyersmath.com" + a["url"]
+        items_xml.append(
+            f"    <item>\n"
+            f"      <title><![CDATA[{a['title']}]]></title>\n"
+            f"      <link>{full_url}</link>\n"
+            f"      <guid isPermaLink=\"true\">{full_url}</guid>\n"
+            f"      <pubDate>{rfc_date}</pubDate>\n"
+            f"      <description><![CDATA[{a['description']}]]></description>\n"
+            f"      <category><![CDATA[{a['category']}]]></category>\n"
+            f"    </item>"
+        )
+    now_rfc = email.utils.format_datetime(datetime.now())
+    feed_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        "  <channel>\n"
+        "    <title>The Buyer's Math | Empirical Home Improvement Cost Guides</title>\n"
+        "    <link>https://thebuyersmath.com/</link>\n"
+        "    <description>Independent, data-driven financial modeling and cost estimators for homeowners.</description>\n"
+        "    <language>en-us</language>\n"
+        '    <atom:link href="https://thebuyersmath.com/feed.xml" rel="self" type="application/rss+xml" />\n'
+        f"    <lastBuildDate>{now_rfc}</lastBuildDate>\n"
+        + "\n".join(items_xml)
+        + "\n  </channel>\n</rss>\n"
+    )
+    with open("feed.xml", "w", encoding="utf-8") as f:
+        f.write(feed_xml)
+    print("Generated feed.xml (RSS 2.0) successfully.")
 
 
 if __name__ == "__main__":
     all_articles = get_all_articles()
     update_index_editorial(all_articles)
+    inject_trade_guides_into_calculators(all_articles)
+    generate_sitemap_xml(all_articles)
+    generate_rss_feed(all_articles)
