@@ -70,7 +70,7 @@ def retrofit_file(filepath: str) -> bool:
     if GENERIC_BOILERPLATE.lower() in content.lower():
         content = re.sub(
             r'(<meta\s+name=["\']description["\']\s+content=["\']).*?(["\']\s*/?>)',
-            rf"\g<1>{unique_desc}\g<2>",
+            lambda m: m.group(1) + unique_desc + m.group(2),
             content,
             flags=re.IGNORECASE | re.DOTALL
         )
@@ -87,13 +87,18 @@ def retrofit_file(filepath: str) -> bool:
         elif "</h1>" in content:
             content = content.replace("</h1>", "</h1>" + combo, 1)
 
-    # 4. Inject Shoppable Amazon BOM Table before </article> or </main>
+    if 'name="google-adsense-account"' not in content and "</head>" in content:
+        content = content.replace("</head>", '  <meta name="google-adsense-account" content="ca-pub-1199906473460957">\n</head>', 1)
     if "<!-- TBM SHOPPABLE BOM START -->" not in content:
         bom_html = build_shoppable_bom_table(calc)
         if "</article>" in content:
             content = content.replace("</article>", bom_html + "\n    </article>", 1)
         elif "</main>" in content:
             content = content.replace("</main>", bom_html + "\n  </main>", 1)
+        elif "<footer" in content:
+            content = content.replace("<footer", bom_html + "\n  <footer", 1)
+        elif "</body>" in content:
+            content = content.replace("</body>", bom_html + "\n</body>", 1)
 
     if content != orig:
         with open(filepath, "w", encoding="utf-8") as f:

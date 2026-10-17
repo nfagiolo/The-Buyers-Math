@@ -358,6 +358,7 @@ def main():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-1199906473460957">
   <title>{title} | The Buyer's Math</title>
   <meta name="description" content="{meta_desc}">
   <link rel="canonical" href="https://thebuyersmath.com/{filename}">

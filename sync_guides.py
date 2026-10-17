@@ -257,7 +257,7 @@ def update_index_editorial(articles):
     if "<!-- TBM LEAD STORY START -->" in content and "<!-- TBM LEAD STORY END -->" in content:
         content = re.sub(
             r"<!-- TBM LEAD STORY START -->.*?<!-- TBM LEAD STORY END -->",
-            lead_block_html,
+            lambda _: lead_block_html,
             content,
             flags=re.DOTALL
         )
@@ -286,7 +286,7 @@ def update_index_editorial(articles):
     if "<!-- TBM GUIDES GRID START -->" in content and "<!-- TBM GUIDES GRID END -->" in content:
         content = re.sub(
             r"<!-- TBM GUIDES GRID START -->.*?<!-- TBM GUIDES GRID END -->",
-            grid_block_html,
+            lambda _: grid_block_html,
             content,
             flags=re.DOTALL
         )
@@ -359,7 +359,7 @@ def inject_trade_guides_into_calculators(articles):
         if "<!-- TBM CALCULATOR TRADE GUIDES START -->" in c_html:
             c_html = re.sub(
                 r"<!-- TBM CALCULATOR TRADE GUIDES START -->.*?<!-- TBM CALCULATOR TRADE GUIDES END -->",
-                block_html,
+                lambda _: block_html,
                 c_html,
                 flags=re.DOTALL
             )

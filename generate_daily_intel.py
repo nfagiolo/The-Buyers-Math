@@ -15,6 +15,284 @@ import random
 import datetime
 
 AMAZON_TAG = "nfagiolo-20"
+DEFAULT_COMMODITIES = {
+    "last_updated": "2026-10-17",
+    "commodities": {
+        "spf_lumber": {
+            "name": "2x4x8 SPF Framing Stud",
+            "unit": "per piece",
+            "current_price": 3.93,
+            "change_30d_pct": 1.2,
+            "note": "Mill production steady; freight diesel stabilizing inland rail tariffs.",
+            "calc_url": "/deck-cost-calculator.html",
+            "trades": [
+                "deck-cost-calculator.html",
+                "basement-cost-calculator.html",
+                "fence-cost-calculator.html",
+                "kitchen-remodel-calculator.html"
+            ],
+            "history": [
+                3.88,
+                3.89,
+                3.87,
+                3.9,
+                3.91,
+                3.94,
+                3.96,
+                3.95,
+                3.98,
+                4.0,
+                3.97,
+                3.94,
+                3.92,
+                3.9,
+                3.88,
+                3.89,
+                3.91,
+                3.92,
+                3.94,
+                3.95,
+                3.93,
+                3.91,
+                3.9,
+                3.88,
+                3.89,
+                3.91,
+                3.92,
+                3.94,
+                3.92,
+                3.93
+            ]
+        },
+        "romex_wire": {
+            "name": "12/2 NM-B Romex (250ft)",
+            "unit": "250ft roll",
+            "current_price": 138.65,
+            "change_30d_pct": -2.7,
+            "note": "COMEX copper spot futures moderating; electrical distributors well stocked.",
+            "calc_url": "/ev-charger-calculator.html",
+            "trades": [
+                "ev-charger-calculator.html",
+                "generator-calculator.html",
+                "solar-payback-calculator.html",
+                "mini-split-calculator.html",
+                "pool.html"
+            ],
+            "history": [
+                142.5,
+                143.1,
+                144.0,
+                145.2,
+                146.49,
+                145.8,
+                144.9,
+                143.5,
+                142.8,
+                141.9,
+                141.2,
+                140.8,
+                140.22,
+                140.5,
+                141.0,
+                140.4,
+                139.9,
+                139.6,
+                139.2,
+                139.0,
+                138.9,
+                139.1,
+                139.4,
+                139.15,
+                138.95,
+                138.8,
+                138.75,
+                138.7,
+                138.68,
+                138.65
+            ]
+        },
+        "asphalt_shingles": {
+            "name": "Architectural Asphalt Shingles",
+            "unit": "per square (100 sq ft)",
+            "current_price": 117.65,
+            "change_30d_pct": -0.3,
+            "note": "Petroleum asphalt flux index flat; late-fall re-roofing demand normalizing.",
+            "calc_url": "/roofing-cost-calculator.html",
+            "trades": [
+                "roofing-cost-calculator.html",
+                "siding-cost-calculator.html",
+                "gutter-cost-calculator.html",
+                "exterior-painting-calculator.html",
+                "garage-door-calculator.html"
+            ],
+            "history": [
+                118.0,
+                118.2,
+                118.5,
+                118.71,
+                119.1,
+                119.6,
+                120.1,
+                120.71,
+                120.4,
+                120.0,
+                119.7,
+                119.3,
+                119.0,
+                118.8,
+                118.6,
+                118.4,
+                118.2,
+                118.1,
+                118.0,
+                117.9,
+                117.85,
+                117.8,
+                117.75,
+                117.7,
+                117.72,
+                117.68,
+                117.66,
+                117.64,
+                117.65,
+                117.65
+            ]
+        },
+        "concrete_bag": {
+            "name": "Sakrete / Quikrete 5000 (80lb)",
+            "unit": "80 lb bag",
+            "current_price": 6.56,
+            "change_30d_pct": 1.7,
+            "note": "Portland cement kiln energy inputs firm; pre-freeze flatwork orders active.",
+            "calc_url": "/driveway-paving-calculator.html",
+            "trades": [
+                "driveway-paving-calculator.html",
+                "patio-cost-calculator.html"
+            ],
+            "history": [
+                6.45,
+                6.46,
+                6.48,
+                6.5,
+                6.55,
+                6.6,
+                6.65,
+                6.62,
+                6.58,
+                6.52,
+                6.45,
+                6.4,
+                6.38,
+                6.4,
+                6.42,
+                6.44,
+                6.46,
+                6.48,
+                6.49,
+                6.5,
+                6.51,
+                6.52,
+                6.53,
+                6.54,
+                6.54,
+                6.55,
+                6.55,
+                6.56,
+                6.56,
+                6.56
+            ]
+        },
+        "drywall_sheet": {
+            "name": "1/2-in x 4x8 Sheetrock Drywall",
+            "unit": "per panel",
+            "current_price": 14.75,
+            "change_30d_pct": -1.9,
+            "note": "Synthetic gypsum calcining plants at 89% capacity; interior remodel stock high.",
+            "calc_url": "/bathroom-remodel-calculator.html",
+            "trades": [
+                "bathroom-remodel-calculator.html"
+            ],
+            "history": [
+                15.04,
+                15.02,
+                15.0,
+                14.98,
+                14.95,
+                14.92,
+                14.9,
+                14.88,
+                14.85,
+                14.82,
+                14.8,
+                14.8,
+                14.79,
+                14.79,
+                14.78,
+                14.78,
+                14.77,
+                14.77,
+                14.76,
+                14.76,
+                14.76,
+                14.75,
+                14.75,
+                14.75,
+                14.75,
+                14.75,
+                14.75,
+                14.75,
+                14.75,
+                14.75
+            ]
+        },
+        "fiberglass_batt": {
+            "name": "R-38 Kraft Fiberglass Batt",
+            "unit": "roll (64 sq ft)",
+            "current_price": 81.4,
+            "change_30d_pct": 3.4,
+            "note": "Pre-winter weatherization surge; IRA Section 25C $1,200 cap driving attic retrofits.",
+            "calc_url": "/attic-insulation-calculator.html",
+            "trades": [
+                "attic-insulation-calculator.html",
+                "hvac-roi-calculator.html",
+                "window-replacement-estimator.html",
+                "water-heater-calculator.html"
+            ],
+            "history": [
+                78.7,
+                78.9,
+                79.1,
+                79.3,
+                79.5,
+                79.8,
+                80.1,
+                80.4,
+                80.6,
+                80.86,
+                80.9,
+                80.95,
+                81.0,
+                81.05,
+                81.1,
+                81.12,
+                81.15,
+                81.18,
+                81.2,
+                81.22,
+                81.25,
+                81.28,
+                81.3,
+                81.32,
+                81.34,
+                81.35,
+                81.37,
+                81.38,
+                81.39,
+                81.4
+            ]
+        }
+    }
+}
 CJ_ANGI_LINK = "https://www.jdoqocy.com/click-101896838-17142784"
 ADSENSE_CLIENT = "ca-pub-1199906473460957"
 
@@ -108,11 +386,19 @@ def render_svg_sparkline(values, color="#2563eb"):
 def update_commodity_history(today_str: str) -> dict:
     os.makedirs("data", exist_ok=True)
     path = "data/commodity_history.json"
-    if os.path.exists(path):
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    else:
-        data = {"last_updated": today_str, "commodities": {}}
+    data = None
+    for p in ["data/commodity_history.json", "commodity_history.json"]:
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    d = json.load(f)
+                    if d.get("commodities"):
+                        data = d
+                        break
+            except Exception:
+                pass
+    if not data:
+        data = DEFAULT_COMMODITIES
 
     if data.get("last_updated") != today_str:
         for key, item in data.get("commodities", {}).items():
@@ -217,6 +503,7 @@ def generate_daily_intel_page(data: dict, today_str: str, pretty_date: str, tear
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-1199906473460957">
   <title>Daily Homeowner &amp; Contractor Intelligence — {pretty_date} | The Buyer's Math</title>
   <meta name="description" content="30-day construction commodity spot prices, contractor quote line-item teardowns, IRC/NEC code briefs, and verified IRA tax credits for {pretty_date}.">
   <link rel="canonical" href="https://thebuyersmath.com/intel/{today_str}-daily-market-intelligence.html">
@@ -305,6 +592,7 @@ def sync_intel_archive_index():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-1199906473460957">
   <title>Daily Market &amp; Contractor Intelligence Archive | The Buyer's Math</title>
   <meta name="description" content="Daily construction commodity spot-price tracking, contractor bid teardowns, IRC/NEC building code fast-briefs, and IRA energy tax credit alerts.">
   <link rel="canonical" href="https://thebuyersmath.com/intel/">
@@ -352,7 +640,7 @@ def main():
         if "<!-- TBM DAILY INTELLIGENCE WIDGET -->" in idx_html and "<!-- END TBM DAILY INTELLIGENCE WIDGET -->" in idx_html:
             idx_html = re.sub(
                 r"<!-- TBM DAILY INTELLIGENCE WIDGET -->.*?<!-- END TBM DAILY INTELLIGENCE WIDGET -->",
-                widget,
+                lambda _: widget,
                 idx_html,
                 flags=re.DOTALL
             )
