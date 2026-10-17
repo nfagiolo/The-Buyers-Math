@@ -1,186 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Buyer's Math — Daily Homeowner &amp; Contractor Intelligence</title>
-    <link>https://thebuyersmath.com</link>
-    <description>Empirical home improvement cost estimators, daily commodity spot prices, contractor quote teardowns, and federal tax credit guides.</description>
+    <title>The Buyer's Math | Empirical Home Improvement Cost Guides</title>
+    <link>https://thebuyersmath.com/</link>
+    <description>Independent, data-driven financial modeling and cost estimators for homeowners.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Oct 2026 10:15:46 +0000</lastBuildDate>
-    <atom:link href="https://thebuyersmath.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://thebuyersmath.com/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Oct 2026 18:49:56 -0000</lastBuildDate>
     <item>
-      <title>Roof Replacement Cost per Square (2026 Guide)</title>
-      <link>https://thebuyersmath.com/guides/roof-replacement-cost-per-square-2026.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/guides/roof-replacement-cost-per-square-2026.html</guid>
-      <pubDate>Sat, 17 Oct 2026 10:15:15 +0000</pubDate>
-      <description>2026 empirical guide to roof replacement costs per roofing square (100 sq ft). Compare architectural shingles vs. 3-tab, tear-off labor, and flashing costs.</description>
-    </item>
-    <item>
-      <title>Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs &amp; Payback</title>
-      <link>https://thebuyersmath.com/guides/heat-pump-tax-credit-2026.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/guides/heat-pump-tax-credit-2026.html</guid>
-      <pubDate>Sat, 17 Oct 2026 10:15:15 +0000</pubDate>
-      <description>Complete 2026 guide to Inflation Reduction Act Section 25C heat pump tax credits. Learn efficiency requirements, eligible equipment, installation costs, and savings.</description>
-    </item>
-    <item>
-      <title>2026 EV Charger Tax Credit Guide: Section 30C Rules &amp; Panel Upgrades</title>
-      <link>https://thebuyersmath.com/guides/ev-charger-tax-credit-2026.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/guides/ev-charger-tax-credit-2026.html</guid>
-      <pubDate>Sat, 17 Oct 2026 10:15:15 +0000</pubDate>
-      <description>Complete guide to the 30% Section 30C federal tax credit (up to $1,000) for residential Level 2 EV chargers, census tract rules, Form 8911, and 200A panel upgrades.</description>
-    </item>
-    <item>
-      <title>2026 Roof Replacement: Permit Fees &amp; Hidden Damage Costs</title>
+      <title><![CDATA[2026 Roof Replacement: Permit Fees & Hidden Damage Costs]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-17-2026-roof-replacement-permit-fees-hidden-damage-costs.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-17-2026-roof-replacement-permit-fees-hidden-damage-costs.html</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Roof Replacement: Permit Fees &amp; Hidden Damage Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Roof Replacement: Permit Fees & Hidden Damage Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 17, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-17-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-17-daily-market-intelligence.html</guid>
-      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 17, 2026: material spot prices, 25-Square Architectural Shingle Roof Replacement quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
+      <title><![CDATA[2026 Driveway Paving Calculator: How IRA Section 25C and 30C Tax Credits Plus Utility Rebates Can Cut Your True Paving Cost by Thousands]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-17-2026-driveway-paving-calculator-how-ira-section-25c-and.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-17-2026-driveway-paving-calculator-how-ira-section-25c-and.html</guid>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing or installing a residential driveway in 2026 carries a gross price tag that surprises most homeowners, but a layered strategy combining Inflation...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
     </item>
     <item>
-      <title># 2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff</title>
+      <title><![CDATA[2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-      <description># 2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 16, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-16-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-16-daily-market-intelligence.html</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 16, 2026: material spot prices, 400 Sq Ft 4-Inch Concrete Driveway Paving &amp; Grading quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>2026 Water Heater Replacement: Climate Zone Failure &amp; Efficiency Cost Analysis</title>
+      <title><![CDATA[2026 Water Heater Replacement: Climate Zone Failure & Efficiency Cost Analysis]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Water Heater Replacement: Climate Zone Failure &amp; Efficiency Cost Analysis - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Water Heater Replacement: Climate Zone Failure & Efficiency Cost Analysis - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
     </item>
     <item>
-      <title># 2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery</title>
+      <title><![CDATA[2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <description># 2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 15, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-15-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-15-daily-market-intelligence.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 15, 2026: material spot prices, 50-Gallon Hybrid Electric Heat Pump Water Heater Replacement quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries</title>
+      <title><![CDATA[2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed-installer.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed-installer.html</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 14, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-14-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-14-daily-market-intelligence.html</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 14, 2026: material spot prices, 3-Ton Inverter Heat Pump Split System (16+ SEER2 / 9+ HSPF2) quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>2026 Driveway Paving: Labor, Materials &amp; Equipment Breakdown</title>
+      <title><![CDATA[2026 Driveway Paving: Labor, Materials & Equipment Breakdown]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment-breakdown.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment-breakdown.html</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Driveway Paving: Labor, Materials &amp; Equipment Breakdown - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Driveway Paving: Labor, Materials & Equipment Breakdown - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 13, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-13-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-13-daily-market-intelligence.html</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 13, 2026: material spot prices, 200-Amp Main Service Panel Upgrade &amp; Meter Socket quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>2026 Basement Finishing: Section 25C Tax Credit Qualification Rules</title>
+      <title><![CDATA[2026 Basement Finishing: Section 25C Tax Credit Qualification Rules]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-12-2026-basement-finishing-section-25c-tax-credit.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-12-2026-basement-finishing-section-25c-tax-credit.html</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Basement Finishing: Section 25C Tax Credit Qualification Rules - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Basement Finishing: Section 25C Tax Credit Qualification Rules - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 12, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-12-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-12-daily-market-intelligence.html</guid>
-      <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 12, 2026: material spot prices, 25-Square Architectural Shingle Roof Replacement quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>2026 Solar Payback: Permit Fees &amp; Hidden Inspection Costs</title>
+      <title><![CDATA[2026 Solar Payback: Permit Fees & Hidden Inspection Costs]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-11-2026-solar-payback-permit-fees-hidden-inspection-costs.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-11-2026-solar-payback-permit-fees-hidden-inspection-costs.html</guid>
-      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Solar Payback: Permit Fees &amp; Hidden Inspection Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Solar Payback: Permit Fees & Hidden Inspection Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 11, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-11-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-11-daily-market-intelligence.html</guid>
-      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 11, 2026: material spot prices, 400 Sq Ft 4-Inch Concrete Driveway Paving &amp; Grading quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff</title>
+      <title><![CDATA[Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-10-fiber-cement-vs-vinyl-siding-2026-durability-cost-tradeoff.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-10-fiber-cement-vs-vinyl-siding-2026-durability-cost-tradeoff.html</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 10, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-10-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-10-daily-market-intelligence.html</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 10, 2026: material spot prices, 50-Gallon Hybrid Electric Heat Pump Water Heater Replacement quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title># 2026 Fence Climate Durability: Linear Footage Cost &amp; Freeze-Thaw Failure Analysis</title>
+      <title><![CDATA[2026 Fence Climate Durability: Linear Footage Cost & Freeze-Thaw Failure Analysis]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-09-2026-fence-climate-durability-linear-footage-cost-freeze.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-09-2026-fence-climate-durability-linear-footage-cost-freeze.html</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
-      <description># 2026 Fence Climate Durability: Linear Footage Cost &amp; Freeze-Thaw Failure Analysis - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Fence Climate Durability: Linear Footage Cost & Freeze-Thaw Failure Analysis - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 09, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-09-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-09-daily-market-intelligence.html</guid>
-      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 09, 2026: material spot prices, 3-Ton Inverter Heat Pump Split System (16+ SEER2 / 9+ HSPF2) quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
-    </item>
-    <item>
-      <title>2026 Attic Air Sealing: DIY vs Licensed Contractor ROI</title>
-      <link>https://thebuyersmath.com/articles/2026-10-08-2026-attic-air-sealing-diy-vs-licensed-contractor-roi.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-08-2026-attic-air-sealing-diy-vs-licensed-contractor-roi.html</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
-      <description>2026 Attic Air Sealing: DIY vs Licensed Contractor ROI - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
-    </item>
-    <item>
-      <title>EV Charger Installation: 2026 Appraisal Impact ROI</title>
+      <title><![CDATA[EV Charger Installation: 2026 Appraisal Impact ROI]]></title>
       <link>https://thebuyersmath.com/articles/2026-10-08-ev-charger-installation-2026-appraisal-impact-roi.html</link>
       <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-08-ev-charger-installation-2026-appraisal-impact-roi.html</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
-      <description>EV Charger Installation: 2026 Appraisal Impact ROI - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</description>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[EV Charger Installation: 2026 Appraisal Impact ROI - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
     </item>
     <item>
-      <title>Daily Homeowner &amp; Contractor Intelligence — October 08, 2026</title>
-      <link>https://thebuyersmath.com/intel/2026-10-08-daily-market-intelligence.html</link>
-      <guid isPermaLink="true">https://thebuyersmath.com/intel/2026-10-08-daily-market-intelligence.html</guid>
-      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Daily empirical home improvement market report for October 08, 2026: material spot prices, 200-Amp Main Service Panel Upgrade &amp; Meter Socket quote teardown, building code requirements, energy tax credit alerts, and tool drops.</description>
+      <title><![CDATA[2026 Attic Air Sealing: DIY vs Licensed Contractor ROI]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-08-2026-attic-air-sealing-diy-vs-licensed-contractor-roi.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-08-2026-attic-air-sealing-diy-vs-licensed-contractor-roi.html</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Attic Air Sealing: DIY vs Licensed Contractor ROI - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Pool Pump Energy Cost: 2026 IRA Tax Credits]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-07-pool-pump-energy-cost-2026-ira-tax-credits.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-07-pool-pump-energy-cost-2026-ira-tax-credits.html</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Pool Pump Energy Cost: 2026 IRA Tax Credits - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Water Heater Replacement Cost Breakdown: Tank vs. Tankless Installation Labor, Municipal Permit Fees, Hidden Rough-In Plumbing Upgrades & Code-Mandated Safety Valve Inspection Requirements by Water Hardness Zone]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-07-2026-water-heater-replacement-cost-breakdown-tank-vs-tankless-installation-labor-municipal-permit-fees-hidden-rough-in-plumbing-upgrades-code-mandated-safety-valve-inspection-requirements-by-water-hardness-zone.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-07-2026-water-heater-replacement-cost-breakdown-tank-vs-tankless-installation-labor-municipal-permit-fees-hidden-rough-in-plumbing-upgrades-code-mandated-safety-valve-inspection-requirements-by-water-hardness-zone.html</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Water Heater Replacement Cost Breakdown: Tank vs. Tankless Installation Labor, Municipal Permit Fees, Hidden Rough-In Plumbing Upgrades & Code-Mandated Safety Valve Inspection Requirements by Water Hardness Zone - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Roof Replacement Labor vs. Material Cost Breakdown]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-07-2026-roof-replacement-labor-vs-material-cost-breakdown.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-07-2026-roof-replacement-labor-vs-material-cost-breakdown.html</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Roof Replacement Labor vs. Material Cost Breakdown - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Vinyl vs. Fiberglass vs. Composite Windows: True 25-Year Cost-of-Ownership Breakdown Including Frame Rot Replacement Cycles, U-Factor Energy Penalties & Installer Warranty Claim Denial Patterns by Window Orientation]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-06-2026-vinyl-vs-fiberglass-vs-composite-windows-true-25-year-cost-of-ownership-breakdown-including-frame-rot-replacement-cycles-u-factor-energy-penalties-installer-warranty-claim-denial-patterns-by-window-orientation.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-06-2026-vinyl-vs-fiberglass-vs-composite-windows-true-25-year-cost-of-ownership-breakdown-including-frame-rot-replacement-cycles-u-factor-energy-penalties-installer-warranty-claim-denial-patterns-by-window-orientation.html</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Vinyl vs. Fiberglass vs. Composite Windows: True 25-Year Cost-of-Ownership Breakdown Including Frame Rot Replacement Cycles, U-Factor Energy Penalties & Installer Warranty Claim Denial Patterns by Window Orientation - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 EV Charger Tax Credit Guide: Section 30C Rules & Panel Upgrades]]></title>
+      <link>https://thebuyersmath.com/guides/ev-charger-tax-credit-2026.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/guides/ev-charger-tax-credit-2026.html</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[How to qualify for the 30% Section 30C federal tax credit (up to $1,000) for Level 2 EV charging stations and 200A electrical service upgrades.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Basement Finishing Cost Estimator: Freeze-Thaw Cycle Repair Premiums, Vapor Barrier Specifications & Preventative Moisture Diagnostics by North American Climate Zone]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-05-2026-basement-finishing-cost-estimator-freeze-thaw-cycle-repair-premiums-vapor-barrier-specifications-preventative-moisture-diagnostics-by-north-american-climate-zone.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-05-2026-basement-finishing-cost-estimator-freeze-thaw-cycle-repair-premiums-vapor-barrier-specifications-preventative-moisture-diagnostics-by-north-american-climate-zone.html</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Basement Finishing Cost Estimator: Freeze-Thaw Cycle Repair Premiums, Vapor Barrier Specifications & Preventative Moisture Diagnostics by North American Climate Zone - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[How Much Does a Mini-Split AC System Cost vs. Central Air in 2026?]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# How Much Does a Mini-Split AC System Cost vs. Central Air in 2026? - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Ductless Mini-Split vs. Central AC: Which Cooling System Saves More in 2026?]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# Ductless Mini-Split vs. Central AC: Which Cooling System Saves More in 2026? - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Breaking Down 2026 Solar Installation Costs: When Does Going Solar Pay Off?]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-solar-installation-costs-when-does-going-solar-pay-off.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-solar-installation-costs-when-does-going-solar-pay-off.html</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# Breaking Down 2026 Solar Installation Costs: When Does Going Solar Pay Off? - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Breaking Down 2026 Kitchen Remodel Costs: Budget Planning for Modern Upgrades]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs-budget-planning-for-modern-upgrades.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs-budget-planning-for-modern-upgrades.html</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# Breaking Down 2026 Kitchen Remodel Costs: Budget Planning for Modern Upgrades - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Roof Replacement Tax Credits Under IRA Section 25C: Metal vs. Asphalt Shingle Net Cost After Federal Rebates & State Utility Peak Demand Incentives]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-04-2026-roof-replacement-tax-credits-under-ira-section-25c-metal-vs-asphalt-shingle-net-cost-after-federal-rebates-state-utility-peak-demand-incentives.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-04-2026-roof-replacement-tax-credits-under-ira-section-25c-metal-vs-asphalt-shingle-net-cost-after-federal-rebates-state-utility-peak-demand-incentives.html</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Roof Replacement Tax Credits Under IRA Section 25C: Metal vs. Asphalt Shingle Net Cost After Federal Rebates & State Utility Peak Demand Incentives - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Mini-Split AC Installation: What You'll Actually Pay Per Room]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Mini-Split AC Installation: What You]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
     </item>
   </channel>
 </rss>

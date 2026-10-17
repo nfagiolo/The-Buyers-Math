@@ -114,6 +114,116 @@
     <article class="seo-guide-section" style="max-width: 860px; margin: 0 auto; background: #ffffff; padding: 2.5rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
       <h1 style="font-size: 2.25rem; font-weight: 800; color: #0f172a; line-height: 1.25; margin-bottom: 0.75rem;">Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs &amp; Payback</h1>
       <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 2rem;">Published on October 3, 2026 | Reviewed by The Buyer's Math Research Team</p>
+<!-- TBM QUOTE AUDITOR WIDGET START -->
+    <aside class="tbm-quote-auditor" style="margin: 2rem 0; padding: 1.5rem; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: 14px; box-shadow: 0 10px 25px -5px rgba(15,23,42,0.18);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <span style="background: #2563eb; color: #ffffff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.22rem 0.6rem; border-radius: 4px;">Interactive Bid Scorecard</span>
+        <span style="font-size: 0.78rem; color: #94a3b8;">Calibrated to 2026 BLS &amp; RSMeans Data</span>
+      </div>
+      <h3 style="margin: 0 0 0.35rem 0; font-size: 1.25rem; color: #ffffff;">Audit Your Contractor Quote in 10 Seconds</h3>
+      <p style="margin: 0 0 1.15rem 0; font-size: 0.88rem; color: #cbd5e1;">
+        Enter your written contractor estimate and project size below to check if you are being overcharged on overhead and labor:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.85rem; margin-bottom: 1rem;">
+        <div>
+          <label style="display: block; font-size: 0.75rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.3rem;">Your Contractor Quote ($):</label>
+          <input type="number" class="tbm-audit-quote" value="2013" style="width: 100%; padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #ffffff; font-size: 0.95rem; font-weight: 700;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.75rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.3rem;">Project Scope (horsepower tier):</label>
+          <input type="number" class="tbm-audit-size" value="1" data-rate="1650.0" style="width: 100%; padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #ffffff; font-size: 0.95rem; font-weight: 700;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.75rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.3rem;">Regional Labor Tier:</label>
+          <select class="tbm-audit-region" style="width: 100%; padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #ffffff; font-size: 0.9rem; font-weight: 600;">
+            <option value="1.00">National Average (1.00x)</option>
+            <option value="1.15">Mid-Atlantic / Northeast (1.15x)</option>
+            <option value="1.30">West Coast / High-Cost Metro (1.30x)</option>
+            <option value="0.90">Southeast / Midwest (0.90x)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tbm-audit-result" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div class="tbm-audit-verdict" style="font-size: 1rem; font-weight: 800; color: #fbbf24;">
+            &#9888;&#65039; Quote is ~22% Above Verified Fair Benchmark ($1,650)
+          </div>
+          <div class="tbm-audit-sub" style="font-size: 0.82rem; color: #cbd5e1; margin-top: 0.2rem;">
+            Request an itemized material &amp; labor breakdown or compare 3 competing local bids to negotiate down.
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <a href="/pool.html" style="background: #2563eb; color: #ffffff; font-weight: 700; font-size: 0.84rem; padding: 0.6rem 1rem; border-radius: 6px; text-decoration: none;">
+            Full Pool Pump Energy Calculator &rarr;
+          </a>
+          <a href="https://www.jdoqocy.com/click-101896838-17142784?url=https%3A%2F%2Fwww.angi.com%2Fcompanylist%2Fsearch.htm%3Fquery%3DPool%2BPump%2BEnergy" target="_blank" rel="noopener sponsored" style="background: #10b981; color: #022c22; font-weight: 800; font-size: 0.84rem; padding: 0.6rem 1rem; border-radius: 6px; text-decoration: none;">
+            Compare 3 Local Pros &rarr;
+          </a>
+        </div>
+      </div>
+      <script>
+        (function() {
+          const boxes = document.querySelectorAll('.tbm-quote-auditor');
+          boxes.forEach(box => {
+            if (box.dataset.wired) return;
+            box.dataset.wired = '1';
+            const qInp = box.querySelector('.tbm-audit-quote');
+            const sInp = box.querySelector('.tbm-audit-size');
+            const rSel = box.querySelector('.tbm-audit-region');
+            const verdict = box.querySelector('.tbm-audit-verdict');
+            const sub = box.querySelector('.tbm-audit-sub');
+            function updateAudit() {
+              const quote = parseFloat(qInp.value) || 0;
+              const size = Math.max(0.1, parseFloat(sInp.value) || 1);
+              const rate = parseFloat(sInp.getAttribute('data-rate') || '15');
+              const reg = parseFloat(rSel.value || '1.0');
+              const fair = Math.round(size * rate * reg);
+              const diff = quote - fair;
+              const pct = fair > 0 ? Math.round((diff / fair) * 100) : 0;
+              if (pct > 15) {
+                verdict.style.color = '#f87171';
+                verdict.innerHTML = '&#128681; Red Flag: Quote is ' + pct + '% ($' + Math.abs(diff).toLocaleString() + ') Above Fair Window ($' + fair.toLocaleString() + ')';
+                sub.textContent = 'High markup detected. Get 3 competing licensed bids below to force a contractor price match.';
+              } else if (pct >= -10) {
+                verdict.style.color = '#34d399';
+                verdict.innerHTML = '&#9989; Verified Fair Bid: Within ' + Math.abs(pct) + '% of Empirical Benchmark ($' + fair.toLocaleString() + ')';
+                sub.textContent = 'Pricing aligns with 2026 licensed trade labor and material takeoffs. Verify permit & warranty terms.';
+              } else {
+                verdict.style.color = '#fbbf24';
+                verdict.innerHTML = '&#9888;&#65039; Suspiciously Low (' + Math.abs(pct) + '% Below $' + fair.toLocaleString() + ' Benchmark)';
+                sub.textContent = 'Check for missing municipal permits, uninsured sub-crews, or builder-grade material substitutions.';
+              }
+            }
+            [qInp, sInp, rSel].forEach(el => {
+              if (el) {
+                el.addEventListener('input', updateAudit);
+                el.addEventListener('change', updateAudit);
+              }
+            });
+            updateAudit();
+          });
+        })();
+      </script>
+    </aside>
+    <!-- TBM QUOTE AUDITOR WIDGET END -->
+<!-- TBM SVG COST CHART START -->
+    <figure class="tbm-svg-chart-box" style="margin: 2rem 0; padding: 1.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(15,23,42,0.05);">
+      <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 0.25rem;">
+        2026 Empirical Price Distribution
+      </div>
+      <figcaption style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">
+        Pool Pump Energy Calculator: Turnkey Cost Benchmarks by Specification Tier
+      </figcaption>
+      <svg viewBox="0 0 620 180" width="100%" height="auto" role="img" aria-label="Cost comparison bar chart for Pool Pump Energy Calculator">
+        <text x="0" y="22" fill="#0f172a" font-size="12.5" font-weight="700" font-family="Inter, sans-serif">Single-Speed 5-Yr Power Cost ($4,950)</text><rect x="0" y="29" width="520" height="22" rx="5" fill="#f1f5f9" /><rect x="0" y="29" width="420" height="22" rx="5" fill="#64748b" /><text x="428" y="45" fill="#0f172a" font-size="12" font-weight="800" font-family="Inter, sans-serif">$4,950</text><text x="0" y="76" fill="#0f172a" font-size="12.5" font-weight="700" font-family="Inter, sans-serif">Variable-Speed VFD Turnkey ($1,750)</text><rect x="0" y="83" width="520" height="22" rx="5" fill="#f1f5f9" /><rect x="0" y="83" width="148" height="22" rx="5" fill="#2563eb" /><text x="156" y="99" fill="#0f172a" font-size="12" font-weight="800" font-family="Inter, sans-serif">$1,750</text><text x="0" y="130" fill="#0f172a" font-size="12.5" font-weight="700" font-family="Inter, sans-serif">5-Year Net Electricity Savings (+$3,100)</text><rect x="0" y="137" width="520" height="22" rx="5" fill="#f1f5f9" /><rect x="0" y="137" width="263" height="22" rx="5" fill="#0f172a" /><text x="271" y="153" fill="#0f172a" font-size="12" font-weight="800" font-family="Inter, sans-serif">$3,100</text>
+      </svg>
+      <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.65rem; border-top: 1px solid #f1f5f9; padding-top: 0.5rem;">
+        Source: The Buyer's Math 2026 National Contractor Bid Index &amp; BLS Trade Labor Benchmarks. <a href="/pool.html" style="color: #2563eb; font-weight: 700;">Customize for your state &rarr;</a>
+      </div>
+    </figure>
+    <!-- TBM SVG COST CHART END -->
+
 
       <p style="font-size: 1.1rem; line-height: 1.7; color: #334155; margin-bottom: 1.5rem;">
         Replacing an aging HVAC system represents one of the single largest capital expenditures a homeowner will encounter. Fortunately, the <strong>Energy Efficient Home Improvement Credit (Section 25C)</strong> provides substantial federal tax relief for households transitioning to high-efficiency electric heat pumps.

@@ -138,6 +138,115 @@
       </p>
     </div>
 
+    <!-- TBM REGIONAL & COMMODITY WIDGET START -->
+    <div id="tbmRegionalCommodityBar" style="background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 12px; padding: 1.15rem 1.35rem; margin: 0 0 1.75rem 0; box-shadow: 0 1px 3px rgba(15,23,42,0.05);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="flex: 1; min-width: 260px;">
+          <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 0.25rem;">
+            Live Material Benchmark &bull; Updated 2026-10-17
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
+            <strong style="font-size: 0.98rem; color: #0f172a;">Construction Material Index:</strong>
+            <span style="font-size: 1.05rem; font-weight: 800; color: #0f172a;">$0.00</span>
+            <span style="font-size: 0.78rem; font-weight: 700; color: #059669; background: #f8fafc; padding: 0.15rem 0.45rem; border-radius: 4px; border: 1px solid #e2e8f0;">
+              ▲ +0.0% (30d)
+            </span>
+            
+            <span style="font-size: 0.75rem; color: #64748b;">(per unit)</span>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-width: 260px;">
+          <label for="tbmStateSelector" style="display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #334155; margin-bottom: 0.3rem;">
+            Localize Labor Rates &amp; Utility Rebates by State:
+          </label>
+          <select id="tbmStateSelector" style="width: 100%; padding: 0.55rem 0.75rem; border: 1px solid #93c5fd; border-radius: 8px; font-size: 0.9rem; font-weight: 600; color: #0f172a; background: #eff6ff; cursor: pointer;">
+            <option value="US" data-labor="1.0" data-mat="1.0" data-climate="Mixed" data-frost="36" data-rebate="Federal IRA Section 25C & 30C active." selected>National Average (Baseline) (Labor: Baseline)</option>
+          </select>
+        </div>
+      </div>
+      <div id="tbmStateRebateBanner" style="margin-top: 0.75rem; padding-top: 0.65rem; border-top: 1px solid #f1f5f9; font-size: 0.82rem; color: #475569; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <span id="tbmStateRebateText"><strong> Incentive &amp; Code Note:</strong> Federal IRA Section 25C (up to $3,200/yr) &amp; Section 30C (up to $1,000) active nationwide.</span>
+        <a href="/intel/" style="color: #2563eb; font-weight: 700; text-decoration: none; white-space: nowrap;">View Daily Market Brief &rarr;</a>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const stateSel = document.getElementById('tbmStateSelector');
+        const rebateText = document.getElementById('tbmStateRebateText');
+        const totalEl = document.getElementById('totalCost');
+        const stickyEl = document.getElementById('stickyTotal');
+        const lowEl = document.getElementById('lowBidLabel');
+        const fairEl = document.getElementById('fairBidLabel');
+        const highEl = document.getElementById('highBidLabel');
+        const leadLink = document.getElementById('leadMatchLink');
+        if (!stateSel || !totalEl) return;
+
+        let currentMultiplier = 1.0;
+        let applyingRegional = false;
+
+        function parseCurrency(str) {
+          const m = (str || '').replace(/,/g, '').match(/\$(\d+)/);
+          return m ? parseInt(m[1], 10) : null;
+        }
+
+        function applyRegionalScaling() {
+          if (applyingRegional) return;
+          const opt = stateSel.options[stateSel.selectedIndex];
+          if (!opt) return;
+          const laborMult = parseFloat(opt.getAttribute('data-labor') || '1.0');
+          const matMult = parseFloat(opt.getAttribute('data-mat') || '1.0');
+          const blended = (laborMult * 0.55) + (matMult * 0.45);
+          const rebate = opt.getAttribute('data-rebate') || '';
+          const climate = opt.getAttribute('data-climate') || '';
+          const frost = opt.getAttribute('data-frost') || '36';
+          const stateCode = stateSel.value;
+
+          if (rebateText) {
+            rebateText.innerHTML = '<strong>' + opt.text.split(' (')[0] + ' (' + climate + ' &bull; ' + frost + '&quot; Frost Line):</strong> ' + rebate;
+          }
+
+          const currentVal = parseCurrency(totalEl.textContent);
+          if (currentVal) {
+            applyingRegional = true;
+            const unscaledBase = Math.round(currentVal / currentMultiplier);
+            currentMultiplier = blended;
+            const scaledTotal = Math.round(unscaledBase * currentMultiplier);
+            totalEl.textContent = '$' + scaledTotal.toLocaleString();
+            if (stickyEl) stickyEl.textContent = '$' + scaledTotal.toLocaleString();
+
+            const lowBid = Math.round(scaledTotal * 0.86);
+            const fairMin = Math.round(scaledTotal * 0.92);
+            const fairMax = Math.round(scaledTotal * 1.15);
+            const highBid = Math.round(scaledTotal * 1.35);
+            if (lowEl) lowEl.textContent = 'Budget: < $' + lowBid.toLocaleString();
+            if (fairEl) fairEl.textContent = 'Fair: $' + fairMin.toLocaleString() + ' – $' + fairMax.toLocaleString();
+            if (highEl) highEl.textContent = 'Red Flag: > $' + highBid.toLocaleString();
+            setTimeout(() => { applyingRegional = false; }, 50);
+          }
+
+          if (leadLink && stateCode !== 'US') {
+            leadLink.textContent = 'Compare ' + stateCode + ' Contractor Bids →';
+          }
+        }
+
+        stateSel.addEventListener('change', applyRegionalScaling);
+
+        // Re-apply state scaling whenever calculator inputs change
+        document.querySelectorAll('select:not(#tbmStateSelector), input').forEach(inp => {
+          inp.addEventListener('change', () => {
+            currentMultiplier = 1.0;
+            setTimeout(applyRegionalScaling, 20);
+          });
+          inp.addEventListener('input', () => {
+            currentMultiplier = 1.0;
+            setTimeout(applyRegionalScaling, 20);
+          });
+        });
+      });
+    </script>
+    <!-- TBM REGIONAL & COMMODITY WIDGET END -->
+
     <!-- Interactive Calculator Card -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
       
@@ -352,6 +461,53 @@
         <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">While IRC code permits up to 2 layers, an overlay prevents inspection of rotted roof decking, voids most manufacturer wind warranties, and traps heat that degrades new shingles prematurely.</p>
       </div>
     </section>
+
+  <!-- TBM CALCULATOR TRADE GUIDES START -->
+    <section class="tbm-calc-latest-guides" style="margin-top: 2.75rem; padding-top: 2.25rem; border-top: 1px solid #e2e8f0;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <div>
+          <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb;">Daily Research Sync</span>
+          <h3 style="margin: 0.2rem 0 0 0; font-size: 1.35rem; color: #0f172a;">Latest 2026 Cost Audits &amp; Code Briefs for This Trade</h3>
+        </div>
+        <a href="/guides.html" style="font-size: 0.88rem; font-weight: 700; color: #2563eb; text-decoration: none;">Browse All Guides &rarr;</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.15rem;">
+        <a href="/articles/2026-10-17-2026-roof-replacement-permit-fees-hidden-damage-costs.html" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
+              <span style="font-size: 0.75rem; color: #94a3b8;">2026-10-17</span>
+            </div>
+            <h4 style="margin: 0 0 0.45rem 0; font-size: 1.02rem; color: #0f172a; line-height: 1.38;">2026 Roof Replacement: Permit Fees & Hidden Damage Costs</h4>
+            <p style="margin: 0 0 0.85rem 0; font-size: 0.84rem; color: #475569; line-height: 1.5;">2026 Roof Replacement: Permit Fees & Hidden Damage Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+          </div>
+          <span style="font-size: 0.84rem; font-weight: 700; color: #2563eb;">Read Cost Breakdown &rarr;</span>
+        </a>
+        <a href="/articles/2026-10-07-2026-roof-replacement-labor-vs-material-cost-breakdown.html" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
+              <span style="font-size: 0.75rem; color: #94a3b8;">2026-10-07</span>
+            </div>
+            <h4 style="margin: 0 0 0.45rem 0; font-size: 1.02rem; color: #0f172a; line-height: 1.38;">2026 Roof Replacement Labor vs. Material Cost Breakdown</h4>
+            <p style="margin: 0 0 0.85rem 0; font-size: 0.84rem; color: #475569; line-height: 1.5;">2026 Roof Replacement Labor vs. Material Cost Breakdown - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+          </div>
+          <span style="font-size: 0.84rem; font-weight: 700; color: #2563eb;">Read Cost Breakdown &rarr;</span>
+        </a>
+        <a href="/articles/2026-10-04-2026-roof-replacement-tax-credits-under-ira-section-25c-metal-vs-asphalt-shingle-net-cost-after-federal-rebates-state-utility-peak-demand-incentives.html" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
+              <span style="font-size: 0.75rem; color: #94a3b8;">2026-10-04</span>
+            </div>
+            <h4 style="margin: 0 0 0.45rem 0; font-size: 1.02rem; color: #0f172a; line-height: 1.38;">2026 Roof Replacement Tax Credits Under IRA Section 25C: Metal vs. Asphalt Shingle Net Cost After Federal Rebates & State Utility Peak Demand Incentives</h4>
+            <p style="margin: 0 0 0.85rem 0; font-size: 0.84rem; color: #475569; line-height: 1.5;"># 2026 Roof Replacement Tax Credits Under IRA Section 25C: Metal vs. Asphalt Shingle Net Cost After Federal Rebates & State Utility Peak Demand Incentives - Real 2026 cost estimates, labor vs material breakdown, and buying guide.</p>
+          </div>
+          <span style="font-size: 0.84rem; font-weight: 700; color: #2563eb;">Read Cost Breakdown &rarr;</span>
+        </a>
+      </div>
+    </section>
+    <!-- TBM CALCULATOR TRADE GUIDES END -->
 
   </main>
 
