@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Buyer's Math | Empirical Home Improvement Cost &amp; ROI Calculators (2026)</title>
-  <meta name="description" content="Transparent, empirical pricing models, Section 25C federal tax credits, and contractor estimate calculators for major residential renovations.">
+  <title>The Buyer's Math | Daily Home Improvement Cost Analysis, Bid Audits &amp; ROI Calculators (2026)</title>
+  <meta name="description" content="Daily empirical home improvement cost breakdowns, contractor bid teardowns, IRA Section 25C/30C tax credit guides, and 21 interactive renovation ROI calculators.">
   <link rel="canonical" href="https://thebuyersmath.com/">
-  <link rel="alternate" type="application/rss+xml" title="The Buyer's Math Guides" href="https://thebuyersmath.com/feed.xml">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="alternate" type="application/rss+xml" title="The Buyer's Math Daily Guides" href="https://thebuyersmath.com/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thebuyersmath.com/">
-  <meta property="og:title" content="The Buyer's Math | Empirical Home Improvement Cost &amp; ROI Calculators">
-  <meta property="og:description" content="Cut through contractor quotes with real math. Interactive calculators modeling materials, licensed labor, energy savings, and federal tax incentives.">
+  <meta property="og:title" content="The Buyer's Math | Daily Home Improvement Cost Analysis &amp; ROI Calculators">
+  <meta property="og:description" content="Independent daily cost journalism, commodity spot-price tracking, and 21 empirical renovation calculators for homeowners.">
   <meta property="og:image" content="https://thebuyersmath.com/assets/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Buyer's Math | Empirical Home Improvement Cost &amp; ROI Calculators">
-  <meta name="twitter:description" content="Cut through contractor quotes with real math. Interactive calculators modeling materials, licensed labor, energy savings, and federal tax incentives.">
+  <meta name="twitter:title" content="The Buyer's Math | Daily Home Improvement Cost Analysis &amp; ROI Calculators">
+  <meta name="twitter:description" content="Cut through contractor quotes with real math. Daily cost breakdowns, building code briefs, and 21 interactive calculators.">
 
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
@@ -50,7 +52,7 @@
         "@id": "https://thebuyersmath.com/#website",
         "url": "https://thebuyersmath.com/",
         "name": "The Buyer's Math",
-        "description": "Independent, data-driven financial modeling and cost estimators for homeowners.",
+        "description": "Independent daily home improvement cost analysis, commodity tracking, and empirical renovation calculators for homeowners.",
         "publisher": {
           "@type": "Organization",
           "name": "The Buyer's Math",
@@ -62,1035 +64,2082 @@
   </script>
 
   <style>
-    .guide-filter-btn {
-      background: #ffffff;
-      border: 1px solid var(--border, #cbd5e1);
-      color: var(--slate-600, #475569);
-      padding: 0.5rem 1.15rem;
-      border-radius: 9999px;
-      font-family: inherit;
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --emerald-700: #047857;
+      --emerald-50: #ecfdf5;
+      --amber-700: #b45309;
+      --amber-50: #fffbeb;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--slate-50);
+      color: var(--slate-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top Publication Utility Bar */
+    .pub-topbar {
+      background: var(--slate-900);
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      padding: 0.45rem 1.5rem;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .pub-topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pub-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #ffffff;
       font-weight: 600;
-      font-size: 0.875rem;
+    }
+
+    .pub-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    }
+
+    /* Global Header & Mega Dropdown */
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .site-logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.03em;
+    }
+
+    .site-logo span {
+      color: var(--primary);
+    }
+
+    .site-tagline-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--slate-600);
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      color: var(--primary);
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--slate-700);
       cursor: pointer;
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .nav-dropdown-btn:hover {
+      background: var(--slate-100);
+      color: var(--primary);
+    }
+
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: min(680px, 92vw);
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.15);
+      padding: 1.25rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      z-index: 200;
+    }
+
+    .nav-dropdown:hover .mega-menu,
+    .nav-dropdown.open .mega-menu {
+      display: grid;
+    }
+
+    .mega-col h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      border-bottom: 1px solid var(--slate-100);
+      padding-bottom: 0.35rem;
+    }
+
+    .mega-col a {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--slate-700);
+      padding: 0.28rem 0;
+    }
+
+    .mega-col a:hover {
+      color: var(--primary);
+      transform: translateX(2px);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.75rem 1.5rem 4rem 1.5rem;
+    }
+
+    /* Above-the-Fold Editorial Split Hero */
+    .editorial-hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 1.75rem;
+      align-items: start;
+      margin-bottom: 2.25rem;
+    }
+
+    @media (max-width: 960px) {
+      .editorial-hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .mega-menu {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Column: Lead Daily Article + Recent Daily Feed */
+    .lead-story-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-top: 4px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.25rem;
+    }
+
+    .lead-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.85rem;
+    }
+
+    .badge-lead {
+      background: var(--slate-900);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .badge-cat {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .meta-date {
+      font-size: 0.82rem;
+      color: var(--slate-500);
+      font-weight: 500;
+    }
+
+    .lead-title {
+      font-size: clamp(1.45rem, 2.5vw, 1.95rem);
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin: 0 0 0.85rem 0;
+    }
+
+    .lead-title a:hover {
+      color: var(--primary);
+    }
+
+    .lead-excerpt {
+      font-size: 1rem;
+      color: var(--slate-600);
+      line-height: 1.65;
+      margin: 0 0 1.2rem 0;
+    }
+
+    .lead-highlights {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.35rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .lead-stat-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--slate-500);
+      font-weight: 600;
+    }
+
+    .lead-stat-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-top: 0.1rem;
+    }
+
+    .lead-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #ffffff;
+      color: var(--slate-800);
+      border: 1px solid var(--slate-200);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.68rem 1.15rem;
+      border-radius: var(--radius-sm);
       transition: all 0.15s ease;
     }
-    .guide-filter-btn:hover {
-      background: var(--slate-50, #f8fafc);
-      color: var(--slate-900, #0f172a);
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
     }
-    .guide-filter-btn.active {
-      background: var(--slate-900, #0f172a);
+
+    /* Recent Daily Dispatches Sub-List */
+    .recent-dispatches-box {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .recent-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--slate-200);
+      padding-bottom: 0.65rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .recent-box-header h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate-900);
+      margin: 0;
+    }
+
+    .recent-dispatch-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .recent-dispatch-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .recent-dispatch-item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .recent-dispatch-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      line-height: 1.38;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .recent-dispatch-title a:hover {
+      color: var(--primary);
+    }
+
+    .recent-dispatch-snippet {
+      font-size: 0.83rem;
+      color: var(--slate-600);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .recent-calc-pill {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .recent-calc-pill:hover {
+      background: var(--primary);
       color: #ffffff;
-      border-color: var(--slate-900, #0f172a);
     }
-    .guide-card {
-      text-decoration: none;
+
+    /* Right Column: Interactive Quick Calculator Launcher & Quote Matcher */
+    .quick-launcher-panel {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .launcher-header {
+      margin-bottom: 1rem;
+    }
+
+    .launcher-header h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin: 0 0 0.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .launcher-header p {
+      font-size: 0.85rem;
+      color: var(--slate-600);
+      margin: 0;
+    }
+
+    .hero-search-wrap {
+      position: relative;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-search-input {
+      width: 100%;
+      padding: 0.7rem 0.9rem 0.7rem 2.25rem;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .hero-search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .hero-search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+      color: var(--slate-400);
+      pointer-events: none;
+    }
+
+    .launcher-pills {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+    }
+
+    .launcher-pill {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.28rem 0.65rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .launcher-pill.active,
+    .launcher-pill:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: #bfdbfe;
+    }
+
+    .launcher-tool-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      max-height: 310px;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .launcher-tool-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0.8rem;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+
+    .launcher-tool-item:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .launcher-tool-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .launcher-tool-sub {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+      display: block;
+    }
+
+    .launcher-tool-arrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* High-Converting Lead Match CTA inside Right Rail */
+    .angi-lead-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      margin-top: 0.75rem;
+    }
+
+    .angi-lead-card h3 {
+      margin: 0 0 0.35rem 0;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .angi-lead-card p {
+      margin: 0 0 0.85rem 0;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .btn-angi {
+      display: block;
+      text-align: center;
+      background: #10b981;
+      color: #022c22;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      transition: background 0.15s ease;
+    }
+
+    .btn-angi:hover {
+      background: #34d399;
+    }
+
+    /* Section Headers & Filter Bars */
+    .section-block {
+      margin-top: 3rem;
+    }
+
+    .section-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 2px solid var(--slate-200);
+      padding-bottom: 0.85rem;
+    }
+
+    .section-header-bar h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin: 0 0 0.25rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header-bar p {
+      font-size: 0.95rem;
+      color: var(--slate-600);
+      margin: 0;
+    }
+
+    .filter-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn,
+    .guide-filter-btn {
+      background: #ffffff;
+      color: var(--slate-700);
+      border: 1px solid var(--slate-200);
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover,
+    .guide-filter-btn.active,
+    .guide-filter-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .inline-search-input {
+      padding: 0.5rem 0.95rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      min-width: 240px;
+      outline: none;
+    }
+
+    .inline-search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .guide-card,
+    .calc-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .guide-card:hover,
+    .calc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: #93c5fd;
+    }
+
+    .card-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .badge-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.22rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .card-date {
+      font-size: 0.78rem;
+      color: var(--slate-400);
+      font-weight: 500;
+    }
+
+    .guide-card h3,
+    .calc-card h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      line-height: 1.38;
+      margin: 0 0 0.55rem 0;
+    }
+
+    .guide-card p,
+    .calc-card p {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+      line-height: 1.55;
+      margin: 0 0 1.1rem 0;
+    }
+
+    .cta-link {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* E-E-A-T Editorial Standards Strip */
+    .eeat-strip {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .eeat-item h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin: 0 0 0.35rem 0;
+    }
+
+    .eeat-item p {
+      font-size: 0.84rem;
+      color: var(--slate-600);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--slate-900);
+      color: #94a3b8;
+      padding: 2.5rem 1.5rem;
+      margin-top: 4rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .footer-nav {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-nav a {
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    .footer-nav a:hover {
+      color: #60a5fa;
+    }
+
+    .footer-disclosure {
+      max-width: 820px;
+      margin: 0 auto 0.75rem auto;
+      line-height: 1.55;
+      color: #94a3b8;
     }
   </style>
 </head>
 <body>
 
-  <!-- Global Header with Trade Categories Navigation -->
+  <!-- Publication Live Status Bar -->
+  <div class="pub-topbar">
+    <div class="pub-topbar-inner">
+      <div class="pub-live-pill">
+        <span class="pub-dot"></span>
+        <span>DAILY EMPIRICAL COST JOURNALISM &bull; IRA SECTION 25C / 30C &amp; 2026 IRC CODE VERIFIED</span>
+      </div>
+      <div>
+        <a href="https://thebuyersmath.com/intel/2026-10-16-daily-market-intelligence.html" style="color: #93c5fd; font-weight: 600;">Oct 16 Commodity Index: 2x4 SPF $3.93 (&uarr;1.2%) &bull; 12/2 Romex $138.65 (&darr;2.7%) &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Navigation Header -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="site-logo">The Buyer's Math</a>
+      <div class="brand-wrap">
+        <a href="https://thebuyersmath.com/" class="site-logo">The Buyer's <span>Math</span></a>
+        <span class="site-tagline-badge">Daily Research &amp; 21 Models</span>
+      </div>
       <nav class="site-nav">
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-btn" aria-haspopup="true">Calculators &#9662;</button>
-          <div class="nav-dropdown-content">
-            <div class="nav-dropdown-group">Building Envelope</div>
-            <a href="/roofing-cost-calculator.html">Roof Replacement</a>
-            <a href="/siding-cost-calculator.html">Home Siding</a>
-            <a href="/window-replacement-estimator.html">Window Replacement</a>
-            <a href="/fence-cost-calculator.html">Fence Installation</a>
-            <a href="/driveway-paving-calculator.html">Driveway Paving</a>
-            <a href="/deck-cost-calculator.html">Deck Building</a>
-            <a href="/gutter-cost-calculator.html">Seamless Gutters</a>
-            <a href="/garage-door-calculator.html">Garage Doors</a>
-            <a href="/patio-cost-calculator.html">Patio &amp; Pavers</a>
-            <a href="/exterior-painting-calculator.html">Exterior Painting</a>
-            <div class="nav-dropdown-group">Mechanical &amp; Energy</div>
-            <a href="/hvac-roi-calculator.html">Heat Pump vs. Gas Furnace</a>
-            <a href="/mini-split-calculator.html">Ductless Mini-Split</a>
-            <a href="/attic-insulation-calculator.html">Attic Insulation &amp; Air Sealing</a>
-            <a href="/water-heater-calculator.html">Water Heater Replacement</a>
-            <a href="/solar-payback-calculator.html">Solar Panel Payback</a>
-            <a href="/pool.html">Pool Pump Savings</a>
-            <div class="nav-dropdown-group">Interior &amp; Power</div>
-            <a href="/kitchen-remodel-calculator.html">Kitchen Remodel</a>
-            <a href="/bathroom-remodel-calculator.html">Bathroom Remodel</a>
-            <a href="/basement-cost-calculator.html">Basement Finishing</a>
-            <a href="/ev-charger-calculator.html">EV Home Charger</a>
-            <a href="/generator-calculator.html">Standby Generator</a>
+        <a href="#editorial-top" class="active">Daily Guides</a>
+        <a href="https://thebuyersmath.com/intel/">Daily Intel</a>
+        <div class="nav-dropdown" id="calcDropdown">
+          <button type="button" class="nav-dropdown-btn" id="calcDropdownBtn" aria-expanded="false">
+            21 Calculators &#9662;
+          </button>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <h4>Building Envelope (10)</h4>
+              <a href="https://thebuyersmath.com/roofing-cost-calculator.html">Roof Replacement</a>
+              <a href="https://thebuyersmath.com/siding-cost-calculator.html">Home Siding</a>
+              <a href="https://thebuyersmath.com/window-replacement-estimator.html">Window Replacement</a>
+              <a href="https://thebuyersmath.com/fence-cost-calculator.html">Fence Installation</a>
+              <a href="https://thebuyersmath.com/driveway-paving-calculator.html">Driveway Paving</a>
+              <a href="https://thebuyersmath.com/deck-cost-calculator.html">Deck Building</a>
+              <a href="https://thebuyersmath.com/gutter-cost-calculator.html">Seamless Gutters</a>
+              <a href="https://thebuyersmath.com/garage-door-calculator.html">Garage Doors</a>
+              <a href="https://thebuyersmath.com/patio-cost-calculator.html">Patio &amp; Pavers</a>
+              <a href="https://thebuyersmath.com/exterior-painting-calculator.html">Exterior Painting</a>
+            </div>
+            <div class="mega-col">
+              <h4>Mechanical &amp; Energy (6)</h4>
+              <a href="https://thebuyersmath.com/hvac-roi-calculator.html">Heat Pump vs. Gas Furnace</a>
+              <a href="https://thebuyersmath.com/mini-split-calculator.html">Ductless Mini-Split</a>
+              <a href="https://thebuyersmath.com/attic-insulation-calculator.html">Attic Insulation &amp; Sealing</a>
+              <a href="https://thebuyersmath.com/water-heater-calculator.html">Water Heater Replacement</a>
+              <a href="https://thebuyersmath.com/solar-payback-calculator.html">Solar Panel Payback</a>
+              <a href="https://thebuyersmath.com/pool.html">Pool Pump Savings</a>
+            </div>
+            <div class="mega-col">
+              <h4>Interior &amp; Power (5)</h4>
+              <a href="https://thebuyersmath.com/kitchen-remodel-calculator.html">Kitchen Remodel</a>
+              <a href="https://thebuyersmath.com/bathroom-remodel-calculator.html">Bathroom Remodel</a>
+              <a href="https://thebuyersmath.com/basement-cost-calculator.html">Basement Finishing</a>
+              <a href="https://thebuyersmath.com/ev-charger-calculator.html">EV Home Charger</a>
+              <a href="https://thebuyersmath.com/generator-calculator.html">Standby Generator</a>
+            </div>
           </div>
         </div>
-        <a href="/intel/index.html">Daily Intel</a>
-        <a href="/guides.html">Guides</a>
-        <a href="/privacy-policy.html">Privacy</a>
-        <a href="/contact.html">Contact</a>
+        <a href="#calculators-section">All Calculators</a>
+        <a href="https://thebuyersmath.com/about.html">Methodology</a>
+        <a href="https://thebuyersmath.com/contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="trust-pill">
-      <span>✓ 2026 Inflation Reduction Act &amp; Building Code Verified</span>
-    </div>
-    <h1>Cut Through Contractor Quotes With Real Math</h1>
-    <p class="subtitle">
-      Stop guessing on residential renovation budgets. Explore our suite of 21 interactive calculators modeling realistic materials, licensed labor rates, equipment sizing, and federal tax incentives.
-    </p>
-  </section>
+  <main class="main-container" id="editorial-top">
 
-  <!-- TBM DAILY INTELLIGENCE WIDGET -->
-<section id="tbm-daily-intel-widget" style="max-width: 1140px; margin: 0 auto 2.5rem auto; padding: 0 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-  <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); border-left: 6px solid #2563eb;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+    <!-- TBM LEAD STORY START -->
+    <section class="editorial-hero-grid" aria-label="Featured Daily Research and Quick Calculator Launcher">
+      <!-- Left Column (60%): Lead Daily Article + Latest 4 Daily Guides -->
       <div>
-        <span style="background: #2563eb; color: #ffffff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em;">Today's Market Pulse &bull; Oct 17, 2026</span>
-        <h2 style="font-size: 1.35rem; color: #0f172a; margin: 0.35rem 0 0; letter-spacing: -0.01em;">Daily Construction Commodities &amp; Bid Intelligence</h2>
+        <article class="lead-story-card">
+          <div class="lead-meta-row">
+            <span class="badge-lead">Today's Lead Cost Analysis</span>
+            <span class="badge-cat">Mechanical &amp; Energy</span>
+            <span class="meta-date">Published October 16, 2026 &bull; 6 min empirical read</span>
+          </div>
+          <h1 class="lead-title">
+            <a href="https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html">
+              2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff
+            </a>
+          </h1>
+          <p class="lead-excerpt">
+            Saltwater chlorination and high-humidity pad environments corrode standard rolled-steel and cast-iron pump housings 40% faster than sealed 316 stainless-steel volutes. We break down 10-year replacement cycles, DOE variable-speed motor mandates, licensed electrician hookup fees, and utility rebate payback math.
+          </p>
+          <div class="lead-highlights">
+            <div>
+              <div class="lead-stat-label">Cast Iron Volute Lifespan</div>
+              <div class="lead-stat-val">4 – 6 Yrs ($680 – $1,150)</div>
+            </div>
+            <div>
+              <div class="lead-stat-label">316 Stainless VFD System</div>
+              <div class="lead-stat-val">8 – 12 Yrs ($1,250 – $1,890)</div>
+            </div>
+            <div>
+              <div class="lead-stat-label">Annual kWh Pump Savings</div>
+              <div class="lead-stat-val">$420 – $690/yr (Variable Speed)</div>
+            </div>
+          </div>
+          <div class="lead-actions">
+            <a href="https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html" class="btn-primary">
+              Read Today's Full Guide &rarr;
+            </a>
+            <a href="https://thebuyersmath.com/pool.html" class="btn-secondary">
+              Run Pool Pump Energy Calculator &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Recent Daily Dispatches Feed (Oct 12 - Oct 15) -->
+        <div class="recent-dispatches-box">
+          <div class="recent-box-header">
+            <h2>Recent Daily Cost Breakdowns (Oct 12 – Oct 15)</h2>
+            <a href="#guides-section" style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">Browse All 31 Guides &darr;</a>
+          </div>
+          <ul class="recent-dispatch-list">
+            <li class="recent-dispatch-item">
+              <div>
+                <div class="lead-meta-row" style="margin-bottom: 0.25rem;">
+                  <span class="badge-cat">Plumbing &amp; Energy</span>
+                  <span class="meta-date">2026-10-15</span>
+                </div>
+                <h3 class="recent-dispatch-title">
+                  <a href="https://thebuyersmath.com/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html">
+                    2026 Water Heater Replacement: Climate Zone Failure &amp; Efficiency Cost Analysis
+                  </a>
+                </h3>
+                <p class="recent-dispatch-snippet">
+                  How incoming winter groundwater temperatures (38&deg;F vs. 62&deg;F) impact gas tankless GPM flow rates, hybrid heat pump recovery, and Section 25C tax credit payback.
+                </p>
+              </div>
+              <a href="https://thebuyersmath.com/water-heater-calculator.html" class="recent-calc-pill">Water Heater Calc &rarr;</a>
+            </li>
+
+            <li class="recent-dispatch-item">
+              <div>
+                <div class="lead-meta-row" style="margin-bottom: 0.25rem;">
+                  <span class="badge-cat">Interior &amp; Power</span>
+                  <span class="meta-date">2026-10-15</span>
+                </div>
+                <h3 class="recent-dispatch-title">
+                  <a href="https://thebuyersmath.com/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html">
+                    2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery
+                  </a>
+                </h3>
+                <p class="recent-dispatch-snippet">
+                  Line-item audit of 18kW–26kW standby generators, 200A automatic transfer switches, natural gas meter upsizing, and resale equity recovery in outage-prone markets.
+                </p>
+              </div>
+              <a href="https://thebuyersmath.com/generator-calculator.html" class="recent-calc-pill">Generator Calc &rarr;</a>
+            </li>
+
+            <li class="recent-dispatch-item">
+              <div>
+                <div class="lead-meta-row" style="margin-bottom: 0.25rem;">
+                  <span class="badge-cat">Building Envelope</span>
+                  <span class="meta-date">2026-10-14</span>
+                </div>
+                <h3 class="recent-dispatch-title">
+                  <a href="https://thebuyersmath.com/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed.html">
+                    2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries
+                  </a>
+                </h3>
+                <p class="recent-dispatch-snippet">
+                  Comparing pocket-insert vs. full-frame window tear-outs, NFRC U-factor compliance for the $600 Section 25C credit, and flashing warranty exclusions.
+                </p>
+              </div>
+              <a href="https://thebuyersmath.com/window-replacement-estimator.html" class="recent-calc-pill">Window Calc &rarr;</a>
+            </li>
+
+            <li class="recent-dispatch-item">
+              <div>
+                <div class="lead-meta-row" style="margin-bottom: 0.25rem;">
+                  <span class="badge-cat">Exterior &amp; Hardscape</span>
+                  <span class="meta-date">2026-10-13</span>
+                </div>
+                <h3 class="recent-dispatch-title">
+                  <a href="https://thebuyersmath.com/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment.html">
+                    2026 Driveway Paving: Labor, Materials &amp; Equipment Breakdown
+                  </a>
+                </h3>
+                <p class="recent-dispatch-snippet">
+                  Square-foot cost comparison of hot-mix asphalt, 4,000 PSI fiber-mesh concrete, and interlocking pavers, including 6-inch crushed aggregate subbase prep.
+                </p>
+              </div>
+              <a href="https://thebuyersmath.com/driveway-paving-calculator.html" class="recent-calc-pill">Driveway Calc &rarr;</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <a href="intel/2026-10-17-daily-market-intelligence.html" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; font-size: 0.85rem; font-weight: 700; padding: 0.45rem 0.9rem; border-radius: 6px; text-decoration: none;">Read Today's 5-Part Brief &rarr;</a>
-    </div>
+      <!-- TBM LEAD STORY END -->
 
-    <!-- Commodity Spot Ticker -->
-    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
-      
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.85rem; min-width: 140px; flex: 1;">
-          <div style="font-size: 0.75rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">2x4x8 SPF</div>
-          <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">$3.92 <span style="font-size: 0.75rem; font-weight: 700; color: #dc2626;">▲ +1.0%</span></div>
-        </div>
-        
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.85rem; min-width: 140px; flex: 1;">
-          <div style="font-size: 0.75rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">12/2 NM-B</div>
-          <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">$144.07 <span style="font-size: 0.75rem; font-weight: 700; color: #dc2626;">▲ +1.1%</span></div>
-        </div>
-        
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.85rem; min-width: 140px; flex: 1;">
-          <div style="font-size: 0.75rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Architectural Asphalt</div>
-          <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">$118.12 <span style="font-size: 0.75rem; font-weight: 700; color: #dc2626;">▲ +0.1%</span></div>
-        </div>
-        
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem 0.85rem; min-width: 140px; flex: 1;">
-          <div style="font-size: 0.75rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Sakrete /</div>
-          <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a;">$6.28 <span style="font-size: 0.75rem; font-weight: 700; color: #16a34a;">▼ -2.7%</span></div>
-        </div>
-        
-    </div>
-
-    <!-- 2 Column Teaser: Quote Teardown & Tool Drop -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; border-top: 1px solid #f1f5f9; padding-top: 1rem;">
-      <div style="font-size: 0.88rem; color: #334155;">
-        <span style="color: #64748b; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Today's Quote Teardown</span>
-        <p style="margin: 0.2rem 0 0.4rem; font-weight: 700; color: #0f172a;">25-Square Architectural Shingle Roof Replacement</p>
-        <p style="margin: 0; color: #64748b; font-size: 0.82rem;">Fair Range: <strong style="color: #16a34a;">$11,200 – $13,400</strong> &bull; Contractor Overcharge Red Flags Audited.</p>
-      </div>
-      <div style="font-size: 0.88rem; color: #334155;">
-        <span style="color: #d97706; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Hardware Spotlight</span>
-        <p style="margin: 0.2rem 0 0.4rem; font-weight: 700; color: #0f172a;">DeWalt 20V MAX XR Cordless Oscillating Multi-Tool Kit (DCS356D1)</p>
-        <p style="margin: 0; color: #64748b; font-size: 0.82rem;">Street Price: <strong style="color: #16a34a;">$139.00</strong> (22% Off Limited Time) &bull; <a href="[https://www.amazon.com/s?k=Dewalt+DCS356D1+Oscillating+Tool&tag=](https://www.amazon.com/s?k=Dewalt+DCS356D1+Oscillating+Tool&tag=)nfagiolo-20" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: none; font-weight: 600;">Check Amazon Deal &rarr;</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END TBM DAILY INTELLIGENCE WIDGET -->
-
-  <!-- Live Search Bar -->
-  <div class="search-container">
-    <input type="text" id="calcSearch" class="search-input" placeholder="Search calculators (e.g. heat pump, roof, panel, 25C)..." aria-label="Search calculators">
-    <span class="search-icon">🔍</span>
-  </div>
-
-  <!-- Consolidated Trade Hub Filter Tabs -->
-  <div class="filter-bar" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;">
-    <button class="filter-btn active" data-filter="featured">⭐ Featured Models (6)</button>
-    <button class="filter-btn" data-filter="envelope">Building Envelope (10)</button>
-    <button class="filter-btn" data-filter="mechanical">Mechanical &amp; Energy (5)</button>
-    <button class="filter-btn" data-filter="interior">Interior &amp; Power (6)</button>
-    <button class="filter-btn" data-filter="all">All 21 Calculators</button>
-  </div>
-
-  <!-- Core Calculator Suite (16 Tools) -->
-  <main>
-    <section class="calculator-grid" id="calculators">
-      
-      <!-- 1. Roofing -->
-      <a href="/roofing-cost-calculator.html" class="calc-card" data-category="featured envelope" data-keywords="roof shingles architectural tear-off pitch underlayment decking ice water shield ridge vent flashing replacement cost">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Roof Replacement Cost Estimator</h3>
-          <p>Model roof replacement costs by house footprint, roof pitch slope, tear-off layers, and architectural shingle grades.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 2. HVAC -->
-      <a href="/hvac-roi-calculator.html" class="calc-card" data-category="featured mechanical" data-keywords="heat pump gas furnace dual fuel seer2 hspf2 seer efficiency cop annual savings 25c tax credit operating cost">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Energy</span>
-          <h3 style="margin-top: 0.5rem;">Heat Pump vs. Gas Furnace ROI</h3>
-          <p>Compare equipment replacement costs, 25C federal tax credits, and annual operating costs across climate zones.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 3. Attic Insulation -->
-      <a href="/attic-insulation-calculator.html" class="calc-card" data-category="mechanical" data-keywords="attic insulation blown fiberglass cellulose air sealing r-49 r-60 rim joist draft 25c energy credit savings">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
-          <h3 style="margin-top: 0.5rem;">Attic Insulation &amp; Air Sealing ROI</h3>
-          <p>Calculate retrofit costs to R-49/R-60, air sealing savings, and 30% Section 25C energy property tax credits.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 4. Siding -->
-      <a href="/siding-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="siding vinyl insulated hardie fiber cement lp smartside trim soffit fascia house wrap exterior squares">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
-          <h3 style="margin-top: 0.5rem;">Home Siding Replacement Cost</h3>
-          <p>Compare costs per square (100 sq ft) for insulated vinyl, James Hardie fiber cement, and engineered wood siding.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 5. Windows -->
-      <a href="/window-replacement-estimator.html" class="calc-card" data-category="envelope" data-keywords="window replacement vinyl wood composite fiberglass double hung casement argon low-e u-factor energy star 25c credit">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Window Replacement Estimator</h3>
-          <p>Estimate vinyl, composite, wood, and fiberglass replacement window pricing including licensed installation.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 6. Fencing -->
-      <a href="/fence-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="fence linear feet cedar pine vinyl chain link aluminum privacy post holes concrete auger gate hardware">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
-          <h3 style="margin-top: 0.5rem;">Fence Cost &amp; Linear Footage</h3>
-          <p>Calculate materials, post hole augering, concrete footings, and gate hardware across cedar, vinyl, and aluminum.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 7. Driveway -->
-      <a href="/driveway-paving-calculator.html" class="calc-card" data-category="envelope" data-keywords="driveway paving asphalt concrete pavers excavation subbase gravel compaction sealing square footage">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Driveway Paving Calculator</h3>
-          <p>Compare asphalt, concrete, and interlocking paver installation costs based on surface dimensions and prep.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 8. Kitchen -->
-      <a href="/kitchen-remodel-calculator.html" class="calc-card" data-category="featured interior" data-keywords="kitchen remodel cabinets quartz granite countertops tile backsplash appliances plumbing electrical layout gut">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
-          <h3 style="margin-top: 0.5rem;">Kitchen Remodel Cost Estimator</h3>
-          <p>Estimate kitchen renovation budgets across minor cosmetic, midrange, and major luxury reconfigurations.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 9. Bathroom -->
-      <a href="/bathroom-remodel-calculator.html" class="calc-card" data-category="featured interior" data-keywords="bathroom remodel vanity tile shower bathtub plumbing fixtures waterproofing electrical exhaust fan gut remodel">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
-          <h3 style="margin-top: 0.5rem;">Bathroom Remodel Cost Estimator</h3>
-          <p>Estimate powder room, 5x8 guest bath, and luxury primary suite budgets across plumbing, tile, and fixture tiers.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 10. Basement -->
-      <a href="/basement-cost-calculator.html" class="calc-card" data-category="interior" data-keywords="basement finish remodel framing drywall flooring subfloor vapor barrier egress window bathroom waterproof">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
-          <h3 style="margin-top: 0.5rem;">Basement Finishing Cost Estimator</h3>
-          <p>Calculate basement finish costs including framing, moisture barriers, electrical, plumbing, and flooring.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 11. Solar Payback -->
-      <a href="/solar-payback-calculator.html" class="calc-card" data-category="featured mechanical" data-keywords="solar panels photovoltaic kw inverter net metering kilowatt hours kwh electric bill offset federal 30 percent tax credit payback">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
-          <h3 style="margin-top: 0.5rem;">Solar Panel Payback Timeline</h3>
-          <p>Calculate system sizing, 30% residential clean energy credits, and utility bill offset payback years.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 12. EV Charger -->
-      <a href="/ev-charger-calculator.html" class="calc-card" data-category="interior" data-keywords="ev charger level 2 electric vehicle charging station 240v nema 14-50 hardwired 48a conduit permit 30c credit">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">New Tool</span>
-          <h3 style="margin-top: 0.5rem;">EV Home Charger Installation</h3>
-          <p>Model Level 2 48A charging hardware, 240V conduit distance, panel capacity, Section 30C credits, and fuel savings.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 13. Mini-Split -->
-      <a href="/mini-split-calculator.html" class="calc-card" data-category="mechanical" data-keywords="mini-split ductless multi-zone heat pump condenser wall unit seer2 btu zoning installation refrigerant line">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
-          <h3 style="margin-top: 0.5rem;">Ductless Mini-Split Cost Estimator</h3>
-          <p>Size single and multi-zone ductless heat pump installations for room additions, basements, and homes without ducts.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 14. Generator -->
-      <a href="/generator-calculator.html" class="calc-card" data-category="interior" data-keywords="generator standby whole house natural gas propane automatic transfer switch ats kw outage emergency power">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
-          <h3 style="margin-top: 0.5rem;">Backup Generator Sizing Guide</h3>
-          <p>Size whole-home standby generators, calculate gas plumbing requirements, and estimate transfer switch costs.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 15. Water Heater -->
-      <a href="/water-heater-calculator.html" class="calc-card" data-category="mechanical" data-keywords="water heater tank tankless hybrid heat pump gas electric expansion tank venting recirculating pump 25c credit">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
-          <h3 style="margin-top: 0.5rem;">Water Heater Replacement Cost</h3>
-          <p>Compare standard tank, gas tankless, and hybrid heat pump water heaters, tax credits, and installation fees.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 16. Pool Pump -->
-      <a href="/pool.html" class="calc-card" data-category="mechanical" data-keywords="pool pump variable speed vs single speed horsepower filtration turnover gpm kwh annual electricity cost savings">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
-          <h3 style="margin-top: 0.5rem;">Pool Pump Energy Calculator</h3>
-          <p>Calculate seasonal electricity cost savings from replacing a single-speed pump with a variable speed drive.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 17. Deck Construction -->
-      <a href="/deck-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="deck cost composite pressure treated lumber railing joists footings square feet stairs">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Deck Construction Cost Estimator</h3>
-          <p>Model pressure-treated wood vs. composite Trex decking, structural footings, multistory stairs, and code-mandated railings.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 18. Seamless Gutters -->
-      <a href="/gutter-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="gutters seamless aluminum copper gutter guards downspouts linear feet fascia leaf protection">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Seamless Gutters &amp; Guards Estimator</h3>
-          <p>Estimate seamless aluminum vs. copper gutters, micro-mesh leaf filters, downspout extensions, and fascia board replacement.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 19. Garage Doors -->
-      <a href="/garage-door-calculator.html" class="calc-card" data-category="envelope" data-keywords="garage door replacement insulated steel r-value smart opener springs carriage tracks single double">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Garage Door Replacement Cost</h3>
-          <p>Compare uninsulated vs. R-18 polyurethane insulated steel doors, belt-drive smart openers, spring upgrades, and 100%+ resale ROI.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 20. Patio & Pavers -->
-      <a href="/patio-cost-calculator.html" class="calc-card" data-category="envelope" data-keywords="patio pavers concrete poured flagstone base excavation polymer sand polymeric retaining wall hardscaping">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Patio &amp; Paver Installation Estimator</h3>
-          <p>Calculate poured concrete, stamped slabs, and interlocking paver patios with excavation depth, aggregate subbase, and borders.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-      <!-- 21. Exterior Painting -->
-      <a href="/exterior-painting-calculator.html" class="calc-card" data-category="envelope" data-keywords="exterior painting house paint square footage pressure washing scraping caulking primer stories siding trim">
-        <div>
-          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-          <h3 style="margin-top: 0.5rem;">Exterior House Painting Estimator</h3>
-          <p>Model exterior painting costs across home stories, surface prep (pressure wash, scrape, caulk), siding materials, and premium coatings.</p>
-        </div>
-        <span class="cta-link">Open Calculator &rarr;</span>
-      </a>
-
-    </section>
-
-    <!-- Expand / Consolidate Toggle Button -->
-    <div style="text-align: center; margin: 2rem auto 3rem auto;">
-      <button id="toggleAllCalcsBtn" type="button" style="background: #ffffff; border: 1px solid var(--border, #cbd5e1); color: var(--primary, #2563eb); padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; cursor: pointer; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.08)); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;">
-        <span>Browse All 21 Calculators &darr;</span>
-      </button>
-    </div>
-
-    <!-- Latest Guides Section (Consolidated Hub) -->
-    <section class="container" style="max-width: 1140px; margin: 3rem auto; padding: 0 1.5rem 4rem 1.5rem;">
-      <div style="border-top: 2px solid #e2e8f0; padding-top: 2.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
-          <div>
-            <h2 style="font-size: 1.75rem; margin: 0 0 0.5rem 0; color: var(--slate-900);">Latest Guides &amp; Cost Breakdowns</h2>
-            <p style="color: var(--slate-600); font-size: 1.05rem; margin: 0;">Expert analysis, federal tax credit breakdowns, and project pricing data.</p>
-          </div>
-          <a href="/guides.html" style="font-weight: 600; color: #2563eb; text-decoration: none;">View All Guides &rarr;</a>
+      <!-- Right Column (40%): Interactive Cost Calculator Launcher & Lead Gen -->
+      <aside class="quick-launcher-panel" aria-label="Interactive Calculator Launcher">
+        <div class="launcher-header">
+          <h2>
+            <span>Interactive Cost Calculators</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--primary); background: var(--primary-light); padding: 0.2rem 0.55rem; border-radius: 999px;">21 Live Models</span>
+          </h2>
+          <p>Audit contractor bids with trade labor rates, material waste factors, and 2026 tax credits.</p>
         </div>
 
-        <!-- Consolidated Guides Filter Tabs -->
-        <div class="filter-bar" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem;">
-          <button class="guide-filter-btn active" data-guide-filter="featured">⭐ Featured Guides (8)</button>
-          <button class="guide-filter-btn" data-guide-filter="envelope">Building Envelope (6)</button>
-          <button class="guide-filter-btn" data-guide-filter="mechanical">Mechanical &amp; Energy (8)</button>
-          <button class="guide-filter-btn" data-guide-filter="interior">Interior &amp; Power (9)</button>
-          <button class="guide-filter-btn" data-guide-filter="all">All 23 Guides</button>
+        <div class="hero-search-wrap">
+          <span class="hero-search-icon">&#128269;</span>
+          <input type="text" id="heroCalcSearch" class="hero-search-input" placeholder="Quick-launch a calculator (e.g. roof, heat pump, deck)..." aria-label="Quick search calculators">
         </div>
 
-        <!-- Guides Grid -->
-                                                                                        <div class="calculator-grid" id="guides-grid" style="padding-bottom: 1rem;">
-      <!-- Guide: 2026 Roof Replacement: Permit Fees & Hidden Damage Costs -->
-      <a href="/articles/2026-10-17-2026-roof-replacement-permit-fees-hidden-damage-costs.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-17</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Roof Replacement: Permit Fees & Hidden Damage Costs</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: # 2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff -->
-      <a href="/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-16</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;"># 2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Water Heater Replacement: Climate Zone Failure & Efficiency Cost Analysis -->
-      <a href="/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-15</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Water Heater Replacement: Climate Zone Failure & Efficiency Cost Analysis</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: # 2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery -->
-      <a href="/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html" class="calc-card guide-card" data-guide-category="featured interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-15</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;"># 2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries -->
-      <a href="/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed-installer.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-14</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Driveway Paving: Labor, Materials & Equipment Breakdown -->
-      <a href="/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment-breakdown.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-13</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Driveway Paving: Labor, Materials & Equipment Breakdown</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Basement Finishing: Section 25C Tax Credit Qualification Rules -->
-      <a href="/articles/2026-10-12-2026-basement-finishing-section-25c-tax-credit.html" class="calc-card guide-card" data-guide-category="featured interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-12</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Basement Finishing: Section 25C Tax Credit Qualification Rules</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Solar Payback: Permit Fees & Hidden Inspection Costs -->
-      <a href="/articles/2026-10-11-2026-solar-payback-permit-fees-hidden-inspection-costs.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-11</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Solar Payback: Permit Fees & Hidden Inspection Costs</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff -->
-      <a href="/articles/2026-10-10-fiber-cement-vs-vinyl-siding-2026-durability-cost-tradeoff.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-10</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: # 2026 Fence Climate Durability: Linear Footage Cost & Freeze-Thaw Failure Analysis -->
-      <a href="/articles/2026-10-09-2026-fence-climate-durability-linear-footage-cost-freeze.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-09</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;"># 2026 Fence Climate Durability: Linear Footage Cost & Freeze-Thaw Failure Analysis</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Cost Analysis: What's the True ROI of Installing a Mini-Split AC System in Your Home? -->
-      <a href="/articles/2026-10-08-2026-cost-analysis-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-08</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Cost Analysis: What's the True ROI of Installing a Mini-Split AC System in Your Home?</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Empirical 10-year ROI modeling for ductless mini-split heat pumps: SEER2 operating savings, Section 25C federal tax credits, multi-zone installation costs, and electrical load upgrades.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-      <!-- Guide: 2026 Water Heater Replacement Cost Breakdown -->
-      <a href="/articles/2026-10-07-2026-water-heater-replacement-cost-breakdown-tank-vs-tankless-installation-labor-municipal-permit-fees-hidden-rough-in-plumbing-upgrades-code-mandated-safety-valve-inspection-requirements-by-water-hardness-zone.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-07</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Water Heater Replacement: Tank vs. Tankless Costs, Labor &amp; Permits</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Empirical cost breakdown for storage tanks vs. tankless systems, rough-in plumbing upgrades, thermal expansion valves, and water hardness wear factors.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs & Payback -->
-      <a href="/guides/heat-pump-tax-credit-2026.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-03</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs & Payback</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Section 25C $2,000 tax credit eligibility, SEER2/HSPF2 minimum efficiency tiers, dual-fuel installation costs, and multi-year utility bill ROI.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Roof Replacement Cost per Square in 2026: Architectural vs. 3-Tab -->
-      <a href="/guides/roof-replacement-cost-per-square-2026.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-03</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Roof Replacement Cost per Square in 2026: Architectural vs. 3-Tab</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Pricing per roofing square (100 sq ft), tear-off labor benchmarks, roof pitch slope multipliers, ice & water shield code rules, and quote vetting.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Cost to Install a 240V 50 Amp EV Charger in 2026 -->
-      <a href="/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charger-in-2026.html" class="calc-card guide-card" data-guide-category="featured interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-09-30</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Cost to Install a 240V 50 Amp EV Charger in 2026</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Hardwired vs. NEMA 14-50 outlet installations, 50A breaker drops, wire run distances, Section 30C federal tax credits, and permit costs.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Breaking Down 2026 Kitchen Remodel Costs: Realistic Budgeting Guide -->
-      <a href="/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs.html" class="calc-card guide-card" data-guide-category="featured interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Breaking Down 2026 Kitchen Remodel Costs: Realistic Budgeting Guide</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Realistic square-footage budgeting across minor cosmetic updates, mid-range overhauls, and luxury gut renovations with trade labor allocations.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Roof Replacement Tax Credits and Energy Rebates Guide -->
-      <a href="/articles/2026-10-04-2026-roof-replacement-tax-credits-and-rebates.html" class="calc-card guide-card" data-guide-category="featured envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Roof Replacement Tax Credits and Energy Rebates Guide</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Energy Star reflective cool roof incentives, local electric utility rebates, attic ventilation requirements, and tax credit eligibility standards.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Breaking Down 2026 Solar Installation Costs: When Does Going Solar Pay Off? -->
-      <a href="/articles/2026-10-04-breaking-down-2026-solar-installation-costs-when-does-going-solar-pay-off.html" class="calc-card guide-card" data-guide-category="featured mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Breaking Down 2026 Solar Installation Costs: When Does Going Solar Pay Off?</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Turnkey solar installation pricing, gross cost per watt benchmarks, Section 25D 30% federal tax credit rules, and regional utility payback curves.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Fiber Cement vs. Vinyl Siding ROI: Costs, Durability & Resale Value -->
-      <a href="/articles/2026-10-04-2026-fiber-cement-vs-vinyl-siding-roi.html" class="calc-card guide-card" data-guide-category="envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Fiber Cement vs. Vinyl Siding ROI: Costs, Durability & Resale Value</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Installed cost per square comparisons between James Hardie fiber cement and insulated vinyl siding, hail impact durability, and resale return on investment.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Fence Installation Cost Per Linear Foot: Wood, Vinyl & Aluminum -->
-      <a href="/articles/2026-10-04-2026-fence-installation-cost-per-linear-foot.html" class="calc-card guide-card" data-guide-category="envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Fence Installation Cost Per Linear Foot: Wood, Vinyl & Aluminum</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Material and contractor labor pricing per linear foot across cedar privacy, ornamental aluminum, and extruded vinyl fencing with gate allowances.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Attic Insulation & Air Sealing Costs: R-Value Pricing Guide -->
-      <a href="/articles/2026-10-04-2026-attic-insulation-air-sealing-costs.html" class="calc-card guide-card" data-guide-category="envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Attic Insulation & Air Sealing Costs: R-Value Pricing Guide</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Square foot costs for blown fiberglass and cellulose to reach code-mandated R-49/R-60 levels, thermal bypass air sealing, and Section 25C incentives.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Insulated Steel vs. Wood Garage Doors: Cost, R-Value & ROI Breakdown -->
-      <a href="/articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html" class="calc-card guide-card" data-guide-category="envelope">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Building Envelope</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-09-30</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Insulated Steel vs. Wood Garage Doors: Cost, R-Value & ROI Breakdown</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Comparison of polyurethane insulated steel vs. custom wood carriage doors, thermal R-values, wind-load ratings, and 100%+ cost recovery at resale.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: How Much Does a Mini-Split AC System Cost vs. Central Air in 2026? -->
-      <a href="/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html" class="calc-card guide-card" data-guide-category="mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">How Much Does a Mini-Split AC System Cost vs. Central Air in 2026?</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Equipment, refrigerant lines, and ductwork installation price differences between ductless heat pumps and central air conditioning systems.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Ductless Mini-Split vs. Central AC: Which Cooling System Saves More in 2026? -->
-      <a href="/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html" class="calc-card guide-card" data-guide-category="mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Ductless Mini-Split vs. Central AC: Which Cooling System Saves More in 2026?</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Energy modeling comparing inverter ductless mini-split efficiency against traditional ducted split systems across mixed-humid and hot-arid climates.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Mini-Split AC Installation: What You'll Actually Pay Per Room -->
-      <a href="/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html" class="calc-card guide-card" data-guide-category="mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Mini-Split AC Installation: What You'll Actually Pay Per Room</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Cost breakdown for individual wall-mounted, ceiling cassette, and concealed duct air handlers, refrigerant lineset runs, and condensate drainage.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Mini-Split AC Installation Cost Breakdown by Home Size -->
-      <a href="/articles/2026-10-04-2026-mini-split-ac-installation-cost-breakdown-by-home-size.html" class="calc-card guide-card" data-guide-category="mechanical">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical & Energy</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Mini-Split AC Installation Cost Breakdown by Home Size</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Multi-zone compressor capacity, BTU heat load sizing, and total turnkey contractor estimates for 1,200 to 3,500 square foot homes.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Kitchen Remodel Budget Breakdown: Cabinets, Countertops & Appliances -->
-      <a href="/articles/2026-10-04-2026-kitchen-remodel-budget-breakdown-cabinets-countertops-appliances.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Kitchen Remodel Budget Breakdown: Cabinets, Countertops & Appliances</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Detailed cost breakdown allocating funds across semi-custom cabinetry (35%), quartz countertops (15%), appliances, and licensed trade labor.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: How Much Does a Whole-House Generator Installation Cost in 2026? -->
-      <a href="/articles/2026-10-03-how-much-does-a-whole-house-generator-installation-cost-in-2026.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-03</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">How Much Does a Whole-House Generator Installation Cost in 2026?</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Turnkey standby generator pricing (18kW-26kW), automatic transfer switch installation, gas meter upgrades, concrete pads, and electrical hookups.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Ditra Heat Cost Guide: Electric Radiant Floor Heating Breakdown -->
-      <a href="/articles/2026-09-30-ditra-heat-cost-guide.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-09-30</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Ditra Heat Cost Guide: Electric Radiant Floor Heating Breakdown</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Schluter Ditra-Heat membrane materials, heating cable square-foot coverage, smart WiFi thermostat controls, and dedicated circuit installation.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: 2026 Cost Analysis: What's the Real Cost of Home Improvements? -->
-      <a href="/articles/2026-10-04-2026-cost-analysis-article-what-s-the-real-cost.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-04</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">2026 Cost Analysis: What's the Real Cost of Home Improvements?</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Breakdown of contractor overhead, markup percentages, hidden building code compliance costs, and contingency budgeting for remodeling.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Top Home Improvement ROI Projects for 2026: Data-Backed Renovations -->
-      <a href="/articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-03</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Top Home Improvement ROI Projects for 2026: Data-Backed Renovations</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Analysis of national cost-versus-value data ranking exterior curb appeal replacements and energy retrofits against complex interior overhauls.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Top Home Improvement ROI Projects: High-Yield Renovation Strategies -->
-      <a href="/articles/2026-10-02-top-home-improvement-roi-projects-for-2026.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-10-02</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Top Home Improvement ROI Projects: High-Yield Renovation Strategies</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">High-yield remodeling strategies focusing on capital preservation, appraisal equity gains, and avoiding over-improvement in local neighborhood comps.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
-
-      <!-- Guide: Top Home Improvement ROI Projects Ranked by Value Recouped -->
-      <a href="/articles/2026-09-30-top-home-improvement-roi-projects-for-2026.html" class="calc-card guide-card" data-guide-category="interior">
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior & Power</span>
-            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 500;">2026-09-30</span>
-          </div>
-          <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; line-height: 1.4; color: #0f172a;">Top Home Improvement ROI Projects Ranked by Value Recouped</h3>
-          <p style="color: #64748b; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1.25rem 0;">Empirical rankings of home renovations by percentage of cost recouped at resale, highlighting high-return exterior projects vs. low-return luxury upgrades.</p>
-        </div>
-        <span class="cta-link" style="color: #2563eb; font-weight: 600; font-size: 0.9rem;">Read Guide &rarr;</span>
-      </a>
+        <div class="launcher-pills">
+          <button type="button" class="launcher-pill active" data-launcher-cat="all">Top Models</button>
+          <button type="button" class="launcher-pill" data-launcher-cat="envelope">Envelope (10)</button>
+          <button type="button" class="launcher-pill" data-launcher-cat="mechanical">HVAC &amp; Energy (6)</button>
+          <button type="button" class="launcher-pill" data-launcher-cat="interior">Interior &amp; Power (5)</button>
         </div>
 
-        <!-- Expand / Consolidate Toggle Button for Guides -->
-        <div style="text-align: center; margin: 2rem auto 1rem auto;">
-          <button id="toggleAllGuidesBtn" type="button" style="background: #ffffff; border: 1px solid var(--border, #cbd5e1); color: var(--primary, #2563eb); padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; cursor: pointer; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.08)); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;">
-            <span>Browse All 23 Guides &darr;</span>
-          </button>
-        </div>
-
-        <div style="text-align: center; margin-top: 1rem;">
-          <a href="/guides.html" style="display: inline-block; background: #2563eb; color: #ffffff; padding: 0.65rem 1.35rem; border-radius: 6px; font-weight: 700; text-decoration: none;">
-            Browse Full Guides Archive (23 Articles) &rarr;
+        <div class="launcher-tool-list" id="launcherToolList">
+          <a href="https://thebuyersmath.com/roofing-cost-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Roof Replacement Cost Estimator</span>
+              <span class="launcher-tool-sub">Pitch multipliers, tear-off layers &amp; shingle grades</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/hvac-roi-calculator.html" class="launcher-tool-item" data-lcat="mechanical">
+            <div>
+              <span class="launcher-tool-name">Heat Pump vs. Gas Furnace ROI</span>
+              <span class="launcher-tool-sub">$2,000 IRA 25C credit &amp; 10-year utility payback</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/kitchen-remodel-calculator.html" class="launcher-tool-item" data-lcat="interior">
+            <div>
+              <span class="launcher-tool-name">Kitchen Remodel Cost Estimator</span>
+              <span class="launcher-tool-sub">Cabinetry, quartz tops &amp; licensed trade splits</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/bathroom-remodel-calculator.html" class="launcher-tool-item" data-lcat="interior">
+            <div>
+              <span class="launcher-tool-name">Bathroom Remodel Cost Estimator</span>
+              <span class="launcher-tool-sub">Powder room, 5x8 guest bath &amp; primary wet-room</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/window-replacement-estimator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Window Replacement Estimator</span>
+              <span class="launcher-tool-sub">Vinyl, fiberglass &amp; wood frame U-factor ROI</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/siding-cost-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Home Siding Replacement Cost</span>
+              <span class="launcher-tool-sub">Insulated vinyl vs. James Hardie fiber cement</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/attic-insulation-calculator.html" class="launcher-tool-item" data-lcat="mechanical">
+            <div>
+              <span class="launcher-tool-name">Attic Insulation &amp; Air Sealing ROI</span>
+              <span class="launcher-tool-sub">R-49/R-60 targets &amp; $1,200 Section 25C credit</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/solar-payback-calculator.html" class="launcher-tool-item" data-lcat="mechanical">
+            <div>
+              <span class="launcher-tool-name">Solar Panel Payback Timeline</span>
+              <span class="launcher-tool-sub">30% Section 25D credit &amp; net metering curve</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/ev-charger-calculator.html" class="launcher-tool-item" data-lcat="interior">
+            <div>
+              <span class="launcher-tool-name">EV Home Charger Installation</span>
+              <span class="launcher-tool-sub">Level 2 48A hardwired, conduit run &amp; 30C credit</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/deck-cost-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Deck Construction Cost Estimator</span>
+              <span class="launcher-tool-sub">Pressure-treated lumber vs. composite Trex</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/mini-split-calculator.html" class="launcher-tool-item" data-lcat="mechanical">
+            <div>
+              <span class="launcher-tool-name">Ductless Mini-Split Estimator</span>
+              <span class="launcher-tool-sub">Single &amp; multi-zone inverter sizing by room</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/water-heater-calculator.html" class="launcher-tool-item" data-lcat="mechanical">
+            <div>
+              <span class="launcher-tool-name">Water Heater Replacement Cost</span>
+              <span class="launcher-tool-sub">Tank, gas tankless &amp; hybrid heat pump models</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/generator-calculator.html" class="launcher-tool-item" data-lcat="interior">
+            <div>
+              <span class="launcher-tool-name">Backup Generator Sizing Guide</span>
+              <span class="launcher-tool-sub">Whole-house LRA surge &amp; transfer switch</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/basement-cost-calculator.html" class="launcher-tool-item" data-lcat="interior">
+            <div>
+              <span class="launcher-tool-name">Basement Finishing Estimator</span>
+              <span class="launcher-tool-sub">Framing, vapor barriers &amp; IRC R310 egress</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/fence-cost-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Fence Cost &amp; Linear Footage</span>
+              <span class="launcher-tool-sub">Cedar, vinyl &amp; aluminum post-hole augering</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/driveway-paving-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Driveway Paving Calculator</span>
+              <span class="launcher-tool-sub">Asphalt, concrete &amp; interlocking pavers</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/gutter-cost-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Seamless Gutters &amp; Guards</span>
+              <span class="launcher-tool-sub">Aluminum vs. copper &amp; micro-mesh leaf guards</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/garage-door-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Garage Door Replacement Cost</span>
+              <span class="launcher-tool-sub">R-18 polyurethane steel &amp; 100%+ resale ROI</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/patio-cost-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Patio &amp; Paver Estimator</span>
+              <span class="launcher-tool-sub">Stamped concrete vs. pavers &amp; subbase depth</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/exterior-painting-calculator.html" class="launcher-tool-item" data-lcat="envelope">
+            <div>
+              <span class="launcher-tool-name">Exterior House Painting</span>
+              <span class="launcher-tool-sub">Story multipliers, prep scraping &amp; coatings</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
+          </a>
+          <a href="https://thebuyersmath.com/pool.html" class="launcher-tool-item" data-lcat="mechanical">
+            <div>
+              <span class="launcher-tool-name">Pool Pump Energy Calculator</span>
+              <span class="launcher-tool-sub">Single-speed vs. variable-speed drive ROI</span>
+            </div>
+            <span class="launcher-tool-arrow">Model &rarr;</span>
           </a>
         </div>
-                  <li>
-            <span class="article-date">2026-10-08</span>
-            <a href="/articles/2026-10-08-2026-attic-air-sealing-diy-vs-licensed-contractor-roi.html">2026 Attic Air Sealing: DIY vs Licensed Contractor ROI</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-08</span>
-            <a href="/articles/2026-10-08-ev-charger-installation-2026-appraisal-impact-roi.html">EV Charger Installation: 2026 Appraisal Impact ROI</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-07</span>
-            <a href="/articles/2026-10-07-pool-pump-energy-cost-2026-ira-tax-credits.html">Pool Pump Energy Cost: 2026 IRA Tax Credits</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-07</span>
-            <a href="/articles/2026-10-07-2026-roof-replacement-labor-vs-material-cost-breakdown.html">2026 Roof Replacement Labor vs. Material Cost Breakdown</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-06</span>
-            <a href="/articles/2026-10-06-2026-vinyl-vs-fiberglass-vs-composite-windows-true-25-year-cost-of-ownership-breakdown-including-frame-rot-replacement-cycles-u-factor-energy-penalties-installer-warranty-claim-denial-patterns-by-window-orientation.html"># 2026 Vinyl vs. Fiberglass vs. Composite Windows: True 25-Year Cost-of-Ownership Breakdown Including Frame Rot Replacement Cycles, U-Factor Energy Penalties & Installer Warranty Claim Denial Patterns by Window Orientation</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-05</span>
-            <a href="/articles/2026-10-05-2026-basement-finishing-cost-estimator-freeze-thaw-cycle-repair-premiums-vapor-barrier-specifications-preventative-moisture-diagnostics-by-north-american-climate-zone.html"># 2026 Basement Finishing Cost Estimator: Freeze-Thaw Cycle Repair Premiums, Vapor Barrier Specifications & Preventative Moisture Diagnostics by North American Climate Zone</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-2026-fence-installation-cost-per-linear-foot-diy-property-line-marking-vs-licensed-surveyor-requirements-where-building-permits-trigger-master-tradesman-liability-thresholds.html"># 2026 Fence Installation Cost Per Linear Foot: DIY Property Line Marking vs. Licensed Surveyor Requirements & Where Building Permits Trigger Master Tradesman Liability Thresholds</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-2026-attic-insulation-air-sealing-cost-breakdown-cellulose-vs-fiberglass-installation-labor-blower-door-testing-contractor-markup-roi-analysis.html"># 2026 Attic Insulation & Air Sealing Cost Breakdown: Cellulose vs. Fiberglass Installation Labor, Blower Door Testing & Contractor Markup ROI Analysis</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-2026-cost-analysis-article-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html"># 2026 Cost Analysis Article
 
-What's the True ROI of Installing a Mini-Split AC System in Your Home?</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs-budget-planning-for-modern-upgrades.html"># Breaking Down 2026 Kitchen Remodel Costs: Budget Planning for Modern Upgrades</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-2026-fiber-cement-vs-vinyl-siding-replacement-full-material-labor-cost-analysis-with-appraisal-impact-modeling-buyer-perception-roi-by-climate-zone.html"># 2026 Fiber Cement vs. Vinyl Siding Replacement: Full Material & Labor Cost Analysis with Appraisal Impact Modeling & Buyer Perception ROI by Climate Zone</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-2026-roof-replacement-tax-credits-under-ira-section-25c-metal-vs-asphalt-shingle-net-cost-after-federal-rebates-state-utility-peak-demand-incentives.html"># 2026 Roof Replacement Tax Credits Under IRA Section 25C: Metal vs. Asphalt Shingle Net Cost After Federal Rebates & State Utility Peak Demand Incentives</a>
-          </li>
-          <li>
-            <span class="article-date">2026-10-04</span>
-            <a href="/articles/2026-10-04-2026-mini-split-ac-installation-costs-is-ductless-cooling-worth-the-investment.html">2026 Mini-Split AC Installation Costs: Is Ductless Cooling Worth the Investment?</a>
-          </li>
-          <li>
-            <span class="article-date">2026-09-30</span>
-            <a href="/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charging-circuit-diy-vs-electrician-breakdown.html">Cost to Install a 240V 50-Amp EV Charging Circuit: DIY vs Electrician Breakdown</a>
-          </li>
-          <!-- ARTICLES_LIST_MARKER -->
+        <a href="#calculators-section" class="btn-secondary" style="width: 100%; justify-content: center;">
+          Jump to Full 21-Calculator Grid &darr;
+        </a>
+
+        <!-- High-Conversion Angi Partner CTA -->
+        <div class="angi-lead-card">
+          <h3>Have a Contractor Quote in Hand?</h3>
+          <p>Compare your estimate against 3 prescreened, licensed local pros before signing a renovation contract.</p>
+          <a href="https://www.jdoqocy.com/click-101896838-17142784" target="_blank" rel="noopener sponsored" class="btn-angi">
+            Compare 3 Local Contractor Bids &rarr;
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- TBM DAILY INTELLIGENCE WIDGET -->
+    <section id="tbm-daily-intel-widget" class="market-pulse-widget" style="margin: 0 auto 2.5rem auto; padding: 1.5rem; background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border-left: 6px solid #2563eb;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; font-weight: 700;">Today's Market Pulse &bull; Oct 16, 2026</span>
+          <h2 style="margin: 0.2rem 0 0 0; font-size: 1.25rem; color: #0f172a;">Daily Construction Commodities &amp; Bid Intelligence</h2>
+        </div>
+        <a href="https://thebuyersmath.com/intel/2026-10-16-daily-market-intelligence.html" style="font-size: 0.875rem; color: #2563eb; font-weight: 700;">Read Today's 5-Part Brief &rarr;</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">2x4x8 SPF Framing Stud</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">$3.93 <span style="font-size: 0.8rem; color: #dc2626; font-weight: 700;">&#9650; +1.2%</span></div>
+          <div style="font-size: 0.72rem; color: #64748b;">National big-box retail avg</div>
+        </div>
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">12/2 NM-B Romex (250ft)</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">$138.65 <span style="font-size: 0.8rem; color: #059669; font-weight: 700;">&#9660; -2.7%</span></div>
+          <div style="font-size: 0.72rem; color: #64748b;">Copper branch circuit roll</div>
+        </div>
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Architectural Asphalt</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">$117.65 <span style="font-size: 0.8rem; color: #059669; font-weight: 700;">&#9660; -0.3%</span></div>
+          <div style="font-size: 0.72rem; color: #64748b;">Per roofing square (100 sq ft)</div>
+        </div>
+        <div style="background: #f8fafc; padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Sakrete / Quikrete (80lb)</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 0.2rem 0;">$6.56 <span style="font-size: 0.8rem; color: #dc2626; font-weight: 700;">&#9650; +1.7%</span></div>
+          <div style="font-size: 0.72rem; color: #64748b;">4000 PSI structural mix</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; border-top: 1px solid #f1f5f9; padding-top: 0.9rem; font-size: 0.86rem;">
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.75rem 1rem;">
+          <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #1d4ed8;">Today's Quote Teardown</div>
+          <div style="font-weight: 700; color: #0f172a; margin: 0.15rem 0;">400 Sq Ft 4-Inch Concrete Driveway Paving &amp; Grading</div>
+          <div style="color: #334155;">Verified Fair Window: <strong>$4,400 – $5,400</strong> &bull; <a href="https://thebuyersmath.com/intel/2026-10-16-daily-market-intelligence.html" style="color: #2563eb; font-weight: 700;">Audit Line Items &rarr;</a></div>
+        </div>
+        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 0.75rem 1rem;">
+          <div style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #b45309;">Jobsite Hardware Spotlight (Amazon Deal)</div>
+          <div style="font-weight: 700; color: #0f172a; margin: 0.15rem 0;">FLIR ONE Gen 3 Thermal Imaging Camera for Smartphones</div>
+          <div style="color: #334155;">Street Price: <strong>$189.99 ($39 Off Instant)</strong> &bull; <a href="https://www.amazon.com/s?k=FLIR+ONE+Gen+3+Thermal+Imaging+Camera&tag=nfagiolo-20" target="_blank" rel="noopener sponsored" style="color: #b45309; font-weight: 700;">Check Amazon Deal &rarr;</a></div>
+        </div>
       </div>
     </section>
+    <!-- END TBM DAILY INTELLIGENCE WIDGET -->
+
+    <!-- Section 1: Daily Guides & Cost Breakdowns Archive (Promoted Above Calculator Grid) -->
+    <section class="section-block" id="guides-section">
+      <div class="section-header-bar">
+        <div>
+          <h2>Latest Guides &amp; Empirical Cost Breakdowns</h2>
+          <p>Daily deep-dive pricing audits, IRA Section 25C/30C tax credit rules, and building code teardowns.</p>
+        </div>
+        <a href="https://thebuyersmath.com/guides.html" class="btn-secondary">Open Full Archive Page &rarr;</a>
+      </div>
+
+      <div class="filter-controls-row">
+        <div class="filter-bar">
+          <button type="button" class="guide-filter-btn active" data-guide-filter="featured">&#11088; Featured &amp; Recent (12)</button>
+          <button type="button" class="guide-filter-btn" data-guide-filter="envelope">Building Envelope (10)</button>
+          <button type="button" class="guide-filter-btn" data-guide-filter="mechanical">Mechanical &amp; Energy (11)</button>
+          <button type="button" class="guide-filter-btn" data-guide-filter="interior">Interior &amp; Power (10)</button>
+          <button type="button" class="guide-filter-btn" data-guide-filter="all">All 31 Guides</button>
+        </div>
+        <input type="text" id="guideSearchInput" class="inline-search-input" placeholder="Search 31 articles by topic or code..." aria-label="Search guides">
+      </div>
+
+      <!-- TBM GUIDES GRID START -->
+      <div class="cards-grid" id="guideGrid">
+
+        <a href="https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html" class="guide-card" data-guide-category="featured mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-16</span>
+            </div>
+            <h3>2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff</h3>
+            <p>10-year corrosion lifecycle comparison of cast-iron vs. 316 stainless-steel pump volutes, DOE variable-speed drive mandates, and annual kWh savings.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html" class="guide-card" data-guide-category="featured mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-15</span>
+            </div>
+            <h3>2026 Water Heater Replacement: Climate Zone Failure &amp; Efficiency Cost Analysis</h3>
+            <p>How regional inlet water temperatures and hard-water scaling affect tankless heat exchangers, hybrid heat pump COP, and Section 25C tax credit ROI.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html" class="guide-card" data-guide-category="featured interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-15</span>
+            </div>
+            <h3>2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery</h3>
+            <p>Turnkey cost breakdown for 18kW–26kW standby generators, automatic transfer switches, natural gas meter upgrades, and resale value recovery.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed.html" class="guide-card" data-guide-category="featured envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-14</span>
+            </div>
+            <h3>2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries</h3>
+            <p>Evaluating pocket-insert vs. full-frame window replacements, NFRC U-factor certification for federal tax credits, and structural flashing liabilities.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment.html" class="guide-card" data-guide-category="featured envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-13</span>
+            </div>
+            <h3>2026 Driveway Paving: Labor, Materials &amp; Equipment Breakdown</h3>
+            <p>Itemized cost per square foot for hot-mix asphalt, reinforced concrete slabs, and interlocking pavers, including excavation and base compaction.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-12-2026-basement-finishing-section-25c-tax-credit.html" class="guide-card" data-guide-category="featured interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-12</span>
+            </div>
+            <h3>2026 Basement Finishing: Section 25C Tax Credit Qualification Rules</h3>
+            <p>How to claim up to $1,200 in IRA Section 25C tax credits for rim-joist air sealing and rigid foam foundation wall insulation during a basement finish.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-11-2026-solar-payback-permit-fees-hidden-inspection.html" class="guide-card" data-guide-category="featured mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-11</span>
+            </div>
+            <h3>2026 Solar Payback: Permit Fees &amp; Hidden Inspection Costs</h3>
+            <p>Auditing soft costs on residential solar bids: structural engineer roof stamps, utility interconnection fees, main panel busbar rules, and 30% 25D credits.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-10-fiber-cement-vs-vinyl-siding-2026-durability-cost.html" class="guide-card" data-guide-category="featured envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-10</span>
+            </div>
+            <h3>Fiber Cement vs. Vinyl Siding: 2026 Durability-Cost Tradeoff</h3>
+            <p>Comparing James Hardie fiber cement against insulated vinyl siding across per-square labor, repainting intervals, hail resistance, and resale recovery.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-09-2026-fence-climate-durability-linear-footage-cost.html" class="guide-card" data-guide-category="featured envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-09</span>
+            </div>
+            <h3>2026 Fence Climate Durability: Linear Footage Cost &amp; Freeze-Thaw Failure Analysis</h3>
+            <p>Frost-line post footing depths (36-inch vs. 48-inch), wind-load bracing, and linear-foot pricing across western red cedar, vinyl, and aluminum fencing.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-08-2026-cost-analysis-what-s-the-true-roi-of-installing-a-mini-split-ac-system-in-your-home.html" class="guide-card" data-guide-category="featured mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-08</span>
+            </div>
+            <h3>2026 Cost Analysis: What's the True ROI of Installing a Mini-Split AC System in Your Home?</h3>
+            <p>Empirical 10-year ROI modeling for ductless mini-split heat pumps: SEER2 operating savings, Section 25C federal tax credits, and multi-zone labor costs.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-07-2026-water-heater-replacement-cost-breakdown-tank-vs-tankless-installation-labor-municipal-permit-fees-hidden-rough-in-plumbing-upgrades-code-mandated-safety-valve-inspection-requirements-by-water-hardness-zone.html" class="guide-card" data-guide-category="featured mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-07</span>
+            </div>
+            <h3>2026 Water Heater Replacement: Tank vs. Tankless Costs, Labor &amp; Permits</h3>
+            <p>Empirical cost breakdown for storage tanks vs. tankless systems, rough-in plumbing upgrades, thermal expansion valves, and water hardness wear factors.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/guides/heat-pump-tax-credit-2026.html" class="guide-card" data-guide-category="featured mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-03</span>
+            </div>
+            <h3>Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs &amp; Payback</h3>
+            <p>Section 25C $2,000 tax credit eligibility, SEER2/HSPF2 minimum efficiency tiers, dual-fuel installation costs, and multi-year utility bill ROI.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/guides/roof-replacement-cost-per-square-2026.html" class="guide-card" data-guide-category="envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-03</span>
+            </div>
+            <h3>Roof Replacement Cost per Square in 2026: Architectural vs. 3-Tab</h3>
+            <p>Pricing per roofing square (100 sq ft), tear-off labor benchmarks, roof pitch slope multipliers, ice &amp; water shield code rules, and quote vetting.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/guides/ev-charger-tax-credit-2026.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-05</span>
+            </div>
+            <h3>2026 EV Charger Tax Credit Guide: Section 30C Rules &amp; Panel Upgrades</h3>
+            <p>How to qualify for the 30% Section 30C federal tax credit (up to $1,000) for Level 2 EV charging stations and 200A electrical service upgrades.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-kitchen-remodel-costs.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>Breaking Down 2026 Kitchen Remodel Costs: Realistic Budgeting Guide</h3>
+            <p>Realistic square-footage budgeting across minor cosmetic updates, mid-range overhauls, and luxury gut renovations with trade labor allocations.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-roof-replacement-tax-credits-and-rebates.html" class="guide-card" data-guide-category="envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Roof Replacement Tax Credits and Energy Rebates Guide</h3>
+            <p>Energy Star reflective cool roof incentives, local electric utility rebates, attic ventilation requirements, and tax credit eligibility standards.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-breaking-down-2026-solar-installation-costs-when-does-going-solar-pay-off.html" class="guide-card" data-guide-category="mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>Breaking Down 2026 Solar Installation Costs: When Does Going Solar Pay Off?</h3>
+            <p>Turnkey solar installation pricing, gross cost per watt benchmarks, Section 25D 30% federal tax credit rules, and regional utility payback curves.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-fiber-cement-vs-vinyl-siding-roi.html" class="guide-card" data-guide-category="envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Fiber Cement vs. Vinyl Siding ROI: Costs, Durability &amp; Resale Value</h3>
+            <p>Installed cost per square comparisons between James Hardie fiber cement and insulated vinyl siding, hail impact durability, and resale return on investment.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-fence-installation-cost-per-linear-foot.html" class="guide-card" data-guide-category="envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Fence Installation Cost Per Linear Foot: Wood, Vinyl &amp; Aluminum</h3>
+            <p>Material and contractor labor pricing per linear foot across cedar privacy, ornamental aluminum, and extruded vinyl fencing with gate allowances.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-attic-insulation-air-sealing-costs.html" class="guide-card" data-guide-category="envelope mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Attic Insulation &amp; Air Sealing Costs: R-Value Pricing Guide</h3>
+            <p>Square foot costs for blown fiberglass and cellulose to reach code-mandated R-49/R-60 levels, thermal bypass air sealing, and Section 25C incentives.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-09-30-insulated-steel-vs-wood-garage-doors.html" class="guide-card" data-guide-category="envelope">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Building Envelope</span>
+              <span class="card-date">2026-09-30</span>
+            </div>
+            <h3>Insulated Steel vs. Wood Garage Doors: Cost, R-Value &amp; ROI Breakdown</h3>
+            <p>Comparison of polyurethane insulated steel vs. custom wood carriage doors, thermal R-values, wind-load ratings, and 100%+ cost recovery at resale.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-how-much-does-a-mini-split-ac-system-cost-vs-central-air-in-2026.html" class="guide-card" data-guide-category="mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>How Much Does a Mini-Split AC System Cost vs. Central Air in 2026?</h3>
+            <p>Equipment, refrigerant lines, and ductwork installation price differences between ductless heat pumps and central air conditioning systems.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-ductless-mini-split-vs-central-ac-which-cooling-system-saves-more-in-2026.html" class="guide-card" data-guide-category="mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>Ductless Mini-Split vs. Central AC: Which Cooling System Saves More in 2026?</h3>
+            <p>Energy modeling comparing inverter ductless mini-split efficiency against traditional ducted split systems across mixed-humid and hot-arid climates.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-what-you-ll-actually-pay-per-room.html" class="guide-card" data-guide-category="mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Mini-Split AC Installation: What You'll Actually Pay Per Room</h3>
+            <p>Cost breakdown for individual wall-mounted, ceiling cassette, and concealed duct air handlers, refrigerant lineset runs, and condensate drainage.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-mini-split-ac-installation-cost-breakdown-by-home-size.html" class="guide-card" data-guide-category="mechanical">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Mechanical &amp; Energy</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Mini-Split AC Installation Cost Breakdown by Home Size</h3>
+            <p>Multi-zone compressor capacity, BTU heat load sizing, and total turnkey contractor estimates for 1,200 to 3,500 square foot homes.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-kitchen-remodel-budget-breakdown-cabinets-countertops-appliances.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Kitchen Remodel Budget Breakdown: Cabinets, Countertops &amp; Appliances</h3>
+            <p>Detailed cost breakdown allocating funds across semi-custom cabinetry (35%), quartz countertops (15%), appliances, and licensed trade labor.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-03-how-much-does-a-whole-house-generator-installation-cost-in-2026.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-03</span>
+            </div>
+            <h3>How Much Does a Whole-House Generator Installation Cost in 2026?</h3>
+            <p>Turnkey standby generator pricing (18kW–26kW), automatic transfer switch installation, gas meter upgrades, concrete pads, and electrical hookups.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-09-30-ditra-heat-cost-guide.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-09-30</span>
+            </div>
+            <h3>Ditra Heat Cost Guide: Electric Radiant Floor Heating Breakdown</h3>
+            <p>Schluter Ditra-Heat membrane materials, heating cable square-foot coverage, smart WiFi thermostat controls, and dedicated circuit installation.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-04-2026-cost-analysis-article-what-s-the-real-cost.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-04</span>
+            </div>
+            <h3>2026 Cost Analysis: What's the Real Cost of Home Improvements?</h3>
+            <p>Breakdown of contractor overhead, markup percentages, hidden building code compliance costs, and contingency budgeting for remodeling.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-10-03-top-home-improvement-roi-projects-for-2026.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-10-03</span>
+            </div>
+            <h3>Top Home Improvement ROI Projects for 2026: Data-Backed Renovations</h3>
+            <p>Analysis of national cost-versus-value data ranking exterior curb appeal replacements and energy retrofits against complex interior overhauls.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/articles/2026-09-30-cost-to-install-a-240v-50-amp-ev-charger-in-2026.html" class="guide-card" data-guide-category="interior">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">Interior &amp; Power</span>
+              <span class="card-date">2026-09-30</span>
+            </div>
+            <h3>Cost to Install a 240V 50 Amp EV Charger in 2026</h3>
+            <p>Hardwired vs. NEMA 14-50 outlet installations, 50A breaker drops, wire run distances, Section 30C federal tax credits, and permit costs.</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>
+
+      </div>
+      <!-- TBM GUIDES GRID END -->
+
+      <div style="text-align: center; margin-top: 1.75rem;">
+        <button type="button" id="toggleGuidesBtn" class="btn-primary" style="border: none; cursor: pointer;">
+          View All Guides Archive (31 Articles) &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- Section 2: Complete Suite of 21 Interactive Calculators -->
+    <section class="section-block" id="calculators-section">
+      <div class="section-header-bar">
+        <div>
+          <h2>Complete Suite of 21 Interactive Renovation Calculators</h2>
+          <p>Model dimensional material takeoffs, BLS prevailing trade labor hours, and federal clean-energy incentives.</p>
+        </div>
+      </div>
+
+      <div class="filter-controls-row">
+        <div class="filter-bar">
+          <button type="button" class="filter-btn active" data-filter="all">All 21 Calculators</button>
+          <button type="button" class="filter-btn" data-filter="featured">&#11088; Featured Models (6)</button>
+          <button type="button" class="filter-btn" data-filter="roofing">Building Envelope (10)</button>
+          <button type="button" class="filter-btn" data-filter="hvac">Mechanical &amp; Energy (6)</button>
+          <button type="button" class="filter-btn" data-filter="interior">Interior &amp; Power (5)</button>
+        </div>
+        <input type="text" id="calcSearch" class="inline-search-input" placeholder="Filter calculators (e.g. roof, heat pump, 25C)..." aria-label="Search calculators">
+      </div>
+
+      <div class="cards-grid calculator-grid" id="calculators">
+        <a href="https://thebuyersmath.com/roofing-cost-calculator.html" class="calc-card" data-category="featured roofing" data-keywords="roof shingles architectural tear-off pitch underlayment decking ice water shield ridge vent flashing replacement cost">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Roof Replacement Cost Estimator</h3>
+            <p>Model roof replacement costs by house footprint, roof pitch slope, tear-off layers, and architectural shingle grades.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/hvac-roi-calculator.html" class="calc-card" data-category="featured hvac" data-keywords="heat pump gas furnace dual fuel seer2 hspf2 efficiency cop annual savings 25c tax credit operating cost">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Mechanical &amp; Energy</span></div>
+            <h3>Heat Pump vs. Gas Furnace ROI</h3>
+            <p>Compare equipment replacement costs, $2,000 Section 25C federal tax credits, and annual operating costs across climate zones.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/attic-insulation-calculator.html" class="calc-card" data-category="hvac roofing" data-keywords="attic insulation blown fiberglass cellulose air sealing r-49 r-60 rim joist draft 25c energy credit savings">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Mechanical &amp; Energy</span></div>
+            <h3>Attic Insulation &amp; Air Sealing ROI</h3>
+            <p>Calculate retrofit costs to R-49/R-60, air sealing savings, and 30% Section 25C energy property tax credits up to $1,200.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/siding-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="siding vinyl insulated hardie fiber cement lp smartside trim soffit fascia house wrap exterior squares">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Home Siding Replacement Cost</h3>
+            <p>Compare costs per square (100 sq ft) for insulated vinyl, James Hardie fiber cement, and engineered wood siding.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/window-replacement-estimator.html" class="calc-card" data-category="featured roofing" data-keywords="window replacement vinyl wood composite fiberglass double hung casement argon low-e u-factor energy star 25c credit">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Window Replacement Estimator</h3>
+            <p>Estimate vinyl, composite, wood, and fiberglass replacement window pricing including licensed installation and NFRC checks.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/fence-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="fence linear feet cedar pine vinyl chain link aluminum privacy post holes concrete auger gate hardware">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Fence Cost &amp; Linear Footage</h3>
+            <p>Calculate materials, post hole augering, concrete footings, and gate hardware across cedar, vinyl, and aluminum.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/driveway-paving-calculator.html" class="calc-card" data-category="roofing" data-keywords="driveway paving asphalt concrete pavers excavation subbase gravel compaction sealing square footage">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Driveway Paving Calculator</h3>
+            <p>Compare asphalt, concrete, and interlocking paver installation costs based on surface dimensions and subbase prep.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/kitchen-remodel-calculator.html" class="calc-card" data-category="featured interior" data-keywords="kitchen remodel cabinets quartz granite countertops tile backsplash appliances plumbing electrical layout gut">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Interior &amp; Power</span></div>
+            <h3>Kitchen Remodel Cost Estimator</h3>
+            <p>Estimate kitchen renovation budgets across minor cosmetic, midrange, and major luxury reconfigurations.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/bathroom-remodel-calculator.html" class="calc-card" data-category="featured interior" data-keywords="bathroom remodel vanity tile shower bathtub plumbing fixtures waterproofing electrical exhaust fan gut remodel">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Interior &amp; Power</span></div>
+            <h3>Bathroom Remodel Cost Estimator</h3>
+            <p>Estimate powder room, 5x8 guest bath, and luxury primary suite budgets across plumbing, tile, and fixture tiers.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/basement-cost-calculator.html" class="calc-card" data-category="interior" data-keywords="basement finish remodel framing drywall flooring subfloor vapor barrier egress window bathroom waterproof">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Interior &amp; Power</span></div>
+            <h3>Basement Finishing Cost Estimator</h3>
+            <p>Calculate basement finish costs including framing, moisture barriers, electrical, plumbing, and IRC egress windows.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/solar-payback-calculator.html" class="calc-card" data-category="featured hvac" data-keywords="solar panels photovoltaic kw inverter net metering kilowatt hours kwh electric bill offset federal 30 percent tax credit payback">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Mechanical &amp; Energy</span></div>
+            <h3>Solar Panel Payback Timeline</h3>
+            <p>Calculate system sizing, 30% residential clean energy credits, and utility bill offset payback years.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/ev-charger-calculator.html" class="calc-card" data-category="interior" data-keywords="ev charger level 2 electric vehicle charging station 240v nema 14-50 hardwired 48a conduit permit 30c credit">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Interior &amp; Power</span></div>
+            <h3>EV Home Charger Installation</h3>
+            <p>Model Level 2 48A charging hardware, 240V conduit distance, panel capacity, Section 30C credits, and fuel savings.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/mini-split-calculator.html" class="calc-card" data-category="hvac" data-keywords="mini-split ductless multi-zone heat pump condenser wall unit seer2 btu zoning installation refrigerant line">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Mechanical &amp; Energy</span></div>
+            <h3>Ductless Mini-Split Cost Estimator</h3>
+            <p>Size single and multi-zone ductless heat pump installations for room additions, basements, and homes without ducts.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/generator-calculator.html" class="calc-card" data-category="interior" data-keywords="generator standby whole house natural gas propane automatic transfer switch ats kw outage emergency power">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Interior &amp; Power</span></div>
+            <h3>Backup Generator Sizing Guide</h3>
+            <p>Size whole-home standby generators, calculate gas plumbing requirements, and estimate transfer switch costs.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/water-heater-calculator.html" class="calc-card" data-category="hvac" data-keywords="water heater tank tankless hybrid heat pump gas electric expansion tank venting recirculating pump 25c credit">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Mechanical &amp; Energy</span></div>
+            <h3>Water Heater Replacement Cost</h3>
+            <p>Compare standard tank, gas tankless, and hybrid heat pump water heaters, tax credits, and installation fees.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/pool.html" class="calc-card" data-category="hvac" data-keywords="pool pump variable speed vs single speed horsepower filtration turnover gpm kwh annual electricity cost savings">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Mechanical &amp; Energy</span></div>
+            <h3>Pool Pump Energy Calculator</h3>
+            <p>Calculate seasonal electricity cost savings from replacing a single-speed pump with a variable speed drive.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/deck-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="deck building composite trex pressure treated lumber railing joists footings ledger board patio deck cost">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Deck Construction Cost Estimator</h3>
+            <p>Model pressure-treated wood vs. composite Trex decking, structural footings, multistory stairs, and code railings.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/gutter-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="seamless gutters aluminum copper leaf guard micro-mesh downspout fascia board replacement cost">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Seamless Gutters &amp; Guards Estimator</h3>
+            <p>Estimate seamless aluminum vs. copper gutters, micro-mesh leaf filters, downspout extensions, and fascia replacement.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/garage-door-calculator.html" class="calc-card" data-category="roofing" data-keywords="garage door replacement insulated steel r-value opener tracks springs single double door curb appeal roi">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Garage Door Replacement Cost</h3>
+            <p>Compare uninsulated vs. R-18 polyurethane insulated steel doors, belt-drive smart openers, and 100%+ resale ROI.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/patio-cost-calculator.html" class="calc-card" data-category="roofing" data-keywords="patio paver poured concrete stamped slab excavation aggregate subbase border cost">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Patio &amp; Paver Installation Estimator</h3>
+            <p>Calculate poured concrete, stamped slabs, and interlocking paver patios with excavation depth and aggregate subbase.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+
+        <a href="https://thebuyersmath.com/exterior-painting-calculator.html" class="calc-card" data-category="roofing" data-keywords="exterior house painting stories surface prep pressure wash scrape caulk siding coating">
+          <div>
+            <div class="card-meta-top"><span class="badge-category">Building Envelope</span></div>
+            <h3>Exterior House Painting Estimator</h3>
+            <p>Model exterior painting costs across home stories, surface prep (pressure wash, scrape, caulk), and premium coatings.</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- E-E-A-T Editorial & Methodology Trust Strip -->
+    <section class="eeat-strip" aria-label="Editorial Methodology and Data Standards">
+      <div class="eeat-item">
+        <h3>1. Direct Material Takeoffs</h3>
+        <p>Every guide and calculator models dimensional material quantities—including roof pitch multipliers, 10–15% waste allowances, fastener schedules, and secondary flashings.</p>
+      </div>
+      <div class="eeat-item">
+        <h3>2. BLS Licensed Trade Labor</h3>
+        <p>Crew-hour benchmarks are calibrated against Bureau of Labor Statistics (BLS) prevailing residential trade wages, workers' comp, and municipal permit overhead.</p>
+      </div>
+      <div class="eeat-item">
+        <h3>3. 2026 Code &amp; IRA Tax Credits</h3>
+        <p>All incentive calculations verify AHRI/NFRC efficiency tiers under 26 U.S. Code &sect; 25C, &sect; 30C, and &sect; 25D along with 2026 IRC/NEC building code triggers.</p>
+      </div>
+    </section>
+
   </main>
 
   <!-- Global Footer -->
   <footer class="site-footer">
     <div class="footer-nav">
-      <a href="/">Calculators</a> |
-      <a href="/intel/index.html">Daily Intel</a> |
-      <a href="/guides.html">Guides</a> |
-      <a href="/privacy-policy.html">Privacy Policy</a> |
-      <a href="/terms.html">Terms &amp; Disclaimer</a> |
-      <a href="/contact.html">Contact Us</a>
+      <a href="https://thebuyersmath.com/">Home &amp; Calculators</a> |
+      <a href="https://thebuyersmath.com/intel/">Daily Intel</a> |
+      <a href="https://thebuyersmath.com/guides.html">Guides Archive</a> |
+      <a href="https://thebuyersmath.com/about.html">About &amp; Methodology</a> |
+      <a href="https://thebuyersmath.com/privacy-policy.html">Privacy Policy</a> |
+      <a href="https://thebuyersmath.com/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="https://thebuyersmath.com/contact.html">Contact Us</a>
     </div>
     <p class="footer-disclosure">
-      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only. Commission Junction Affiliate PID: 101896838.
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program (Tag: <code>nfagiolo-20</code>). As an Amazon Associate, I earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only. Commission Junction Affiliate PID: 101896838.
     </p>
-    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+    <p style="margin: 0;">&copy; 2026 The Buyer's Math. All rights reserved.</p>
   </footer>
 
-    <!-- Interactive Client-side Search and Filter Engine -->
+  <!-- Interactive Client-Side Search, Launcher & Filter Engine -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // --- Calculator Filter & Search Engine ---
-      const searchInput = document.getElementById('calcSearch');
-      const calcFilterButtons = document.querySelectorAll('.filter-bar .filter-btn');
-      const calcCards = document.querySelectorAll('.calculator-grid#calculators .calc-card');
-      const toggleAllCalcsBtn = document.getElementById('toggleAllCalcsBtn');
-
-      function applyCalcFilters() {
-        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const activeBtn = document.querySelector('.filter-bar .filter-btn.active');
-        const category = activeBtn ? activeBtn.getAttribute('data-filter') : 'featured';
-
-        calcCards.forEach(card => {
-          const cardCategory = card.getAttribute('data-category') || '';
-          const keywords = card.getAttribute('data-keywords') || '';
-          const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
-          const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
-          
-          if (query.length > 0) {
-            const matchesSearch = title.includes(query) || desc.includes(query) || keywords.toLowerCase().includes(query);
-            card.style.display = matchesSearch ? 'flex' : 'none';
-          } else {
-            const categories = cardCategory.split(' ');
-            const matchesCategory = (category === 'all') || categories.includes(category);
-            card.style.display = matchesCategory ? 'flex' : 'none';
-          }
+      // 1. Header Mega-Dropdown Toggle for Touch/Click
+      const calcDropdown = document.getElementById('calcDropdown');
+      const calcDropdownBtn = document.getElementById('calcDropdownBtn');
+      if (calcDropdown && calcDropdownBtn) {
+        calcDropdownBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = calcDropdown.classList.toggle('open');
+          calcDropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
-
-        if (toggleAllCalcsBtn) {
-          if (category === 'all') {
-            toggleAllCalcsBtn.innerHTML = '<span>Showing All 21 Calculators &uarr;</span>';
-          } else {
-            toggleAllCalcsBtn.innerHTML = '<span>Browse All 21 Calculators &darr;</span>';
-          }
-        }
+        document.addEventListener('click', () => {
+          calcDropdown.classList.remove('open');
+          calcDropdownBtn.setAttribute('aria-expanded', 'false');
+        });
       }
 
-      if (searchInput) {
-        searchInput.addEventListener('input', applyCalcFilters);
+      // 2. Right-Rail Hero Quick Calculator Launcher Filter
+      const heroCalcSearch = document.getElementById('heroCalcSearch');
+      const launcherPills = document.querySelectorAll('.launcher-pill');
+      const launcherItems = document.querySelectorAll('.launcher-tool-item');
+
+      function filterLauncher() {
+        const q = heroCalcSearch ? heroCalcSearch.value.toLowerCase().trim() : '';
+        const activePill = document.querySelector('.launcher-pill.active');
+        const lcat = activePill ? activePill.getAttribute('data-launcher-cat') : 'all';
+
+        launcherItems.forEach(item => {
+          const itemCat = item.getAttribute('data-lcat') || '';
+          const text = item.textContent.toLowerCase();
+          const matchesCat = (lcat === 'all') || itemCat === lcat;
+          const matchesQuery = !q || text.includes(q);
+          item.style.display = ((q && matchesQuery) || (!q && matchesCat)) ? 'flex' : 'none';
+        });
       }
 
-      calcFilterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          calcFilterButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          if (searchInput) searchInput.value = '';
-          applyCalcFilters();
+      if (heroCalcSearch) {
+        heroCalcSearch.addEventListener('input', filterLauncher);
+      }
+      launcherPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          launcherPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          filterLauncher();
         });
       });
 
-      if (toggleAllCalcsBtn) {
-        toggleAllCalcsBtn.addEventListener('click', () => {
-          const activeBtn = document.querySelector('.filter-bar .filter-btn.active');
-          const isAll = activeBtn && activeBtn.getAttribute('data-filter') === 'all';
-          const targetFilter = isAll ? 'featured' : 'all';
-          const targetBtn = document.querySelector(`.filter-bar .filter-btn[data-filter="${targetFilter}"]`);
-          if (targetBtn) {
-            calcFilterButtons.forEach(b => b.classList.remove('active'));
-            targetBtn.classList.add('active');
-            if (searchInput) searchInput.value = '';
-            applyCalcFilters();
-            targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        });
-      }
-
-      // Initial filter on page load for calculators
-      applyCalcFilters();
-
-
-      // --- Guides Filter & Toggle Engine ---
-      const guideFilterButtons = document.querySelectorAll('.guide-filter-btn');
-      const guideCards = document.querySelectorAll('#guides-grid .guide-card');
-      const toggleAllGuidesBtn = document.getElementById('toggleAllGuidesBtn');
+      // 3. Guides Section Filter & Search Engine
+      const guideFilterBtns = document.querySelectorAll('.guide-filter-btn');
+      const guideSearchInput = document.getElementById('guideSearchInput');
+      const guideCards = document.querySelectorAll('#guideGrid .guide-card');
+      const toggleGuidesBtn = document.getElementById('toggleGuidesBtn');
+      let guidesExpanded = false;
 
       function applyGuideFilters() {
-        const activeGuideBtn = document.querySelector('.guide-filter-btn.active');
-        const guideCategory = activeGuideBtn ? activeGuideBtn.getAttribute('data-guide-filter') : 'featured';
+        const q = guideSearchInput ? guideSearchInput.value.toLowerCase().trim() : '';
+        const activeBtn = document.querySelector('.guide-filter-btn.active');
+        const filter = activeBtn ? activeBtn.getAttribute('data-guide-filter') : 'featured';
 
+        let matchingCount = 0;
         guideCards.forEach(card => {
-          const cardCategory = card.getAttribute('data-guide-category') || '';
-          const categories = cardCategory.split(' ');
-          const matchesCategory = (guideCategory === 'all') || categories.includes(guideCategory);
-          card.style.display = matchesCategory ? 'flex' : 'none';
+          const cat = card.getAttribute('data-guide-category') || '';
+          const text = card.textContent.toLowerCase();
+          const matchesCat = (filter === 'all') || cat.includes(filter);
+          const matchesSearch = !q || text.includes(q);
+
+          if ((q && matchesSearch) || (!q && matchesCat)) {
+            matchingCount++;
+            if (!guidesExpanded && !q && filter !== 'all' && matchingCount > 9) {
+              card.style.display = 'none';
+            } else {
+              card.style.display = 'flex';
+            }
+          } else {
+            card.style.display = 'none';
+          }
         });
 
-        if (toggleAllGuidesBtn) {
-          if (guideCategory === 'all') {
-            toggleAllGuidesBtn.innerHTML = '<span>Showing All 23 Guides &uarr;</span>';
+        if (toggleGuidesBtn) {
+          if (q || filter === 'all' || matchingCount <= 9) {
+            toggleGuidesBtn.style.display = 'none';
           } else {
-            toggleAllGuidesBtn.innerHTML = '<span>Browse All 23 Guides &darr;</span>';
+            toggleGuidesBtn.style.display = 'inline-flex';
+            toggleGuidesBtn.textContent = guidesExpanded
+              ? 'Show Fewer Guides \u2191'
+              : 'View All Guides in Category (' + matchingCount + ' Articles) \u2192';
           }
         }
       }
 
-      guideFilterButtons.forEach(btn => {
+      applyGuideFilters();
+
+      if (guideSearchInput) {
+        guideSearchInput.addEventListener('input', applyGuideFilters);
+      }
+      guideFilterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          guideFilterButtons.forEach(b => b.classList.remove('active'));
+          guideFilterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           applyGuideFilters();
         });
       });
-
-      if (toggleAllGuidesBtn) {
-        toggleAllGuidesBtn.addEventListener('click', () => {
-          const activeGuideBtn = document.querySelector('.guide-filter-btn.active');
-          const isAll = activeGuideBtn && activeGuideBtn.getAttribute('data-guide-filter') === 'all';
-          const targetFilter = isAll ? 'featured' : 'all';
-          const targetBtn = document.querySelector(`.guide-filter-btn[data-guide-filter="${targetFilter}"]`);
-          if (targetBtn) {
-            guideFilterButtons.forEach(b => b.classList.remove('active'));
-            targetBtn.classList.add('active');
-            applyGuideFilters();
-            targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
+      if (toggleGuidesBtn) {
+        toggleGuidesBtn.addEventListener('click', () => {
+          guidesExpanded = !guidesExpanded;
+          applyGuideFilters();
         });
       }
 
-      // Initial filter on page load for guides (shows 8 featured guides)
-      applyGuideFilters();
+      // 4. Full 21-Calculator Suite Filter & Search Engine
+      const calcSearch = document.getElementById('calcSearch');
+      const calcFilterBtns = document.querySelectorAll('.filter-btn');
+      const calcCards = document.querySelectorAll('#calculators .calc-card');
+
+      function applyCalcFilters() {
+        const q = calcSearch ? calcSearch.value.toLowerCase().trim() : '';
+        const activeBtn = document.querySelector('.filter-btn.active');
+        const category = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+
+        calcCards.forEach(card => {
+          const cardCat = card.getAttribute('data-category') || '';
+          const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+          const text = card.textContent.toLowerCase();
+          const matchesCat = (category === 'all') || cardCat.includes(category);
+          const matchesSearch = !q || text.includes(q) || keywords.includes(q);
+
+          card.style.display = ((q && matchesSearch) || (!q && matchesCat)) ? 'flex' : 'none';
+        });
+      }
+
+      applyCalcFilters();
+
+      if (calcSearch) {
+        calcSearch.addEventListener('input', applyCalcFilters);
+      }
+      calcFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          calcFilterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          applyCalcFilters();
+        });
+      });
     });
   </script>
 </body>
