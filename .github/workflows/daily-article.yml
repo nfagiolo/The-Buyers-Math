@@ -3,23 +3,16 @@ name: Daily Article & Market Intelligence Generation
 on:
   schedule:
     - cron: '0 10 * * *' # Daily at 10:00 UTC (6:00 AM EDT)
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  generate-and-deploy:
+  generate:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -34,21 +27,15 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install anthropic
+          pip install anthropic requests
 
-      - name: Apply Calculator Updates & Enhancements
+      - name: 1. Generate Daily Market & Contractor Intelligence (5-Part Suite + 30-Day Sparklines)
         run: |
-          if [ -f "apply_calculator_updates.py" ]; then
-            python apply_calculator_updates.py
+          if [ -f "generate_daily_intel.py" ]; then
+            python generate_daily_intel.py
           fi
 
-      - name: Retrofit Monetization on Existing Articles
-        run: |
-          if [ -f "retrofit_articles.py" ]; then
-            python retrofit_articles.py
-          fi
-
-      - name: Generate Daily Deep-Dive Article
+      - name: 2. Generate Daily Deep-Dive Article (with SVG Chart, Shoppable BOM & Quote Auditor)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -56,25 +43,33 @@ jobs:
             python generate_article.py
           fi
 
-      - name: Generate Daily Market & Contractor Intelligence (5-Part Suite)
+      - name: 3. Retrofit Existing Articles (SVG Charts, BOM Tables, Quote Auditor & Clean Titles)
         run: |
-          if [ -f "generate_daily_intel.py" ]; then
-            python generate_daily_intel.py
+          if [ -f "retrofit_articles.py" ]; then
+            python retrofit_articles.py
           fi
 
-      - name: Sync Guides, Archive, and RSS Feed
+      - name: 4. Apply Calculator Updates (50-State Multipliers, Live Commodity Badges & CJ Angi Links)
+        run: |
+          if [ -f "apply_calculator_updates.py" ]; then
+            python apply_calculator_updates.py
+          fi
+
+      - name: 5. Sync Editorial Homepage, Guides Archive, Sitemap, RSS & Bidirectional Calculator Links
         run: |
           if [ -f "sync_guides.py" ]; then
             python sync_guides.py
           fi
 
-      - name: Apply OpenGraph, Twitter Cards & Schema.org Tags
+      - name: 6. Apply OpenGraph, Twitter Cards & Schema.org Tags
         run: |
           if [ -f "apply_seo_social_tags.py" ]; then
             python apply_seo_social_tags.py
           fi
 
-      - name: Commit and push changes
+      - name: 7. Commit, Push & Trigger GitHub Pages Deployment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -82,18 +77,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Auto-generate daily article, market intelligence dispatch & feeds"
+            git commit -m "Auto-generate daily article, market intelligence, sparklines & bidirectional calculator sync"
             git push origin main
+            gh api -X POST /repos/${{ github.repository }}/pages/builds || true
           fi
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
