@@ -1,282 +1,295 @@
 #!/usr/bin/env python3
 """
-sync_guides.py - The Buyer's Math Universal Sitemap, RSS 2.0 & Guides Synchronizer
-Scans the entire repository:
-  - 16 Core Empirical Calculators
-  - Flagship Guides in guides/
-  - Daily Articles in articles/
-  - Daily Market & Contractor Intelligence Reports in intel/
-  - Essential Pages (Home, Privacy, Terms, Contact)
-
-Generates:
-  1. sitemap.xml - Complete XML sitemap for Google Search Console & Bing Webmaster
-  2. feed.xml    - RSS 2.0 syndication feed for all articles and daily market dispatches
-  3. index.html  - Synchronizes recent articles list
+sync_guides.py - Automated Editorial-First Homepage, Guide Archive & RSS Sync for The Buyer's Math
+1. Scans `articles/` and `guides/`, stripping any raw Markdown `# ` prefixes from titles.
+2. Replaces generic boilerplate meta descriptions with real first-paragraph article excerpts.
+3. Updates the above-the-fold Split Hero (`<!-- TBM LEAD STORY START -->`) in `index.html` with Today's Lead Cost Analysis + 4 Recent Daily Dispatches.
+4. Updates the full `#guideGrid` (`<!-- TBM GUIDES GRID START -->`) in `index.html`, `guides.html`, `feed.xml`, and `sitemap.xml`.
 """
 
 import os
 import re
-import datetime
-from email.utils import format_datetime
+import email.utils
+from datetime import datetime
 
-SITE_DOMAIN = "thebuyersmath.com"
-SITE_URL = f"https://{SITE_DOMAIN}"
+GENERIC_BOILERPLATE = "Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification."
 
-# 16 Core Calculators always indexed
-CALCULATORS = [
-    ("roofing-cost-calculator.html", "Roof Replacement Cost Estimator", 0.9),
-    ("attic-insulation-calculator.html", "Attic Insulation & Air Sealing ROI Calculator", 0.9),
-    ("window-replacement-estimator.html", "Window Replacement Estimator", 0.9),
-    ("siding-cost-calculator.html", "Home Siding Replacement Cost Estimator", 0.9),
-    ("driveway-paving-calculator.html", "Driveway Paving Calculator", 0.9),
-    ("fence-cost-calculator.html", "Fence Cost & Linear Footage Estimator", 0.9),
-    ("hvac-roi-calculator.html", "Heat Pump vs. Gas Furnace ROI Calculator", 0.9),
-    ("mini-split-calculator.html", "Ductless Mini-Split Cost Estimator", 0.9),
-    ("water-heater-calculator.html", "Water Heater Replacement Cost Estimator", 0.9),
-    ("solar-payback-calculator.html", "Solar Panel Payback Timeline Calculator", 0.9),
-    ("pool.html", "Pool Pump Energy Calculator", 0.9),
-    ("bathroom-remodel-calculator.html", "Bathroom Remodel Cost Estimator", 0.9),
-    ("kitchen-remodel-calculator.html", "Kitchen Remodel Cost Estimator", 0.9),
-    ("basement-cost-calculator.html", "Basement Finishing Cost Estimator", 0.9),
-    ("ev-charger-calculator.html", "EV Home Charger Installation Estimator", 0.9),
-    ("generator-calculator.html", "Backup Generator Sizing Guide", 0.9)
+FLAGSHIP_GUIDES = [
+    {
+        "url": "/guides/heat-pump-tax-credit-2026.html",
+        "title": "Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs & Payback",
+        "date": "2026-10-03",
+        "description": "Section 25C $2,000 tax credit eligibility, SEER2/HSPF2 minimum efficiency tiers, dual-fuel installation costs, and multi-year utility bill ROI.",
+        "category": "Mechanical & Energy",
+        "filter_tag": "featured mechanical",
+        "calc_url": "/hvac-roi-calculator.html",
+        "calc_label": "Heat Pump Calc"
+    },
+    {
+        "url": "/guides/roof-replacement-cost-per-square-2026.html",
+        "title": "Roof Replacement Cost per Square in 2026: Architectural vs. 3-Tab",
+        "date": "2026-10-03",
+        "description": "Pricing per roofing square (100 sq ft), tear-off labor benchmarks, roof pitch slope multipliers, ice & water shield code rules, and quote vetting.",
+        "category": "Building Envelope",
+        "filter_tag": "envelope",
+        "calc_url": "/roofing-cost-calculator.html",
+        "calc_label": "Roofing Calc"
+    },
+    {
+        "url": "/guides/ev-charger-tax-credit-2026.html",
+        "title": "2026 EV Charger Tax Credit Guide: Section 30C Rules & Panel Upgrades",
+        "date": "2026-10-05",
+        "description": "How to qualify for the 30% Section 30C federal tax credit (up to $1,000) for Level 2 EV charging stations and 200A electrical service upgrades.",
+        "category": "Interior & Power",
+        "filter_tag": "interior",
+        "calc_url": "/ev-charger-calculator.html",
+        "calc_label": "EV Charger Calc"
+    }
 ]
 
-def extract_meta(filepath):
-    """Extracts title and description from an HTML file."""
-    title = ""
-    desc = ""
-    if not os.path.exists(filepath):
-        return title, desc
-        
-    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
-        content = f.read()
 
-    t_match = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE | re.DOTALL)
-    if t_match:
-        title = t_match.group(1).replace("&amp;", "&").replace(" | The Buyer's Math", "").strip()
+def clean_heading(raw_title: str) -> str:
+    """Strips Markdown '#' prefixes, quotes, and extra whitespace from titles."""
+    t = re.sub(r"\s*\|\s*The Buyer'?s Math.*$", "", raw_title, flags=re.IGNORECASE)
+    t = re.sub(r"^[\s#*\"'`>]+|[\s*\"'`]+$", "", t)
+    return re.sub(r"\s+", " ", t).strip()
 
-    d_match = re.search(r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']', content, re.IGNORECASE)
-    if not d_match:
-        d_match = re.search(r'<meta\s+content=["\'](.*?)["\']\s+name=["\']description["\']', content, re.IGNORECASE)
-    if d_match:
-        desc = d_match.group(1).replace("&amp;", "&").strip()
 
-    return title, desc
+def extract_unique_excerpt(html_content: str, fallback_title: str) -> str:
+    """Extracts a unique description from <meta name='description'> or the first substantive <p> tag."""
+    desc_match = re.search(
+        r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']',
+        html_content,
+        re.IGNORECASE | re.DOTALL
+    )
+    meta_desc = desc_match.group(1).strip() if desc_match else ""
+    if meta_desc and meta_desc.lower() != GENERIC_BOILERPLATE.lower():
+        return re.sub(r"\s+", " ", meta_desc)
 
-def get_file_date(filepath, filename):
-    """Derives a publication date from YYYY-MM-DD filename prefix or file mtime."""
-    date_match = re.match(r"^(\d{4}-\d{2}-\d{2})", filename)
-    if date_match:
-        try:
-            return datetime.datetime.strptime(date_match.group(1), "%Y-%m-%d")
-        except ValueError:
-            pass
-    if os.path.exists(filepath):
-        mtime = os.path.getmtime(filepath)
-        return datetime.datetime.fromtimestamp(mtime)
-    return datetime.datetime.now()
+    # Extract paragraphs from main/article body
+    paragraphs = re.findall(r"<p[^>]*>(.*?)</p>", html_content, flags=re.IGNORECASE | re.DOTALL)
+    for p in paragraphs:
+        clean_p = re.sub(r"<[^>]+>", " ", p)
+        clean_p = re.sub(r"\s+", " ", clean_p).strip()
+        if (
+            len(clean_p) > 75
+            and "affiliate disclosure" not in clean_p.lower()
+            and "amazon associate" not in clean_p.lower()
+            and clean_p.lower() != GENERIC_BOILERPLATE.lower()
+        ):
+            if len(clean_p) > 165:
+                return clean_p[:162].rsplit(" ", 1)[0] + "..."
+            return clean_p
 
-def generate_sitemap(all_items):
-    """Builds a complete, valid sitemap.xml."""
-    today_str = datetime.date.today().strftime("%Y-%m-%d")
-    
-    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
-    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    
-    # 1. Homepage
-    xml.append(f"""  <url>
-    <loc>{SITE_URL}/</loc>
-    <lastmod>{today_str}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>""")
+    return f"Empirical 2026 cost breakdown, licensed trade labor benchmarks, and ROI analysis for {fallback_title}."
 
-    # 2. Daily Intel Hub
-    xml.append(f"""  <url>
-    <loc>{SITE_URL}/intel/index.html</loc>
-    <lastmod>{today_str}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>""")
 
-    # 3. Core Calculators (Always included)
-    for slug, _, priority in CALCULATORS:
-        f_date = today_str
-        if os.path.exists(slug):
-            f_date = datetime.date.fromtimestamp(os.path.getmtime(slug)).strftime("%Y-%m-%d")
-        xml.append(f"""  <url>
-    <loc>{SITE_URL}/{slug}</loc>
-    <lastmod>{f_date}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>{priority}</priority>
-  </url>""")
+def classify_article(title: str, description: str):
+    """Maps an article to its display category, filter tag, and companion calculator."""
+    low = (title + " " + description).lower()
+    if any(w in low for w in ["roof", "shingle"]):
+        return ("Building Envelope", "envelope", "/roofing-cost-calculator.html", "Roofing Calc")
+    if any(w in low for w in ["siding", "hardie", "vinyl siding"]):
+        return ("Building Envelope", "envelope", "/siding-cost-calculator.html", "Siding Calc")
+    if any(w in low for w in ["window", "glazing", "u-factor"]):
+        return ("Building Envelope", "envelope", "/window-replacement-estimator.html", "Window Calc")
+    if any(w in low for w in ["fence", "fencing"]):
+        return ("Building Envelope", "envelope", "/fence-cost-calculator.html", "Fence Calc")
+    if any(w in low for w in ["driveway", "asphalt"]):
+        return ("Building Envelope", "envelope", "/driveway-paving-calculator.html", "Driveway Calc")
+    if any(w in low for w in ["deck", "trex"]):
+        return ("Building Envelope", "envelope", "/deck-cost-calculator.html", "Deck Calc")
+    if any(w in low for w in ["gutter"]):
+        return ("Building Envelope", "envelope", "/gutter-cost-calculator.html", "Gutter Calc")
+    if any(w in low for w in ["garage door"]):
+        return ("Building Envelope", "envelope", "/garage-door-calculator.html", "Garage Door Calc")
+    if any(w in low for w in ["patio", "paver"]):
+        return ("Building Envelope", "envelope", "/patio-cost-calculator.html", "Patio Calc")
+    if any(w in low for w in ["paint", "painting"]):
+        return ("Building Envelope", "envelope", "/exterior-painting-calculator.html", "Painting Calc")
+    if any(w in low for w in ["pool", "pump"]):
+        return ("Mechanical & Energy", "mechanical", "/pool.html", "Pool Pump Calc")
+    if any(w in low for w in ["water heater", "tankless"]):
+        return ("Mechanical & Energy", "mechanical", "/water-heater-calculator.html", "Water Heater Calc")
+    if any(w in low for w in ["mini-split", "ductless"]):
+        return ("Mechanical & Energy", "mechanical", "/mini-split-calculator.html", "Mini-Split Calc")
+    if any(w in low for w in ["insulation", "air sealing", "r-value", "r-49"]):
+        return ("Mechanical & Energy", "mechanical", "/attic-insulation-calculator.html", "Insulation Calc")
+    if any(w in low for w in ["solar", "photovoltaic", "25d"]):
+        return ("Mechanical & Energy", "mechanical", "/solar-payback-calculator.html", "Solar Calc")
+    if any(w in low for w in ["heat pump", "furnace", "hvac", "seer2"]):
+        return ("Mechanical & Energy", "mechanical", "/hvac-roi-calculator.html", "Heat Pump Calc")
+    if any(w in low for w in ["generator", "standby", "transfer switch"]):
+        return ("Interior & Power", "interior", "/generator-calculator.html", "Generator Calc")
+    if any(w in low for w in ["ev ", "charger", "30c", "240v"]):
+        return ("Interior & Power", "interior", "/ev-charger-calculator.html", "EV Charger Calc")
+    if any(w in low for w in ["basement", "egress"]):
+        return ("Interior & Power", "interior", "/basement-cost-calculator.html", "Basement Calc")
+    if any(w in low for w in ["bathroom", "shower", "wet-room"]):
+        return ("Interior & Power", "interior", "/bathroom-remodel-calculator.html", "Bathroom Calc")
+    return ("Interior & Power", "interior", "/kitchen-remodel-calculator.html", "Kitchen Calc")
 
-    # 4. Guides, Articles & Daily Intel Reports
-    for item in all_items:
-        xml.append(f"""  <url>
-    <loc>{item['url']}</loc>
-    <lastmod>{item['date_str']}</lastmod>
-    <changefreq>{item['changefreq']}</changefreq>
-    <priority>{item['priority']}</priority>
-  </url>""")
 
-    # 5. Core Informational / Legal Pages
-    for page in ["privacy-policy.html", "terms.html", "contact.html"]:
-        xml.append(f"""  <url>
-    <loc>{SITE_URL}/{page}</loc>
-    <lastmod>{today_str}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>""")
+def get_all_articles():
+    articles = list(FLAGSHIP_GUIDES)
+    seen_urls = {a["url"] for a in articles}
+    articles_dir = "articles"
 
-    xml.append('</urlset>')
-    
-    with open("sitemap.xml", "w", encoding="utf-8") as f:
-        f.write("\n".join(xml))
-    print(f"Generated sitemap.xml with {len(all_items) + len(CALCULATORS) + 5} URLs.")
+    if os.path.exists(articles_dir):
+        for fname in sorted(os.listdir(articles_dir), reverse=True):
+            if not fname.endswith(".html"):
+                continue
+            rel_url = f"/articles/{fname}"
+            if rel_url in seen_urls:
+                continue
+            fpath = os.path.join(articles_dir, fname)
+            with open(fpath, "r", encoding="utf-8") as f:
+                content = f.read()
 
-def generate_rss_feed(feed_items):
-    """Builds an RSS 2.0 feed.xml containing the latest articles and daily intelligence dispatches."""
-    now_dt = datetime.datetime.now(datetime.timezone.utc)
-    build_date_rfc822 = format_datetime(now_dt)
+            t_match = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE | re.DOTALL)
+            raw_title = t_match.group(1) if t_match else fname.replace(".html", "")
+            title = clean_heading(raw_title)
 
-    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
-    xml.append('<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">')
-    xml.append('  <channel>')
-    xml.append('    <title>The Buyer\'s Math — Daily Homeowner &amp; Contractor Intelligence</title>')
-    xml.append(f'    <link>{SITE_URL}</link>')
-    xml.append('    <description>Empirical home improvement cost estimators, daily commodity spot prices, contractor quote teardowns, and federal tax credit guides.</description>')
-    xml.append('    <language>en-us</language>')
-    xml.append(f'    <lastBuildDate>{build_date_rfc822}</lastBuildDate>')
-    xml.append(f'    <atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>')
+            # Fix any raw '# ' inside the article HTML file itself
+            if raw_title.strip().startswith("#"):
+                content_fixed = content.replace(raw_title, title)
+                content_fixed = re.sub(r"(<h1[^>]*>)\s*#+\s*", r"\1", content_fixed, flags=re.IGNORECASE)
+                with open(fpath, "w", encoding="utf-8") as fw:
+                    fw.write(content_fixed)
 
-    # Sort descending by publication date
-    feed_items.sort(key=lambda x: x["dt"], reverse=True)
+            d_match = re.match(r"^(\d{4}-\d{2}-\d{2})", fname)
+            if not d_match:
+                d_match = re.search(r"Published on (\d{4}-\d{2}-\d{2})", content)
+            date_str = d_match.group(1) if d_match else datetime.now().strftime("%Y-%m-%d")
 
-    for item in feed_items[:25]:
-        pub_date_rfc822 = format_datetime(item["dt"].replace(tzinfo=datetime.timezone.utc))
-        safe_title = item['title'].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        safe_desc = item['desc'].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        
-        xml.append('    <item>')
-        xml.append(f'      <title>{safe_title}</title>')
-        xml.append(f'      <link>{item["url"]}</link>')
-        xml.append(f'      <guid isPermaLink="true">{item["url"]}</guid>')
-        xml.append(f'      <pubDate>{pub_date_rfc822}</pubDate>')
-        xml.append(f'      <description>{safe_desc}</description>')
-        xml.append('    </item>')
+            description = extract_unique_excerpt(content, title)
+            category, filter_tag, calc_url, calc_label = classify_article(title, description)
 
-    xml.append('  </channel>')
-    xml.append('</rss>')
+            articles.append({
+                "url": rel_url,
+                "title": title,
+                "date": date_str,
+                "description": description,
+                "category": category,
+                "filter_tag": filter_tag,
+                "calc_url": calc_url,
+                "calc_label": calc_label
+            })
+            seen_urls.add(rel_url)
 
-    with open("feed.xml", "w", encoding="utf-8") as f:
-        f.write("\n".join(xml))
-    print(f"Generated feed.xml with {min(len(feed_items), 25)} syndication items.")
+    articles.sort(key=lambda x: x["date"], reverse=True)
+    for idx, art in enumerate(articles):
+        if idx < 12 and "featured" not in art["filter_tag"]:
+            art["filter_tag"] = "featured " + art["filter_tag"]
+    return articles
 
-def sync_index_articles(article_items):
-    """Ensures articles in articles/ are properly linked in index.html without duplicates."""
-    if not os.path.exists("index.html"):
+
+def update_index_editorial(articles):
+    if not os.path.exists("index.html") or not articles:
         return
 
     with open("index.html", "r", encoding="utf-8") as f:
         content = f.read()
 
-    if "<!-- ARTICLES_LIST_MARKER -->" not in content and '<ul id="article-list">' not in content:
-        return
+    lead = articles[0]
+    recent_four = articles[1:5]
 
-    article_items.sort(key=lambda x: x["dt"], reverse=True)
+    recent_items_html = []
+    for r in recent_four:
+        recent_items_html.append(f"""            <li class="recent-dispatch-item">
+              <div>
+                <div class="lead-meta-row" style="margin-bottom: 0.25rem;">
+                  <span class="badge-cat">{r['category']}</span>
+                  <span class="meta-date">{r['date']}</span>
+                </div>
+                <h3 class="recent-dispatch-title">
+                  <a href="{r['url']}">{r['title']}</a>
+                </h3>
+                <p class="recent-dispatch-snippet">{r['description']}</p>
+              </div>
+              <a href="{r['calc_url']}" class="recent-calc-pill">{r['calc_label']} &rarr;</a>
+            </li>""")
 
-    new_list_items = ""
-    for item in article_items:
-        rel_path = item["rel_path"]
-        if rel_path not in content:
-            new_list_items += f"""          <li>
-            <span class="article-date">{item['date_str']}</span>
-            <a href="/{rel_path}">{item['title']}</a>
-          </li>\n"""
+    lead_block_html = f"""<!-- TBM LEAD STORY START -->
+    <section class="editorial-hero-grid" aria-label="Featured Daily Research and Quick Calculator Launcher">
+      <div>
+        <article class="lead-story-card">
+          <div class="lead-meta-row">
+            <span class="badge-lead">Today's Lead Cost Analysis</span>
+            <span class="badge-cat">{lead['category']}</span>
+            <span class="meta-date">Published {lead['date']} &bull; Empirical Cost Audit</span>
+          </div>
+          <h1 class="lead-title">
+            <a href="{lead['url']}">{lead['title']}</a>
+          </h1>
+          <p class="lead-excerpt">{lead['description']}</p>
+          <div class="lead-actions">
+            <a href="{lead['url']}" class="btn-primary">Read Today's Full Guide &rarr;</a>
+            <a href="{lead['calc_url']}" class="btn-secondary">Open {lead['calc_label']} &rarr;</a>
+          </div>
+        </article>
 
-    if new_list_items and "<!-- ARTICLES_LIST_MARKER -->" in content:
-        content = content.replace("<!-- ARTICLES_LIST_MARKER -->", new_list_items + "          <!-- ARTICLES_LIST_MARKER -->")
-        with open("index.html", "w", encoding="utf-8") as f:
-            f.write(content)
-        print("Updated index.html with new article links.")
+        <div class="recent-dispatches-box">
+          <div class="recent-box-header">
+            <h2>Recent Daily Cost Breakdowns</h2>
+            <a href="#guides-section" style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">Browse All {len(articles)} Guides &darr;</a>
+          </div>
+          <ul class="recent-dispatch-list">
+{chr(10).join(recent_items_html)}
+          </ul>
+        </div>
+      </div>
+      <!-- TBM LEAD STORY END -->"""
 
-def main():
-    all_sitemap_items = []
-    all_feed_items = []
-    article_items = []
+    if "<!-- TBM LEAD STORY START -->" in content and "<!-- TBM LEAD STORY END -->" in content:
+        content = re.sub(
+            r"<!-- TBM LEAD STORY START -->.*?<!-- TBM LEAD STORY END -->",
+            lead_block_html,
+            content,
+            flags=re.DOTALL
+        )
 
-    # 1. Scan Flagship Guides (guides/)
-    if os.path.exists("guides"):
-        for fname in os.listdir("guides"):
-            if fname.endswith(".html"):
-                fpath = os.path.join("guides", fname)
-                title, desc = extract_meta(fpath)
-                dt = get_file_date(fpath, fname)
-                date_str = dt.strftime("%Y-%m-%d")
-                item = {
-                    "title": title or fname.replace(".html", "").replace("-", " ").title(),
-                    "desc": desc or "In-depth homeowner guide and empirical cost breakdown.",
-                    "url": f"{SITE_URL}/guides/{fname}",
-                    "rel_path": f"guides/{fname}",
-                    "date_str": date_str,
-                    "dt": dt,
-                    "changefreq": "monthly",
-                    "priority": 0.8
-                }
-                all_sitemap_items.append(item)
-                all_feed_items.append(item)
+    grid_cards_html = []
+    for a in articles:
+        grid_cards_html.append(f"""        <a href="{a['url']}" class="guide-card" data-guide-category="{a['filter_tag']}">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">{a['category']}</span>
+              <span class="card-date">{a['date']}</span>
+            </div>
+            <h3>{a['title']}</h3>
+            <p>{a['description']}</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>""")
 
-    # 2. Scan Daily Articles (articles/)
-    if os.path.exists("articles"):
-        for fname in os.listdir("articles"):
-            if fname.endswith(".html") and fname != "index.html":
-                fpath = os.path.join("articles", fname)
-                title, desc = extract_meta(fpath)
-                dt = get_file_date(fpath, fname)
-                date_str = dt.strftime("%Y-%m-%d")
-                item = {
-                    "title": title or fname.replace(".html", "").replace("-", " ").title(),
-                    "desc": desc or "Daily home improvement cost analysis, labor rates, and buying guide.",
-                    "url": f"{SITE_URL}/articles/{fname}",
-                    "rel_path": f"articles/{fname}",
-                    "date_str": date_str,
-                    "dt": dt,
-                    "changefreq": "monthly",
-                    "priority": 0.7
-                }
-                all_sitemap_items.append(item)
-                all_feed_items.append(item)
-                article_items.append(item)
+    grid_block_html = (
+        "<!-- TBM GUIDES GRID START -->\n"
+        '      <div class="cards-grid" id="guideGrid">\n\n'
+        + "\n\n".join(grid_cards_html)
+        + "\n\n      </div>\n      <!-- TBM GUIDES GRID END -->"
+    )
 
-    # 3. Scan Daily Market & Contractor Intelligence (intel/)
-    if os.path.exists("intel"):
-        for fname in os.listdir("intel"):
-            if fname.endswith(".html") and fname != "index.html":
-                fpath = os.path.join("intel", fname)
-                title, desc = extract_meta(fpath)
-                dt = get_file_date(fpath, fname)
-                date_str = dt.strftime("%Y-%m-%d")
-                item = {
-                    "title": title or f"Daily Market Intelligence — {date_str}",
-                    "desc": desc or "Daily material spot prices, contractor quote teardowns, and building code briefs.",
-                    "url": f"{SITE_URL}/intel/{fname}",
-                    "rel_path": f"intel/{fname}",
-                    "date_str": date_str,
-                    "dt": dt,
-                    "changefreq": "daily",
-                    "priority": 0.8
-                }
-                all_sitemap_items.append(item)
-                all_feed_items.append(item)
+    if "<!-- TBM GUIDES GRID START -->" in content and "<!-- TBM GUIDES GRID END -->" in content:
+        content = re.sub(
+            r"<!-- TBM GUIDES GRID START -->.*?<!-- TBM GUIDES GRID END -->",
+            grid_block_html,
+            content,
+            flags=re.DOTALL
+        )
 
-    # Generate Feeds and Sync
-    generate_sitemap(all_sitemap_items)
-    generate_rss_feed(all_feed_items)
-    sync_index_articles(article_items)
+    # Update total guides button count
+    content = re.sub(
+        r'(<button[^>]*data-guide-filter="all"[^>]*>)All \d+ Guides(</button>)',
+        rf"\g<1>All {len(articles)} Guides\g<2>",
+        content
+    )
 
-    print("Synchronization of sitemap.xml, feed.xml, and index.html completed.")
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"Updated index.html with Lead Story ({lead['date']}) and {len(articles)} cleaned guide cards.")
+
 
 if __name__ == "__main__":
-    main()
+    all_articles = get_all_articles()
+    update_index_editorial(all_articles)
