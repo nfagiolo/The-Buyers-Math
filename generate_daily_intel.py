@@ -1031,13 +1031,23 @@ def retrofit_all_calculators_and_merge_case_study(target_date, flagship, baselin
     """
     iso_date = target_date.strftime("%Y-%m-%d")
     date_str = target_date.strftime("%B %d, %Y")
-    calc_files = [
+    known_calcs = [
+        "roofing-cost-calculator.html", "attic-insulation-calculator.html", "window-replacement-estimator.html",
+        "siding-cost-calculator.html", "driveway-paving-calculator.html", "fence-cost-calculator.html",
+        "hvac-roi-calculator.html", "mini-split-calculator.html", "water-heater-calculator.html",
+        "solar-payback-calculator.html", "pool.html", "bathroom-remodel-calculator.html",
+        "kitchen-remodel-calculator.html", "basement-cost-calculator.html", "ev-charger-calculator.html",
+        "generator-calculator.html", "deck-cost-calculator.html", "gutter-cost-calculator.html",
+        "garage-door-calculator.html", "patio-cost-calculator.html", "exterior-painting-calculator.html",
+        "electrical-panel-calculator.html", "flooring-calculator.html", "radiant-floor-calculator.html"
+    ]
+    discovered = [
         f for f in os.listdir(".")
         if f.endswith(".html") and (
             "calculator" in f or "estimator" in f or f == "pool.html"
         ) and not f.startswith("test_")
     ]
-    calc_files.sort()
+    calc_files = sorted(list(set(discovered + [f for f in known_calcs if os.path.exists(f)])))
 
     # Build the Case Study card HTML for today's Flagship study (Stream 4)
     pass_items_html = "".join(
@@ -1110,7 +1120,7 @@ def retrofit_all_calculators_and_merge_case_study(target_date, flagship, baselin
                 modified = True
 
         # 3. Stream 4: Inject or update Real-World Case Studies section inside the matching Parent Calculator
-        if fname == flagship["calc_slug"] or "<!-- TBM CASE STUDIES START -->" not in content:
+        if fname == flagship["calc_slug"] or 'id="tbm-case-studies"' not in content:
             # If it's the active flagship parent calculator, update with today's 3-pass case study;
             # if another calculator doesn't have a case study block yet, seed one tailored to its category!
             if fname == flagship["calc_slug"]:
@@ -1427,7 +1437,13 @@ def update_rss_and_sitemap(target_date, slug, flagship, baselines):
         with open("sitemap.xml", "r", encoding="utf-8") as f:
             sm = f.read()
         sm = sm.replace(f"<loc>{SITE_URL}/intel/</loc>", f"<loc>{SITE_URL}/intel/index.html</loc>")
-        for url_to_add in [f"{SITE_URL}/daily/todays-math/index.html", f"{SITE_URL}/intel/{slug}.html"]:
+        for url_to_add in [
+            f"{SITE_URL}/daily/todays-math/index.html",
+            f"{SITE_URL}/intel/{slug}.html",
+            f"{SITE_URL}/electrical-panel-calculator.html",
+            f"{SITE_URL}/flooring-calculator.html",
+            f"{SITE_URL}/radiant-floor-calculator.html"
+        ]:
             if url_to_add not in sm and "</urlset>" in sm:
                 entry = f"""  <url>
     <loc>{url_to_add}</loc>
@@ -1441,11 +1457,16 @@ def update_rss_and_sitemap(target_date, slug, flagship, baselines):
             f.write(sm)
         print("Synchronized rss.xml, feed.xml, and sitemap.xml.")
 
+DEFAULT_INDEXNOW_KEY = "tbm8090259101896838indexnow2026a"
+
 def ping_indexnow(slug):
-    """Pings IndexNow API if INDEXNOW_KEY environment variable is configured."""
-    key = os.getenv("INDEXNOW_KEY", "").strip()
-    if not key:
-        return
+    """Writes the root IndexNow verification key file and pings IndexNow API automatically."""
+    key = os.getenv("INDEXNOW_KEY", "").strip() or DEFAULT_INDEXNOW_KEY
+    key_file = f"{key}.txt"
+    if not os.path.exists(key_file):
+        with open(key_file, "w", encoding="utf-8") as kf:
+            kf.write(key)
+        print(f"Created IndexNow verification key file: {key_file}")
     payload = {
         "host": SITE_DOMAIN,
         "key": key,
@@ -1470,7 +1491,1080 @@ def ping_indexnow(slug):
     except Exception as e:
         print(f"[WARN] IndexNow non-fatal skip: {e}")
 
+SHARED_HEADER = """  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">The Buyer's Math</a>
+      <nav class="site-nav">
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true">Calculators &#9662;</button>
+          <div class="nav-dropdown-content">
+            <div class="nav-dropdown-group">Building Envelope</div>
+            <a href="/roofing-cost-calculator.html">Roof Replacement</a>
+            <a href="/siding-cost-calculator.html">Home Siding</a>
+            <a href="/window-replacement-estimator.html">Window Replacement</a>
+            <a href="/fence-cost-calculator.html">Fence Installation</a>
+            <a href="/driveway-paving-calculator.html">Driveway Paving</a>
+            <a href="/deck-cost-calculator.html">Deck Construction</a>
+            <a href="/gutter-cost-calculator.html">Seamless Gutters</a>
+            <a href="/garage-door-calculator.html">Garage Door</a>
+            <a href="/patio-cost-calculator.html">Patio &amp; Pavers</a>
+            <a href="/exterior-painting-calculator.html">Exterior Painting</a>
+            <div class="nav-dropdown-group">Mechanical &amp; Energy</div>
+            <a href="/hvac-roi-calculator.html">Heat Pump vs. Gas Furnace</a>
+            <a href="/mini-split-calculator.html">Ductless Mini-Split</a>
+            <a href="/attic-insulation-calculator.html">Attic Insulation &amp; Air Sealing</a>
+            <a href="/water-heater-calculator.html">Water Heater Replacement</a>
+            <a href="/solar-payback-calculator.html">Solar Panel Payback</a>
+            <a href="/pool.html">Pool Pump Savings</a>
+            <a href="/radiant-floor-calculator.html">Radiant Floor Heating</a>
+            <div class="nav-dropdown-group">Interior &amp; Power</div>
+            <a href="/electrical-panel-calculator.html">200A Electrical Panel</a>
+            <a href="/flooring-calculator.html">Flooring &amp; Refinishing</a>
+            <a href="/kitchen-remodel-calculator.html">Kitchen Remodel</a>
+            <a href="/bathroom-remodel-calculator.html">Bathroom Remodel</a>
+            <a href="/basement-cost-calculator.html">Basement Finishing</a>
+            <a href="/ev-charger-calculator.html">EV Home Charger</a>
+            <a href="/generator-calculator.html">Standby Generator</a>
+          </div>
+        </div>
+        <a href="/daily/todays-math/index.html">Today's Math</a>
+        <a href="/intel/index.html">Daily Intel</a>
+        <a href="/guides.html">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>"""
+
+SHARED_FOOTER = """  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <a href="/">Calculators</a> |
+      <a href="/daily/todays-math/index.html">Today's Math</a> |
+      <a href="/intel/index.html">Daily Intel</a> |
+      <a href="/guides.html">Guides</a> |
+      <a href="/about.html">About Us</a> |
+      <a href="/privacy-policy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms &amp; Disclaimer</a> |
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="footer-disclosure">
+      <strong>Affiliate Disclosure:</strong> The Buyer's Math is a participant in the Amazon Services LLC Associates Program (Tag: nfagiolo-20). As an Amazon Associate, we earn from qualifying purchases. Calculations and tool results are directional models for informational purposes only. Commission Junction Affiliate PID: 101896838.
+    </p>
+    <p class="footer-copy">&copy; 2026 The Buyer's Math. All rights reserved.</p>
+  </footer>"""
+
+# =========================================================================
+# 1. electrical-panel-calculator.html
+# =========================================================================
+electrical_panel_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>200A &amp; 400A Electrical Panel Upgrade Cost Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate 200-amp and 400-amp electrical service panel upgrade costs, meter socket replacement, NEC 2023 surge protection, utility trenching, and the $600 Section 25C federal tax credit.">
+  <link rel="canonical" href="https://thebuyersmath.com/electrical-panel-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebuyersmath.com/electrical-panel-calculator.html">
+  <meta property="og:title" content="200A &amp; 400A Electrical Panel Upgrade Cost Calculator (2026) | The Buyer's Math">
+  <meta property="og:description" content="Model 100A-to-200A heavy-up costs, 400A dual-panel service, AFCI/GFCI breaker swaps, and the $600 IRA Section 25C tax credit.">
+  <meta property="og:image" content="https://thebuyersmath.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- CJ Affiliate Auto-Monetization -->
+  <script>
+    (function(a,b,c,d,e,f,g){{a['CJDynamicTrack']=e;a[e]=a[e]||function(){{
+    (a[e].q=a[e].q||[]).push(arguments)}},a[e].l=1*new Date();f=b.createElement(c),
+    g=b.getElementsByTagName(c)[0];f.async=1;f.src=d;g.parentNode.insertBefore(f,g)
+    }})(window,document,'script','//www.emjcd.com/dynamic/tracking.js','cj');
+    cj('init', {{ enterpriseId: '8090259', propertyId: '101896838' }});
+  </script>
+
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": "WebApplication",
+        "name": "200A & 400A Electrical Panel Upgrade Cost Calculator",
+        "url": "https://thebuyersmath.com/electrical-panel-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "Empirical cost estimator for residential 200A and 400A electrical service panel heavy-ups, subpanels, meter bases, NEC 2023 surge protection, and IRA Section 25C tax credits."
+      }},
+      {{
+        "@type": "FAQPage",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "How much does it cost to upgrade from a 100-amp to a 200-amp electrical panel in 2026?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "A turnkey 100A-to-200A main service panel upgrade ('heavy-up') including a new 40-space copper-bus load center, 200A meter socket, 2/0 copper service entrance cable, dual ground rods, NEC-mandated Type 2 surge protector, and municipal permit typically costs between $3,200 and $4,600 before the $600 federal Section 25C tax credit."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "How do I qualify for the $600 federal Section 25C tax credit on an electrical panel upgrade?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Under 26 U.S.C. § 25C(d)(2)(D), homeowners can claim 30% of the total equipment and installation cost (up to $600 maximum) if the new load center has a minimum capacity of 200 amps, complies with the National Electrical Code, and is installed in conjunction with—or to enable—another qualified energy property upgrade such as a heat pump, heat pump water heater, or branch circuit upgrade."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "When is a 400-amp electrical service upgrade necessary?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "A 400-amp service (typically installed as dual 200A panels fed by a 320A/400A class meter base) is recommended for homes over 3,500 sq ft combining multiple high-draw 240V continuous loads: dual cold-climate heat pumps, two Level 2 EV chargers (48A each), an electric tankless water heater, or a pool heat pump."
+            }}
+          }}
+        ]
+      }}
+    ]
+  }}
+  </script>
+</head>
+<body>
+
+{SHARED_HEADER}
+
+  <div class="breadcrumbs">
+    <a href="/">Home</a> &gt; <a href="/#calculators">Calculators</a> &gt; <span class="current">Electrical Panel Upgrade Cost</span>
+  </div>
+
+  <main style="max-width: 1140px; margin: 1.5rem auto 3rem auto; padding: 0 1.5rem;">
+    <div style="margin-bottom: 1.75rem;">
+      <span class="badge-category" style="font-size: 0.8rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Electrical &amp; Power</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.5rem 0;">200A &amp; 400A Electrical Panel Upgrade Cost Calculator</h1>
+      <p style="color: var(--slate-600); font-size: 1.1rem; max-width: 820px; margin: 0;">
+        Model turnkey service entrance heavy-ups, meter socket replacements, NEC 2023 surge &amp; AFCI/GFCI breaker rules, utility trenching, and the $600 IRA Section 25C federal tax credit.
+      </p>
+    </div>
+
+    <!-- Stream 1: Living Tool Context Banner & 30-Day Sparkline -->
+    <div id="tbm-live-banner" data-category="electrical"></div>
+
+    <!-- Interactive Calculator Card -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+      <!-- Left Column: Inputs -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">1. Service Upgrade Scope &amp; Wiring Inputs</h3>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="upgradeType" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Target Panel Upgrade Tier</label>
+          <select id="upgradeType" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="subpanel">Add 100A Subpanel Only (Existing 200A Main Has Capacity)</option>
+            <option value="swap200">200A Panel Swap Only (Existing Service Cable &amp; Meter Rated 200A)</option>
+            <option value="heavyup200" selected>100A/150A to 200A Full Service Heavy-Up (New Panel + Meter + Mast)</option>
+            <option value="service400">200A to 400A Dual-Panel Heavy-Up (320A Meter Base + 2x 200A Panels)</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <label for="circuitCount" style="font-weight: 600; color: var(--slate-800); font-size: 0.95rem;">Active Branch Circuits to Reconnect</label>
+            <span id="circuitCountVal" style="font-weight: 700; color: var(--primary);">28 Circuits</span>
+          </div>
+          <input type="range" id="circuitCount" min="12" max="60" step="2" value="28" style="width: 100%; accent-color: var(--primary);">
+          <small style="color: var(--slate-500); font-size: 0.8rem; display: block; margin-top: 0.25rem;">Includes dual-function AFCI/GFCI breaker replacements where required by NEC</small>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="serviceFeed" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Utility Service Entrance Feed</label>
+          <select id="serviceFeed" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="overhead" selected>Overhead Weatherhead &amp; Service Drop (Standard)</option>
+            <option value="underground_existing">Underground Lateral (Existing Schedule 80 Conduit Intact)</option>
+            <option value="underground_trench">Underground Trenching &amp; New Conduit Run (+50 ft Trench)</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="panelLocation" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Wall Finish &amp; NEC Exterior Disconnect</label>
+          <select id="panelLocation" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="unfinished" selected>Unfinished Basement / Garage Surface Mount + Exterior Meter-Main</option>
+            <option value="finished">Finished Drywall Flush-Mount (Requires Drywall Patch &amp; Stud Fishing)</option>
+            <option value="relocate">Relocate Panel out of Closet/Bathroom (+J-Box Splice Extension)</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label for="taxCreditEligible" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">IRA Section 25C Tax Credit Eligibility</label>
+          <select id="taxCreditEligible" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="yes" selected>Yes — Upgrading to ≥200A to Enable Heat Pump / HPWH / Energy Upgrade (30% up to $600)</option>
+            <option value="no">No — Standalone Panel Swap Only ($0 Federal Credit)</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="window.print()" style="width: 100%; padding: 0.75rem; background: var(--slate-100); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; color: var(--slate-700); cursor: pointer;">
+          🖨️ Print Electrical Panel Bid Audit Sheet
+        </button>
+      </div>
+
+      <!-- Right Column: Results -->
+      <div id="resultsCard" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">2. Itemized Turnkey Estimate &amp; 25C Credit</h3>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Panel, Meter Base, Copper SE Cable &amp; SPD:</span>
+            <span id="matCostText" style="font-weight: 600; color: var(--slate-800);">$1,380</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>AFCI/GFCI Breakers &amp; Grounding System:</span>
+            <span id="breakerCostText" style="font-weight: 600; color: var(--slate-800);">$560</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Licensed Master Electrician Labor &amp; Trench/Wall:</span>
+            <span id="laborCostText" style="font-weight: 600; color: var(--slate-800);">$1,680</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.5rem;">
+            <span>Municipal Permit, Inspection &amp; Utility Disconnect:</span>
+            <span id="permitCostText" style="font-weight: 600; color: var(--slate-800);">$420</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 1rem; border-top: 1px solid #cbd5e1; padding-top: 0.5rem; margin-bottom: 0.35rem;">
+            <span>Gross Turnkey Contract Price:</span>
+            <strong id="grossTotalText" style="color: var(--slate-900);">$4,040</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #059669;">
+            <span>IRA Section 25C Panel Tax Credit (Form 5695):</span>
+            <strong id="creditText">-$600</strong>
+          </div>
+        </div>
+
+        <div style="background: var(--slate-900); color: #ffffff; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #38bdf8; font-weight: 700;">Net Out-of-Pocket Outlay</div>
+          <div id="netTotalText" style="font-size: 2.35rem; font-weight: 800; color: #10b981; margin: 0.25rem 0;">$3,440</div>
+          <div id="ampHeadroomText" style="font-size: 0.9rem; color: #e2e8f0;">Unlocks 48,000VA Capacity (Supports Heat Pump + 48A EV Charger)</div>
+        </div>
+
+        <div class="bid-meter-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.85rem; color: var(--slate-800); text-transform: uppercase;">Electrical Bid Audit Meter</span>
+            <span style="font-size: 0.75rem; color: var(--slate-500);">Gross Turnkey Benchmarks</span>
+          </div>
+          <div class="bid-meter-bar">
+            <div class="bid-meter-segment economy"></div>
+            <div class="bid-meter-segment fair"></div>
+            <div class="bid-meter-segment high"></div>
+          </div>
+          <div class="bid-meter-labels">
+            <span id="lowBidLabel">Low: &lt; $3,350</span>
+            <span id="fairBidLabel" style="color: var(--emerald-600); font-weight: 700;">Fair: $3,600 – $4,450</span>
+            <span id="highBidLabel" style="color: #dc2626;">Overpriced: &gt; $4,950</span>
+          </div>
+        </div>
+
+        <!-- Contractor Lead Matching Card -->
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #1e40af; letter-spacing: 0.05em;">Licensed Master Electricians</div>
+          <h4 style="margin: 0.25rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.1rem;">Compare 3 Local 200A Heavy-Up Quotes</h4>
+          <p style="margin: 0 0 1rem 0; font-size: 0.85rem; color: #334155; line-height: 1.4;">
+            Utility meter pulls require a licensed master electrician to coordinate utility cut-in cards and municipal rough/final inspections:
+          </p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="text" id="zipInput" placeholder="Enter ZIP Code" style="padding: 0.65rem 0.85rem; border: 1px solid #93c5fd; border-radius: 6px; font-size: 0.9rem; width: 140px; background: #ffffff;" maxlength="5">
+            <a id="leadMatchLink" href="https://www.jdoqocy.com/click-101896838-17142784?url=https%3A%2F%2Fwww.angi.com%2Fcompanylist%2Fsearch.htm%3Fquery%3DElectrician" target="_blank" rel="noopener noreferrer sponsored" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+              Compare Electrician Bids &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stream 3: Automated Cost-Per-Use & 5-Year TCO Product Matrix -->
+    <div id="tbm-unit-matrix" data-category="electrical"></div>
+    <div id="tbm-embed-box"></div>
+
+    <!-- Comprehensive E-E-A-T Editorial Guide -->
+    <section style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+      <h2>2026 Electrical Panel Heavy-Up Cost &amp; NEC 2023 Compliance Guide</h2>
+      <p style="color: var(--slate-600); line-height: 1.7;">
+        Upgrading a legacy 100-amp or 150-amp electrical service panel (including recalled Federal Pacific Stab-Lok, Zinsco, Challenger, or split-bus panels) to a modern 200-amp, 40-space copper-bus load center is the foundational step for home electrification. Under the 2023 National Electrical Code (NEC), a full service replacement triggers three mandatory safety upgrades that every homeowner must verify on contractor proposals: an <strong>Exterior Emergency Service Disconnect</strong> (NEC 230.85), a <strong>Type 1 or Type 2 Whole-Home Surge Protective Device</strong> (NEC 230.67), and <strong>Interconnected Dual Grounding Electrodes</strong> bonded to incoming metallic water piping (NEC 250.53).
+      </p>
+
+      <h3>Line-Item Cost Breakdown by Service Tier</h3>
+      <ul style="color: var(--slate-700); line-height: 1.7; padding-left: 1.25rem;">
+        <li><strong>100A Subpanel Addition ($1,150 – $1,850):</strong> Ideal when your existing main breaker is already rated for 200A and passes an NEC Article 220 load calculation, but physical breaker spaces are full.</li>
+        <li><strong>200A Panel Swap Only ($2,100 – $2,950):</strong> Replaces an outdated indoor 200A breaker box while reusing compliant 2/0 copper or 4/0 aluminum service entrance conductors and an existing 200A meter base.</li>
+        <li><strong>100A-to-200A Full Service Heavy-Up ($3,200 – $4,600):</strong> Complete replacement from the utility weatherhead down—including a new 200A outdoor meter-main combo, 2/0 copper riser, 40-space indoor load center, dual 8-ft copper ground rods, and whole-home SPD.</li>
+        <li><strong>200A-to-400A Class 320 Dual-Panel Upgrade ($5,800 – $9,200):</strong> Required for large all-electric estates running dual heat pumps, multiple 48A EV chargers, and electric tankless water heaters. Frequently requires utility transformer capacity review and underground lateral trenching.</li>
+      </ul>
+
+      <!-- TBM CASE STUDIES START -->
+      <!-- TBM CASE STUDIES END -->
+
+      <!-- FAQs -->
+      <h3 style="margin-top: 2.5rem;">Frequently Asked Questions</h3>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">Does my utility company charge to disconnect power during a panel upgrade?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">Most electric utilities perform standard overhead service drop disconnects and reconnects at zero direct fee or a nominal $150–$350 scheduling fee, provided your licensed electrician files an approved municipal electrical cut-in card.</p>
+      </div>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">Can I install a 48A EV charger on a 100A panel without upgrading to 200A?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">Only if you install an UL-listed Automatic Energy Management / EVEMS load-shedding device (NEC 625.42) that throttles or pauses EV charging whenever household oven, dryer, or HVAC loads peak—otherwise a 200A heavy-up is required.</p>
+      </div>
+    </section>
+  </main>
+
+{SHARED_FOOTER}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {{
+      const upgradeType = document.getElementById('upgradeType');
+      const circuitCount = document.getElementById('circuitCount');
+      const circuitCountVal = document.getElementById('circuitCountVal');
+      const serviceFeed = document.getElementById('serviceFeed');
+      const panelLocation = document.getElementById('panelLocation');
+      const taxCreditEligible = document.getElementById('taxCreditEligible');
+      const zipInput = document.getElementById('zipInput');
+      const leadMatchLink = document.getElementById('leadMatchLink');
+
+      function calculate() {{
+        const circuits = parseInt(circuitCount.value, 10) || 28;
+        circuitCountVal.textContent = `${{circuits}} Circuits`;
+
+        const tier = upgradeType.value;
+        let baseMat = 980, baseLabor = 1350, permit = 420, capacityDesc = "Unlocks 48,000VA Capacity (Supports Heat Pump + 48A EV Charger)";
+        if (tier === 'subpanel') {{
+          baseMat = 340; baseLabor = 680; permit = 220;
+          capacityDesc = "Adds 12–24 Physical Spaces on Existing 200A Service";
+        }} else if (tier === 'swap200') {{
+          baseMat = 620; baseLabor = 1050; permit = 310;
+          capacityDesc = "Modernizes Bus Bar, SPD & Breaker Spaces (200A Rated)";
+        }} else if (tier === 'service400') {{
+          baseMat = 2150; baseLabor = 2850; permit = 680;
+          capacityDesc = "Unlocks 96,000VA Dual-200A Capacity (All-Electric Estate + Dual EV)";
+        }}
+
+        const breakerCost = circuits * 20;
+        let feedAddMat = 0, feedAddLabor = 0;
+        if (serviceFeed.value === 'underground_existing') {{
+          feedAddMat = 180; feedAddLabor = 240;
+        }} else if (serviceFeed.value === 'underground_trench') {{
+          feedAddMat = 650; feedAddLabor = 1450;
+        }}
+
+        let locLabor = 0;
+        if (panelLocation.value === 'finished') locLabor = 380;
+        else if (panelLocation.value === 'relocate') locLabor = 890;
+
+        const totalMat = baseMat + feedAddMat;
+        const totalLabor = baseLabor + feedAddLabor + locLabor + (circuits * 12);
+        const gross = totalMat + breakerCost + totalLabor + permit;
+
+        let credit = 0;
+        if (taxCreditEligible.value === 'yes' && tier !== 'subpanel') {{
+          credit = Math.min(600, Math.round(gross * 0.30));
+        }}
+        const net = gross - credit;
+
+        document.getElementById('matCostText').textContent = `$${{totalMat.toLocaleString()}}`;
+        document.getElementById('breakerCostText').textContent = `$${{breakerCost.toLocaleString()}}`;
+        document.getElementById('laborCostText').textContent = `$${{totalLabor.toLocaleString()}}`;
+        document.getElementById('permitCostText').textContent = `$${{permit.toLocaleString()}}`;
+        document.getElementById('grossTotalText').textContent = `$${{gross.toLocaleString()}}`;
+        document.getElementById('creditText').textContent = `-$${{credit.toLocaleString()}}`;
+        document.getElementById('netTotalText').textContent = `$${{net.toLocaleString()}}`;
+        document.getElementById('ampHeadroomText').textContent = capacityDesc;
+
+        const lowBid = Math.round(gross * 0.84);
+        const fairMin = Math.round(gross * 0.91);
+        const fairMax = Math.round(gross * 1.10);
+        const highBid = Math.round(gross * 1.22);
+        document.getElementById('lowBidLabel').textContent = `Low: < $${{lowBid.toLocaleString()}}`;
+        document.getElementById('fairBidLabel').textContent = `Fair: $${{fairMin.toLocaleString()}} – $${{fairMax.toLocaleString()}}`;
+        document.getElementById('highBidLabel').textContent = `Overpriced: > $${{highBid.toLocaleString()}}`;
+      }}
+
+      [upgradeType, circuitCount, serviceFeed, panelLocation, taxCreditEligible].forEach(el => {{
+        el.addEventListener('input', calculate);
+        el.addEventListener('change', calculate);
+      }});
+
+      if (zipInput && leadMatchLink) {{
+        zipInput.addEventListener('input', () => {{
+          const zip = zipInput.value.trim();
+          if (zip.length === 5) {{
+            const dest = `https://www.angi.com/companylist/search.htm?query=Electrician&postalCode=${{zip}}`;
+            leadMatchLink.href = `https://www.jdoqocy.com/click-101896838-17142784?url=${{encodeURIComponent(dest)}}`;
+          }}
+        }});
+      }}
+
+      calculate();
+    }});
+  </script>
+  <script src="/tbm-widget.js" defer></script>
+</body>
+</html>
+"""
+
+# =========================================================================
+# 2. flooring-calculator.html
+# =========================================================================
+flooring_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flooring Installation &amp; Hardwood Refinishing Cost Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate 2026 flooring installation costs for Luxury Vinyl Plank (LVP), solid oak hardwood, engineered wood, porcelain tile, and dustless hardwood refinishing.">
+  <link rel="canonical" href="https://thebuyersmath.com/flooring-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebuyersmath.com/flooring-calculator.html">
+  <meta property="og:title" content="Flooring Installation &amp; Hardwood Refinishing Cost Calculator (2026) | The Buyer's Math">
+  <meta property="og:description" content="Model square-footage materials, 10% cutting waste, subfloor leveling, moisture barriers, and licensed installation labor.">
+  <meta property="og:image" content="https://thebuyersmath.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- CJ Affiliate Auto-Monetization -->
+  <script>
+    (function(a,b,c,d,e,f,g){{a['CJDynamicTrack']=e;a[e]=a[e]||function(){{
+    (a[e].q=a[e].q||[]).push(arguments)}},a[e].l=1*new Date();f=b.createElement(c),
+    g=b.getElementsByTagName(c)[0];f.async=1;f.src=d;g.parentNode.insertBefore(f,g)
+    }})(window,document,'script','//www.emjcd.com/dynamic/tracking.js','cj');
+    cj('init', {{ enterpriseId: '8090259', propertyId: '101896838' }});
+  </script>
+
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": "WebApplication",
+        "name": "Flooring Installation & Hardwood Refinishing Cost Calculator",
+        "url": "https://thebuyersmath.com/flooring-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "Interactive residential flooring cost estimator covering LVP, engineered hardwood, solid 3/4-inch oak, porcelain tile, subfloor prep, and hardwood sanding/refinishing."
+      }},
+      {{
+        "@type": "FAQPage",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "Is it cheaper to refinish existing hardwood floors or install new LVP?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Dustless drum sanding and applying 3 coats of commercial waterborne polyurethane on existing 3/4-inch solid oak averages $4.50 to $6.50 per sq ft turnkey—roughly 35% to 45% cheaper than tearing out wood and installing commercial-grade 20-mil LVP ($7.50 to $11.00 per sq ft installed) while yielding higher appraisal resale value."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "How much extra flooring material should I order for cutting waste?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Standard straight-lay plank installations require a 10% waste factor for end-cuts and board defects, while diagonal layouts, herringbone patterns, or multi-hallway floor plans require 15% overage."
+            }}
+          }}
+        ]
+      }}
+    ]
+  }}
+  </script>
+</head>
+<body>
+
+{SHARED_HEADER}
+
+  <div class="breadcrumbs">
+    <a href="/">Home</a> &gt; <a href="/#calculators">Calculators</a> &gt; <span class="current">Flooring Installation &amp; Refinishing</span>
+  </div>
+
+  <main style="max-width: 1140px; margin: 1.5rem auto 3rem auto; padding: 0 1.5rem;">
+    <div style="margin-bottom: 1.75rem;">
+      <span class="badge-category" style="font-size: 0.8rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Interior Remodeling</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.5rem 0;">Flooring Installation &amp; Refinishing Cost Calculator</h1>
+      <p style="color: var(--slate-600); font-size: 1.1rem; max-width: 820px; margin: 0;">
+        Compare turnkey pricing across 20-mil Luxury Vinyl Plank (LVP), engineered hardwood, solid 3/4" white oak, porcelain tile, and dustless hardwood sanding &amp; refinishing.
+      </p>
+    </div>
+
+    <!-- Stream 1: Living Tool Context Banner & 30-Day Sparkline -->
+    <div id="tbm-live-banner" data-category="interior"></div>
+
+    <!-- Interactive Calculator Card -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+      <!-- Left Column: Inputs -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">1. Room Area, Material &amp; Subfloor Prep</h3>
+
+        <div style="margin-bottom: 1.4rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <label for="floorSqft" style="font-weight: 600; color: var(--slate-800); font-size: 0.95rem;">Net Floor Area to Cover</label>
+            <span id="floorSqftVal" style="font-weight: 700; color: var(--primary);">800 sq ft</span>
+          </div>
+          <input type="range" id="floorSqft" min="150" max="3000" step="50" value="800" style="width: 100%; accent-color: var(--primary);">
+          <small id="orderedSqftNote" style="color: var(--slate-500); font-size: 0.8rem; display: block; margin-top: 0.25rem;">Includes +10% cutting waste allowance (880 sq ft ordered)</small>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="floorMaterial" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Flooring Material / Service Tier</label>
+          <select id="floorMaterial" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="refinish">Refinish Existing Solid Hardwood (Dustless Sand + Stain + 3x Bona Traffic HD)</option>
+            <option value="lvp" selected>Luxury Vinyl Plank — Rigid Core SPC (20-Mil Wear Layer + Attached Cork Pad)</option>
+            <option value="engineered">Engineered Hardwood — 1/2" European White Oak (Glue/Float)</option>
+            <option value="solid_oak">Solid 3/4" Red/White Oak Hardwood (Nail-Down + Site Finish)</option>
+            <option value="porcelain">Large-Format Porcelain Tile (Uncoupling Membrane + Thinset + Epoxy Grout)</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="subfloorPrep" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Existing Flooring Tear-Out &amp; Subfloor Leveling</label>
+          <select id="subfloorPrep" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="clean">Clean Subfloor Ready (Carpet Already Removed)</option>
+            <option value="carpet" selected>Carpet &amp; Tack Strip Tear-Out + Minor High-Spot Grinding</option>
+            <option value="self_level">Hardwood/Tile Demo + Self-Leveling Cement Compound (Flat to 3/16" in 10 ft)</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label for="trimStairs" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Baseboard Shoe Molding &amp; Stair Treads</label>
+          <select id="trimStairs" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="shoe" selected>New Primed Quarter-Round / Shoe Molding Only</option>
+            <option value="baseboard">Remove &amp; Reinstall 5-1/4" Baseboards + Transitions</option>
+            <option value="stairs">Baseboards + 13 Matching Stair Treads &amp; Risers</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="window.print()" style="width: 100%; padding: 0.75rem; background: var(--slate-100); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; color: var(--slate-700); cursor: pointer;">
+          🖨️ Print Flooring Bid Audit Sheet
+        </button>
+      </div>
+
+      <!-- Right Column: Results -->
+      <div id="resultsCard" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">2. Itemized Flooring Cost Breakdown</h3>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Flooring Materials (Includes 10% Waste) &amp; Underlayment:</span>
+            <span id="floorMatText" style="font-weight: 600; color: var(--slate-800);">$3,432</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Professional Installation / Sanding Labor:</span>
+            <span id="floorLaborText" style="font-weight: 600; color: var(--slate-800);">$2,560</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Demo, Haul-Away &amp; Subfloor Flattening:</span>
+            <span id="floorPrepText" style="font-weight: 600; color: var(--slate-800);">$920</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.5rem;">
+            <span>Perimeter Trim, Transitions &amp; Stairs:</span>
+            <span id="floorTrimText" style="font-weight: 600; color: var(--slate-800);">$540</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 1.05rem; border-top: 1px solid #cbd5e1; padding-top: 0.5rem;">
+            <strong>Estimated Cost Per Sq Ft (Turnkey):</strong>
+            <strong id="perSqftText" style="color: var(--primary);">$9.32 / sq ft</strong>
+          </div>
+        </div>
+
+        <div style="background: var(--slate-900); color: #ffffff; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #38bdf8; font-weight: 700;">Total Turnkey Project Estimate</div>
+          <div id="floorTotalText" style="font-size: 2.35rem; font-weight: 800; color: #10b981; margin: 0.25rem 0;">$7,452</div>
+          <div id="resaleRoiText" style="font-size: 0.9rem; color: #e2e8f0;">Estimated Resale Value Recovery: ~106%–118% on Appraisal</div>
+        </div>
+
+        <div class="bid-meter-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.85rem; color: var(--slate-800); text-transform: uppercase;">Flooring Contractor Bid Meter</span>
+            <span style="font-size: 0.75rem; color: var(--slate-500);">Regional Labor + Material Range</span>
+          </div>
+          <div class="bid-meter-bar">
+            <div class="bid-meter-segment economy"></div>
+            <div class="bid-meter-segment fair"></div>
+            <div class="bid-meter-segment high"></div>
+          </div>
+          <div class="bid-meter-labels">
+            <span id="lowBidLabel">Low: &lt; $6,260</span>
+            <span id="fairBidLabel" style="color: var(--emerald-600); font-weight: 700;">Fair: $6,780 – $8,200</span>
+            <span id="highBidLabel" style="color: #dc2626;">Overpriced: &gt; $9,090</span>
+          </div>
+        </div>
+
+        <!-- Contractor Lead Matching Card -->
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #1e40af; letter-spacing: 0.05em;">Verified Flooring Installers</div>
+          <h4 style="margin: 0.25rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.1rem;">Compare 3 Local Flooring &amp; Refinishing Quotes</h4>
+          <p style="margin: 0 0 1rem 0; font-size: 0.85rem; color: #334155; line-height: 1.4;">
+            Ensure your installer verifies subfloor moisture (&lt;12% EMC) and flatness tolerances (3/16" over 10 ft) to protect manufacturer warranties:
+          </p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="text" id="zipInput" placeholder="Enter ZIP Code" style="padding: 0.65rem 0.85rem; border: 1px solid #93c5fd; border-radius: 6px; font-size: 0.9rem; width: 140px; background: #ffffff;" maxlength="5">
+            <a id="leadMatchLink" href="https://www.jdoqocy.com/click-101896838-17142784?url=https%3A%2F%2Fwww.angi.com%2Fcompanylist%2Fsearch.htm%3Fquery%3DFlooring" target="_blank" rel="noopener noreferrer sponsored" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+              Compare Flooring Bids &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stream 3: Automated Cost-Per-Use & 5-Year TCO Product Matrix -->
+    <div id="tbm-unit-matrix" data-category="interior"></div>
+    <div id="tbm-embed-box"></div>
+
+    <section style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+      <h2>Understanding Flooring Material Specs, Subfloor Flatness &amp; Labor Quotes</h2>
+      <p style="color: var(--slate-600); line-height: 1.7;">
+        Over 80% of premature Luxury Vinyl Plank (LVP) locking-joint failures and engineered hardwood hollow spots trace back to skipped subfloor preparation rather than defective planks. NWFA (National Wood Flooring Association) and rigid-core SPC manufacturers mandate that concrete slabs and OSB subfloors be leveled to within <strong>3/16 of an inch over a 10-foot radius</strong> (or 1/8 inch over 6 feet). When comparing contractor quotes, always verify whether self-leveling portland cement compound, high-spot diamond grinding, and 6-mil polyethylene vapor barriers are included in the base square-foot rate.
+      </p>
+
+      <!-- TBM CASE STUDIES START -->
+      <!-- TBM CASE STUDIES END -->
+
+      <!-- FAQs -->
+      <h3 style="margin-top: 2.5rem;">Frequently Asked Questions</h3>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">What wear-layer thickness should I look for on Luxury Vinyl Plank (LVP)?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">Avoid builder-grade 6-mil or 12-mil vinyl planks in main living areas; specify a minimum 20-mil commercial urethane wear layer with ceramic bead finish and a minimum 5.5mm–6.5mm total plank thickness so locking tongues do not shear under furniture loads.</p>
+      </div>
+    </section>
+  </main>
+
+{SHARED_FOOTER}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {{
+      const floorSqft = document.getElementById('floorSqft');
+      const floorSqftVal = document.getElementById('floorSqftVal');
+      const orderedSqftNote = document.getElementById('orderedSqftNote');
+      const floorMaterial = document.getElementById('floorMaterial');
+      const subfloorPrep = document.getElementById('subfloorPrep');
+      const trimStairs = document.getElementById('trimStairs');
+      const zipInput = document.getElementById('zipInput');
+      const leadMatchLink = document.getElementById('leadMatchLink');
+
+      function calculate() {{
+        const sqft = parseFloat(floorSqft.value) || 800;
+        const ordered = Math.round(sqft * 1.10);
+        floorSqftVal.textContent = `${{sqft.toLocaleString()}} sq ft`;
+        orderedSqftNote.textContent = `Includes +10% cutting waste allowance (${{ordered.toLocaleString()}} sq ft ordered)`;
+
+        const mat = floorMaterial.value;
+        let matRate = 3.90, laborRate = 3.20, roiNote = "Estimated 10-Year Durability: 20-Mil Commercial Wear Layer";
+        if (mat === 'refinish') {{
+          matRate = 1.15; laborRate = 4.10;
+          orderedSqftNote.textContent = `Dustless sanding + 3 coats waterborne finish (${{sqft.toLocaleString()}} sq ft net)`;
+          roiNote = "Highest Resale ROI: 118%–147% Cost Recovery (NAR Remodeling Impact)";
+        }} else if (mat === 'engineered') {{
+          matRate = 6.40; laborRate = 4.50;
+          roiNote = "Dimensionally Stable Real Hardwood Veneer (radiant & basement safe)";
+        }} else if (mat === 'solid_oak') {{
+          matRate = 7.80; laborRate = 5.40;
+          roiNote = "50+ Year Lifespan (Can be sanded & refinished 3–4 times)";
+        }} else if (mat === 'porcelain') {{
+          matRate = 5.90; laborRate = 7.80;
+          roiNote = "Waterproof Porcelain + Uncoupling Membrane (Zero Water Absorption)";
+        }}
+
+        const matCost = Math.round((mat === 'refinish' ? sqft : ordered) * matRate);
+        const laborCost = Math.round(sqft * laborRate);
+
+        let prepCost = 0;
+        if (subfloorPrep.value === 'carpet') prepCost = Math.round(sqft * 1.15);
+        else if (subfloorPrep.value === 'self_level') prepCost = Math.round(sqft * 2.85);
+
+        let trimCost = Math.round(Math.sqrt(sqft) * 14 * 1.35);
+        if (trimStairs.value === 'baseboard') trimCost += Math.round(Math.sqrt(sqft) * 14 * 1.80);
+        else if (trimStairs.value === 'stairs') trimCost += 1850;
+
+        const total = matCost + laborCost + prepCost + trimCost;
+        const perSqft = (total / sqft).toFixed(2);
+
+        document.getElementById('floorMatText').textContent = `$${{matCost.toLocaleString()}}`;
+        document.getElementById('floorLaborText').textContent = `$${{laborCost.toLocaleString()}}`;
+        document.getElementById('floorPrepText').textContent = `$${{prepCost.toLocaleString()}}`;
+        document.getElementById('floorTrimText').textContent = `$${{trimCost.toLocaleString()}}`;
+        document.getElementById('perSqftText').textContent = `$${{perSqft}} / sq ft`;
+        document.getElementById('floorTotalText').textContent = `$${{total.toLocaleString()}}`;
+        document.getElementById('resaleRoiText').textContent = roiNote;
+
+        document.getElementById('lowBidLabel').textContent = `Low: < $${{Math.round(total * 0.84).toLocaleString()}}`;
+        document.getElementById('fairBidLabel').textContent = `Fair: $${{Math.round(total * 0.91).toLocaleString()}} – $${{Math.round(total * 1.10).toLocaleString()}}`;
+        document.getElementById('highBidLabel').textContent = `Overpriced: > $${{Math.round(total * 1.22).toLocaleString()}}`;
+      }}
+
+      [floorSqft, floorMaterial, subfloorPrep, trimStairs].forEach(el => {{
+        el.addEventListener('input', calculate);
+        el.addEventListener('change', calculate);
+      }});
+
+      if (zipInput && leadMatchLink) {{
+        zipInput.addEventListener('input', () => {{
+          const zip = zipInput.value.trim();
+          if (zip.length === 5) {{
+            const dest = `https://www.angi.com/companylist/search.htm?query=Flooring&postalCode=${{zip}}`;
+            leadMatchLink.href = `https://www.jdoqocy.com/click-101896838-17142784?url=${{encodeURIComponent(dest)}}`;
+          }}
+        }});
+      }}
+
+      calculate();
+    }});
+  </script>
+  <script src="/tbm-widget.js" defer></script>
+</body>
+</html>
+"""
+
+# =========================================================================
+# 3. radiant-floor-calculator.html
+# =========================================================================
+radiant_floor_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiant Floor Heating Cost &amp; Operating Calculator (2026) | The Buyer's Math</title>
+  <meta name="description" content="Calculate electric radiant floor heating mat (Ditra-Heat) and hydronic PEX tubing installation costs, thermal break subfloor insulation, and monthly kWh operating expenses.">
+  <link rel="canonical" href="https://thebuyersmath.com/radiant-floor-calculator.html">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://thebuyersmath.com/radiant-floor-calculator.html">
+  <meta property="og:title" content="Radiant Floor Heating Cost &amp; Operating Calculator (2026) | The Buyer's Math">
+  <meta property="og:description" content="Compare electric uncoupling mat systems vs. hydronic PEX radiant heating installation and monthly utility operating costs.">
+  <meta property="og:image" content="https://thebuyersmath.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V4GTQSCFW6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-V4GTQSCFW6');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
+
+  <!-- CJ Affiliate Auto-Monetization -->
+  <script>
+    (function(a,b,c,d,e,f,g){{a['CJDynamicTrack']=e;a[e]=a[e]||function(){{
+    (a[e].q=a[e].q||[]).push(arguments)}},a[e].l=1*new Date();f=b.createElement(c),
+    g=b.getElementsByTagName(c)[0];f.async=1;f.src=d;g.parentNode.insertBefore(f,g)
+    }})(window,document,'script','//www.emjcd.com/dynamic/tracking.js','cj');
+    cj('init', {{ enterpriseId: '8090259', propertyId: '101896838' }});
+  </script>
+
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": "WebApplication",
+        "name": "Radiant Floor Heating Cost & Operating Calculator",
+        "url": "https://thebuyersmath.com/radiant-floor-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "Empirical calculator modeling electric radiant floor heating mats (Ditra-Heat) and hydronic PEX systems, subfloor thermal insulation, dedicated GFCI circuits, and daily kWh operating costs."
+      }},
+      {{
+        "@type": "FAQPage",
+        "mainEntity": [
+          {{
+            "@type": "Question",
+            "name": "How much does electric radiant floor heating cost to run per month?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Electric radiant floor heating draws 12 watts per square foot. A typical 60 sq ft master bathroom heated floor (42 sq ft of active mat area excluding vanity and toilet footprints) draws 504 watts and costs roughly $0.35 to $0.52 per day ($10.50 to $15.60 per month) when run 6 hours a day on a programmable setback thermostat at $0.172/kWh."
+            }}
+          }},
+          {{
+            "@type": "Question",
+            "name": "When does hydronic radiant floor heating make more sense than electric mats?",
+            "acceptedAnswer": {{
+              "@type": "Answer",
+              "text": "Electric radiant cable/mat systems are far more cost-effective for single rooms, bathrooms, and kitchens under 250 sq ft ($1,100 to $2,600 installed). Hydronic PEX tubing with a dedicated manifold and air-to-water heat pump or condensing boiler ($8,500 to $16,000+) becomes economical only when heating whole-home slabs or basements exceeding 800 sq ft."
+            }}
+          }}
+        ]
+      }}
+    ]
+  }}
+  </script>
+</head>
+<body>
+
+{SHARED_HEADER}
+
+  <div class="breadcrumbs">
+    <a href="/">Home</a> &gt; <a href="/#calculators">Calculators</a> &gt; <span class="current">Radiant Floor Heating Calculator</span>
+  </div>
+
+  <main style="max-width: 1140px; margin: 1.5rem auto 3rem auto; padding: 0 1.5rem;">
+    <div style="margin-bottom: 1.75rem;">
+      <span class="badge-category" style="font-size: 0.8rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase;">HVAC &amp; Interior Comfort</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.5rem 0;">Radiant Floor Heating Cost &amp; Operating Calculator</h1>
+      <p style="color: var(--slate-600); font-size: 1.1rem; max-width: 820px; margin: 0;">
+        Model electric uncoupling mat systems (Schluter Ditra-Heat) vs. hydronic PEX tubing, thermal break subfloor panels, dedicated 120V/240V circuits, and monthly electricity bills.
+      </p>
+    </div>
+
+    <!-- Stream 1: Living Tool Context Banner & 30-Day Sparkline -->
+    <div id="tbm-live-banner" data-category="hvac"></div>
+
+    <!-- Interactive Calculator Card -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+      <!-- Left Column: Inputs -->
+      <div style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">1. Heated Zone &amp; System Configuration</h3>
+
+        <div style="margin-bottom: 1.4rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <label for="heatedSqft" style="font-weight: 600; color: var(--slate-800); font-size: 0.95rem;">Active Heated Floor Area (Excludes Cabinets/Tub)</label>
+            <span id="heatedSqftVal" style="font-weight: 700; color: var(--primary);">80 sq ft</span>
+          </div>
+          <input type="range" id="heatedSqft" min="25" max="1200" step="15" value="80" style="width: 100%; accent-color: var(--primary);">
+          <small id="wattageNote" style="color: var(--slate-500); font-size: 0.8rem; display: block; margin-top: 0.25rem;">System Output: 960 Watts (3,276 BTU/hr @ 12W/sq ft)</small>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="radiantType" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Radiant Technology Type</label>
+          <select id="radiantType" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="ditra" selected>Electric Heating Cable + Uncoupling Membrane (Schluter Ditra-Heat)</option>
+            <option value="mesh_mat">Electric Pre-Spaced Fiberglass Mesh Mat (WarmlyYours / SunTouch)</option>
+            <option value="hydronic">Hydronic Oxygen-Barrier PEX-A Tubing + Manifold &amp; Circulator</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.4rem;">
+          <label for="subfloorBase" style="display: block; font-weight: 600; color: var(--slate-800); margin-bottom: 0.5rem; font-size: 0.95rem;">Subfloor Type &amp; Thermal Break Insulation</label>
+          <select id="subfloorBase" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+            <option value="plywood">Wood Plywood/OSB Subfloor (Standard Thinset Embedment)</option>
+            <option value="insulated_fleece" selected>Concrete Slab / Cold Crawlspace (+Insulated Thermal Break Membrane)</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <label for="dailyHours" style="font-weight: 600; color: var(--slate-800); font-size: 0.95rem;">Active Heating Cycle (Hours / Day)</label>
+            <span id="dailyHoursVal" style="font-weight: 700; color: var(--primary);">6 hrs/day</span>
+          </div>
+          <input type="range" id="dailyHours" min="2" max="16" step="1" value="6" style="width: 100%; accent-color: var(--primary);">
+          <small style="color: var(--slate-500); font-size: 0.8rem; display: block; margin-top: 0.25rem;">Morning + evening programmable thermostat schedule (@ $0.172/kWh baseline)</small>
+        </div>
+
+        <button type="button" onclick="window.print()" style="width: 100%; padding: 0.75rem; background: var(--slate-100); border: 1px solid var(--border); border-radius: 8px; font-weight: 700; color: var(--slate-700); cursor: pointer;">
+          🖨️ Print Radiant Floor Bid Audit Sheet
+        </button>
+      </div>
+
+      <!-- Right Column: Results -->
+      <div id="resultsCard" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin: 0 0 1.25rem 0; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">2. Installation &amp; Winter Operating Math</h3>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Heating Cable/Mat, Membrane &amp; Floor Sensors:</span>
+            <span id="radMatText" style="font-weight: 600; color: var(--slate-800);">$940</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Smart Wi-Fi Class-A GFCI Thermostat:</span>
+            <span id="radStatText" style="font-weight: 600; color: var(--slate-800);">$265</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--slate-600); margin-bottom: 0.4rem;">
+            <span>Dedicated 20A Circuit &amp; Tile/Heating Labor:</span>
+            <span id="radLaborText" style="font-weight: 600; color: var(--slate-800);">$1,180</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 1rem; border-top: 1px solid #cbd5e1; padding-top: 0.5rem;">
+            <strong>Monthly Winter Operating Cost:</strong>
+            <strong id="monthlyRunText" style="color: #059669;">$29.72 / month ($0.99/day)</strong>
+          </div>
+        </div>
+
+        <div style="background: var(--slate-900); color: #ffffff; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #38bdf8; font-weight: 700;">Total Turnkey Radiant System Outlay</div>
+          <div id="radTotalText" style="font-size: 2.35rem; font-weight: 800; color: #10b981; margin: 0.25rem 0;">$2,385</div>
+          <div id="circuitNoteText" style="font-size: 0.9rem; color: #e2e8f0;">Requires 1x Dedicated 120V 20A Circuit (Draws 8.0 Amps)</div>
+        </div>
+
+        <div class="bid-meter-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.85rem; color: var(--slate-800); text-transform: uppercase;">Radiant Install Bid Meter</span>
+            <span style="font-size: 0.75rem; color: var(--slate-500);">Excludes Surface Tile/Stone</span>
+          </div>
+          <div class="bid-meter-bar">
+            <div class="bid-meter-segment economy"></div>
+            <div class="bid-meter-segment fair"></div>
+            <div class="bid-meter-segment high"></div>
+          </div>
+          <div class="bid-meter-labels">
+            <span id="lowBidLabel">Low: &lt; $2,000</span>
+            <span id="fairBidLabel" style="color: var(--emerald-600); font-weight: 700;">Fair: $2,170 – $2,620</span>
+            <span id="highBidLabel" style="color: #dc2626;">Overpriced: &gt; $2,910</span>
+          </div>
+        </div>
+
+        <!-- Contractor Lead Matching Card -->
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #1e40af; letter-spacing: 0.05em;">Certified Tile &amp; Radiant Pros</div>
+          <h4 style="margin: 0.25rem 0 0.5rem 0; color: #1e3a8a; font-size: 1.1rem;">Compare 3 Local Radiant Floor Installers</h4>
+          <p style="margin: 0 0 1rem 0; font-size: 0.85rem; color: #334155; line-height: 1.4;">
+            Ensure your installer logs 3 megohmmeter insulation resistance tests (out-of-box, after cable lay, and after thinset troweling) to activate the lifetime warranty:
+          </p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="text" id="zipInput" placeholder="Enter ZIP Code" style="padding: 0.65rem 0.85rem; border: 1px solid #93c5fd; border-radius: 6px; font-size: 0.9rem; width: 140px; background: #ffffff;" maxlength="5">
+            <a id="leadMatchLink" href="https://www.jdoqocy.com/click-101896838-17142784?url=https%3A%2F%2Fwww.angi.com%2Fcompanylist%2Fsearch.htm%3Fquery%3DTile%2BContractor" target="_blank" rel="noopener noreferrer sponsored" style="flex: 1; min-width: 160px; background: #2563eb; color: #ffffff; padding: 0.65rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+              Compare Local Bids &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stream 3: Automated Cost-Per-Use & 5-Year TCO Product Matrix -->
+    <div id="tbm-unit-matrix" data-category="hvac"></div>
+    <div id="tbm-embed-box"></div>
+
+    <section style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2.5rem;">
+      <h2>Why Thermal Break Subfloor Membranes Cut Radiant Heating Bills by 35%</h2>
+      <p style="color: var(--slate-600); line-height: 1.7;">
+        Installing electric heating cables directly onto an uninsulated concrete basement slab or over an unconditioned crawlspace forces the slab to act as a massive downward heat sink—increasing warm-up lag times from 25 minutes to over 2 hours and raising monthly kWh consumption by 35% to 50%. Specifying an uncoupling membrane with an integrated polypropylene thermal break fleece (such as Schluter Ditra-Heat-DUO) or 1/4-inch extruded polystyrene (XPS) backer board reflects radiant heat upward into the porcelain tile, allowing programmable setback schedules to reach 82&deg;F floor surface temperature in under 30 minutes.
+      </p>
+
+      <!-- TBM CASE STUDIES START -->
+      <!-- TBM CASE STUDIES END -->
+
+      <!-- FAQs -->
+      <h3 style="margin-top: 2.5rem;">Frequently Asked Questions</h3>
+      <div style="border-top: 1px solid var(--border); padding: 1.25rem 0;">
+        <h4 style="margin: 0 0 0.5rem 0;">Why must my installer bury two floor temperature sensors in the thinset?</h4>
+        <p style="margin: 0; color: var(--slate-600); line-height: 1.6;">A backup thermistor sensor wire costs under $25 and sits unconnected inside the thermostat junction box; if the primary sensor ever fails years later, the electrician can swap the low-voltage leads in 5 minutes without chiseling up a single tile.</p>
+      </div>
+    </section>
+  </main>
+
+{SHARED_FOOTER}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {{
+      const heatedSqft = document.getElementById('heatedSqft');
+      const heatedSqftVal = document.getElementById('heatedSqftVal');
+      const wattageNote = document.getElementById('wattageNote');
+      const radiantType = document.getElementById('radiantType');
+      const subfloorBase = document.getElementById('subfloorBase');
+      const dailyHours = document.getElementById('dailyHours');
+      const dailyHoursVal = document.getElementById('dailyHoursVal');
+      const zipInput = document.getElementById('zipInput');
+      const leadMatchLink = document.getElementById('leadMatchLink');
+
+      function calculate() {{
+        const sqft = parseFloat(heatedSqft.value) || 80;
+        const hrs = parseFloat(dailyHours.value) || 6;
+        const watts = Math.round(sqft * 12);
+        const btus = Math.round(watts * 3.412);
+        heatedSqftVal.textContent = `${{sqft.toLocaleString()}} sq ft`;
+        dailyHoursVal.textContent = `${{hrs}} hrs/day`;
+        wattageNote.textContent = `System Output: ${{watts.toLocaleString()}} Watts (${{btus.toLocaleString()}} BTU/hr @ 12W/sq ft)`;
+
+        const rType = radiantType.value;
+        let matCost = Math.round(sqft * 10.20), statCost = 265, laborCost = 620 + Math.round(sqft * 7.00);
+        if (rType === 'mesh_mat') {{
+          matCost = Math.round(sqft * 7.80);
+          laborCost = 580 + Math.round(sqft * 5.80);
+        }} else if (rType === 'hydronic') {{
+          matCost = 2400 + Math.round(sqft * 6.50);
+          statCost = 480;
+          laborCost = 2800 + Math.round(sqft * 6.20);
+        }}
+
+        let effFactor = 1.0;
+        if (subfloorBase.value === 'insulated_fleece') {{
+          matCost += Math.round(sqft * 1.65);
+          effFactor = 0.78; // Thermal break cuts heat loss
+        }}
+
+        const total = matCost + statCost + laborCost;
+        const dailyCost = ((watts / 1000) * hrs * 0.172 * effFactor);
+        const monthlyCost = dailyCost * 30;
+        const amps = (watts / 120).toFixed(1);
+        const voltageSpec = watts > 1800 ? `Requires 240V 20A Dedicated Circuit (Draws ${{(watts / 240).toFixed(1)}} Amps)` : `Requires 120V 20A Dedicated Circuit (Draws ${{amps}} Amps)`;
+
+        document.getElementById('radMatText').textContent = `$${{matCost.toLocaleString()}}`;
+        document.getElementById('radStatText').textContent = `$${{statCost.toLocaleString()}}`;
+        document.getElementById('radLaborText').textContent = `$${{laborCost.toLocaleString()}}`;
+        document.getElementById('monthlyRunText').textContent = `$${{monthlyCost.toFixed(2)}} / month ($${{dailyCost.toFixed(2)}}/day)`;
+        document.getElementById('radTotalText').textContent = `$${{total.toLocaleString()}}`;
+        document.getElementById('circuitNoteText').textContent = rType === 'hydronic' ? "Hydronic Closed-Loop Manifold + Modulating Circulator Pump" : voltageSpec;
+
+        document.getElementById('lowBidLabel').textContent = `Low: < $${{Math.round(total * 0.84).toLocaleString()}}`;
+        document.getElementById('fairBidLabel').textContent = `Fair: $${{Math.round(total * 0.91).toLocaleString()}} – $${{Math.round(total * 1.10).toLocaleString()}}`;
+        document.getElementById('highBidLabel').textContent = `Overpriced: > $${{Math.round(total * 1.22).toLocaleString()}}`;
+      }}
+
+      [heatedSqft, radiantType, subfloorBase, dailyHours].forEach(el => {{
+        el.addEventListener('input', calculate);
+        el.addEventListener('change', calculate);
+      }});
+
+      if (zipInput && leadMatchLink) {{
+        zipInput.addEventListener('input', () => {{
+          const zip = zipInput.value.trim();
+          if (zip.length === 5) {{
+            const dest = `https://www.angi.com/companylist/search.htm?query=Tile+Contractor&postalCode=${{zip}}`;
+            leadMatchLink.href = `https://www.jdoqocy.com/click-101896838-17142784?url=${{encodeURIComponent(dest)}}`;
+          }}
+        }});
+      }}
+
+      calculate();
+    }});
+  </script>
+  <script src="/tbm-widget.js" defer></script>
+</body>
+</html>
+"""
+
+
+def ensure_batch2_calculators():
+    """Automatically creates the 3 missing homepage calculators in the repo root if not present."""
+    created = 0
+    for fname, body in [
+        ("electrical-panel-calculator.html", electrical_panel_html),
+        ("flooring-calculator.html", flooring_html),
+        ("radiant-floor-calculator.html", radiant_floor_html)
+    ]:
+        if not os.path.exists(fname):
+            with open(fname, "w", encoding="utf-8") as out_f:
+                out_f.write(body)
+            created += 1
+            print(f"[AUTO-BUILD] Created new calculator: {fname}")
+    return created
+
 def main():
+    ensure_batch2_calculators()
     target_date = datetime.date.today()
     iso_date = target_date.strftime("%Y-%m-%d")
     os.makedirs(INTEL_DIR, exist_ok=True)
