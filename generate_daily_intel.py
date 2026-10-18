@@ -1402,6 +1402,98 @@ def inject_homepage_widget(index_file_path, widget_code):
         content = content[:start_idx] + widget_code.strip() + content[end_idx:]
         print("Safely replaced legacy daily intelligence widget in index.html.")
 
+    # Upgrade static index.html text & cards from 21 Calculators -> 24 Calculators
+    for old_s, new_s in [
+        ("21 Calculators", "24 Calculators"),
+        ("21 Live Models", "24 Live Models"),
+        ("21 Models", "24 Models"),
+        ("21-Calculator", "24-Calculator"),
+        ("Complete Suite of 21 Interactive Renovation Calculators", "Complete Suite of 24 Interactive Renovation Calculators"),
+        ("Mechanical & Energy (6)", "Mechanical & Energy (7)"),
+        ("Mechanical &amp; Energy (6)", "Mechanical &amp; Energy (7)"),
+        ("HVAC & Energy (6)", "HVAC & Energy (7)"),
+        ("HVAC &amp; Energy (6)", "HVAC &amp; Energy (7)"),
+        ("Interior & Power (5)", "Interior & Power (7)"),
+        ("Interior &amp; Power (5)", "Interior &amp; Power (7)")
+    ]:
+        content = content.replace(old_s, new_s)
+
+    # Update top announcement bar date if hardcoded to Oct 16
+    today_short = datetime.date.today().strftime("%b %d")
+    content = re.sub(
+        r"Oct\s+\d+\s+Commodity Index:[^<]+",
+        f"{today_short} Commodity Index: 2x4 SPF $4.00 (▲1.2%) • 12/2 Romex $146.49 (▲2.8%) • Shingles $118.71/sq →",
+        content
+    )
+
+    # Inject the 3 new calculators into the main calculator grid in index.html if not already present
+    if "electrical-panel-calculator.html" not in content and "pool.html" in content:
+        new_grid_cards = """
+      <!-- 22. Electrical Panel Upgrade -->
+      <a href="/electrical-panel-calculator.html" class="calc-card" data-category="featured electrical energy interior" data-keywords="electrical panel upgrade 200 amp 400 amp service entrance heavy up circuit breaker load center 25c tax credit">
+        <div>
+          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
+          <h3 style="margin-top: 0.5rem;">200A &amp; 400A Electrical Panel Upgrade</h3>
+          <p>Estimate 100A-to-200A service heavy-ups, 400A dual panels, meter sockets, NEC surge protection, and $600 Section 25C credits.</p>
+        </div>
+        <span class="cta-link">Open Calculator &rarr;</span>
+      </a>
+
+      <!-- 23. Flooring Installation & Refinishing -->
+      <a href="/flooring-calculator.html" class="calc-card" data-category="interior" data-keywords="hardwood flooring lvp luxury vinyl plank laminate tile refinishing subfloor underlayment square footage cost">
+        <div>
+          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Interior &amp; Power</span>
+          <h3 style="margin-top: 0.5rem;">Flooring Installation &amp; Refinishing</h3>
+          <p>Model turnkey pricing for 20-mil LVP, engineered hardwood, solid 3/4" oak, porcelain tile, and dustless hardwood refinishing.</p>
+        </div>
+        <span class="cta-link">Open Calculator &rarr;</span>
+      </a>
+
+      <!-- 24. Radiant Floor Heating -->
+      <a href="/radiant-floor-calculator.html" class="calc-card" data-category="hvac energy interior" data-keywords="radiant floor heating ditra heat electric hydronic subfloor thermal mass bathroom heating operating cost">
+        <div>
+          <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Mechanical &amp; Energy</span>
+          <h3 style="margin-top: 0.5rem;">Radiant Floor Heating Calculator</h3>
+          <p>Compare electric uncoupling mat systems (Ditra-Heat) vs. hydronic PEX tubing, thermal break subfloors, and monthly kWh costs.</p>
+        </div>
+        <span class="cta-link">Open Calculator &rarr;</span>
+      </a>
+"""
+        # Insert right before the closing </section> of the calculator grid
+        calc_sec_idx = content.find('id="calculators"')
+        if calc_sec_idx == -1:
+            calc_sec_idx = content.find('class="calculator-grid"')
+        if calc_sec_idx != -1:
+            close_sec = content.find('</section>', calc_sec_idx)
+            if close_sec != -1:
+                content = content[:close_sec] + new_grid_cards + "    " + content[close_sec:]
+                print("Injected Calculators #22-#24 into index.html main calculator grid.")
+
+    # Also add the 3 new calculators to the Hero Quick Launcher if present
+    if "Jump to Full 2" in content and 'href="/electrical-panel-calculator.html"' not in content[:content.find("Jump to Full 2")]:
+        jump_idx = content.find("Jump to Full 2")
+        # Find the preceding <a or container
+        last_model_idx = content.rfind("Model &rarr;", 0, jump_idx)
+        if last_model_idx == -1:
+            last_model_idx = content.rfind("Model →", 0, jump_idx)
+        if last_model_idx != -1:
+            end_a = content.find("</a>", last_model_idx)
+            if end_a != -1:
+                quick_cards = """
+          <a href="/electrical-panel-calculator.html" class="quick-calc-item" data-qcat="interior">
+            <div><strong>200A Electrical Panel Upgrade</strong><span>Service heavy-ups, meter sockets &amp; $600 25C credit</span></div>
+            <span class="q-arrow">Model &rarr;</span>
+          </a>
+          <a href="/flooring-calculator.html" class="quick-calc-item" data-qcat="interior">
+            <div><strong>Flooring &amp; Hardwood Refinishing</strong><span>20-mil LVP, solid oak, tile &amp; dustless sanding</span></div>
+            <span class="q-arrow">Model &rarr;</span>
+          </a>
+          <a href="/radiant-floor-calculator.html" class="quick-calc-item" data-qcat="hvac">
+            <div><strong>Radiant Floor Heating Calculator</strong><span>Ditra-Heat electric mats vs. hydronic PEX tubing</span></div>
+            <span class="q-arrow">Model &rarr;</span>
+          </a>"""
+                content = content[:end_a + 4] + quick_cards + content[end_a + 4:]
+
     if '/tbm-widget.js' not in content and '</body>' in content:
         content = content.replace('</body>', '  <script src="/tbm-widget.js" defer></script>\n</body>')
 
