@@ -401,13 +401,132 @@
     });
   }
 
+  
+  /**
+   * Synchronizes Homepage & Global Nav from 21 Calculators -> 24 Calculators
+   * and updates the top Commodity Index announcement bar with live date/metrics.
+   */
+  function syncSiteTo24Calculators(data) {
+    // 1. Replace "21 Calculators" / "21 Models" / "21 Live Models" text nodes & innerHTML
+    const replacements = [
+      ['21 Calculators', '24 Calculators'],
+      ['21 Live Models', '24 Live Models'],
+      ['21 Models', '24 Models'],
+      ['21-Calculator', '24-Calculator'],
+      ['Complete Suite of 21 Interactive Renovation Calculators', 'Complete Suite of 24 Interactive Renovation Calculators'],
+      ['Mechanical & Energy (6)', 'Mechanical & Energy (7)'],
+      ['Mechanical &amp; Energy (6)', 'Mechanical &amp; Energy (7)'],
+      ['HVAC & Energy (6)', 'HVAC & Energy (7)'],
+      ['HVAC &amp; Energy (6)', 'HVAC &amp; Energy (7)'],
+      ['Interior & Power (5)', 'Interior & Power (7)'],
+      ['Interior &amp; Power (5)', 'Interior &amp; Power (7)']
+    ];
+
+    document.querySelectorAll('h1, h2, h3, h4, span, a, button, div, p').forEach(el => {
+      if (el.children.length === 0 && el.textContent) {
+        let txt = el.textContent;
+        let mod = false;
+        replacements.forEach(([oldStr, newStr]) => {
+          if (txt.includes(oldStr)) {
+            txt = txt.split(oldStr).join(newStr);
+            mod = true;
+          }
+        });
+        if (mod) el.textContent = txt;
+      }
+    });
+
+    // 2. Update Top Announcement Commodity Ticker Bar if present
+    if (data && data.metrics) {
+      const m = data.metrics;
+      const shortDate = (data.formatted_date || 'Oct 18, 2026').replace(/([A-Za-z]{3})[a-z]*\s+(\d+).*/, '$1 $2');
+      document.querySelectorAll('a, div, span').forEach(el => {
+        if (el.children.length <= 2 && el.textContent && el.textContent.includes('Commodity Index:') && el.textContent.includes('2x4 SPF')) {
+          el.innerHTML = `${shortDate} Commodity Index: 2x4 SPF $${Number(m.spf_stud_2x4 || 4.00).toFixed(2)} &bull; 12/2 Romex $${Number(m.romex_12_2_250ft || 146.49).toFixed(2)} &bull; Arch Shingles $${Number(m.arch_shingles_sq || 118.71).toFixed(2)}/sq &rarr;`;
+          if (el.tagName === 'A') el.href = '/daily/todays-math/index.html';
+        }
+      });
+    }
+
+
+    // 4. Inject the 3 new calculators into Header Mega-Dropdown if missing
+    document.querySelectorAll('.nav-dropdown-content, nav').forEach(nav => {
+      if (nav.querySelector('a[href*="generator-calculator.html"]') && !nav.querySelector('a[href*="electrical-panel-calculator.html"]')) {
+        const genLink = nav.querySelector('a[href*="generator-calculator.html"]');
+        const pLink = document.createElement('a');
+        pLink.href = '/electrical-panel-calculator.html';
+        pLink.textContent = '200A Electrical Panel';
+        const fLink = document.createElement('a');
+        fLink.href = '/flooring-calculator.html';
+        fLink.textContent = 'Flooring & Refinishing';
+        genLink.parentNode.insertBefore(pLink, genLink.nextSibling);
+        genLink.parentNode.insertBefore(fLink, pLink.nextSibling);
+      }
+      if (nav.querySelector('a[href*="pool.html"]') && !nav.querySelector('a[href*="radiant-floor-calculator.html"]')) {
+        const poolLink = nav.querySelector('a[href*="pool.html"]');
+        const rLink = document.createElement('a');
+        rLink.href = '/radiant-floor-calculator.html';
+        rLink.textContent = 'Radiant Floor Heating';
+        poolLink.parentNode.insertBefore(rLink, poolLink.nextSibling);
+      }
+    });
+
+    // 3. Inject the 3 new calculators into the Main Calculator Grid if missing
+    const grid = document.getElementById('calculators') || document.querySelector('.calculator-grid');
+    if (grid && !grid.querySelector('a[href*="electrical-panel-calculator.html"]')) {
+      const newCards = [
+        {
+          href: '/electrical-panel-calculator.html',
+          cat: 'featured electrical energy interior',
+          kw: 'electrical panel upgrade 200 amp 400 amp service entrance heavy up circuit breaker load center 25c tax credit',
+          badge: 'Interior & Power',
+          title: '200A & 400A Electrical Panel Upgrade',
+          desc: 'Estimate 100A-to-200A service heavy-ups, 400A dual panels, meter sockets, NEC surge protection, and $600 Section 25C credits.'
+        },
+        {
+          href: '/flooring-calculator.html',
+          cat: 'interior',
+          kw: 'hardwood flooring lvp luxury vinyl plank laminate tile refinishing subfloor underlayment square footage cost',
+          badge: 'Interior & Power',
+          title: 'Flooring Installation & Refinishing',
+          desc: 'Model turnkey pricing for 20-mil LVP, engineered hardwood, solid 3/4" oak, porcelain tile, and dustless hardwood refinishing.'
+        },
+        {
+          href: '/radiant-floor-calculator.html',
+          cat: 'hvac energy interior',
+          kw: 'radiant floor heating ditra heat electric hydronic subfloor thermal mass bathroom heating operating cost',
+          badge: 'Mechanical & Energy',
+          title: 'Radiant Floor Heating Calculator',
+          desc: 'Compare electric uncoupling mat systems (Ditra-Heat) vs. hydronic PEX tubing, thermal break subfloors, and monthly kWh costs.'
+        }
+      ];
+      newCards.forEach(c => {
+        const a = document.createElement('a');
+        a.href = c.href;
+        a.className = 'calc-card';
+        a.setAttribute('data-category', c.cat);
+        a.setAttribute('data-keywords', c.kw);
+        a.innerHTML = `
+          <div>
+            <span class="badge-category" style="font-size: 0.75rem; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;">${c.badge}</span>
+            <h3 style="margin-top: 0.5rem;">${c.title}</h3>
+            <p>${c.desc}</p>
+          </div>
+          <span class="cta-link">Open Calculator &rarr;</span>`;
+        grid.appendChild(a);
+      });
+    }
+  }
+
   async function init() {
+    syncSiteTo24Calculators(null);
     renderEmbedBox();
     bindDynamicBoosters();
     try {
       const res = await fetch(DATA_URL);
       if (res.ok) {
         cachedData = await res.json();
+        syncSiteTo24Calculators(cachedData);
         renderAdSlots(cachedData.ad_config);
         renderLiveBanner(cachedData);
         hydrateInputs(cachedData);
