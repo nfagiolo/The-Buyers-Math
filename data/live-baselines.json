@@ -18,22 +18,21 @@
     "propane_gal": 2.65,
     "gasoline_gal": 3.35,
     "pellets_40lb": 16.99,
-    "ambient_temp_f": 54.2,
-    "soil_temp_f": 56.8,
-    "solar_peak_hours": 4.3,
-    "hdd_index": 10.8,
-    "generator_load_mult": 1.09,
+    "ambient_temp_f": 48.8,
+    "soil_temp_f": 50.2,
+    "solar_peak_hours": 4.5,
+    "hdd_index": 16.2,
+    "generator_load_mult": 1.13,
     "spf_stud_2x4": 3.91,
     "romex_12_2_250ft": 142.64,
     "arch_shingles_sq": 117.29,
     "concrete_80lb": 6.43
   },
   "seasonal_banner": {
-    "headline": "Soil Threshold Alert (56.8\u00b0F) & Shoulder-Season Energy Math",
-    "summary": "Soil temperatures are holding at 56.8\u00b0F\u2014the key biological window for turf treatments and exterior flatwork\u2014while 4.3 peak sun hours support high battery recharge efficiency."
+    "headline": "Soil Threshold Alert (50.2\u00b0F) & Shoulder-Season Energy Math",
+    "summary": "Soil temperatures are holding at 50.2\u00b0F\u2014the key biological window for turf treatments and exterior flatwork\u2014while 4.5 peak sun hours support high battery recharge efficiency."
   },
   "history_30d": [
-    101,
     99,
     102,
     104,
@@ -62,7 +61,8 @@
     116,
     119,
     121,
-    113
+    113,
+    119
   ],
   "catalog": {
     "energy": [
