@@ -15,24 +15,37 @@
   },
   "metrics": {
     "kwh_rate": 0.172,
+    "nat_gas_therm": 1.45,
     "propane_gal": 2.65,
     "gasoline_gal": 3.35,
     "pellets_40lb": 16.99,
-    "ambient_temp_f": 48.8,
-    "soil_temp_f": 50.2,
-    "solar_peak_hours": 4.5,
-    "hdd_index": 16.2,
-    "generator_load_mult": 1.13,
+    "ambient_temp_f": 54.2,
+    "soil_temp_f": 56.8,
+    "solar_peak_hours": 4.3,
+    "hdd_index": 10.8,
+    "aux_strip_load_pct": 28,
+    "generator_load_mult": 1.09,
     "spf_stud_2x4": 3.91,
     "romex_12_2_250ft": 142.64,
     "arch_shingles_sq": 117.29,
-    "concrete_80lb": 6.43
+    "concrete_80lb": 6.43,
+    "drywall_sheet": 14.84,
+    "r38_batt_roll": 80.07
   },
   "seasonal_banner": {
-    "headline": "Soil Threshold Alert (50.2\u00b0F) & Shoulder-Season Energy Math",
-    "summary": "Soil temperatures are holding at 50.2\u00b0F\u2014the key biological window for turf treatments and exterior flatwork\u2014while 4.5 peak sun hours support high battery recharge efficiency."
+    "headline": "Thermal Balance Point (54.2\u00b0F) & 56.8\u00b0F Soil Threshold Window",
+    "summary": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (10.8 HDD), heat pump auxiliary strips increase daily load by ~28%, while 56.8\u00b0F soil temperatures mark the prime window for exterior flatwork and pre-winterization."
+  },
+  "math_of_the_day": {
+    "title": "Architectural Asphalt vs. Class 4 Impact Shingles: 3-Pitch Tear-Off & Insurance Premium Audit",
+    "url": "/daily/todays-math/index.html",
+    "parent_calc": "/roofing-cost-calculator.html",
+    "parent_calc_query": "/roofing-cost-calculator.html?roofPitch=medium",
+    "parent_calc_name": "Roof Replacement Cost Estimator",
+    "highlight": "Counter-Intuitive Takeaway: On steep-slope roofs (8/12+ pitch), labor staging and safety rigging represent 42% of the total bid\u2014upgrading from standard architectural shingles to SBS-modified Class 4 impact shingles adds only ~12% to the turnkey quote while extending service life by 8\u201310 years."
   },
   "history_30d": [
+    101,
     99,
     102,
     104,
@@ -61,78 +74,218 @@
     116,
     119,
     121,
-    113,
-    119
+    113
   ],
+  "tool_context": {
+    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (10.8 HDD), heat pump auxiliary strips increase daily load by ~28% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
+    "roofing": "With Class A architectural shingles averaging $117.29/sq and daytime ambient temperatures at 54.2\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
+    "electrical": "With 12/2 NM-B copper Romex at $142.64 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.09x seasonal load factor. Our defaults below are pre-set to today's averages.",
+    "plumbing": "With incoming municipal groundwater temperatures near 56.8\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
+    "interior": "With 2x4x8 SPF framing studs at $3.91 and 1/2\" drywall at $14.84/sheet, interior remodeling material takeoffs are holding steady. Our defaults below are pre-set to today's averages.",
+    "outdoor": "With 80lb 4000-PSI concrete at $6.43/bag and 6cm soil temperatures at 56.8\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
+  },
   "catalog": {
+    "hvac": [
+      {
+        "name": "Ecobee Smart Thermostat Premium (Dual-Fuel Aux Strip Lockout)",
+        "asin": "B09XXS48P8",
+        "spec_label": "5-Yr Aux Strip Savings / Cost per 1k BTU Saved",
+        "unit_cost": "$0.04 / 1,000 BTU Saved (Saves ~$412/yr)",
+        "tco_5yr": "$249 Upfront \u2022 $0 Consumables \u2022 +$1,810 Net 5-Yr Gain",
+        "efficiency_score": 98,
+        "note": "Locks out expensive 10kW electric resistance strips above 25\u00b0F; pays for itself in 7.2 months."
+      },
+      {
+        "name": "Intermatic AG3000 120/240V HVAC Disconnect Surge Protector",
+        "asin": "B008VM6MXI",
+        "spec_label": "Cost per Year of Inverter Board Protection",
+        "unit_cost": "$6.80 / Year (10-Yr Warranty)",
+        "tco_5yr": "$68 Upfront \u2022 Prevents $1,100 Inverter ECM Replacement",
+        "efficiency_score": 95,
+        "note": "NEC 2023 compliant Type 1/Type 2 SPD required for variable-speed heat pump condensers."
+      },
+      {
+        "name": "Filterbuy 20x25x4 MERV 11 Pleated Media Air Filter (4-Pack)",
+        "asin": "B01M09JW89",
+        "spec_label": "Cost per Day of Static-Pressure Safe Filtration",
+        "unit_cost": "$0.09 / Day ($8.75 / Quarterly Change)",
+        "tco_5yr": "$175 (5-Yr Supply) \u2022 Cuts Blower Wattage by ~6%",
+        "efficiency_score": 91,
+        "note": "Deep 4-inch pleats reduce static pressure drop compared to restrictive 1-inch MERV 13 filters."
+      }
+    ],
+    "roofing": [
+      {
+        "name": "FLIR ONE Gen 3 Smartphone Thermal Imaging Camera",
+        "asin": "B0728C7KND",
+        "spec_label": "Cost per Sq Ft of Attic/Roof Envelope Audited",
+        "unit_cost": "$0.08 / Sq Ft (2,400 Sq Ft Home)",
+        "tco_5yr": "$189.99 One-Time \u2022 Detects $1,200+ in Wet Insulation/Air Leaks",
+        "efficiency_score": 97,
+        "note": "Pinpoints hidden roof deck moisture and attic R-value thermal bypasses before tear-off."
+      },
+      {
+        "name": "Frost King 200W Roof & Gutter De-Icing Heating Cable Kit (100 ft)",
+        "asin": "B0002YWW6Y",
+        "spec_label": "Cost per Linear Foot of Ice Dam Protection",
+        "unit_cost": "$0.54 / Linear Foot",
+        "tco_5yr": "$54 Hardware + ~$18/Winter Active Freeze Run Cost",
+        "efficiency_score": 93,
+        "note": "Prevents eave ice damming and fascia rot when January temps drop below 25\u00b0F."
+      },
+      {
+        "name": "GREAT STUFF PRO Gaps & Cracks Polyurethane Foam Kit + Gun",
+        "asin": "B07GL5S92N",
+        "spec_label": "Cost per Linear Foot of Attic Top-Plate Air Sealing",
+        "unit_cost": "$0.06 / Linear Foot (30% 25C Tax Credit Eligible)",
+        "tco_5yr": "$48 Net Outlay \u2022 Saves ~$165/yr in Stack-Effect Heat Loss",
+        "efficiency_score": 96,
+        "note": "Eligible for 30% IRA Section 25C building envelope credit when sealing attic penetrations."
+      }
+    ],
+    "electrical": [
+      {
+        "name": "Champion 7500W/9375W Dual-Fuel Generator (Electric Start)",
+        "asin": "B08L9G2N64",
+        "spec_label": "Cost per Rated Running Watt & 5-Yr TCO",
+        "unit_cost": "$0.11 / Rated Watt",
+        "tco_5yr": "$849 Hardware + $42/yr LPG Maintenance = $1,059 5-Yr TCO",
+        "efficiency_score": 97,
+        "note": "Lowest 5-year cost per kWh during multi-day outages running on zero-fouling liquid propane."
+      },
+      {
+        "name": "Reliance Controls 30-Amp 10-Circuit Manual Transfer Switch",
+        "asin": "B000BQN4T2",
+        "spec_label": "Cost per Protected Household Circuit",
+        "unit_cost": "$34.50 / Circuit (10 Circuits)",
+        "tco_5yr": "$345 One-Time \u2022 Zero Consumables \u2022 Recovers ~6% Line Voltage Drop",
+        "efficiency_score": 94,
+        "note": "Eliminates extension cord voltage drop and meets NEC 702 standby interlock safety rules."
+      },
+      {
+        "name": "Klein Tools CL800 Digital True-RMS AC/DC Clamp Meter",
+        "asin": "B019CY4FB4",
+        "spec_label": "Cost per Panel Circuit Load Audit",
+        "unit_cost": "$3.25 / Breaker Audited (40-Space Panel)",
+        "tco_5yr": "$129.98 One-Time \u2022 Verifies 200A Bus Balance & EV Amperage",
+        "efficiency_score": 92,
+        "note": "Audits real-time L1/L2 leg balance before installing 48A Level 2 EV chargers or heat pumps."
+      }
+    ],
+    "plumbing": [
+      {
+        "name": "Amtrol ST-5 Therm-X-Trol 2.1-Gallon Water Heater Expansion Tank",
+        "asin": "B000695F6E",
+        "spec_label": "Cost per Year of Closed-Loop Pressure Protection",
+        "unit_cost": "$5.20 / Year (10-Yr Tank Life)",
+        "tco_5yr": "$52 Hardware \u2022 Mandatory under IPC 607.3",
+        "efficiency_score": 96,
+        "note": "Prevents T&P relief valve weeping and premature tank weld fatigue above 80 PSI."
+      },
+      {
+        "name": "Govee Wi-Fi Water Sensor 3-Pack with 100dB Audible Alarm",
+        "asin": "B07QSFRSJX",
+        "spec_label": "Cost per Protected Mechanical/Plumbing Zone",
+        "unit_cost": "$13.33 / Zone (Water Heater, Sump, Vanity)",
+        "tco_5yr": "$39.99 Hardware + $6 Batteries = $45.99 5-Yr TCO",
+        "efficiency_score": 95,
+        "note": "Sends instant smartphone push alerts at first sign of condensate pan or tank seepage."
+      },
+      {
+        "name": "RectorSeal 97082 Calci-Free Tankless Water Heater Flush Kit",
+        "asin": "B01M24J64L",
+        "spec_label": "Cost per Annual Descaling Maintenance Cycle",
+        "unit_cost": "$18.50 / Annual Flush (vs. $250 Plumber Call)",
+        "tco_5yr": "$145 Kit (Submersible Pump + Hoses) + 4 Vinegar Flushes = $185 5-Yr TCO",
+        "efficiency_score": 93,
+        "note": "Restores 100% heat exchanger thermal transfer in hard-water zones (>7 GPG)."
+      }
+    ],
+    "interior": [
+      {
+        "name": "Bosch GLL 55 Self-Leveling Cross-Line Laser Level",
+        "asin": "B07571F3ZF",
+        "spec_label": "Cost per Linear Foot of Tile/Cabinet Layout",
+        "unit_cost": "$0.19 / Linear Foot (600 ft Remodel)",
+        "tco_5yr": "$119.00 One-Time \u2022 Prevents Lippage & Shim Re-work",
+        "efficiency_score": 96,
+        "note": "Establishes dead-level reference planes for kitchen wall cabinets, shower tile, and basement framing."
+      },
+      {
+        "name": "Wagner Orion 910 Pinless Digital Wood & Drywall Moisture Meter",
+        "asin": "B0778X5M3S",
+        "spec_label": "Cost per Subfloor/Wall Moisture Scan",
+        "unit_cost": "$1.45 / Scan Zone",
+        "tco_5yr": "$145 One-Time \u2022 Verifies <12% Subfloor EMC Before Flooring",
+        "efficiency_score": 94,
+        "note": "Non-destructive electromagnetic wave sensor prevents hardwood cupping and basement mold."
+      },
+      {
+        "name": "DeWalt 20V MAX XR Brushless Oscillating Multi-Tool Kit (DCS356D1)",
+        "asin": "B07V48X7HG",
+        "spec_label": "Cost per Remodel Demolition & Undercut Task",
+        "unit_cost": "$2.78 / Cut (50 Jambs & Outlet Boxes)",
+        "tco_5yr": "$139 Kit + $25 Carbide Blades = $164 5-Yr TCO",
+        "efficiency_score": 92,
+        "note": "Flush-cuts door casings for LVP/hardwood installation and drywall cutouts without stud damage."
+      }
+    ],
+    "outdoor": [
+      {
+        "name": "The Andersons Barricade Professional Pre-Emergent (50 lb)",
+        "asin": "B07K58B6CF",
+        "spec_label": "Cost per 1,000 Sq Ft of Coverage",
+        "unit_cost": "$3.85 / 1,000 Sq Ft (14,000 Sq Ft Bag)",
+        "tco_5yr": "$269 (5-Yr Supply for 14k Sq Ft) vs. $1,400 Lawn Service",
+        "efficiency_score": 97,
+        "note": "Pro-grade prodiamine granular barrier applied at 55\u00b0F soil temperature thresholds."
+      },
+      {
+        "name": "Taylor K-2006C Complete FAS-DPD Chlorine & Pool Water Test Kit",
+        "asin": "B004BGF7TI",
+        "spec_label": "Cost per Precision Water Balance Test",
+        "unit_cost": "$0.42 / Test (200+ Tests)",
+        "tco_5yr": "$84 Kit + $35 Reagent Refills = $119 5-Yr TCO",
+        "efficiency_score": 94,
+        "note": "Prevents ~$180/season in chemical overdosing and protects variable-speed pump seals."
+      },
+      {
+        "name": "Sta-Bil 360 Protection Ethanol Treatment & Fuel Stabilizer (32 oz)",
+        "asin": "B0081ZVBD6",
+        "spec_label": "Cost per Treated Gallon of Equipment Fuel",
+        "unit_cost": "$0.14 / Treated Gallon (Treats 160 Gal)",
+        "tco_5yr": "$22.50 Bottle \u2022 Prevents $185 Carburetor Replacements",
+        "efficiency_score": 92,
+        "note": "Vapor-corrosion barrier protects 4-stroke mowers, pressure washers, and standby generators."
+      }
+    ],
     "energy": [
       {
         "name": "Champion 7500W/9375W Dual-Fuel Generator (Electric Start)",
         "asin": "B08L9G2N64",
-        "spec_label": "Cost per Rated Watt",
-        "unit_cost": "$0.11 / Watt",
-        "efficiency_score": 96,
+        "spec_label": "Cost per Rated Running Watt & 5-Yr TCO",
+        "unit_cost": "$0.11 / Rated Watt",
+        "tco_5yr": "$849 Hardware + $42/yr LPG Maintenance = $1,059 5-Yr TCO",
+        "efficiency_score": 97,
         "note": "Lowest 5-year cost per kWh during multi-day outages running on bulk liquid propane."
       },
       {
         "name": "Reliance Controls 30-Amp 10-Circuit Manual Transfer Switch",
         "asin": "B000BQN4T2",
-        "spec_label": "Cost per Protected Circuit",
-        "unit_cost": "$34.50 / Circuit",
-        "efficiency_score": 92,
-        "note": "Eliminates extension cord voltage drop (~6% efficiency recovery) and NEC backfeed hazards."
+        "spec_label": "Cost per Protected Household Circuit",
+        "unit_cost": "$34.50 / Circuit (10 Circuits)",
+        "tco_5yr": "$345 One-Time \u2022 Zero Consumables \u2022 Recovers ~6% Line Voltage Drop",
+        "efficiency_score": 94,
+        "note": "Eliminates extension cord voltage drop and meets NEC 702 standby interlock safety rules."
       },
       {
         "name": "EcoFlow DELTA 2 LiFePO4 1024Wh Portable Power Station",
         "asin": "B0B9XB57XM",
-        "spec_label": "Cycle Cost (3,000 Cycles)",
+        "spec_label": "Cost per Full Charge Cycle (3,000 Cycles to 80%)",
         "unit_cost": "$0.23 / Cycle",
-        "efficiency_score": 89,
-        "note": "High-efficiency indoor peak-shaving backup for sump pumps, refrigerators, and furnaces."
-      }
-    ],
-    "yard": [
-      {
-        "name": "The Andersons Barricade Professional Pre-Emergent (50 lb)",
-        "asin": "B07K58B6CF",
-        "spec_label": "Cost per 1,000 Sq Ft",
-        "unit_cost": "$3.85 / 1k sq ft",
-        "efficiency_score": 97,
-        "note": "Covers up to 14,000 sq ft at standard fall and spring soil temperature thresholds."
-      },
-      {
-        "name": "Taylor K-2006C Complete FAS-DPD Chlorine & Pool Water Test Kit",
-        "asin": "B004BGF7TI",
-        "spec_label": "Cost per Accurate Test",
-        "unit_cost": "$0.42 / Test",
-        "efficiency_score": 94,
-        "note": "Prevents ~$180/season in chemical overdosing compared to colorimetric test strips."
-      },
-      {
-        "name": "Sta-Bil 360 Protection Ethanol Treatment & Fuel Stabilizer (32 oz)",
-        "asin": "B0081ZVBD6",
-        "spec_label": "Cost per Treated Gallon",
-        "unit_cost": "$0.14 / Gallon",
+        "tco_5yr": "$699 Hardware \u2022 $0 Fuel Maintenance \u2022 10-Yr LiFePO4 Lifespan",
         "efficiency_score": 91,
-        "note": "Protects 160 gallons of 4-stroke and standby generator gasoline for 12 months."
-      }
-    ],
-    "cooking": [
-      {
-        "name": "Bear Mountain BBQ 100% All-Natural Hardwood Pellets (40 lb)",
-        "asin": "B082B7P9R4",
-        "spec_label": "Cost per BTU Output",
-        "unit_cost": "$0.42 / lb",
-        "efficiency_score": 95,
-        "note": "Low-ash 8,500 BTU/lb hardwood blend with minimal auger bridging in cold weather."
-      },
-      {
-        "name": "ThermoWorks ThermoPen ONE Instant-Read Digital Thermometer",
-        "asin": "B08KZR4F23",
-        "spec_label": "Response Precision",
-        "unit_cost": "1.0 Sec / \u00b10.5\u00b0F",
-        "efficiency_score": 93,
-        "note": "Eliminates lid-open thermal loss (~12% fuel savings on winter smoking runs)."
+        "note": "Silent indoor peak-shaving backup for sump pumps, refrigerators, and gas furnace blowers."
       }
     ]
   }
