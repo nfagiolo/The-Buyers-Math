@@ -19,12 +19,12 @@
     "propane_gal": 2.65,
     "gasoline_gal": 3.35,
     "pellets_40lb": 16.99,
-    "ambient_temp_f": 54.2,
-    "soil_temp_f": 56.8,
-    "solar_peak_hours": 4.3,
-    "hdd_index": 10.8,
-    "aux_strip_load_pct": 28,
-    "generator_load_mult": 1.09,
+    "ambient_temp_f": 48.8,
+    "soil_temp_f": 50.3,
+    "solar_peak_hours": 4.5,
+    "hdd_index": 16.2,
+    "aux_strip_load_pct": 42,
+    "generator_load_mult": 1.13,
     "spf_stud_2x4": 3.91,
     "romex_12_2_250ft": 142.64,
     "arch_shingles_sq": 117.29,
@@ -33,8 +33,8 @@
     "r38_batt_roll": 80.07
   },
   "seasonal_banner": {
-    "headline": "Thermal Balance Point (54.2\u00b0F) & 56.8\u00b0F Soil Threshold Window",
-    "summary": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (10.8 HDD), heat pump auxiliary strips increase daily load by ~28%, while 56.8\u00b0F soil temperatures mark the prime window for exterior flatwork and pre-winterization."
+    "headline": "Thermal Balance Point (48.8\u00b0F) & 50.3\u00b0F Soil Threshold Window",
+    "summary": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (16.2 HDD), heat pump auxiliary strips increase daily load by ~42%, while 50.3\u00b0F soil temperatures mark the prime window for exterior flatwork and pre-winterization."
   },
   "math_of_the_day": {
     "title": "Architectural Asphalt vs. Class 4 Impact Shingles: 3-Pitch Tear-Off & Insurance Premium Audit",
@@ -45,7 +45,6 @@
     "highlight": "Counter-Intuitive Takeaway: On steep-slope roofs (8/12+ pitch), labor staging and safety rigging represent 42% of the total bid\u2014upgrading from standard architectural shingles to SBS-modified Class 4 impact shingles adds only ~12% to the turnkey quote while extending service life by 8\u201310 years."
   },
   "history_30d": [
-    101,
     99,
     102,
     104,
@@ -74,15 +73,16 @@
     116,
     119,
     121,
-    113
+    113,
+    119
   ],
   "tool_context": {
-    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (10.8 HDD), heat pump auxiliary strips increase daily load by ~28% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
-    "roofing": "With Class A architectural shingles averaging $117.29/sq and daytime ambient temperatures at 54.2\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
-    "electrical": "With 12/2 NM-B copper Romex at $142.64 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.09x seasonal load factor. Our defaults below are pre-set to today's averages.",
-    "plumbing": "With incoming municipal groundwater temperatures near 56.8\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
+    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (16.2 HDD), heat pump auxiliary strips increase daily load by ~42% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
+    "roofing": "With Class A architectural shingles averaging $117.29/sq and daytime ambient temperatures at 48.8\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
+    "electrical": "With 12/2 NM-B copper Romex at $142.64 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.13x seasonal load factor. Our defaults below are pre-set to today's averages.",
+    "plumbing": "With incoming municipal groundwater temperatures near 50.3\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
     "interior": "With 2x4x8 SPF framing studs at $3.91 and 1/2\" drywall at $14.84/sheet, interior remodeling material takeoffs are holding steady. Our defaults below are pre-set to today's averages.",
-    "outdoor": "With 80lb 4000-PSI concrete at $6.43/bag and 6cm soil temperatures at 56.8\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
+    "outdoor": "With 80lb 4000-PSI concrete at $6.43/bag and 6cm soil temperatures at 50.3\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
   },
   "catalog": {
     "hvac": [
