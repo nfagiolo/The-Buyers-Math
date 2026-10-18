@@ -1,0 +1,79 @@
+{
+  "last_updated": "2026-10-18",
+  "formatted_date": "October 18, 2026",
+  "metrics": {
+    "kwh_rate": 0.172,
+    "propane_gal": 2.65,
+    "gasoline_gal": 3.35,
+    "pellets_40lb": 16.99,
+    "ambient_temp_f": 54.2,
+    "soil_temp_f": 56.8,
+    "solar_peak_hours": 4.3,
+    "hdd_index": 10.8,
+    "generator_load_mult": 1.09
+  },
+  "seasonal_banner": {
+    "headline": "Autumn Thermal & Turf Transition Window",
+    "summary": "With soil temperatures holding near the 55°F biological threshold and overnight lows dipping into the 40s, heat pump auxiliary strip demand increases daily HVAC load by ~14% while cool-season winterizer windows are active."
+  },
+  "history_30d": [
+    100, 101, 99, 102, 104, 103, 105, 106, 104, 107,
+    108, 107, 109, 110, 108, 111, 112, 110, 113, 114,
+    112, 115, 114, 116, 115, 117, 118, 116, 119, 121
+  ],
+  "associate_tag": "nfagiolo-20",
+  "catalog": {
+    "energy": [
+      {
+        "name": "Champion 7500W/9375W Dual-Fuel Generator",
+        "asin": "B08L9G2N64",
+        "spec_label": "Cost per Rated Watt",
+        "unit_cost": "$0.11 / Watt",
+        "efficiency_score": 96,
+        "note": "Lowest 5-year cost per kWh during multi-day outages on bulk propane."
+      },
+      {
+        "name": "Reliance Controls 30-Amp 10-Circuit Transfer Switch",
+        "asin": "B000BQN4T2",
+        "spec_label": "Cost per Protected Circuit",
+        "unit_cost": "$34.50 / Circuit",
+        "efficiency_score": 92,
+        "note": "Eliminates extension cord voltage drop (~6% efficiency recovery)."
+      },
+      {
+        "name": "EcoFlow DELTA 2 LiFePO4 1024Wh Power Station",
+        "asin": "B0B9XB57XM",
+        "spec_label": "Cycle Cost (3,000 Cycles)",
+        "unit_cost": "$0.23 / Cycle",
+        "efficiency_score": 89,
+        "note": "Best indoor peak-shaving ROI for routers, refrigerators, and sump pumps."
+      }
+    ],
+    "yard": [
+      {
+        "name": "The Andersons Barricade Pre-Emergent (50 lb)",
+        "asin": "B07K58B6CF",
+        "spec_label": "Cost per 1,000 Sq Ft",
+        "unit_cost": "$3.85 / 1k sq ft",
+        "efficiency_score": 97,
+        "note": "Covers up to 14,000 sq ft at standard application rates."
+      },
+      {
+        "name": "Taylor K-2006C Complete Salt/Chlorine Test Kit",
+        "asin": "B004BGF7TI",
+        "spec_label": "Cost per Accurate Test",
+        "unit_cost": "$0.42 / Test",
+        "efficiency_score": 94,
+        "note": "Prevents ~$180/season in chemical overdosing vs. test strips."
+      },
+      {
+        "name": "Sta-Bil 360 Protection Fuel Stabilizer (32 oz)",
+        "asin": "B0081ZVBD6",
+        "spec_label": "Cost per Treated Gallon",
+        "unit_cost": "$0.14 / Gallon",
+        "efficiency_score": 91,
+        "note": "Protects 160 gallons of 4-stroke and generator fuel for 12 months."
+      }
+    ]
+  }
+}
