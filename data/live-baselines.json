@@ -1,6 +1,18 @@
 {
   "last_updated": "2026-10-18",
   "formatted_date": "October 18, 2026",
+  "associate_tag": "nfagiolo-20",
+  "ad_config": {
+    "adsense_client": "ca-pub-1199906473460957",
+    "adsense_slot_top": "responsive",
+    "adsense_slot_bottom": "responsive",
+    "cj_enterprise_id": "8090259",
+    "cj_property_id": "101896838",
+    "angi_url": "https://www.jdoqocy.com/click-101896838-17142784",
+    "elocal_url": "https://www.jdoqocy.com/click-101896838-17142784",
+    "switchbot_url": "https://www.dpbolvw.net/click-101896838-15310710",
+    "ga4_id": "G-V4GTQSCFW6"
+  },
   "metrics": {
     "kwh_rate": 0.172,
     "propane_gal": 2.65,
@@ -10,69 +22,117 @@
     "soil_temp_f": 56.8,
     "solar_peak_hours": 4.3,
     "hdd_index": 10.8,
-    "generator_load_mult": 1.09
+    "generator_load_mult": 1.09,
+    "spf_stud_2x4": 3.91,
+    "romex_12_2_250ft": 142.64,
+    "arch_shingles_sq": 117.29,
+    "concrete_80lb": 6.43
   },
   "seasonal_banner": {
-    "headline": "Autumn Thermal & Turf Transition Window",
-    "summary": "With soil temperatures holding near the 55°F biological threshold and overnight lows dipping into the 40s, heat pump auxiliary strip demand increases daily HVAC load by ~14% while cool-season winterizer windows are active."
+    "headline": "Soil Threshold Alert (56.8\u00b0F) & Shoulder-Season Energy Math",
+    "summary": "Soil temperatures are holding at 56.8\u00b0F\u2014the key biological window for turf treatments and exterior flatwork\u2014while 4.3 peak sun hours support high battery recharge efficiency."
   },
   "history_30d": [
-    100, 101, 99, 102, 104, 103, 105, 106, 104, 107,
-    108, 107, 109, 110, 108, 111, 112, 110, 113, 114,
-    112, 115, 114, 116, 115, 117, 118, 116, 119, 121
+    101,
+    99,
+    102,
+    104,
+    103,
+    105,
+    106,
+    104,
+    107,
+    108,
+    107,
+    109,
+    110,
+    108,
+    111,
+    112,
+    110,
+    113,
+    114,
+    112,
+    115,
+    114,
+    116,
+    115,
+    117,
+    118,
+    116,
+    119,
+    121,
+    113
   ],
-  "associate_tag": "nfagiolo-20",
   "catalog": {
     "energy": [
       {
-        "name": "Champion 7500W/9375W Dual-Fuel Generator",
+        "name": "Champion 7500W/9375W Dual-Fuel Generator (Electric Start)",
         "asin": "B08L9G2N64",
         "spec_label": "Cost per Rated Watt",
         "unit_cost": "$0.11 / Watt",
         "efficiency_score": 96,
-        "note": "Lowest 5-year cost per kWh during multi-day outages on bulk propane."
+        "note": "Lowest 5-year cost per kWh during multi-day outages running on bulk liquid propane."
       },
       {
-        "name": "Reliance Controls 30-Amp 10-Circuit Transfer Switch",
+        "name": "Reliance Controls 30-Amp 10-Circuit Manual Transfer Switch",
         "asin": "B000BQN4T2",
         "spec_label": "Cost per Protected Circuit",
         "unit_cost": "$34.50 / Circuit",
         "efficiency_score": 92,
-        "note": "Eliminates extension cord voltage drop (~6% efficiency recovery)."
+        "note": "Eliminates extension cord voltage drop (~6% efficiency recovery) and NEC backfeed hazards."
       },
       {
-        "name": "EcoFlow DELTA 2 LiFePO4 1024Wh Power Station",
+        "name": "EcoFlow DELTA 2 LiFePO4 1024Wh Portable Power Station",
         "asin": "B0B9XB57XM",
         "spec_label": "Cycle Cost (3,000 Cycles)",
         "unit_cost": "$0.23 / Cycle",
         "efficiency_score": 89,
-        "note": "Best indoor peak-shaving ROI for routers, refrigerators, and sump pumps."
+        "note": "High-efficiency indoor peak-shaving backup for sump pumps, refrigerators, and furnaces."
       }
     ],
     "yard": [
       {
-        "name": "The Andersons Barricade Pre-Emergent (50 lb)",
+        "name": "The Andersons Barricade Professional Pre-Emergent (50 lb)",
         "asin": "B07K58B6CF",
         "spec_label": "Cost per 1,000 Sq Ft",
         "unit_cost": "$3.85 / 1k sq ft",
         "efficiency_score": 97,
-        "note": "Covers up to 14,000 sq ft at standard application rates."
+        "note": "Covers up to 14,000 sq ft at standard fall and spring soil temperature thresholds."
       },
       {
-        "name": "Taylor K-2006C Complete Salt/Chlorine Test Kit",
+        "name": "Taylor K-2006C Complete FAS-DPD Chlorine & Pool Water Test Kit",
         "asin": "B004BGF7TI",
         "spec_label": "Cost per Accurate Test",
         "unit_cost": "$0.42 / Test",
         "efficiency_score": 94,
-        "note": "Prevents ~$180/season in chemical overdosing vs. test strips."
+        "note": "Prevents ~$180/season in chemical overdosing compared to colorimetric test strips."
       },
       {
-        "name": "Sta-Bil 360 Protection Fuel Stabilizer (32 oz)",
+        "name": "Sta-Bil 360 Protection Ethanol Treatment & Fuel Stabilizer (32 oz)",
         "asin": "B0081ZVBD6",
         "spec_label": "Cost per Treated Gallon",
         "unit_cost": "$0.14 / Gallon",
         "efficiency_score": 91,
-        "note": "Protects 160 gallons of 4-stroke and generator fuel for 12 months."
+        "note": "Protects 160 gallons of 4-stroke and standby generator gasoline for 12 months."
+      }
+    ],
+    "cooking": [
+      {
+        "name": "Bear Mountain BBQ 100% All-Natural Hardwood Pellets (40 lb)",
+        "asin": "B082B7P9R4",
+        "spec_label": "Cost per BTU Output",
+        "unit_cost": "$0.42 / lb",
+        "efficiency_score": 95,
+        "note": "Low-ash 8,500 BTU/lb hardwood blend with minimal auger bridging in cold weather."
+      },
+      {
+        "name": "ThermoWorks ThermoPen ONE Instant-Read Digital Thermometer",
+        "asin": "B08KZR4F23",
+        "spec_label": "Response Precision",
+        "unit_cost": "1.0 Sec / \u00b10.5\u00b0F",
+        "efficiency_score": 93,
+        "note": "Eliminates lid-open thermal loss (~12% fuel savings on winter smoking runs)."
       }
     ]
   }
