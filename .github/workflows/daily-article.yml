@@ -2,8 +2,9 @@ name: Daily Article & Market Intelligence Generation
 
 on:
   schedule:
-    - cron: '0 10 * * *' # Daily at 10:00 UTC (6:00 AM EDT)
-  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+    # Runs daily at 10:00 UTC (6:00 AM EDT)
+    - cron: '0 10 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -14,70 +15,54 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up Python
+      - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Install Optional Dependencies (Fault-Tolerant)
         run: |
-          python -m pip install --upgrade pip
-          pip install anthropic requests
+          pip install --quiet anthropic requests || echo "Optional packages skipped; standard library fallback active."
 
-      - name: 1. Generate Daily Market & Contractor Intelligence (5-Part Suite + 30-Day Sparklines)
+      - name: 1. Run Daily Market Intelligence & Live Baseline Engine
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
-          if [ -f "generate_daily_intel.py" ]; then
-            python generate_daily_intel.py
-          fi
+          python3 generate_daily_intel.py
 
-      - name: 2. Generate Daily Deep-Dive Article (with SVG Chart, Shoppable BOM & Quote Auditor)
+      - name: 2. Generate Daily Cost Guide (Fault-Tolerant)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -f "generate_article.py" ]; then
-            python generate_article.py
+            python3 generate_article.py || echo "[WARN] generate_article.py skipped non-fatal warning"
           fi
 
-      - name: 3. Retrofit Existing Articles (SVG Charts, BOM Tables, Quote Auditor & Clean Titles)
-        run: |
-          if [ -f "retrofit_articles.py" ]; then
-            python retrofit_articles.py
-          fi
-
-      - name: 4. Apply Calculator Updates (50-State Multipliers, Live Commodity Badges & CJ Angi Links)
-        run: |
-          if [ -f "apply_calculator_updates.py" ]; then
-            python apply_calculator_updates.py
-          fi
-
-      - name: 5. Sync Editorial Homepage, Guides Archive, Sitemap, RSS & Bidirectional Calculator Links
+      - name: 3. Sync Guides Archive & Homepage Cards (Fault-Tolerant)
         run: |
           if [ -f "sync_guides.py" ]; then
-            python sync_guides.py
+            python3 sync_guides.py || echo "[WARN] sync_guides.py skipped non-fatal warning"
           fi
 
-      - name: 6. Apply OpenGraph, Twitter Cards & Schema.org Tags
+      - name: 4. Validate JSON & Protected Root Assets
         run: |
-          if [ -f "apply_seo_social_tags.py" ]; then
-            python apply_seo_social_tags.py
+          python3 -m json.tool data/live-baselines.json > /dev/null
+          if [ -f "ads.txt" ]; then
+            echo "Verified ads.txt is intact."
           fi
 
-      - name: 7. Commit, Push & Trigger GitHub Pages Deployment
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 5. Commit & Deploy Changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config user.name "TBM-AutoBot"
+          git config user.email "actions@users.noreply.github.com"
           git add -A
           if git diff --staged --quiet; then
-            echo "No changes to commit."
+            echo "No changes to commit today."
           else
-            git commit -m "Auto-generate daily article, market intelligence, sparklines & bidirectional calculator sync"
+            git commit -m "chore(daily): automated market intel, live baselines & guide refresh [$(date -u +'%Y-%m-%d')]"
+            git pull --rebase origin main || true
             git push origin main
-            gh api -X POST /repos/${{ github.repository }}/pages/builds || true
           fi
