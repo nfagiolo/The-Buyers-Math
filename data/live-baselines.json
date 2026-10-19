@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-18",
-  "formatted_date": "October 18, 2026",
+  "last_updated": "2026-10-19",
+  "formatted_date": "October 19, 2026",
   "associate_tag": "nfagiolo-20",
   "ad_config": {
     "adsense_client": "ca-pub-1199906473460957",
@@ -19,33 +19,32 @@
     "propane_gal": 2.65,
     "gasoline_gal": 3.35,
     "pellets_40lb": 16.99,
-    "ambient_temp_f": 48.7,
-    "soil_temp_f": 50.3,
-    "solar_peak_hours": 4.5,
-    "hdd_index": 16.3,
-    "aux_strip_load_pct": 42,
-    "generator_load_mult": 1.13,
-    "spf_stud_2x4": 3.91,
-    "romex_12_2_250ft": 142.64,
-    "arch_shingles_sq": 117.29,
-    "concrete_80lb": 6.43,
-    "drywall_sheet": 14.84,
-    "r38_batt_roll": 80.07
+    "ambient_temp_f": 49.8,
+    "soil_temp_f": 48.4,
+    "solar_peak_hours": 4.4,
+    "hdd_index": 15.2,
+    "aux_strip_load_pct": 40,
+    "generator_load_mult": 1.12,
+    "spf_stud_2x4": 3.84,
+    "romex_12_2_250ft": 142.93,
+    "arch_shingles_sq": 119.42,
+    "concrete_80lb": 6.39,
+    "drywall_sheet": 15.2,
+    "r38_batt_roll": 79.13
   },
   "seasonal_banner": {
-    "headline": "Thermal Balance Point (48.7\u00b0F) & 50.3\u00b0F Soil Threshold Window",
-    "summary": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (16.3 HDD), heat pump auxiliary strips increase daily load by ~42%, while 50.3\u00b0F soil temperatures mark the prime window for exterior flatwork and pre-winterization."
+    "headline": "Daily Home & Utility Operating Cost Index (49.8\u00b0F Baseline)",
+    "summary": "Today's solar irradiance provides 4.4 peak sun hours against a $0.172/kWh grid baseline, with thermal load sitting at 1.12x."
   },
   "math_of_the_day": {
-    "title": "Architectural Asphalt vs. Class 4 Impact Shingles: 3-Pitch Tear-Off & Insurance Premium Audit",
+    "title": "7,500W Dual-Fuel Portable + Transfer Switch vs. 22kW Whole-Home Standby: 5-Year Outage TCO",
     "url": "/daily/todays-math/index.html",
-    "parent_calc": "/roofing-cost-calculator.html",
-    "parent_calc_query": "/roofing-cost-calculator.html?roofPitch=medium",
-    "parent_calc_name": "Roof Replacement Cost Estimator",
-    "highlight": "Counter-Intuitive Takeaway: On steep-slope roofs (8/12+ pitch), labor staging and safety rigging represent 42% of the total bid\u2014upgrading from standard architectural shingles to SBS-modified Class 4 impact shingles adds only ~12% to the turnkey quote while extending service life by 8\u201310 years."
+    "parent_calc": "/generator-calculator.html",
+    "parent_calc_query": "/generator-calculator.html?hours=48",
+    "parent_calc_name": "Backup Generator Sizing Guide",
+    "highlight": "Counter-Intuitive Takeaway: Installing a $320 compressor soft-start kit on a 3-ton central AC drops locked-rotor startup amps (LRA) from 88A to 29A\u2014allowing a $1,100 portable dual-fuel generator and 50A interlock kit to run central air conditioning without spending $13,400 on a permanent standby unit."
   },
   "history_30d": [
-    104,
     103,
     105,
     106,
@@ -74,15 +73,16 @@
     113,
     119,
     120,
-    120
+    120,
+    118
   ],
   "tool_context": {
-    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (16.3 HDD), heat pump auxiliary strips increase daily load by ~42% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
-    "roofing": "With Class A architectural shingles averaging $117.29/sq and daytime ambient temperatures at 48.7\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
-    "electrical": "With 12/2 NM-B copper Romex at $142.64 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.13x seasonal load factor. Our defaults below are pre-set to today's averages.",
-    "plumbing": "With incoming municipal groundwater temperatures near 50.3\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
-    "interior": "With 2x4x8 SPF framing studs at $3.91 and 1/2\" drywall at $14.84/sheet, interior remodeling material takeoffs are holding steady. Our defaults below are pre-set to today's averages.",
-    "outdoor": "With 80lb 4000-PSI concrete at $6.43/bag and 6cm soil temperatures at 50.3\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
+    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (15.2 HDD), heat pump auxiliary strips increase daily load by ~40% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
+    "roofing": "With Class A architectural shingles averaging $119.42/sq and daytime ambient temperatures at 49.8\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
+    "electrical": "With 12/2 NM-B copper Romex at $142.93 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.12x seasonal load factor. Our defaults below are pre-set to today's averages.",
+    "plumbing": "With incoming municipal groundwater temperatures near 48.4\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
+    "interior": "With 2x4x8 SPF framing studs at $3.84 and 1/2\" drywall at $15.20/sheet, interior remodeling material takeoffs are holding steady. Our defaults below are pre-set to today's averages.",
+    "outdoor": "With 80lb 4000-PSI concrete at $6.39/bag and 6cm soil temperatures at 48.4\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
   },
   "catalog": {
     "hvac": [
