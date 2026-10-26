@@ -2,67 +2,70 @@ name: Daily Article & Market Intelligence Generation
 
 on:
   schedule:
-    # Runs daily at 10:00 UTC (6:00 AM EDT)
-    - cron: '0 10 * * *'
+    - cron: '15 11 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Python 3.12
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
-      - name: Install Optional Dependencies (Fault-Tolerant)
+      - name: Install dependencies
         run: |
-          pip install --quiet anthropic requests || echo "Optional packages skipped; standard library fallback active."
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
 
-      - name: 1. Run Daily Market Intelligence & Live Baseline Engine
+      - name: 1. Generate Daily Market Intelligence & Calculator Updates
         env:
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python3 generate_daily_intel.py
+          python3 generate_daily_intel.py || echo "Warning: generate_daily_intel.py encountered a non-fatal error"
 
       - name: 2. Generate Daily Cost Guide (Fault-Tolerant)
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          if [ -f "generate_article.py" ]; then
-            python3 generate_article.py || echo "[WARN] generate_article.py skipped non-fatal warning"
-          fi
+          python3 generate_article.py || echo "Warning: generate_article.py encountered a non-fatal error"
 
-      - name: 3. Sync Guides Archive & Homepage Cards (Fault-Tolerant)
+      - name: 3. Retrofit & Sync Guides, Sitemap, RSS, and Calculators
         run: |
-          if [ -f "sync_guides.py" ]; then
-            python3 sync_guides.py || echo "[WARN] sync_guides.py skipped non-fatal warning"
-          fi
+          python3 retrofit_articles.py
+          python3 sync_guides.py
 
       - name: 4. Validate JSON & Protected Root Assets
         run: |
-          python3 -m json.tool data/live-baselines.json > /dev/null
-          if [ -f "ads.txt" ]; then
-            echo "Verified ads.txt is intact."
-          fi
+          for f in regional_multipliers.json commodity_history.json manifest.json; do
+            if [ -f "$f" ]; then
+              python3 -m json.tool "$f" > /dev/null
+            fi
+          done
 
       - name: 5. Commit & Deploy Changes
         run: |
-          git config user.name "TBM-AutoBot"
-          git config user.email "actions@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff --staged --quiet; then
-            echo "No changes to commit today."
+            echo "No changes to commit."
           else
-            git commit -m "chore(daily): automated market intel, live baselines & guide refresh [$(date -u +'%Y-%m-%d')]"
-            git pull --rebase origin main || true
+            git commit -m "Automated daily SKU cost guide, market intelligence & index sync"
+            git pull --rebase origin main
             git push origin main
           fi
