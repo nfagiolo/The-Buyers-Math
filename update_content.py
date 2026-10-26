@@ -1,72 +1,106 @@
-import os
-from google import genai
-from datetime import date
-
-api_key = os.environ.get("GEMINI_API_KEY")
-client = genai.Client(api_key=api_key)
-
-prompt = """
-Write a short, engaging 150-word daily tip focusing on the math and ROI behind one of the following topics: Basement remodeling, driveway paving, HVAC replacement, kitchen remodeling, roofing, solar panel payback, or window replacement.
-
-Format the output strictly as an HTML <div> with a bold <h3> header and standard paragraph text.
-
-Monetization Requirements:
-1. Seamlessly integrate a relevant product recommendation contextually within the text using an Amazon Associates affiliate link structure: <a href="https://amazon.com/dp/ASIN_HERE/?tag=nfagiolo-20" target="_blank" rel="nofollow">
-2. Below the paragraph, insert this exact Google AdSense responsive ad unit block:
-<div style="margin-top: 20px; text-align: center;">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1199906473460957" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1199906473460957" data-ad-slot="5190114395" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-Do not include any markdown formatting like ```html. Output raw HTML only.
+#!/usr/bin/env python3
+"""
+update_content.py - Safe, idempotent Daily Buyer's Math Tip updater.
+1. Uses Tier 1 Gemini API (`gemini-4-argon` with `gemini-2.5-flash` fallback) instead of retired `gemini-1.5-flash`.
+2. Uses verified Amazon search queries (`https://www.amazon.com/s?k=...&tag=nfagiolo-20`) instead of hallucinated `/dp/ASIN` links.
+3. Replaces the Daily Tip cleanly inside `<!-- TBM DAILY TIP START --> ... <!-- TBM DAILY TIP END -->` so tips never stack infinitely.
+4. Calls `sync_guides.py` to keep `index.html`, calculator trade guides, `sitemap.xml`, and `feed.xml` synchronized.
 """
 
-response = client.models.generate_content(model='gemini-1.5-flash', contents=prompt)
-new_content = response.text
+import os
+import re
+from datetime import date
+import requests
+import sync_guides
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+AMAZON_TAG = "nfagiolo-20"
+ADSENSE_CLIENT = "ca-pub-1199906473460957"
+
+PROMPT = """Write a concise, authoritative 140-word daily homeowner cost-saving tip focusing on the math and ROI behind ONE specific high-intent upgrade:
+- Schluter DITRA-HEAT electric floor warming vs. contractor markup
+- Pentair IntelliFlo3 variable-speed pool pump kWh payback
+- Rheem ProTerra hybrid heat pump water heater Section 25C tax credit math
+- Generac 24kW standby generator vs. 50A portable interlock kit cost
+- Hardwired 48A EV charger vs. Hubbell NEMA 14-50 receptacle cost
+
+Format strictly as raw HTML with a bold <h4> subheadline and one <p> paragraph (no ```html fences).
+Include ONE contextual Amazon Associates search link inside the paragraph using this exact URL format (with '+' between keywords):
+<a href="[https://www.amazon.com/s?k=KEYWORD+HERE&tag=nfagiolo-20](https://www.amazon.com/s?k=KEYWORD+HERE&tag=nfagiolo-20)" target="_blank" rel="noopener sponsored" style="color: #2563eb; font-weight: 700;">
+"""
 
 
-def update_index_with_articles():
-    with open('index.html', 'r', encoding='utf-8') as f:
-        soup = BeautifulSoup(f.read(), 'html.parser')
+def generate_daily_tip() -> str:
+    if not GEMINI_API_KEY:
+        print("GEMINI_API_KEY not set; skipping daily tip generation.")
+        return ""
 
-    grid = soup.find(class_='guides-grid') or soup.find(class_='calculator-grid')
-    if not grid:
+    for model_name, use_thinking in [("gemini-4-argon", True), ("gemini-2.5-flash", False)]:
+        url = f"[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/){model_name}:generateContent?key={GEMINI_API_KEY}"
+        gen_cfg = {"maxOutputTokens": 2048, "temperature": 0.3}
+        if use_thinking:
+            gen_cfg["thinkingConfig"] = {"thinkingLevel": "LOW"}
+        payload = {
+            "contents": [{"parts": [{"text": PROMPT}]}],
+            "generationConfig": gen_cfg,
+        }
+        try:
+            res = requests.post(url, json=payload, timeout=60)
+            if res.status_code == 200:
+                parts = res.json()["candidates"][0]["content"]["parts"]
+                text = "".join(p.get("text", "") for p in parts if not p.get("thought", False)).strip()
+                return re.sub(r"^```html\s*|\s*```$", "", text).strip()
+        except Exception as e:
+            print(f"{model_name} error: {e}")
+    return ""
+
+
+def update_index_tip(tip_html: str):
+    if not tip_html or not os.path.exists("index.html"):
         return
 
-    existing_links = {a['href'] for a in grid.find_all('a', href=True)}
+    with open("index.html", "r", encoding="utf-8") as f:
+        html_content = f.read()
 
-    for filepath in glob.glob('articles/*.html'):
-        normalized_path = filepath.replace('\\', '/')
-        if normalized_path not in existing_links:
-            with open(filepath, 'r', encoding='utf-8') as af:
-                art_soup = BeautifulSoup(af.read(), 'html.parser')
+    # Clean up any legacy stacked daily-tip-container blocks from old runs
+    html_content = re.sub(
+        r'<div class="daily-tip-container".*?</div>\s*</div>',
+        "",
+        html_content,
+        flags=re.DOTALL,
+    )
 
-            title_el = art_soup.find('title') or art_soup.find('h1')
-            title = title_el.get_text(strip=True) if title_el else 'Untitled Article'
-
-            card = soup.new_tag('div', attrs={'class': 'card'})
-            a_tag = soup.new_tag('a', href=normalized_path)
-            a_tag.string = title
-            card.append(a_tag)
-            grid.append(card)
-
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(str(soup))
-
-update_index_with_articles()
-date_str = date.today().strftime("%B %d, %Y")
-html_injection = f"""
-<!-- GEMINI_TIP_PLACEHOLDER -->
-<div class="daily-tip-container" style="padding: 20px; background: #f9f9f9; border-radius: 8px; margin-bottom: 30px;">
-    <h3>Buyer's Math Tip of the Day - {date_str}</h3>
-    {new_content}
+    date_str = date.today().strftime("%B %d, %Y")
+    block = f"""<!-- TBM DAILY TIP START -->
+<div class="daily-tip-container" style="padding: 1.25rem 1.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #2563eb; border-radius: 10px; margin: 1.5rem 0;">
+  <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin-bottom: 0.25rem;">
+    Buyer's Math Tip of the Day &bull; {date_str}
+  </div>
+  {tip_html}
 </div>
-"""
+<!-- TBM DAILY TIP END -->"""
 
-file_path = 'index.html'
-with open(file_path, 'r', encoding='utf-8') as file:
-    html_content = file.read()
+    if "<!-- TBM DAILY TIP START -->" in html_content and "<!-- TBM DAILY TIP END -->" in html_content:
+        html_content = re.sub(
+            r"<!-- TBM DAILY TIP START -->.*?<!-- TBM DAILY TIP END -->",
+            lambda _: block,
+            html_content,
+            flags=re.DOTALL,
+        )
+    elif "<!-- GEMINI_TIP_PLACEHOLDER -->" in html_content:
+        html_content = html_content.replace("<!-- GEMINI_TIP_PLACEHOLDER -->", block, 1)
+        html_content = html_content.replace("<!-- GEMINI_TIP_PLACEHOLDER -->", "")
 
-updated_html = html_content.replace('<!-- GEMINI_TIP_PLACEHOLDER -->', html_injection)
-with open(file_path, 'w', encoding='utf-8') as file:
-    file.write(updated_html)
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(html_content)
+    print(f"Updated single idempotent Daily Tip in index.html for {date_str}.")
+
+
+if __name__ == "__main__":
+    tip = generate_daily_tip()
+    update_index_tip(tip)
+    all_articles = sync_guides.get_all_articles()
+    sync_guides.update_index_editorial(all_articles)
+    sync_guides.inject_trade_guides_into_calculators(all_articles)
+    sync_guides.generate_sitemap_xml(all_articles)
+    sync_guides.generate_rss_feed(all_articles)
