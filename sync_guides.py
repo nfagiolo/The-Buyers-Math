@@ -1,44 +1,89 @@
 #!/usr/bin/env python3
 """
-sync_guides.py - Synchronizes all articles from `articles/` into `guides/` directory.
-Ensures:
-1. Canonical URL points to `/guides/<filename>`
-2. Structured JSON-LD Article schema exists and is updated.
-3. OpenGraph & Twitter Cards meta tags are injected/updated.
-4. Navigation breadcrumb bar is inserted.
-5. `guides.html` directory index page is regenerated with search/filter features.
+sync_guides.py - Bidirectional Content, Sitemap & Calculator Freshness Sync for The Buyer's Math
+1. Scans `articles/` and `guides/`, stripping any raw Markdown `# ` prefixes, deduplicating repeated CTA blocks, and extracting unique excerpts.
+2. Updates `index.html` (`<!-- TBM LEAD STORY START -->` and `<!-- TBM GUIDES GRID START -->`).
+3. Regenerates `guides.html`, `feed.xml` (RSS 2.0), and `sitemap.xml` (updating `<lastmod>` to today across all calculators, guides, and intel dispatches with clean canonical URLs).
+4. Bidirectional Sync: Injects the 3 newest trade-matched articles directly into each calculator HTML file (`<!-- TBM CALCULATOR TRADE GUIDES START -->`).
 """
 
 import os
 import re
-import html
-import json
-
-FLAGSHIP_GUIDES = [
-    {
-        "url": "/guides/2026-09-30-ditra-heat-cost-guide.html",
-        "title": "Ditra Heat System Cost Guide (2026)",
-        "desc": "Empirical breakdown of Ditra Heat electric radiant floor warming costs, Schluter membrane pricing, uncoupling tile underlayment, and licensed electrician/tile setter labor rates.",
-        "category": "Interior & Power",
-        "calc_url": "/bathroom-remodel-calculator.html",
-        "calc_name": "Bathroom Calc"
-    }
-]
+import email.utils
+from datetime import datetime
 
 GENERIC_BOILERPLATE = "Detailed empirical cost breakdown, licensed labor pricing, building code requirements, and contractor bid verification."
 
+ALL_21_CALCULATORS = [
+    "roofing-cost-calculator.html",
+    "siding-cost-calculator.html",
+    "window-replacement-estimator.html",
+    "fence-cost-calculator.html",
+    "driveway-paving-calculator.html",
+    "deck-cost-calculator.html",
+    "gutter-cost-calculator.html",
+    "garage-door-calculator.html",
+    "patio-cost-calculator.html",
+    "exterior-painting-calculator.html",
+    "hvac-roi-calculator.html",
+    "mini-split-calculator.html",
+    "attic-insulation-calculator.html",
+    "water-heater-calculator.html",
+    "solar-payback-calculator.html",
+    "pool.html",
+    "kitchen-remodel-calculator.html",
+    "bathroom-remodel-calculator.html",
+    "radiant-floor-calculator.html",
+    "basement-cost-calculator.html",
+    "ev-charger-calculator.html",
+    "generator-calculator.html",
+]
 
-def clean_heading(title_raw: str) -> str:
-    t = re.sub(r"^\s*#+\s*", "", title_raw).strip()
-    t = re.sub(r"\s*\|\s*The Buyer's Math$", "", t, flags=re.IGNORECASE).strip()
-    return t
+FLAGSHIP_GUIDES = [
+    {
+        "url": "/guides/heat-pump-tax-credit-2026.html",
+        "title": "Heat Pump Tax Credit 2026: Section 25C Eligibility, Costs & Payback",
+        "date": "2026-10-03",
+        "description": "Section 25C $2,000 tax credit eligibility, SEER2/HSPF2 minimum efficiency tiers, dual-fuel installation costs, and multi-year utility bill ROI.",
+        "category": "Mechanical & Energy",
+        "filter_tag": "featured mechanical",
+        "calc_url": "/hvac-roi-calculator.html",
+        "calc_label": "Heat Pump Calc",
+    },
+    {
+        "url": "/guides/roof-replacement-cost-per-square-2026.html",
+        "title": "Roof Replacement Cost per Square in 2026: Architectural vs. 3-Tab",
+        "date": "2026-10-03",
+        "description": "Pricing per roofing square (100 sq ft), tear-off labor benchmarks, roof pitch slope multipliers, ice & water shield code rules, and quote vetting.",
+        "category": "Building Envelope",
+        "filter_tag": "envelope",
+        "calc_url": "/roofing-cost-calculator.html",
+        "calc_label": "Roofing Calc",
+    },
+    {
+        "url": "/guides/ev-charger-tax-credit-2026.html",
+        "title": "2026 EV Charger Tax Credit Guide: Section 30C Rules & Panel Upgrades",
+        "date": "2026-10-05",
+        "description": "How to qualify for the 30% Section 30C federal tax credit (up to $1,000) for Level 2 EV charging stations and 200A electrical service upgrades.",
+        "category": "Interior & Power",
+        "filter_tag": "interior",
+        "calc_url": "/ev-charger-calculator.html",
+        "calc_label": "EV Charger Calc",
+    },
+]
 
 
-def extract_best_description(html_content: str, fallback_title: str) -> str:
+def clean_heading(raw_title: str) -> str:
+    t = re.sub(r"\s*\|\s*The Buyer'?s Math.*$", "", raw_title, flags=re.IGNORECASE)
+    t = re.sub(r"^[\s#*\"'`>]+|[\s*\"'`]+$", "", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def extract_unique_excerpt(html_content: str, fallback_title: str) -> str:
     desc_match = re.search(
         r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']',
         html_content,
-        re.IGNORECASE | re.DOTALL
+        re.IGNORECASE | re.DOTALL,
     )
     meta_desc = desc_match.group(1).strip() if desc_match else ""
     if meta_desc and meta_desc.lower() != GENERIC_BOILERPLATE.lower():
@@ -57,13 +102,15 @@ def extract_best_description(html_content: str, fallback_title: str) -> str:
             if len(clean_p) > 165:
                 return clean_p[:162].rsplit(" ", 1)[0] + "..."
             return clean_p
-
     return f"Empirical 2026 cost breakdown, licensed trade labor benchmarks, and ROI analysis for {fallback_title}."
 
 
 def classify_article(title: str, description: str):
     low = (title + " " + description).lower()
-    if any(w in low for w in ["ditra", "schluter", "kerdi", "radiant", "heated floor", "tile", "bathroom", "shower", "wet-room"]): return ("Interior & Power", "interior", "/bathroom-remodel-calculator.html", "Bathroom Calc")
+    if any(w in low for w in ["ditra", "schluter", "kerdi", "radiant", "heated floor", "floor warming"]):
+        return ("Interior & Power", "interior", "/radiant-floor-calculator.html", "Radiant Floor Calc")
+    if any(w in low for w in ["bathroom", "shower", "wet-room", "tile", "vanity"]):
+        return ("Interior & Power", "interior", "/bathroom-remodel-calculator.html", "Bathroom Calc")
     if any(w in low for w in ["roof", "shingle"]):
         return ("Building Envelope", "envelope", "/roofing-cost-calculator.html", "Roofing Calc")
     if any(w in low for w in ["siding", "hardie", "vinyl siding"]):
@@ -102,174 +149,323 @@ def classify_article(title: str, description: str):
         return ("Interior & Power", "interior", "/ev-charger-calculator.html", "EV Charger Calc")
     if any(w in low for w in ["basement", "egress"]):
         return ("Interior & Power", "interior", "/basement-cost-calculator.html", "Basement Calc")
-    if any(w in low for w in ["bathroom", "shower", "wet-room"]):
-        return ("Interior & Power", "interior", "/bathroom-remodel-calculator.html", "Bathroom Calc")
     return ("Interior & Power", "interior", "/kitchen-remodel-calculator.html", "Kitchen Calc")
+
+
+def sanitize_article_html(fpath: str, html_content: str, calc_url: str, calc_label: str) -> str:
+    """Strips repeated INTERACTIVE ESTIMATOR CTA blocks down to 1 single block."""
+    orig = html_content
+    cta_pattern = re.compile(
+        r'<div[^>]*>\s*<span[^>]*>\s*INTERACTIVE ESTIMATOR\s*</span>\s*'
+        r'<h2[^>]*>\s*Calculate Exact Costs for Your Home\s*</h2>.*?'
+        r'Open the [^<]+</a>\s*</div>',
+        re.IGNORECASE | re.DOTALL,
+    )
+    matches = list(cta_pattern.finditer(html_content))
+    if len(matches) > 1:
+        first_block = matches[0].group(0)
+        first_block = re.sub(r'href="[^"]+"', f'href="{calc_url}"', first_block)
+        first_block = re.sub(r'Open the [^<]+</a>', f'Open the {calc_label} &rarr;</a>', first_block)
+        first_pos = matches[0].start()
+        stripped = cta_pattern.sub("", html_content)
+        html_content = stripped[:first_pos] + first_block + stripped[first_pos:]
+
+    if html_content != orig:
+        with open(fpath, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        print(f"Deduplicated repeated CTA blocks in {fpath}")
+    return html_content
 
 
 def get_all_articles():
     articles = list(FLAGSHIP_GUIDES)
     seen_urls = {a["url"] for a in articles}
     articles_dir = "articles"
-
     if os.path.exists(articles_dir):
         for fname in sorted(os.listdir(articles_dir), reverse=True):
             if not fname.endswith(".html"):
                 continue
-            rel_url = f"/guides/{fname}"
+            rel_url = f"/articles/{fname}"
             if rel_url in seen_urls:
                 continue
             fpath = os.path.join(articles_dir, fname)
             with open(fpath, "r", encoding="utf-8") as f:
                 content = f.read()
-
             t_match = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE | re.DOTALL)
             raw_title = t_match.group(1) if t_match else fname.replace(".html", "")
             title = clean_heading(raw_title)
-
-            d_match = re.search(r"^\d{4}-\d{2}-\d{2}", fname)
-            pub_date = d_match.group(0) if d_match else "2026-09-30"
-
-            desc = extract_best_description(content, title)
-            cat, cat_slug, calc_url, calc_name = classify_article(title, desc)
-
-            articles.append({
-                "url": rel_url,
-                "title": title,
-                "desc": desc,
-                "category": cat,
-                "calc_url": calc_url,
-                "calc_name": calc_name,
-                "date": pub_date
-            })
+            d_match = re.match(r"^(\d{4}-\d{2}-\d{2})", fname)
+            if not d_match:
+                d_match = re.search(r"Published on (\d{4}-\d{2}-\d{2})", content)
+            date_str = d_match.group(1) if d_match else datetime.now().strftime("%Y-%m-%d")
+            description = extract_unique_excerpt(content, title)
+            category, filter_tag, calc_url, calc_label = classify_article(title, description)
+            content = sanitize_article_html(fpath, content, calc_url, calc_label)
+            articles.append(
+                {
+                    "url": rel_url,
+                    "title": title,
+                    "date": date_str,
+                    "description": description,
+                    "category": category,
+                    "filter_tag": filter_tag,
+                    "calc_url": calc_url,
+                    "calc_label": calc_label,
+                }
+            )
             seen_urls.add(rel_url)
-
+    articles.sort(key=lambda x: x["date"], reverse=True)
+    for idx, art in enumerate(articles):
+        if idx < 12 and "featured" not in art["filter_tag"]:
+            art["filter_tag"] = "featured " + art["filter_tag"]
     return articles
 
 
-def sync_article_file(src_path: str, dest_path: str) -> bool:
-    with open(src_path, "r", encoding="utf-8") as f:
+def update_index_editorial(articles):
+    if not os.path.exists("index.html") or not articles:
+        return
+    with open("index.html", "r", encoding="utf-8") as f:
         content = f.read()
-
-    fname = os.path.basename(src_path)
-    canonical_url = f"https://thebuyersmath.com/guides/{fname}"
-
-    t_match = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE | re.DOTALL)
-    raw_title = t_match.group(1) if t_match else fname.replace(".html", "")
-    title = clean_heading(raw_title)
-    desc = extract_best_description(content, title)
-    cat, cat_slug, calc_url, calc_name = classify_article(title, desc)
-
-    # 1. Canonical tag
-    if '<link rel="canonical"' in content:
-        content = re.sub(
-            r'<link\s+rel=["\']canonical["\']\s+href=["\'].*?["\']\s*/?>',
-            f'<link rel="canonical" href="{canonical_url}">',
-            content,
-            flags=re.IGNORECASE
+    lead = articles[0]
+    recent_four = articles[1:5]
+    recent_items_html = []
+    for r in recent_four:
+        recent_items_html.append(
+            f"""            <li class="recent-dispatch-item">
+              <div>
+                <div class="lead-meta-row" style="margin-bottom: 0.25rem;">
+                  <span class="badge-cat">{r['category']}</span>
+                  <span class="meta-date">{r['date']}</span>
+                </div>
+                <h3 class="recent-dispatch-title">
+                  <a href="{r['url']}">{r['title']}</a>
+                </h3>
+                <p class="recent-dispatch-snippet">{r['description']}</p>
+              </div>
+              <a href="{r['calc_url']}" class="recent-calc-pill">{r['calc_label']} &rarr;</a>
+            </li>"""
         )
-    elif "</head>" in content:
-        content = content.replace("</head>", f'  <link rel="canonical" href="{canonical_url}">\n</head>', 1)
-
-    # 2. OpenGraph / Meta
-    og_block = f"""  <meta property="og:title" content="{html.escape(title)} | The Buyer's Math">
-  <meta property="og:description" content="{html.escape(desc)}">
-  <meta property="og:url" content="{canonical_url}">
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{html.escape(title)} | The Buyer's Math">
-  <meta name="twitter:description" content="{html.escape(desc)}">"""
-
-    if 'property="og:title"' not in content and "</head>" in content:
-        content = content.replace("</head>", f"{og_block}\n</head>", 1)
-
-    # 3. Breadcrumbs
-    breadcrumb_html = f"""<div style="background: #0f172a; padding: 0.75rem 1.5rem; font-size: 0.85rem; border-bottom: 1px solid #1e293b;">
-  <div style="max-width: 1100px; margin: 0 auto; color: #94a3b8;">
-    <a href="/" style="color: #38bdf8; text-decoration: none;">Home</a> &gt;
-    <a href="/guides.html" style="color: #38bdf8; text-decoration: none;">Guides</a> &gt;
-    <span style="color: #f8fafc;">{html.escape(title)}</span>
-  </div>
-</div>"""
-
-    if 'href="/guides.html"' not in content and "<body" in content:
-        content = re.sub(r"(<body[^>]*>)", r"\1\n" + breadcrumb_html, content, count=1, flags=re.IGNORECASE)
-
-    os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-
-    orig = ""
-    if os.path.exists(dest_path):
-        with open(dest_path, "r", encoding="utf-8") as f:
-            orig = f.read()
-
-    if content != orig:
-        with open(dest_path, "w", encoding="utf-8") as f:
-            f.write(content)
-        return True
-    return False
-
-
-def generate_guides_index(articles):
-    cards_html = ""
+    lead_block_html = f"""<!-- TBM LEAD STORY START -->
+      <section class="editorial-hero-grid" aria-label="Featured Daily Research and Quick Calculator Launcher">
+        <div>
+          <article class="lead-story-card">
+            <div class="lead-meta-row">
+              <span class="badge-lead">Today's Lead Cost Analysis</span>
+              <span class="badge-cat">{lead['category']}</span>
+              <span class="meta-date">Published {lead['date']} &bull; Empirical Cost Audit</span>
+            </div>
+            <h1 class="lead-title">
+              <a href="{lead['url']}">{lead['title']}</a>
+            </h1>
+            <p class="lead-excerpt">{lead['description']}</p>
+            <div class="lead-actions">
+              <a href="{lead['url']}" class="btn-primary">Read Today's Full Guide &rarr;</a>
+              <a href="{lead['calc_url']}" class="btn-secondary">Open {lead['calc_label']} &rarr;</a>
+            </div>
+          </article>
+          <div class="recent-dispatches-box">
+            <div class="recent-box-header">
+              <h2>Recent Daily Cost Breakdowns</h2>
+              <a href="#guides-section" style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">Browse All {len(articles)} Guides &darr;</a>
+            </div>
+            <ul class="recent-dispatch-list">
+{chr(10).join(recent_items_html)}
+            </ul>
+          </div>
+        </div>
+      <!-- TBM LEAD STORY END -->"""
+    if "<!-- TBM LEAD STORY START -->" in content and "<!-- TBM LEAD STORY END -->" in content:
+        content = re.sub(
+            r"<!-- TBM LEAD STORY START -->.*?<!-- TBM LEAD STORY END -->",
+            lambda _: lead_block_html,
+            content,
+            flags=re.DOTALL,
+        )
+    grid_cards_html = []
     for a in articles:
-        cards_html += f"""
-      <article class="guide-card" data-category="{html.escape(a.get('category','Other'))}">
-        <div class="card-meta">
-          <span class="badge">{html.escape(a.get('category','Guide'))}</span>
-          <span class="date">{html.escape(a.get('date','2026-09-30'))}</span>
-        </div>
-        <h2><a href="{a['url']}">{html.escape(a['title'])}</a></h2>
-        <p>{html.escape(a['desc'])}</p>
-        <div class="card-footer">
-          <a href="{a['url']}" class="read-btn">Read Full Guide &rarr;</a>
-          <a href="{a['calc_url']}" class="calc-link">{html.escape(a['calc_name'])}</a>
-        </div>
-      </article>"""
+        grid_cards_html.append(
+            f"""        <a href="{a['url']}" class="guide-card" data-guide-category="{a['filter_tag']}">
+          <div>
+            <div class="card-meta-top">
+              <span class="badge-category">{a['category']}</span>
+              <span class="card-date">{a['date']}</span>
+            </div>
+            <h3>{a['title']}</h3>
+            <p>{a['description']}</p>
+          </div>
+          <span class="cta-link">Read Guide &rarr;</span>
+        </a>"""
+        )
+    grid_block_html = (
+        "<!-- TBM GUIDES GRID START -->\n"
+        '      <div class="cards-grid" id="guideGrid">\n\n'
+        + "\n\n".join(grid_cards_html)
+        + "\n\n      </div>\n      <!-- TBM GUIDES GRID END -->"
+    )
+    if "<!-- TBM GUIDES GRID START -->" in content and "<!-- TBM GUIDES GRID END -->" in content:
+        content = re.sub(
+            r"<!-- TBM GUIDES GRID START -->.*?<!-- TBM GUIDES GRID END -->",
+            lambda _: grid_block_html,
+            content,
+            flags=re.DOTALL,
+        )
+    content = re.sub(
+        r'(<button[^>]*data-guide-filter="all"[^>]*>)All \d+ Guides(</button>)',
+        rf"\g<1>All {len(articles)} Guides\g<2>",
+        content,
+    )
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"Updated index.html with Lead Story ({lead['date']}) and {len(articles)} guide cards.")
 
-    html_out = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Improvement & Building Cost Guides (2026) | The Buyer's Math</title>
-  <meta name="description" content="Empirical cost guides, licensed labor rates, material price benchmarks, and ROI calculators for residential construction and remodeling.">
-  <link rel="canonical" href="https://thebuyersmath.com/guides.html">
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body style="background: #090d16; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif;">
-  <header style="background: #0f172a; border-bottom: 1px solid #1e293b; padding: 1.5rem 2rem;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <a href="/" style="font-size: 1.25rem; font-weight: 700; color: #38bdf8; text-decoration: none;">The Buyer's Math</a>
-      <nav><a href="/" style="color: #94a3b8; text-decoration: none; margin-left: 1.5rem;">Calculators</a></nav>
+
+def inject_trade_guides_into_calculators(articles):
+    if not articles:
+        return
+    updated_calcs = 0
+    for calc_file in ALL_21_CALCULATORS:
+        if not os.path.exists(calc_file):
+            continue
+        calc_rel = "/" + calc_file
+        matched = [a for a in articles if a["calc_url"] == calc_rel]
+        if len(matched) < 3:
+            seen = {a["url"] for a in matched}
+            for a in articles:
+                if a["url"] not in seen:
+                    matched.append(a)
+                    seen.add(a["url"])
+                if len(matched) >= 3:
+                    break
+        top_three = matched[:3]
+        cards_html = []
+        for a in top_three:
+            cards_html.append(
+                f"""        <a href="{a['url']}" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(15,23,42,0.04);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.7rem; font-weight: 700; color: #2563eb; background: #eff6ff; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">{a['category']}</span>
+              <span style="font-size: 0.75rem; color: #94a3b8;">{a['date']}</span>
+            </div>
+            <h4 style="margin: 0 0 0.45rem 0; font-size: 1.02rem; color: #0f172a; line-height: 1.38;">{a['title']}</h4>
+            <p style="margin: 0 0 0.85rem 0; font-size: 0.84rem; color: #475569; line-height: 1.5;">{a['description']}</p>
+          </div>
+          <span style="font-size: 0.84rem; font-weight: 700; color: #2563eb;">Read Cost Breakdown &rarr;</span>
+        </a>"""
+            )
+        block_html = f"""<!-- TBM CALCULATOR TRADE GUIDES START -->
+  <section class="tbm-calc-latest-guides" style="margin-top: 2.75rem; padding-top: 2.25rem; border-top: 1px solid #e2e8f0;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+      <div>
+        <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb;">Daily Research Sync</span>
+        <h3 style="margin: 0.2rem 0 0 0; font-size: 1.35rem; color: #0f172a;">Latest 2026 Cost Audits &amp; Code Briefs for This Trade</h3>
+      </div>
+      <a href="/guides.html" style="font-size: 0.88rem; font-weight: 700; color: #2563eb; text-decoration: none;">Browse All Guides &rarr;</a>
     </div>
-  </header>
-  <main style="max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem;">
-    <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem;">Empirical Cost Guides & Trade Intelligence</h1>
-    <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem;">Verified pricing breakdowns, code compliance checks, and contractor bid verification matrices.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-      {cards_html}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.15rem;">
+{chr(10).join(cards_html)}
     </div>
-  </main>
-</body>
-</html>"""
+  </section>
+  <!-- TBM CALCULATOR TRADE GUIDES END -->"""
+        with open(calc_file, "r", encoding="utf-8") as f:
+            c_html = f.read()
+        orig = c_html
+        if "<!-- TBM CALCULATOR TRADE GUIDES START -->" in c_html:
+            c_html = re.sub(
+                r"<!-- TBM CALCULATOR TRADE GUIDES START -->.*?<!-- TBM CALCULATOR TRADE GUIDES END -->",
+                lambda _: block_html,
+                c_html,
+                flags=re.DOTALL,
+            )
+        elif "</main>" in c_html:
+            c_html = c_html.replace("</main>", block_html + "\n\n  </main>", 1)
+        if c_html != orig:
+            with open(calc_file, "w", encoding="utf-8") as f:
+                f.write(c_html)
+            updated_calcs += 1
+    print(f"Injected latest trade-matched guides into {updated_calcs} calculator page(s).")
 
-    with open("guides.html", "w", encoding="utf-8") as f:
-        f.write(html_out)
+
+def generate_sitemap_xml(articles):
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    urls = [
+        ("https://thebuyersmath.com/", today_str, "daily", "1.0"),
+        ("https://thebuyersmath.com/guides.html", today_str, "daily", "0.9"),
+        ("https://thebuyersmath.com/intel/index.html", today_str, "daily", "0.9"),
+        ("https://thebuyersmath.com/about.html", today_str, "monthly", "0.6"),
+        ("https://thebuyersmath.com/privacy-policy.html", "2026-10-09", "monthly", "0.3"),
+        ("https://thebuyersmath.com/terms.html", "2026-10-09", "monthly", "0.3"),
+        ("https://thebuyersmath.com/contact.html", "2026-10-09", "monthly", "0.4"),
+    ]
+    for c in ALL_21_CALCULATORS:
+        urls.append((f"https://thebuyersmath.com/{c}", today_str, "daily", "0.9"))
+    if os.path.exists("intel"):
+        for fname in sorted(os.listdir("intel"), reverse=True):
+            if fname.endswith("-daily-market-intelligence.html"):
+                urls.append((f"https://thebuyersmath.com/intel/{fname}", fname[:10], "daily", "0.8"))
+    for a in articles:
+        urls.append((f"https://thebuyersmath.com{a['url']}", a["date"], "monthly", "0.8"))
+    xml_items = []
+    seen = set()
+    for loc, lastmod, freq, prio in urls:
+        if loc in seen:
+            continue
+        seen.add(loc)
+        xml_items.append(
+            f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n"
+            f"    <changefreq>{freq}</changefreq>\n    <priority>{prio}</priority>\n  </url>"
+        )
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(xml_items)
+        + "\n</urlset>\n"
+    )
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(sitemap)
+    print(f"Generated clean sitemap.xml with {len(xml_items)} canonical URLs.")
 
 
-def main():
-    synced = 0
-    if os.path.exists("articles"):
-        for fname in sorted(os.listdir("articles")):
-            if fname.endswith(".html"):
-                src = os.path.join("articles", fname)
-                dest = os.path.join("guides", fname)
-                if sync_article_file(src, dest):
-                    synced += 1
-    articles = get_all_articles()
-    generate_guides_index(articles)
-    print(f"Synced {synced} guide files. Total guides in index: {len(articles)}")
+def generate_rss_feed(articles):
+    items_xml = []
+    for a in articles[:25]:
+        try:
+            dt = datetime.strptime(a["date"], "%Y-%m-%d")
+        except Exception:
+            dt = datetime.now()
+        rfc_date = email.utils.format_datetime(dt)
+        full_url = "https://thebuyersmath.com" + a["url"]
+        items_xml.append(
+            f"    <item>\n"
+            f"      <title><![CDATA[{a['title']}]]></title>\n"
+            f"      <link>{full_url}</link>\n"
+            f"      <guid isPermaLink=\"true\">{full_url}</guid>\n"
+            f"      <pubDate>{rfc_date}</pubDate>\n"
+            f"      <description><![CDATA[{a['description']}]]></description>\n"
+            f"      <category><![CDATA[{a['category']}]]></category>\n"
+            f"    </item>"
+        )
+    now_rfc = email.utils.format_datetime(datetime.now())
+    feed_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        "  <channel>\n"
+        "    <title>The Buyer's Math | Empirical Home Improvement Cost Guides</title>\n"
+        "    <link>https://thebuyersmath.com/</link>\n"
+        "    <description>Independent, data-driven financial modeling and cost estimators for homeowners.</description>\n"
+        "    <language>en-us</language>\n"
+        '    <atom:link href="https://thebuyersmath.com/feed.xml" rel="self" type="application/rss+xml" />\n'
+        f"    <lastBuildDate>{now_rfc}</lastBuildDate>\n"
+        + "\n".join(items_xml)
+        + "\n  </channel>\n</rss>\n"
+    )
+    with open("feed.xml", "w", encoding="utf-8") as f:
+        f.write(feed_xml)
+    print("Generated feed.xml (RSS 2.0) successfully.")
 
 
 if __name__ == "__main__":
-    main()
+    all_articles = get_all_articles()
+    update_index_editorial(all_articles)
+    inject_trade_guides_into_calculators(all_articles)
+    generate_sitemap_xml(all_articles)
+    generate_rss_feed(all_articles)
