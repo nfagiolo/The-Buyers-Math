@@ -151,6 +151,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://thebuyersmath.com/radiant-floor-calculator.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://thebuyersmath.com/basement-cost-calculator.html</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>daily</changefreq>
@@ -304,6 +310,12 @@
     <loc>https://thebuyersmath.com/intel/2026-10-04-daily-market-intelligence.html</loc>
     <lastmod>2026-10-04</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thebuyersmath.com/articles/2026-10-26-2026-water-heater-replacement-cost-calculator-how.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
@@ -635,29 +647,5 @@
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/daily/todays-math/index.html</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/electrical-panel-calculator.html</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/flooring-calculator.html</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://thebuyersmath.com/radiant-floor-calculator.html</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>

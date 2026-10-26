@@ -1,14 +1,211 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
-<channel>
-  <title>The Buyer's Math - Flagship Daily Math &amp; Market Intelligence</title>
-  <link>https://thebuyersmath.com</link>
-  <description>Daily multi-pass home improvement calculator synthesis, construction material spot prices, and unit economics.</description>
-  <item>
-    <title>October 26, 2026: Attic Air Sealing + Blown Cellulose (R-19 to R-60): Stack-Effect Payback & 25C Credit Math</title>
-    <link>https://thebuyersmath.com/daily/todays-math/index.html</link>
-    <guid>https://thebuyersmath.com/intel/2026-10-26-daily-market-intelligence.html</guid>
-    <description>Counter-Intuitive Takeaway: Blowing 14 inches of R-49 fiberglass over unsealed drywall top plates and recessed can lights loses up to 38% of its rated R-value to convective winter air loops. Spending the first $180 on polyurethane foam gun sealing around plumbing stacks and wire penetrations yields 3x the BTU reduction per dollar of insulation depth alone.</description>
-  </item>
-</channel>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Buyer's Math | Empirical Home Improvement Cost Guides</title>
+    <link>https://thebuyersmath.com/</link>
+    <description>Independent, data-driven financial modeling and cost estimators for homeowners.</description>
+    <language>en-us</language>
+    <atom:link href="https://thebuyersmath.com/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Oct 2026 23:01:35 -0000</lastBuildDate>
+    <item>
+      <title><![CDATA[2026 Water Heater Replacement Cost Calculator: How Material Durability Affects Your Total Installed Investment]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-26-2026-water-heater-replacement-cost-calculator-how.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-26-2026-water-heater-replacement-cost-calculator-how.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing a water heater in 2026 involves far more than choosing a tank size. Material composition, component longevity, local labor markets, and applicable...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Home Siding Replacement Cost Calculator: Climate Zone Failure Modes and Preventative Spec Upgrades That Save You Thousands]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-26-2026-home-siding-replacement-cost-calculator-climate-zone.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-26-2026-home-siding-replacement-cost-calculator-climate-zone.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Siding replacement remains one of the highest-stakes exterior renovation decisions a homeowner faces. In 2026, material inflation, updated International...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Bathroom Remodel Cost Estimator: How IRA Section 25C and 30C Tax Credits Plus Utility Rebates Can Cut Your Real Out-of-Pocket Total]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-26-2026-bathroom-remodel-cost-estimator-how-ira-section-25c.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-26-2026-bathroom-remodel-cost-estimator-how-ira-section-25c.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[A mid-range bathroom remodel in 2026 carries a national average gross cost of $11,400–$18,500 for a full gut-and-replace project in a standard 50–75 sq ft...]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Heat Pump vs. Gas Furnace ROI Calculator: How Material Durability Stacks Up Against Installed Cost to Maximize Your Long-Term Savings]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-25-2026-heat-pump-vs-gas-furnace-roi-calculator-how-material.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-25-2026-heat-pump-vs-gas-furnace-roi-calculator-how-material.html</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Choosing between a heat pump and a gas furnace in 2026 is no longer a purely comfort-driven decision—it is a rigorous financial calculation shaped by...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Water Heater Replacement Cost Calculator: Line-Item Trade Labor and Contractor Markup Audit Guide]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-24-2026-water-heater-replacement-cost-calculator-line-item.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-24-2026-water-heater-replacement-cost-calculator-line-item.html</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing a water heater in 2026 involves far more financial complexity than a single invoice line. Material inflation, updated International Residential...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Water Heater Replacement Cost Calculator: How Material Durability Stacks Up Against Installed Price to Maximize Your Long-Term Value]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-23-2026-water-heater-replacement-cost-calculator-how.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-23-2026-water-heater-replacement-cost-calculator-how.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing a water heater in 2026 demands more than a quick price comparison at the hardware store. Rising labor rates, updated International Residential...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Water Heater Replacement Cost Calculator: Complete Building Code, Permit and Inspection Fee Breakdown]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-22-2026-water-heater-replacement-cost-calculator-complete.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-22-2026-water-heater-replacement-cost-calculator-complete.html</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing a water heater in 2026 involves more than simply purchasing a new unit. Homeowners must navigate updated International Residential Code (IRC)...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Home Siding Replacement Cost Calculator: How Material Durability Stacks Up Against Installed Price to Maximize Your Long-Term Value]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-21-2026-home-siding-replacement-cost-calculator-how-material.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-21-2026-home-siding-replacement-cost-calculator-how-material.html</guid>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing exterior siding is one of the highest-impact home improvement investments a homeowner can make, influencing energy performance, structural...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Driveway Paving Cost Analysis: How Material Durability Stacks Up Against Installed Price Per Square Foot]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-20-2026-driveway-paving-cost-analysis-how-material.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-20-2026-driveway-paving-cost-analysis-how-material.html</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Choosing the right driveway surface in 2026 demands a clear-eyed comparison of upfront installed costs, projected maintenance burdens, and long-term...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Pool Pump Energy Calculator: Line-Item Trade Labor and Contractor Markup Audit That Cuts Hidden Costs Before You Sign]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-19-2026-pool-pump-energy-calculator-line-item-trade-labor.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-19-2026-pool-pump-energy-calculator-line-item-trade-labor.html</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing a single-speed pool pump with a variable-speed unit in 2026 can slash annual electricity consumption by 60–80 percent, but the financial return...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Solar Panel Payback Timeline Calculator: How Material Durability vs. Installed Cost Tradeoffs Determine Your True Return on Investment]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-18-2026-solar-panel-payback-timeline-calculator-how-material.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-18-2026-solar-panel-payback-timeline-calculator-how-material.html</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Calculating the true payback period for a residential or commercial solar photovoltaic (PV) installation in 2026 requires far more than dividing your system...]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Home Siding Replacement Cost Calculator: Climate Zone Failure Modes and the Preventative Spec Upgrades That Cut Long-Term Costs]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-18-2026-home-siding-replacement-cost-calculator-climate-zone.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-18-2026-home-siding-replacement-cost-calculator-climate-zone.html</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Siding replacement ranks among the most consequential envelope decisions a homeowner can make, yet most cost estimates ignore the single largest variable:...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Home Siding Replacement Cost Calculator: Appraisal Equity Gains vs. Turnkey Installation Costs Analyzed]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-18-2026-home-siding-replacement-cost-calculator-appraisal.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-18-2026-home-siding-replacement-cost-calculator-appraisal.html</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing exterior siding in 2026 remains one of the highest-ROI home improvement projects available to residential property owners, but the calculus...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Driveway Paving Cost Calculator: How IRA Section 25C and 30C Tax Credits Plus Utility Rebates Can Cut Your Total Bill by Thousands]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-18-2026-driveway-paving-cost-calculator-how-ira-section-25c.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-18-2026-driveway-paving-cost-calculator-how-ira-section-25c.html</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing or installing a residential driveway in 2026 carries a median project cost between $3,800 and $18,500 , depending on surface material, regional...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Roof Replacement: Permit Fees & Hidden Damage Costs]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-17-2026-roof-replacement-permit-fees-hidden-damage-costs.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-17-2026-roof-replacement-permit-fees-hidden-damage-costs.html</guid>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Roof Replacement: Permit Fees & Hidden Damage Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Driveway Paving Calculator: How IRA Section 25C and 30C Tax Credits Plus Utility Rebates Can Cut Your True Paving Cost by Thousands]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-17-2026-driveway-paving-calculator-how-ira-section-25c-and.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-17-2026-driveway-paving-calculator-how-ira-section-25c-and.html</guid>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Replacing or installing a residential driveway in 2026 carries a gross price tag that surprises most homeowners, but a layered strategy combining Inflation...]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Bathroom Remodel Cost Estimator: Line-Item Trade Labor Breakdown and Contractor Markup Audit to Stop Overpaying]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-17-2026-bathroom-remodel-cost-estimator-line-item-trade.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-17-2026-bathroom-remodel-cost-estimator-line-item-trade.html</guid>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[The average bathroom remodel in 2026 carries a total installed cost between $9,800 and $38,500 , depending on scope, fixture grade, and regional labor...]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-16-2026-pool-pump-motors-cast-iron-vs-stainless-steel.html</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Pool Pump Motors: Cast Iron vs. Stainless Steel Durability-Cost Tradeoff - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Water Heater Replacement: Climate Zone Failure & Efficiency Cost Analysis]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-15-2026-water-heater-replacement-climate-zone-failure.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Water Heater Replacement: Climate Zone Failure & Efficiency Cost Analysis - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-15-2026-backup-generator-sizing-appraisal-impact-vs.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[# 2026 Backup Generator Sizing: Appraisal Impact vs. Installation Cost Recovery - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed-installer.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-14-2026-window-replacement-diy-glazing-vs-licensed-installer.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Window Replacement: DIY Glazing vs. Licensed Installer Boundaries - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Driveway Paving: Labor, Materials & Equipment Breakdown]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment-breakdown.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-13-2026-driveway-paving-labor-materials-equipment-breakdown.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Driveway Paving: Labor, Materials & Equipment Breakdown - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Basement Finishing: Section 25C Tax Credit Qualification Rules]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-12-2026-basement-finishing-section-25c-tax-credit.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-12-2026-basement-finishing-section-25c-tax-credit.html</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Basement Finishing: Section 25C Tax Credit Qualification Rules - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Interior & Power]]></category>
+    </item>
+    <item>
+      <title><![CDATA[2026 Solar Payback: Permit Fees & Hidden Inspection Costs]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-11-2026-solar-payback-permit-fees-hidden-inspection-costs.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-11-2026-solar-payback-permit-fees-hidden-inspection-costs.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[2026 Solar Payback: Permit Fees & Hidden Inspection Costs - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Mechanical & Energy]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff]]></title>
+      <link>https://thebuyersmath.com/articles/2026-10-10-fiber-cement-vs-vinyl-siding-2026-durability-cost-tradeoff.html</link>
+      <guid isPermaLink="true">https://thebuyersmath.com/articles/2026-10-10-fiber-cement-vs-vinyl-siding-2026-durability-cost-tradeoff.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 -0000</pubDate>
+      <description><![CDATA[Fiber Cement vs Vinyl Siding: 2026 Durability-Cost Tradeoff - Real 2026 cost estimates, labor vs material breakdown, and buying guide.]]></description>
+      <category><![CDATA[Building Envelope]]></category>
+    </item>
+  </channel>
 </rss>
