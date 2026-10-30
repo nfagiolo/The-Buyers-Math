@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-29",
-  "formatted_date": "October 29, 2026",
+  "last_updated": "2026-10-30",
+  "formatted_date": "October 30, 2026",
   "associate_tag": "nfagiolo-20",
   "ad_config": {
     "adsense_client": "ca-pub-1199906473460957",
@@ -19,33 +19,32 @@
     "propane_gal": 2.65,
     "gasoline_gal": 3.35,
     "pellets_40lb": 16.99,
-    "ambient_temp_f": 60.5,
-    "soil_temp_f": 54.9,
-    "solar_peak_hours": 3.6,
-    "hdd_index": 4.5,
+    "ambient_temp_f": 61.4,
+    "soil_temp_f": 59.4,
+    "solar_peak_hours": 3.8,
+    "hdd_index": 3.6,
     "aux_strip_load_pct": 12,
-    "generator_load_mult": 1.04,
-    "spf_stud_2x4": 3.88,
-    "romex_12_2_250ft": 140.22,
-    "arch_shingles_sq": 119.18,
+    "generator_load_mult": 1.03,
+    "spf_stud_2x4": 3.83,
+    "romex_12_2_250ft": 141.22,
+    "arch_shingles_sq": 120.24,
     "concrete_80lb": 6.32,
-    "drywall_sheet": 14.91,
-    "r38_batt_roll": 80.78
+    "drywall_sheet": 15.58,
+    "r38_batt_roll": 78.89
   },
   "seasonal_banner": {
-    "headline": "Thermal Balance Point (60.5\u00b0F) & 54.9\u00b0F Soil Threshold Window",
-    "summary": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (4.5 HDD), heat pump auxiliary strips increase daily load by ~12%, while 54.9\u00b0F soil temperatures mark the prime window for exterior flatwork and pre-winterization."
+    "headline": "Thermal Balance Point (61.4\u00b0F) & 59.4\u00b0F Soil Threshold Window",
+    "summary": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (3.6 HDD), heat pump auxiliary strips increase daily load by ~12%, while 59.4\u00b0F soil temperatures mark the prime window for exterior flatwork and pre-winterization."
   },
   "math_of_the_day": {
-    "title": "7,500W Dual-Fuel Portable + Transfer Switch vs. 22kW Whole-Home Standby: 5-Year Outage TCO",
+    "title": "50-Gal Hybrid Heat Pump vs. Gas Tankless vs. Standard Electric Tank: 10-Year Operating Math",
     "url": "/daily/todays-math/index.html",
-    "parent_calc": "/generator-calculator.html",
-    "parent_calc_query": "/generator-calculator.html?hours=48",
-    "parent_calc_name": "Backup Generator Sizing Guide",
-    "highlight": "Counter-Intuitive Takeaway: Installing a $320 compressor soft-start kit on a 3-ton central AC drops locked-rotor startup amps (LRA) from 88A to 29A\u2014allowing a $1,100 portable dual-fuel generator and 50A interlock kit to run central air conditioning without spending $13,400 on a permanent standby unit."
+    "parent_calc": "/water-heater-calculator.html",
+    "parent_calc_query": "/water-heater-calculator.html",
+    "parent_calc_name": "Water Heater Replacement Cost Calculator",
+    "highlight": "Counter-Intuitive Takeaway: A 199,000 BTU gas tankless retrofit requires upsizing existing 1/2-inch black iron gas pipe to 3/4-inch and running new Category III/IV PVC venting ($1,100\u2013$1,600 in hidden rough-in labor), whereas a Hybrid Heat Pump Water Heater claims up to $2,000 in Section 25C tax credits and drops annual electric consumption from ~4,500 kWh to ~1,150 kWh."
   },
   "history_30d": [
-    114,
     112,
     115,
     114,
@@ -74,15 +73,16 @@
     112,
     110,
     111,
-    106
+    106,
+    104
   ],
   "tool_context": {
-    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (4.5 HDD), heat pump auxiliary strips increase daily load by ~12% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
-    "roofing": "With Class A architectural shingles averaging $119.18/sq and daytime ambient temperatures at 60.5\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
-    "electrical": "With 12/2 NM-B copper Romex at $140.22 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.04x seasonal load factor. Our defaults below are pre-set to today's averages.",
-    "plumbing": "With incoming municipal groundwater temperatures near 54.9\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
-    "interior": "With 2x4x8 SPF framing studs at $3.88 and 1/2\" drywall at $14.91/sheet, interior remodeling material takeoffs are holding steady. Our defaults below are pre-set to today's averages.",
-    "outdoor": "With 80lb 4000-PSI concrete at $6.32/bag and 6cm soil temperatures at 54.9\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
+    "hvac": "With average electricity at $0.172/kWh and overnight lows dropping into the 40s (3.6 HDD), heat pump auxiliary strips increase daily load by ~12% unless paired with a cold-climate inverter and compressor lockout thermostat. Our defaults below are pre-set to today's averages.",
+    "roofing": "With Class A architectural shingles averaging $120.24/sq and daytime ambient temperatures at 61.4\u00b0F, self-sealing asphalt thermal strips require proper nail placement before winter frost. Our defaults below reflect today's material and labor baselines.",
+    "electrical": "With 12/2 NM-B copper Romex at $141.22 per 250ft coil and winter heating/EV loads rising, 200A panel and backup power circuits carry a 1.03x seasonal load factor. Our defaults below are pre-set to today's averages.",
+    "plumbing": "With incoming municipal groundwater temperatures near 59.4\u00b0F, water heater recovery delta-T rises by ~14%, boosting hybrid heat pump ROI over standard electric tanks. Our defaults below reflect today's utility baselines.",
+    "interior": "With 2x4x8 SPF framing studs at $3.83 and 1/2\" drywall at $15.58/sheet, interior remodeling material takeoffs are holding steady. Our defaults below are pre-set to today's averages.",
+    "outdoor": "With 80lb 4000-PSI concrete at $6.32/bag and 6cm soil temperatures at 59.4\u00b0F, footing excavation and flatwork curing remain in the prime pre-freeze window. Our defaults below reflect today's material rates."
   },
   "catalog": {
     "hvac": [
