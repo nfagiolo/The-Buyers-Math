@@ -4,7 +4,7 @@
  *   - Stream 1: "Today's Context" Dynamic Callout Banner + 30-Day Historical Cost SVG Sparklines
  *               + Live Baseline Input Pre-Hydration across all 24 calculators.
  *   - Stream 3: Automated "Cost-Per-Use & 5-Year TCO" Product & Consumable Matrices
- *               with "★ Today's Best Math Pick" badges (Amazon Tag: nfagiolo-20 + CJ Angi PID: 101896838).
+ *               with "★ Today's Best Math Pick" badges (Amazon Tag: thebuyersmath-20 + CJ Angi PID: 101896838).
  *   - Booster 1: 1-Click Scenario Preset Bar above calculator inputs with live URL query-string sync.
  *   - Booster 2: Dynamic Dollar-Variance Contractor Markup Alert inside #resultsCard (3x-4x Angi CTR).
  *   - Booster 3: Quantity-Matched DIY Bill of Materials scaled dynamically to the user's project size slider.
@@ -12,7 +12,7 @@
  */
 (function () {
   const DATA_URL = '/data/live-baselines.json';
-  const DEFAULT_TAG = 'nfagiolo-20';
+  const DEFAULT_TAG = 'thebuyersmath-20';
   const DEFAULT_ADSENSE = 'ca-pub-1199906473460957';
   const DEFAULT_ANGI = 'https://www.jdoqocy.com/click-101896838-17142784';
   const DEFAULT_SWITCHBOT = 'https://www.dpbolvw.net/click-101896838-15310710';
