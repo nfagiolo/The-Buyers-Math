@@ -2654,7 +2654,7 @@ def ensure_batch2_calculators():
             created += 1
             print(f"[AUTO-BUILD] Created new calculator: {fname}")
     return created
-def ensure_amazon_tag_migration():
+def ensure_amazon_tag_migration():for root, dirs, files in os.walk('.'):
 def main():
     ensure_batch2_calculators()
     target_date = datetime.date.today()
