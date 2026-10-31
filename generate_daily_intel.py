@@ -13,7 +13,7 @@ Executes 4 Coordinated Content Streams every morning:
     /daily/todays-math/index.html (and /intel/latest.html), and prunes briefings > 30 days old.
   - STREAM 3 (Automated "Cost-Per-Use" Product Matrices): Injects #tbm-unit-matrix and
     #tbm-embed-box into every calculator to display Cost-Per-Output & 5-Year TCO rankings with
-    the "★ Today's Best Math Pick" badge (Amazon Tag: nfagiolo-20 + CJ Angi PID: 101896838).
+    the "★ Today's Best Math Pick" badge (Amazon Tag: thebuyersmath-20 + CJ Angi PID: 101896838).
   - STREAM 4 (Self-Reinforcing Internal Loop): Appends today's 3-Pass Case Study directly into
     the Parent Calculator's "Real-World Case Studies & Recent Scenarios" section
     (<!-- TBM CASE STUDIES START -->) and updates the Homepage 3-Module "Daily Buyer's Pulse".
@@ -31,7 +31,7 @@ import urllib.request
 # Verified Production Configurations
 SITE_DOMAIN = "thebuyersmath.com"
 SITE_URL = f"https://{SITE_DOMAIN}"
-AMAZON_TAG = "nfagiolo-20"
+AMAZON_TAG = "thebuyersmath-20"
 CJ_ENTERPRISE_ID = "8090259"
 CJ_PID = "101896838"
 CJ_ANGI_URL = "https://www.jdoqocy.com/click-101896838-17142784"
