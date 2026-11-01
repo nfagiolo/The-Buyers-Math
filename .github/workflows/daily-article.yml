@@ -56,7 +56,9 @@ jobs:
               python3 -m json.tool "$f" > /dev/null
             fi
           done
-
+      - name: 4b. Global Amazon Associates Tag Migration
+        run: |
+          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" -o -name "*.py" -o -name "*.xml" \) -exec sed -i 's/nfagiolo-20/thebuyersmath-20/g' {} +
       - name: 5. Commit & Deploy Changes
         run: |
           git config --global user.name "github-actions[bot]"
