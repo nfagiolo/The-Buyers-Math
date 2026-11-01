@@ -2,7 +2,7 @@
 """
 update_content.py - Safe, idempotent Daily Buyer's Math Tip updater.
 1. Uses Tier 1 Gemini API (`gemini-4-argon` with `gemini-2.5-flash` fallback) instead of retired `gemini-1.5-flash`.
-2. Uses verified Amazon search queries (`https://www.amazon.com/s?k=...&tag=nfagiolo-20`) instead of hallucinated `/dp/ASIN` links.
+2. Uses verified Amazon search queries (`https://www.amazon.com/s?k=...&tag=thebuyersmath-20`) instead of hallucinated `/dp/ASIN` links.
 3. Replaces the Daily Tip cleanly inside `<!-- TBM DAILY TIP START --> ... <!-- TBM DAILY TIP END -->` so tips never stack infinitely.
 4. Calls `sync_guides.py` to keep `index.html`, calculator trade guides, `sitemap.xml`, and `feed.xml` synchronized.
 """
@@ -14,7 +14,7 @@ import requests
 import sync_guides
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-AMAZON_TAG = "nfagiolo-20"
+AMAZON_TAG = "thebuyersmath-20"
 ADSENSE_CLIENT = "ca-pub-1199906473460957"
 
 PROMPT = """Write a concise, authoritative 140-word daily homeowner cost-saving tip focusing on the math and ROI behind ONE specific high-intent upgrade:
@@ -26,7 +26,7 @@ PROMPT = """Write a concise, authoritative 140-word daily homeowner cost-saving 
 
 Format strictly as raw HTML with a bold <h4> subheadline and one <p> paragraph (no ```html fences).
 Include ONE contextual Amazon Associates search link inside the paragraph using this exact URL format (with '+' between keywords):
-<a href="[https://www.amazon.com/s?k=KEYWORD+HERE&tag=nfagiolo-20](https://www.amazon.com/s?k=KEYWORD+HERE&tag=nfagiolo-20)" target="_blank" rel="noopener sponsored" style="color: #2563eb; font-weight: 700;">
+<a href="[https://www.amazon.com/s?k=KEYWORD+HERE&tag=thebuyersmath-20](https://www.amazon.com/s?k=KEYWORD+HERE&tag=thebuyersmath-20)" target="_blank" rel="noopener sponsored" style="color: #2563eb; font-weight: 700;">
 """
 
 

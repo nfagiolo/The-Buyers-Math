@@ -12,7 +12,7 @@ import json
 import urllib.parse
 
 CJ_TRACKING_BASE = "https://www.jdoqocy.com/click-101896838-17142784"
-AMAZON_TAG = "nfagiolo-20"
+AMAZON_TAG = "thebuyersmath-20"
 
 TRADE_QUERIES = {
     "roofing-cost-calculator.html": ("Roofing", "asphalt_shingles"),

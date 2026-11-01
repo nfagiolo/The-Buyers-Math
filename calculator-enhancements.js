@@ -15,7 +15,7 @@
 
   const STORAGE_KEY = 'tbm_calc_' + window.location.pathname.replace(/[^a-zA-Z0-9]/g, '_');
   const REGION_STORAGE_KEY = 'tbm_global_region_multiplier';
-  const AMAZON_TAG = 'nfagiolo-20';
+  const AMAZON_TAG = 'thebuyersmath-20';
   const CJ_PID = '101896838';
   const CJ_SWITCHBOT_URL = 'https://www.dpbolvw.net/click-101896838-15310710';
   const CJ_ANGI_AID = null; // Set to Angi AID once approved

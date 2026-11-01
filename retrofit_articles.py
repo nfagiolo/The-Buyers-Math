@@ -5,7 +5,7 @@ retrofit_articles.py - Retrofits all existing articles in `articles/` and `guide
 2. Unique <meta name="description"> extracted from the opening paragraph if generic boilerplate is present.
 3. Interactive "Audit My Contractor Quote" Red-Flag Scorecard Widget.
 4. Inline SVG Turnkey Cost Benchmark Bar Chart.
-5. Shoppable 5-Row Amazon Associates (`tag=nfagiolo-20`) Bill-of-Materials (BOM) Table.
+5. Shoppable 5-Row Amazon Associates (`tag=thebuyersmath-20`) Bill-of-Materials (BOM) Table.
 6. Automatic deduplication of any repeated INTERACTIVE ESTIMATOR or widget blocks.
 """
 

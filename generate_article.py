@@ -7,7 +7,7 @@ Includes:
 3. Strict title sanitization (removes raw Markdown '# ' prefixes and quotes) and duplicate-slug skip guard.
 4. Unique <meta name="description"> extraction from the opening paragraph.
 5. Deterministic Inline SVG Cost-Tier & Payback Comparison Chart.
-6. Shoppable 5-Item Amazon Associates (`tag=nfagiolo-20`) Bill-of-Materials (BOM) Table.
+6. Shoppable 5-Item Amazon Associates (`tag=thebuyersmath-20`) Bill-of-Materials (BOM) Table.
 7. Interactive "Audit My Contractor Quote" Red-Flag Scorecard Widget with dynamic CJ Angi (`PID: 101896838`) conversion CTA.
 """
 
@@ -22,7 +22,7 @@ import requests
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 CJ_TRACKING_BASE = "https://www.jdoqocy.com/click-101896838-17142784"
-AMAZON_TAG = "nfagiolo-20"
+AMAZON_TAG = "thebuyersmath-20"
 ADSENSE_CLIENT = "ca-pub-1199906473460957"
 
 CALCULATORS = [

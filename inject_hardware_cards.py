@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
 inject_hardware_cards.py - Automated Amazon Hardware Grid Upgrader
-Injects curated 3-card Amazon equipment recommendations (tag=nfagiolo-20)
+Injects curated 3-card Amazon equipment recommendations (tag=thebuyersmath-20)
 directly above the bundled projects section on all 14 remaining calculators.
 """
 
 import os
 
-TAG = "nfagiolo-20"
+TAG = "thebuyersmath-20"
 
 def make_section(heading, cards):
     cards_html = ""
@@ -149,7 +149,7 @@ def inject():
             continue
         with open(filename, 'r', encoding='utf-8') as f:
             content = f.read()
-        if 'tag=nfagiolo-20' in content and 'Essential Equipment' in content:
+        if 'tag=thebuyersmath-20' in content and 'Essential Equipment' in content:
             print(f"Skipping {filename}: already has hardware section.")
             continue
         if marker not in content:
