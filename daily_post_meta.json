@@ -4,13 +4,13 @@
   "category": "Kitchen & Coffee Math",
   "url": "https://thebuyersmath.com/articles/2026-11-17-600-espresso-machine-vs-645-drive-thru-latte-the-exact-day-you-break-eve.html",
   "scorecard": {
-    "option_a": "Option A (Upfront Investment)",
-    "option_b": "Option B (Recurring Habit)",
-    "cost_per_use_a": "Lower Cost Per Use",
-    "cost_per_use_b": "Higher Recurring Cost",
-    "breakeven": "See Full Break-Even Table",
-    "yr1_savings": "Audited 12-Month Delta",
-    "verdict": "See The Buyer's Math Verdict"
+    "option_a": "Home Espresso Setup ($600)",
+    "option_b": "Drive-Thru Latte ($6.45)",
+    "cost_per_use_a": "$1.17 / cup (beans + milk)",
+    "cost_per_use_b": "$6.45 / cup (with tax/tip)",
+    "breakeven": "114 Lattes (~3.8 Months)",
+    "yr1_savings": "$1,327 Net Saved in Year 1",
+    "verdict": "Home Espresso Wins Before Month 4"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
