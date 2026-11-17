@@ -2,14 +2,14 @@ name: Daily Article & Everyday Consumer Math Engine
 
 on:
   schedule:
-    # Runs daily at 10:00 UTC (5:00 AM EST / 6:00 AM EDT)
-    - cron: '0 10 * * *'
+    - cron: "0 10 * * *"
   workflow_dispatch:
     inputs:
       custom_topic:
-        description: 'Optional: Inject a custom Buyer\'s Math topic to publish right now (leaves queue untouched if blank)'
+        description: "Optional custom topic to publish right now (leaves queue untouched if blank)"
         required: false
-        default: ''
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -26,9 +26,9 @@ jobs:
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
-      - name: Install Optional Dependencies (Fault-Tolerant)
+      - name: Install Optional Dependencies
         run: |
           pip install --quiet anthropic requests pillow || echo "Optional packages skipped; standard library fallback active."
 
@@ -43,19 +43,18 @@ jobs:
       - name: 2. Repair sync_guides.py Keyword Mapping & Generate Daily Consumer Math Showdown
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          CUSTOM_TOPIC: ${{ github.event.inputs.custom_topic }}
-          TOPIC_QUEUE_CSV_URL: 'https://docs.google.com/spreadsheets/d/15vl7kt-yD97aR5bbMUxsqEFdwGV20LqxJeXoTu8DKcU/export?format=csv'
+          CUSTOM_TOPIC: ${{ inputs.custom_topic }}
+          TOPIC_QUEUE_CSV_URL: "https://docs.google.com/spreadsheets/d/15vl7kt-yD97aR5bbMUxsqEFdwGV20LqxJeXoTu8DKcU/export?format=csv"
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
         run: |
           python3 generate_article.py
 
-      - name: 3. Sync Sitemap, RSS Feed & Homepage Lead/Recent Cards
+      - name: 3. Sync Sitemap, RSS Feed & Homepage Cards
         run: |
           if [ -f "sync_guides.py" ]; then
             python3 sync_guides.py || echo "[WARN] sync_guides.py skipped non-fatal warning"
           fi
-          # Re-run CTA & ticker date self-healing pass after sync_guides.py rebuilds homepage cards
           python3 generate_article.py --repair-only
 
       - name: 4. Validate JSON & Global Amazon Associates Tag Enforcement
@@ -63,7 +62,7 @@ jobs:
           if [ -f "data/live-baselines.json" ]; then
             python3 -m json.tool data/live-baselines.json > /dev/null
           fi
-          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" -o -name "*.py" -o -name "*.xml" \) -exec sed -i 's/nfagiolo-20/thebuyersmath-20/g' {} +
+          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.json" -o -name "*.py" -o -name "*.xml" \) -exec sed -i "s/nfagiolo-20/thebuyersmath-20/g" {} +
 
       - name: 5. Commit & Deploy Changes to GitHub Pages
         run: |
