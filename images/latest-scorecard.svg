@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="36" y="36" width="1128" height="558" rx="18" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <rect x="68" y="68" width="290" height="36" rx="6" fill="#2563eb"/>
+  <text x="84" y="92" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" letter-spacing="1">THE BUYER'S MATH • SCORECARD</text>
+  <text x="1120" y="92" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16" font-weight="600" text-anchor="end">2026-11-17</text>
+  <text x="68" y="152" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="30" font-weight="800">$600 Espresso Machine vs. $6.45 Drive-Thru Latte: Th...</text>
+  <text x="68" y="190" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="24" font-weight="700">e Exact Day You Break Even</text>
+  <rect x="68" y="220" width="510" height="230" rx="12" fill="#0f172a" stroke="#16a34a" stroke-width="2"/>
+  <text x="92" y="258" fill="#4ade80" font-family="system-ui, sans-serif" font-size="15" font-weight="800">CONTENDER A</text>
+  <text x="92" y="295" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="800">Option A (Upfront Investment)</text>
+  <text x="92" y="345" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16">Real Cost Per Use:</text>
+  <text x="92" y="375" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="22" font-weight="700">Lower Cost Per Use</text>
+  <text x="92" y="422" fill="#4ade80" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Break-Even: See Full Break-Even Table</text>
+  <rect x="610" y="220" width="510" height="230" rx="12" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+  <text x="634" y="258" fill="#f87171" font-family="system-ui, sans-serif" font-size="15" font-weight="800">CONTENDER B</text>
+  <text x="634" y="295" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="800">Option B (Recurring Habit)</text>
+  <text x="634" y="345" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16">Real Cost Per Use:</text>
+  <text x="634" y="375" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="22" font-weight="700">Higher Recurring Cost</text>
+  <text x="634" y="422" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="18" font-weight="700">12-Mo Impact: Audited 12-Month Delta</text>
+  <rect x="68" y="476" width="1052" height="84" rx="12" fill="#16a34a"/>
+  <text x="96" y="512" fill="#dcfce7" font-family="system-ui, sans-serif" font-size="14" font-weight="800" letter-spacing="1">THE MATH VERDICT</text>
+  <text x="96" y="542" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="800">See The Buyer's Math Verdict</text>
+  <text x="1096" y="532" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="end">thebuyersmath.com</text>
+</svg>
