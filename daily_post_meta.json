@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-17",
-  "headline": "$600 Espresso Machine vs. $6.45 Drive-Thru Latte: The Exact Day You Break Even",
-  "category": "Kitchen & Coffee Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-17-600-espresso-machine-vs-645-drive-thru-latte-the-exact-day-you-break-eve.html",
+  "date": "2026-11-18",
+  "headline": "Costco $65 Membership vs. Aldi: The 8 Items That Pay for the Card (And 4 Where You Lose Money)",
+  "category": "Grocery & Warehouse Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-18-costco-65-membership-vs-aldi-the-8-items-that-pay-for-the-card-and-4-whe.html",
   "scorecard": {
-    "option_a": "Home Espresso Setup ($600)",
-    "option_b": "Drive-Thru Latte ($6.45)",
-    "cost_per_use_a": "$1.17 / cup (beans + milk)",
-    "cost_per_use_b": "$6.45 / cup (with tax/tip)",
-    "breakeven": "114 Lattes (~3.8 Months)",
-    "yr1_savings": "$1,327 Net Saved in Year 1",
-    "verdict": "Home Espresso Wins Before Month 4"
+    "option_a": "Costco ($65/yr Card + Bulk)",
+    "option_b": "Aldi (Zero Membership Fee)",
+    "cost_per_use_a": "Wins on Gas, Paper, Olive Oil & Meat",
+    "cost_per_use_b": "Wins on Produce, Milk, Eggs & Snacks",
+    "breakeven": "11 Rotisserie Chickens + 6 Gas Fill-Ups",
+    "yr1_savings": "$410/yr Using Split-List Strategy",
+    "verdict": "Hybrid Strategy Wins (Skip Bulk Produce)"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
