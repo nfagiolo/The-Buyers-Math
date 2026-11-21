@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-20",
-  "headline": "Countertop Air Fryer vs. Full-Size Electric Oven: How Much Electricity You Actually Save Over 365 Dinners",
-  "category": "Kitchen & Energy Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-20-countertop-air-fryer-vs-full-size-electric-oven-how-much-electricity-you.html",
+  "date": "2026-11-21",
+  "headline": "Vacuum Sealer + Bulk Meat vs. Supermarket Retail Packs: The 12-Month Freezer Payback Math",
+  "category": "Grocery & Bulk Storage",
+  "url": "https://thebuyersmath.com/articles/2026-11-21-vacuum-sealer-bulk-meat-vs-supermarket-retail-packs-the-12-month-freezer.html",
   "scorecard": {
-    "option_a": "1,500W Countertop Air Fryer",
-    "option_b": "3,500W Full-Size Electric Oven",
-    "cost_per_use_a": "$0.08 / dinner (18 mins)",
-    "cost_per_use_b": "$0.33 / dinner (40 mins w/ preheat)",
-    "breakeven": "285 Uses (~11 Months)",
-    "yr1_savings": "$91/yr Electric + $35 Summer AC Offset",
-    "verdict": "Air Fryer Cuts Cooking kWh by 76%"
+    "option_a": "Bulk Meat + Vacuum Sealer ($110)",
+    "option_b": "Supermarket Foam Retail Trays",
+    "cost_per_use_a": "$0.22/bag + $2.35/lb Meat Savings",
+    "cost_per_use_b": "$0 Upfront + Freezer Burn Waste",
+    "breakeven": "52 Pounds of Meat (~10 Weeks)",
+    "yr1_savings": "$460/yr Saved for a 4-Person Kitchen",
+    "verdict": "Pays Off on Your Third Warehouse Run"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"

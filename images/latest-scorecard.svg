@@ -1,25 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Countertop Air Fryer vs. Full-Size Electric Oven: How Much Electricity You Actually Save Over 365 Dinners Scorecard" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Vacuum Sealer + Bulk Meat vs. Supermarket Retail Packs: The 12-Month Freezer Payback Math Scorecard" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);">
   <rect width="1200" height="630" fill="#0f172a"/>
   <rect x="32" y="32" width="1136" height="566" rx="18" fill="#1e293b" stroke="#334155" stroke-width="2"/>
   <rect x="64" y="62" width="320" height="36" rx="6" fill="#2563eb"/>
   <text x="80" y="86" fill="#ffffff" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="800" letter-spacing="1">THE BUYER&#39;S MATH &#8226; SCORECARD</text>
-  <text x="1132" y="86" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="end">2026-11-20</text>
-  <text x="64" y="146" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="29" font-weight="800">Countertop Air Fryer vs. Full-Size Electric Oven: How</text>
-  <text x="64" y="184" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="700">Much Electricity You Actually Save Over 365 Dinners</text>
+  <text x="1132" y="86" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="end">2026-11-21</text>
+  <text x="64" y="146" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="29" font-weight="800">Vacuum Sealer + Bulk Meat vs. Supermarket Retail</text>
+  <text x="64" y="184" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="700">Packs: The 12-Month Freezer Payback Math</text>
   <rect x="64" y="214" width="520" height="236" rx="12" fill="#0f172a" stroke="#16a34a" stroke-width="2.5"/>
   <text x="88" y="252" fill="#4ade80" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" letter-spacing="0.8">CONTENDER A &#8226; BUY ONCE</text>
-  <text x="88" y="288" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800">1,500W Countertop Air Fryer</text>
+  <text x="88" y="288" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800">Bulk Meat + Vacuum Sealer ($110)</text>
   <text x="88" y="336" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="15">Audited Real Cost Per Use:</text>
-  <text x="88" y="366" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="700">$0.08 / dinner (18 mins)</text>
-  <text x="88" y="418" fill="#4ade80" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700">Break-Even: 285 Uses (~11 Months)</text>
+  <text x="88" y="366" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="700">$0.22/bag + $2.35/lb Meat Savings</text>
+  <text x="88" y="418" fill="#4ade80" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700">Break-Even: 52 Pounds of Meat (~10 Weeks)</text>
   <rect x="616" y="214" width="520" height="236" rx="12" fill="#0f172a" stroke="#475569" stroke-width="2"/>
   <text x="640" y="252" fill="#f87171" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" letter-spacing="0.8">CONTENDER B &#8226; RECURRING HABIT</text>
-  <text x="640" y="288" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800">3,500W Full-Size Electric Oven</text>
+  <text x="640" y="288" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800">Supermarket Foam Retail Trays</text>
   <text x="640" y="336" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="15">Audited Real Cost Per Use:</text>
-  <text x="640" y="366" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="700">$0.33 / dinner (40 mins w/ preheat)</text>
-  <text x="640" y="418" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700">12-Mo Impact: $91/yr Electric + $35 Summer AC </text>
+  <text x="640" y="366" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="700">$0 Upfront + Freezer Burn Waste</text>
+  <text x="640" y="418" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700">12-Mo Impact: $460/yr Saved for a 4-Person Kit</text>
   <rect x="64" y="474" width="1072" height="88" rx="12" fill="#16a34a"/>
   <text x="92" y="508" fill="#dcfce7" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" letter-spacing="1">THE MATH VERDICT</text>
-  <text x="92" y="540" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800">Air Fryer Cuts Cooking kWh by 76%</text>
+  <text x="92" y="540" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="23" font-weight="800">Pays Off on Your Third Warehouse Run</text>
   <text x="1108" y="530" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" text-anchor="end">thebuyersmath.com</text>
 </svg>
