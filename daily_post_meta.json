@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-21",
-  "headline": "Vacuum Sealer + Bulk Meat vs. Supermarket Retail Packs: The 12-Month Freezer Payback Math",
-  "category": "Grocery & Bulk Storage",
-  "url": "https://thebuyersmath.com/articles/2026-11-21-vacuum-sealer-bulk-meat-vs-supermarket-retail-packs-the-12-month-freezer.html",
+  "date": "2026-11-22",
+  "headline": "Wool Dryer Balls vs. Disposable Bounce Sheets vs. Liquid Fabric Softener: 3-Year Cost & Towel Absorbency Math",
+  "category": "Household Consumables",
+  "url": "https://thebuyersmath.com/articles/2026-11-22-wool-dryer-balls-vs-disposable-bounce-sheets-vs-liquid-fabric-softener-3.html",
   "scorecard": {
-    "option_a": "Bulk Meat + Vacuum Sealer ($110)",
-    "option_b": "Supermarket Foam Retail Trays",
-    "cost_per_use_a": "$0.22/bag + $2.35/lb Meat Savings",
-    "cost_per_use_b": "$0 Upfront + Freezer Burn Waste",
-    "breakeven": "52 Pounds of Meat (~10 Weeks)",
-    "yr1_savings": "$460/yr Saved for a 4-Person Kitchen",
-    "verdict": "Pays Off on Your Third Warehouse Run"
+    "option_a": "6-Pack XL Wool Dryer Balls ($15)",
+    "option_b": "Disposable Dryer Sheets ($0.08/ea)",
+    "cost_per_use_a": "$0.014 / load + 12% Less Dryer kWh",
+    "cost_per_use_b": "$0.16 / load (2 sheets) + Wax Residue",
+    "breakeven": "60 Laundry Loads (~2.5 Months)",
+    "yr1_savings": "$58/yr (Sheets + Shorter Dry Cycles)",
+    "verdict": "Wool Balls Win in Under 65 Loads"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
