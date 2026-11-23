@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-22",
-  "headline": "Wool Dryer Balls vs. Disposable Bounce Sheets vs. Liquid Fabric Softener: 3-Year Cost & Towel Absorbency Math",
-  "category": "Household Consumables",
-  "url": "https://thebuyersmath.com/articles/2026-11-22-wool-dryer-balls-vs-disposable-bounce-sheets-vs-liquid-fabric-softener-3.html",
+  "date": "2026-11-23",
+  "headline": "SodaStream & CO2 Tank Adapter vs. 12-Packs of Canned Sparkling Water: The Real Cost Per Liter",
+  "category": "Beverage & Kitchen Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-23-sodastream-co2-tank-adapter-vs-12-packs-of-canned-sparkling-water-the-re.html",
   "scorecard": {
-    "option_a": "6-Pack XL Wool Dryer Balls ($15)",
-    "option_b": "Disposable Dryer Sheets ($0.08/ea)",
-    "cost_per_use_a": "$0.014 / load + 12% Less Dryer kWh",
-    "cost_per_use_b": "$0.16 / load (2 sheets) + Wax Residue",
-    "breakeven": "60 Laundry Loads (~2.5 Months)",
-    "yr1_savings": "$58/yr (Sheets + Shorter Dry Cycles)",
-    "verdict": "Wool Balls Win in Under 65 Loads"
+    "option_a": "SodaStream + 5-Lb Tank Adapter",
+    "option_b": "12-Packs Canned Seltzer",
+    "cost_per_use_a": "$0.28/L (Stock) or $0.05/L (5-Lb Tank)",
+    "cost_per_use_b": "$1.35\u2013$1.52 / liter (2.8 cans)",
+    "breakeven": "78 Liters (~19 Twelve-Packs)",
+    "yr1_savings": "$440/yr for a 2-Can-a-Day Household",
+    "verdict": "SodaStream Breaks Even in 9 Weeks"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
