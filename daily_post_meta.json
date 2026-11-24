@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-23",
-  "headline": "SodaStream & CO2 Tank Adapter vs. 12-Packs of Canned Sparkling Water: The Real Cost Per Liter",
-  "category": "Beverage & Kitchen Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-23-sodastream-co2-tank-adapter-vs-12-packs-of-canned-sparkling-water-the-re.html",
+  "date": "2026-11-24",
+  "headline": "$450 Robot Vacuum & Mop vs. Bi-Weekly House Cleaner vs. Doing It Yourself: Cost Per Clean Hour",
+  "category": "Home & Time Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-24-450-robot-vacuum-mop-vs-bi-weekly-house-cleaner-vs-doing-it-yourself-cos.html",
   "scorecard": {
-    "option_a": "SodaStream + 5-Lb Tank Adapter",
-    "option_b": "12-Packs Canned Seltzer",
-    "cost_per_use_a": "$0.28/L (Stock) or $0.05/L (5-Lb Tank)",
-    "cost_per_use_b": "$1.35\u2013$1.52 / liter (2.8 cans)",
-    "breakeven": "78 Liters (~19 Twelve-Packs)",
-    "yr1_savings": "$440/yr for a 2-Can-a-Day Household",
-    "verdict": "SodaStream Breaks Even in 9 Weeks"
+    "option_a": "LiDAR Robot Vacuum ($450)",
+    "option_b": "Bi-Weekly House Cleaner ($140)",
+    "cost_per_use_a": "$0.45 / run (300 runs/yr)",
+    "cost_per_use_b": "$3,640 / yr (26 visits)",
+    "breakeven": "3.2 Cleaning Visits (~7 Weeks)",
+    "yr1_savings": "75 Weekend Hours Reclaimed in Year 1",
+    "verdict": "Robot Wins Daily Crumb & Pet Hair Duty"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
