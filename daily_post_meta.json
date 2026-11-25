@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-24",
-  "headline": "$450 Robot Vacuum & Mop vs. Bi-Weekly House Cleaner vs. Doing It Yourself: Cost Per Clean Hour",
-  "category": "Home & Time Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-24-450-robot-vacuum-mop-vs-bi-weekly-house-cleaner-vs-doing-it-yourself-cos.html",
+  "date": "2026-11-25",
+  "headline": "Keep Fixing a Paid-Off 120k-Mile Car ($1,800/yr Repairs) vs. Buying a $32,000 New Hybrid: 5-Year Net Wealth Math",
+  "category": "Auto & Ownership Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-25-keep-fixing-a-paid-off-120k-mile-car-1800yr-repairs-vs-buying-a-32000-ne.html",
   "scorecard": {
-    "option_a": "LiDAR Robot Vacuum ($450)",
-    "option_b": "Bi-Weekly House Cleaner ($140)",
-    "cost_per_use_a": "$0.45 / run (300 runs/yr)",
-    "cost_per_use_b": "$3,640 / yr (26 visits)",
-    "breakeven": "3.2 Cleaning Visits (~7 Weeks)",
-    "yr1_savings": "75 Weekend Hours Reclaimed in Year 1",
-    "verdict": "Robot Wins Daily Crumb & Pet Hair Duty"
+    "option_a": "Paid-Off Car ($1,800/yr Repairs)",
+    "option_b": "New $32k Hybrid ($610/mo Note)",
+    "cost_per_use_a": "$3,950/yr Total (Repairs + Gas + Ins.)",
+    "cost_per_use_b": "$8,620/yr Total (Depr. + Int. + Gas + Ins.)",
+    "breakeven": "Fuel Savings Alone Take 14.2 Years",
+    "yr1_savings": "$4,670/yr Kept in Your Bank Account",
+    "verdict": "A $1,800 Repair Bill Beats a Car Note by 78%"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
