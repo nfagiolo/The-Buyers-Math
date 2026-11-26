@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-25",
-  "headline": "Keep Fixing a Paid-Off 120k-Mile Car ($1,800/yr Repairs) vs. Buying a $32,000 New Hybrid: 5-Year Net Wealth Math",
-  "category": "Auto & Ownership Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-25-keep-fixing-a-paid-off-120k-mile-car-1800yr-repairs-vs-buying-a-32000-ne.html",
+  "date": "2026-11-26",
+  "headline": "Rechargeable Eneloop AA/AAA Batteries vs. Bulk Alkaline Packs: How Many Toy & Controller Swaps to Break Even",
+  "category": "Tech & Battery Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-26-rechargeable-eneloop-aaaaa-batteries-vs-bulk-alkaline-packs-how-many-toy.html",
   "scorecard": {
-    "option_a": "Paid-Off Car ($1,800/yr Repairs)",
-    "option_b": "New $32k Hybrid ($610/mo Note)",
-    "cost_per_use_a": "$3,950/yr Total (Repairs + Gas + Ins.)",
-    "cost_per_use_b": "$8,620/yr Total (Depr. + Int. + Gas + Ins.)",
-    "breakeven": "Fuel Savings Alone Take 14.2 Years",
-    "yr1_savings": "$4,670/yr Kept in Your Bank Account",
-    "verdict": "A $1,800 Repair Bill Beats a Car Note by 78%"
+    "option_a": "Eneloop NiMH Kit ($28 w/ Charger)",
+    "option_b": "Bulk Disposable Alkaline Pack",
+    "cost_per_use_a": "$0.013 / cycle (2,100 recharges)",
+    "cost_per_use_b": "$0.65 / single-use battery",
+    "breakeven": "Swap #3 Per Battery (~4 Months)",
+    "yr1_savings": "$84/yr Saved + Zero Corroded Remotes",
+    "verdict": "Eneloop Wins Forever by Recharge #3"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
