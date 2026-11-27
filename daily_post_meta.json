@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-26",
-  "headline": "Rechargeable Eneloop AA/AAA Batteries vs. Bulk Alkaline Packs: How Many Toy & Controller Swaps to Break Even",
-  "category": "Tech & Battery Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-26-rechargeable-eneloop-aaaaa-batteries-vs-bulk-alkaline-packs-how-many-toy.html",
+  "date": "2026-11-27",
+  "headline": "Under-Sink Reverse Osmosis System ($190) vs. Brita Pitcher Filters vs. Bottled Water Cases: 5-Year Cost Per Gallon",
+  "category": "Kitchen & Water Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-27-under-sink-reverse-osmosis-system-190-vs-brita-pitcher-filters-vs-bottle.html",
   "scorecard": {
-    "option_a": "Eneloop NiMH Kit ($28 w/ Charger)",
-    "option_b": "Bulk Disposable Alkaline Pack",
-    "cost_per_use_a": "$0.013 / cycle (2,100 recharges)",
-    "cost_per_use_b": "$0.65 / single-use battery",
-    "breakeven": "Swap #3 Per Battery (~4 Months)",
-    "yr1_savings": "$84/yr Saved + Zero Corroded Remotes",
-    "verdict": "Eneloop Wins Forever by Recharge #3"
+    "option_a": "6-Stage Under-Sink RO ($190)",
+    "option_b": "Pitcher ($0.24/gal) / Cases ($1.20/gal)",
+    "cost_per_use_a": "$0.03 / gallon (99% TDS Removed)",
+    "cost_per_use_b": "$0.24\u2013$1.20 / gallon",
+    "breakeven": "163 Gal vs Cases (4.5 Months)",
+    "yr1_savings": "$390/yr vs Bottled Water Cases",
+    "verdict": "Under-Sink RO Crushes Pitchers & Plastic"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
