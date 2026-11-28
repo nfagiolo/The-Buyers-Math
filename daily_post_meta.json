@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-27",
-  "headline": "Under-Sink Reverse Osmosis System ($190) vs. Brita Pitcher Filters vs. Bottled Water Cases: 5-Year Cost Per Gallon",
-  "category": "Kitchen & Water Math",
-  "url": "https://thebuyersmath.com/articles/2026-11-27-under-sink-reverse-osmosis-system-190-vs-brita-pitcher-filters-vs-bottle.html",
+  "date": "2026-11-28",
+  "headline": "$300 Rotomolded Yeti Cooler vs. $48 Insulated Coleman Cooler: Cost Per Day of Ice Retention",
+  "category": "Everyday Gear Math",
+  "url": "https://thebuyersmath.com/articles/2026-11-28-300-rotomolded-yeti-cooler-vs-48-insulated-coleman-cooler-cost-per-day-o.html",
   "scorecard": {
-    "option_a": "6-Stage Under-Sink RO ($190)",
-    "option_b": "Pitcher ($0.24/gal) / Cases ($1.20/gal)",
-    "cost_per_use_a": "$0.03 / gallon (99% TDS Removed)",
-    "cost_per_use_b": "$0.24\u2013$1.20 / gallon",
-    "breakeven": "163 Gal vs Cases (4.5 Months)",
-    "yr1_savings": "$390/yr vs Bottled Water Cases",
-    "verdict": "Under-Sink RO Crushes Pitchers & Plastic"
+    "option_a": "$48 Coleman + Reusable Ice Packs",
+    "option_b": "$300 Rotomolded Heavy Cooler",
+    "cost_per_use_a": "$48 Upfront (72-Hr Weekend Ice)",
+    "cost_per_use_b": "$300 Upfront (5\u20136 Day Off-Grid Ice)",
+    "breakeven": "84 Bags of $3 Ice (~28 Camping Trips)",
+    "yr1_savings": "$222 Kept in Your Wallet in Year 1",
+    "verdict": "$48 Cooler Wins for 95% of Weekend Trips"
   },
   "image_png": "images/latest-scorecard.png",
   "image_svg": "images/latest-scorecard.svg"
